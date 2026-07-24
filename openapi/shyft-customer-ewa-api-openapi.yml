@@ -1,0 +1,962 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > EWA API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > EWA
+  description: "Ojbect Serializer: \n\n\n[EWA Account Serializer]\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\nid | | | \ntos_yes | | | Indciate if user has accepted the TOS by going through all pages. \nis_active |\newa_score | | | The score Shyft give by anazlyzing the bank account data\newa_maximal | | | The maximal user can borrow in total\newa_status| string | |one of values: ewa_not_applicable_user / ewa_not_setup / ewa_has_balance / ewa_out_of_fund / ewa_normal\nnext_payback_date | datetime | | The date customer need to payback\nemail | datetime | | The confirmed email address\nis_confirmation_requested | boolean | | Is there a pending email confirmation?\nis_confirmed |  boolean | |  Has customer been confirmed via email?\n\n\n\n[Bank Account Serializer]\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\naccount_owner_name | | | Bank account holder full naem\nbank_name | | | Bank name\nbank_code | | | Bank code\ndescription] | | | \nis_active | | |\n\n\n\n[EWA Transaction Serializer]\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer |  | in cents\namount_currency| string |  | \newa_balance| string |  | how much money customer borrowed so far\ntransaction_type| string |  | `borrow/payback`\n\n\n\n\n"
+paths:
+  /api/customer/user_role/ewa/ewa_accounts/my_account:
+    get:
+      tags:
+      - Customer > EWA
+      summary: '[ewa_account] get or create my EWA account'
+      description: "Description\n- - - \n- This is the first API call when user choose to use EWA by clicking the function button.\n- It will find the current user's existing EWA account and return its profile. \n- It will create a new basic EWA account for current user if not found one, and return its profile \n\nIf got `tos_yes=false`, front-end want to present these TOS pages again. \nIf got no `active_bank_account`, front-end want to present the bacnk account linking page\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"7454061f2b2878f16873587f2716b90e"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=ZVR1d3g1cXFOaCtLZkJQR0FCWlNIQWdIS1NzN3c4RkpoWll0b08wTGcrSU1sUW43OUJaYkFja2FZTVJRejlVZGhCWEF3b3d1VEhZNGNVOVlLYUliZVE9PS0ta2hnY1ljUDVjTzhQSFBhRmlOL0xpdz09--8bfd3743ff86cefa6b6480e7b6cef744e9c7c8ad; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: e8ca009c-3c0e-4417-8965-15e6ebfdd206
+            X-Runtime:
+              schema:
+                type: number
+                example: '20.730608'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                ewa_account:
+                  _parent_object_id: null
+                  id: 1
+                  tos_yes: true
+                  is_active: true
+                  ewa_score: null
+                  ewa_balance_cents: -400
+                  ewa_maximal: null
+                  ewa_status: ewa_not_applicable_user
+                  active_bank_account:
+                    _parent_object_id: 1
+                    account_owner_name: Plaid Checking
+                    bank_name: US Bank
+                    bank_code: null
+                    description: Plaid Gold Standard 0% Interest Checking
+                    is_active: true
+  /api/customer/user_role/ewa/ewa_accounts/request_email_confirmation:
+    get:
+      tags:
+      - Customer > EWA
+      summary: '[ewa_account] request email confirmation'
+      description: "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: unconfirmed_email
+        in: query
+        schema:
+          type: string
+        example: bin%2Bewa@myshyft.com
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"6e9067066cf31b2cb28986215e4a5b33"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=ZGR1M3M2SHdEb0pYL0VCWkFUM0RxelRDNENLY3RaQlNpQnZXSlZKTUJZT0gvaXo4VzJnY0VQYjNQYXMzeUowMTA5Mm9TT2ZQVFVaa2ZZOTZXTGQwR3c9PS0tbUFiOHZ0RzZ0c2d0SS9uZDhnUTVXUT09--f4946504823c25fe4d0eb8def0c1b96d5dbc4dc0; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: f57c4f37-1d00-4041-8d9e-947a29523720
+            X-Runtime:
+              schema:
+                type: number
+                example: '3.381592'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                ewa_account:
+                  _parent_object_id: null
+                  id: 1
+                  tos_yes: true
+                  is_active: true
+                  ewa_score: null
+                  ewa_balance_cents: 300
+                  ewa_maximal_cents: null
+                  ewa_status: ewa_has_balance
+                  next_payback_date: null
+                  email: null
+                  is_confirmation_requested: true
+                  is_confirmed: false
+                  active_bank_account:
+                    _parent_object_id: 1
+                    account_owner_name: Plaid Checking
+                    bank_name: US Bank
+                    bank_code: null
+                    description: Plaid Gold Standard 0% Interest Checking
+                    is_active: true
+                    ewa_maximal_cents: null
+                    next_payback_date: null
+                    maximal_payback_date: null
+  /api/customer/user_role/ewa/ewa_accounts/borrow_estimate:
+    get:
+      tags:
+      - Customer > EWA
+      summary: '[ewa_account] get the estimation of capability of borrowing'
+      description: "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/ewa/ewa_accounts/confirm_email_with_code:
+    get:
+      tags:
+      - Customer > EWA
+      summary: '[ewa_account] confirm EWA account''s email with code'
+      description: "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: confirmation_code
+        in: query
+        schema:
+          type: integer
+        example: '9999'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"39648b13d4d79c68b207d5618a628db4"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=NmpBTXZsSmh2ZmlBOHVSNy9FTjdka0ZOWjRRUEVTSDNqTFBzeGtRYkVqdnBmZEJ3ZTdUNHViU0N5Vm56azZGSEkxT3JUVlRoSVJVRTdtWU1jMVhrcGc9PS0tbkVSSk9wVWdFbk9JWERnNTdSMnZjdz09--6626ab9bd8e1f7d6d8f986a7b09fa0e1738368bc; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 4e5c69e1-93d7-41e6-9877-d0dfea208c58
+            X-Runtime:
+              schema:
+                type: number
+                example: '3.081910'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                ewa_account:
+                  _parent_object_id: null
+                  id: 1
+                  tos_yes: true
+                  is_active: true
+                  ewa_score: null
+                  ewa_balance_cents: 300
+                  ewa_maximal_cents: null
+                  ewa_status: ewa_has_balance
+                  next_payback_date: null
+                  email: bin+ewa@myshyft.com
+                  is_confirmation_requested: false
+                  is_confirmed: true
+                  active_bank_account:
+                    _parent_object_id: 1
+                    account_owner_name: Plaid Checking
+                    bank_name: US Bank
+                    bank_code: null
+                    description: Plaid Gold Standard 0% Interest Checking
+                    is_active: true
+                    ewa_maximal_cents: null
+                    next_payback_date: null
+                    maximal_payback_date: null
+        '400':
+          description: Bad Request
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=dWZBNDYrRVNCZXU0STNpR2MyTkRLZXFIbmVFVitPdXBka1U1aytMeHBDWnRuN0lhRzVneDRvUnhOSGpLU3ZPay9OSXhqcGpVa1U4SDIwTVVZa3NCcUE9PS0tbkozSHdWOWg2THVnaHZJdW9BTW9KQT09--630b475879160686902c6f5a2250482003e55630; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 338294f0-e44a-4617-a36c-d50f008ff273
+            X-Runtime:
+              schema:
+                type: number
+                example: '21.702526'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                errors:
+                  confirmation_code:
+                  - invalid code.
+  /api/customer/user_role/ewa/ewa_accounts/{ewa_account_id}:
+    put:
+      tags:
+      - Customer > EWA
+      summary: '[ewa_account] confirm the TOS agreement'
+      description: "Description\n- - - \n- Once user went through all TOS pages, mark it. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\ntos_yes | boolean | * |\n\n\nOutput\n- - - \n[EWA Account Serializer]"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n\t\"ewa_account\": {\n\t\t\"tos_yes\": true\n\t}\t\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: response[put_return_resource]
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      - name: ewa_account_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"8a268f25cb24149c0c300b4b492defd7"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=VVBmaW1pVklTbXRxWjY5bmdkSUg3L2lmRFYxK0RPWlRRSkhBVEJTQW5Tc0ZuMWtQWnJUNTBFVWtyOWNxbEZ2QXM3aHBoTHNLZWROVS9DYTBzUU1SRlE9PS0tR1M4V0ZGYWIraGlGVFltUG5LVHNmQT09--5fa013bc3df6d04ab1b5d0a5ae91343db0411599; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 22bde3ef-7b80-4c61-985e-aac3b3754c0c
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.086246'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                ewa_account:
+                  _parent_object_id: null
+                  id: 1
+                  tos_yes: true
+                  is_active: true
+                  ewa_score: null
+                  ewa_balance: '-100.0'
+                  ewa_maximal: null
+                  active_bank_account:
+                    _parent_object_id: 1
+                    account_owner_name: Bin Li
+                    bank_name: Fake Bank
+                    bank_code: FAKE_BANK_CODE
+                    description: null
+                    is_active: true
+  /api/customer/user_role/ewa/ewa_transactions/borrow:
+    post:
+      tags:
+      - Customer > EWA
+      summary: '[ewa_transaction] borrow money'
+      description: "Description\n- - - \n- Call this API when customer want borrow money from Shyft\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer | * | in cents\ndue_at | date | | customer selected payback date\n\n\nOutput\n- - - \n\n[EWA Transaction Serializer]"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n    \"ewa_transaction\": {  \n\t\t\"amount_cents\": 100,\n\t\t\"due_at\": \"2020-03-01\"\n\t}\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"7e9929e5a92ca1944ad4ecb6d7fb29e8"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=WGxJRExIVGNQZDRNTHZCeEFjaU14Q1hqd29Mck05Vm1UakRhckJpemhSZDNIaGdSVURhNUVHeEoyem14RktHeDJaQ1grU2ZNTEdQM043Zm1pWnJQVWc9PS0tdkwxZjFQelBjWVBmTFhjNXcreW51QT09--8b1fe2624aebb2751ae548e4f6e19dcd82347234; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 213f18e6-f02b-4d64-8b6c-a7639b02709e
+            X-Runtime:
+              schema:
+                type: number
+                example: '19.711830'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                ewa_transaction:
+                  _parent_object_id: null
+                  amount_cents: 100
+                  amount_currency: USD
+                  source_ewa_balance: 600
+                  transaction_type: borrow
+                  due_at: '2020-03-01'
+  /api/customer/user_role/ewa/ewa_transactions/payback:
+    post:
+      tags:
+      - Customer > EWA
+      summary: '[ewa_transaction] return money'
+      description: "Description\n- - - \n- Call this API when customer want return money from Shyft\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer | * | in cents\n\n\nOutput\n- - - \n[EWA Transaction Serializer]"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n    \"ewa_transaction\": {  \n\t\t\"amount_cents\": 100\n\t}\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"15102346a360f0201ec43481a49fc7e7"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=QTMwNjlPYUNaNkdtdERCZTFzdGtZSXRwS0xGdXJob1JkRHJhOHBQWkR2aXNXVmNBY2N3NS9DcE1RdWpsL3R0OGppdjh0Mm9SUTd1c1lmTXpZVGRpakE9PS0tUzgwek5CN1NySytqVXlXRFZ1Y0JFdz09--4720b9a87a68f5381a41feed518084f4f00aa754; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: c3e25dda-544f-4937-b5a3-6c0e6b38c8a2
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.127562'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                ewa_transaction:
+                  _parent_object_id: null
+                  amount_cents: -100
+                  amount_currency: USD
+                  ewa_balance: '-300.0'
+                  transaction_type: payback
+  /api/customer/user_role/ewa/bank_accounts/add_account:
+    post:
+      tags:
+      - Customer > EWA
+      summary: '[bank_account] create and active bank_account'
+      description: "Description\n- - - \n- Add a new bank account to current user's EWA account\n- Will deactive all other bank accounts if new one added\n- \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npublic_token | string | * | the token got from Plaid\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nbank_name | string | * | the bank name got from Plaid\n\n\nOutput\n- - - \n\n[Bank Account Serializer]"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n\t\"bank_account\": {\n\t\t\"bank_name\": \"US Bank\"\n\t}\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: public_token
+        in: query
+        schema:
+          type: string
+        example: public-sandbox-5df51fa7-25e5-4c1f-ba0b-87705ccbfc1b
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"5ad087b5ade9216cd3239ebbb62c3644"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=UXZOWkZLb2o2UlNubjgyTDc3RVlYUElJazlmK1NWTkNSZmpwY0dQWHlHMVduY0l1N25tV2E5aGlzS1cwSnNSZWJmY2I3d3BIc213b3dYNzhHM3F2T3c9PS0tcmdoOENZM2lrdUM3MWhCV3pvREQrQT09--909aa3fbdbb36d5dac3c6396a7903193fe0996a6; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: f37bef60-6ad6-4ec1-8783-7979e20ab080
+            X-Runtime:
+              schema:
+                type: number
+                example: '8.522391'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                bank_account:
+                  _parent_object_id: null
+                  account_owner_name: Plaid Checking
+                  bank_name: US Bank
+                  bank_code: null
+                  description: Plaid Gold Standard 0% Interest Checking
+                  is_active: true
+                  ewa_maximal_cents: 100
+                  next_payback_date: '2020-03-06T01:35:21.740Z'
+                  maximal_payback_date: '2020-03-20T01:35:21.740Z'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

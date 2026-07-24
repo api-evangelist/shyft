@@ -1,0 +1,269 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Callbacks API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Callbacks
+paths:
+  /stripe_new_subscription:
+    post:
+      tags:
+      - Callbacks
+      summary: Stripe callback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: evt_1NiqDNAU4buAi3LkEgKxCoDU
+                object: event
+                api_version: '2017-08-15'
+                created: 1692932257
+                data:
+                  object:
+                    id: cs_test_a1Wuy7TjEeG8uhR5wDItNeS825rzS8QTnWBSDBRgVzLozShEZJzUg7oOgd
+                    object: checkout.session
+                    after_expiration: null
+                    allow_promotion_codes: false
+                    amount_subtotal: 1900
+                    amount_total: 1900
+                    automatic_tax:
+                      enabled: true
+                      status: complete
+                    billing_address_collection: auto
+                    cancel_url: https://stripe.com
+                    client_reference_id: null
+                    consent:
+                      promotions: null
+                      terms_of_service: accepted
+                    consent_collection:
+                      promotions: none
+                      terms_of_service: required
+                    created: 1692932114
+                    currency: usd
+                    currency_conversion: null
+                    custom_fields:
+                    - dropdown: null
+                      key: businessname
+                      label:
+                        custom: Business Name
+                        type: custom
+                      numeric: null
+                      optional: false
+                      text:
+                        maximum_length: null
+                        minimum_length: null
+                        value: Stripe Test Location
+                      type: text
+                    - dropdown: null
+                      key: businessaddress
+                      label:
+                        custom: Business Address
+                        type: custom
+                      numeric: null
+                      optional: false
+                      text:
+                        maximum_length: null
+                        minimum_length: null
+                        value: 1212 Nuuanu Avenue, Honolulu, HI 96817
+                      type: text
+                    custom_text:
+                      shipping_address: null
+                      submit: null
+                    customer: cus_OVrxCg35MDSzft
+                    customer_creation: if_required
+                    customer_details:
+                      address:
+                        city: Bothell
+                        country: US
+                        line1: 123th PL NE
+                        line2: null
+                        postal_code: '98011'
+                        state: WA
+                      email: bin+stripe@myshyft.com
+                      name: Bin Li
+                      phone: '+18887653568'
+                      tax_exempt: none
+                      tax_ids: []
+                    customer_email: null
+                    expires_at: 1693018513
+                    invoice: in_1NiqDIAU4buAi3Lkpgt3wMwL
+                    invoice_creation: null
+                    livemode: false
+                    locale: auto
+                    metadata:
+                      client_reference_id: full_service
+                    mode: subscription
+                    payment_intent: null
+                    payment_link: plink_1Nct2hAU4buAi3LkFKupKfvk
+                    payment_method_collection: always
+                    payment_method_options: null
+                    payment_method_types:
+                    - card
+                    - link
+                    - cashapp
+                    payment_status: paid
+                    phone_number_collection:
+                      enabled: true
+                    recovered_from: null
+                    setup_intent: null
+                    shipping: null
+                    shipping_address_collection: null
+                    shipping_options: []
+                    shipping_rate: null
+                    status: complete
+                    submit_type: auto
+                    subscription: sub_1NiqDIAU4buAi3LkJIrTT7Q2
+                    success_url: https://stripe.com
+                    total_details:
+                      amount_discount: 0
+                      amount_shipping: 0
+                      amount_tax: 0
+                    url: null
+                livemode: false
+                pending_webhooks: 1
+                request:
+                  id: null
+                  idempotency_key: null
+                type: checkout.session.completed
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: Stripe-Signature
+        in: header
+        schema:
+          type: string
+        example: t=1692922649,v1=df59c0d4ec83168eab44fd32a7d7c94383f513347773e67772c6ac20a0d61c86,v0=33c90eb139b42cf174fceef6e03585222b2da7e13a260bcf2b373583d52a012b
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: text/html
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: c6f9521f-0f9d-495a-91bb-81a0ca0f98ba
+            X-Runtime:
+              schema:
+                type: number
+                example: '30.481751'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                example-0:
+                  summary: WIth existing location
+                  value: null
+                example-1:
+                  summary: sign up from Stripe
+                  value: null
+  /gap_oauth:
+    post:
+      tags:
+      - Callbacks
+      summary: '{{host}}/gap_oauth Copy'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n\t\"test\": \"body\"\n}"'
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /lb_sso:
+    post:
+      tags:
+      - Callbacks
+      summary: '{{host}}/lb_sso'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n\t\"test\": \"body\"\n}"'
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

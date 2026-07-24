@@ -1,0 +1,748 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Channels API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Channels
+paths:
+  /api/customer/user_role/channels:
+    get:
+      tags:
+      - Customer > Channels
+      summary: get channels
+      description: "Get all my channels. \nDefault: return `custom_feed` and `location_feed` if not specified."
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: 'OK '
+          headers:
+            Platform:
+              schema:
+                type: string
+                example: '{{platform}}'
+            Version:
+              schema:
+                type: string
+                example: '{{version}}'
+            Build-Number:
+              schema:
+                type: string
+                example: '{{build_number}}'
+            Push-Id:
+              schema:
+                type: string
+                example: '{{push_id}}'
+            X-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Session-Token:
+              schema:
+                type: string
+                example: '{{session_token}}'
+            Session-Uukey:
+              schema:
+                type: string
+                example: '{{session_uukey}}'
+            Authorization:
+              schema:
+                type: string
+                example: Token token={{api_key_access_token}}
+            Uid:
+              schema:
+                type: string
+                example: '{{uid}}'
+            Auth-Category:
+              schema:
+                type: string
+                example: '{{auth_category}}'
+            Auth-Target:
+              schema:
+                type: string
+                example: '{{auth_target}}'
+            Token-Type:
+              schema:
+                type: string
+                example: Bearer
+            Client:
+              schema:
+                type: string
+                example: '{{client}}'
+            Access-Token:
+              schema:
+                type: string
+                example: '{{access_token}}'
+            Expiry:
+              schema:
+                type: string
+                example: '{{expiry}}'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                channels:
+                - _parent_object_id: null
+                  id: 4755
+                  channel_name: Gap - 7734
+                  member_count: 3
+                  description: null
+    post:
+      tags:
+      - Customer > Channels
+      summary: create channel
+      description: "Description\n- - - \n- Create customer channel targetted to specific location\n- Options to add channel members while creating channel. \n- User needs to have proper privilege to target location\n- Member of channel need to have proper privilege to target location\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nchannel_name |  | * | | \nchannel_frequency |   |* | target location ID|\nsubscriptions_attributes | |  | set of members to add in |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"channel\": {\n    \"channel_name\": \"channelName\",\n    \"channel_frequency\": 5459,\n    \"avatar_blob_id\": 1316\n  }\n}\t"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"7c2483088f27dfed8e89bea20619e6f1"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=VjBZcERTQzFId0pRMVdrVml0SVBTcjJDdWpBaWdGbTQ4aDViN0oxSnNPWUttMi9Wa0p6aStEMVRLVjYyZ09hYk5PQUtuamlpaDYzZU1sNWdFRHhzZXc9PS0tVDNVRVQwRHRoaWx5V1crWU1yZ3dFUT09--26204287ce0df50c51cb9aa887de2ee73a0a45c1; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: f7573b10-03dc-4903-8327-9b7698336344
+            X-Runtime:
+              schema:
+                type: number
+                example: '2.699617'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: close
+            Server:
+              schema:
+                type: string
+                example: thin
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: create channel - with adding users
+                  value:
+                    channel:
+                      _parent_object_id: null
+                      id: 7786
+                      channel_name: channelName
+                      member_count: 3
+                      channel_type: custom_feed
+                      description: null
+                      is_admin: true
+                      channel_latest_content: null
+                example-1:
+                  summary: create channel - with avatar-blob
+                  value:
+                    channel:
+                      _parent_object_id: null
+                      id: 11778
+                      channel_name: channelName
+                      updated_at: '2021-04-20T22:51:18.230Z'
+                      member_count: 1
+                      channel_type: custom_feed
+                      description: null
+                      is_admin: true
+                      channel_latest_content: 'Shyft : Welcome to the private group channelName!'
+                      associated_location_id: 5459
+                      avatar_blob:
+                        _parent_object_id: 11778
+                        id: 1316
+                        content_type: image/jpeg
+                        service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/vpPMPSuzknqs3b1WPyLWwtcj?sp=r&sv=2016-05-31&se=2021-04-20T22%3A56%3A19Z&rscd=inline%3B+filename%3D%22sample.jpeg%22%3B+filename*%3DUTF-8%27%27sample.jpeg&rsct=image%2Fjpeg&sr=b&sig=TbIldckDn%2BCRly6H3gBqn149dLimnVm0HyaPVpn0iTM%3D
+                        filename: sample.jpeg
+                        byte_size: 32994
+                        blob_url: http://local-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3df9e493698bdd1821e294917732ab2588623cc9/sample.jpeg
+                        preview_blob_url: null
+  /api/customer/user_role/channels/can_admin:
+    get:
+      tags:
+      - Customer > Channels
+      summary: get manageable channels
+      description: "Get all my channels. \nDefault: return `custom_feed` and `location_feed` if not specified."
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/channels/12558:
+    get:
+      tags:
+      - Customer > Channels
+      summary: get a channel
+      description: "Get all my channels. \nDefault: return `custom_feed` and `location_feed` if not specified."
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"d1bd06b0c870f7c12b5e6b54d61714f6"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=bkplQ0pscjk3OUcraEFHSzk4cWZveVFVR29EWEVpbmNBZmpGNFRLbG8waG9JejNGeUp0NUhsQS81Q3dNU1Z5V3dkUEJKUmpMeCs3WFpjTDRCam40enc9PS0tNDh0dm1uNVhSd2lFSDd6OWgyeWlKZz09--075e02852bb7ccef37e41c212bdf417ee324c6c5; path=/; secure; HttpOnly
+            X-Request-Id:
+              schema:
+                type: string
+                example: 5e0b60b2-9841-4dfa-83f9-9a86f619c156
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.216025'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000;
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                channel:
+                  _parent_object_id: null
+                  id: 12884
+                  channel_name: XPO Test Region
+                  updated_at: '2021-06-30T06:50:35.946Z'
+                  member_count: 3
+                  channel_type: region_feed
+                  description: null
+                  is_admin: true
+                  channel_latest_content: null
+                  associated_location_id: null
+                  avatar_blob:
+                    _parent_object_id: 12884
+                    id: 1433
+                    content_type: image/png
+                    service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/eTnNRfkuw4ZdKweGFTkNpDM7?sp=r&sv=2016-05-31&se=2021-06-30T06%3A57%3A29Z&rscd=inline%3B+filename%3D%22gxo-logo-png.png%22%3B+filename*%3DUTF-8%27%27gxo-logo-png.png&rsct=image%2Fpng&sr=b&sig=BnHuZTq4f5U5ITJwCooiZHqb3wJOoELPpdCstrsuOSE%3D
+                    filename: gxo-logo-png.png
+                    byte_size: 8973
+                    blob_url: https://test-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02dfa32ff1c011dd76b61976c6e05334a5b3b8f2/gxo-logo-png.png
+                    preview_blob_url: null
+  /api/customer/user_role/channels/3344/member_users:
+    get:
+      tags:
+      - Customer > Channels
+      summary: get a channel's active members(users)
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"7398a893df9dff112285c9464da8dc6d"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=YzZQM1Z3VktidDAvWUR6akMrS1ZuSHZNeGcyeFFKMzB0NmdycW0vMVMwZjkwY2xqK2ZDWlp2NC9USTJFZ09tN1BsS0wvazlJemh1b0ZkNzB2VWdwU1E9PS0tZ2t4SUhQbkllekplK0F6S0hkazc5Zz09--61c2e4db0f08f9c71a1032801f744a88cabb890f; path=/; secure; HttpOnly
+            X-Request-Id:
+              schema:
+                type: string
+                example: 9c8a780a-49f5-4488-9391-c5440532caa4
+            X-Runtime:
+              schema:
+                type: number
+                example: '1.510344'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000;
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                users:
+                - first_name: Samar
+                  last_name: Saab
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Brittany
+                  last_name: Rumeo
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: 'Stephanie '
+                  last_name: 'Valle '
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Donna
+                  last_name: Militar
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Mike
+                  last_name: Forrest
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/6372_2573-20151127_161026_062.jpg?1448658691
+                - first_name: Andy
+                  last_name: Chou
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Shantelle
+                  last_name: Holder
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Shawn
+                  last_name: Marche
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Joel
+                  last_name: Ducharme
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Olivia
+                  last_name: Storic
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/6388_2538-20151127_170104_618.jpg?1448661664
+                - first_name: Benel
+                  last_name: Kamal
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Andrei
+                  last_name: Romanytchev
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Isaac
+                  last_name: Shaba
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Laura
+                  last_name: Chae Kua
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/6614_cropped2016-03-29T203926.872Z.jpg?1459283971
+                - first_name: Kiana
+                  last_name: Torshizi
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Lauren
+                  last_name: Iaccino
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Lateasha
+                  last_name: Thompson
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/6609_croppedTue_Mar_29_13_38_18_PDT_2016.jpg?1459283898
+                - first_name: Rana
+                  last_name: I Clothiers
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Marina
+                  last_name: Marksdin
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Ashorena
+                  last_name: Slewa
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8414_cropped2018-01-17T185954.346Z.jpg?1516215778
+                - first_name: Nohara
+                  last_name: Odisho
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Mohammad Hossein
+                  last_name: Zarifi
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Ashurina
+                  last_name: Toma
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Christian
+                  last_name: Calaunan
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Marvin
+                  last_name: Thomas
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Catherine
+                  last_name: Xia
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Ciearra
+                  last_name: Powell
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Brianna
+                  last_name: Hansma
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Heather
+                  last_name: Nelson
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Brett
+                  last_name: Patrontasch
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/7797_cropped2017-04-21T004943.806Z.jpg?1492735786
+                - first_name: Danielle
+                  last_name: Furlotte
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Chris
+                  last_name: Pitchford
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8479_9609-20180413_143853_533.jpg?1523644741
+                - first_name: Tyler
+                  last_name: Kinley
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/4030_Img_20150626_155658.jpg?1435348636
+                - first_name: Bhavesha
+                  last_name: Mistry
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: 'Chris '
+                  last_name: Pirchford
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/7652_7841-20170403_225618_853.jpg?1491285379
+                - first_name: Kyle549
+                  last_name: Liu
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Chris
+                  last_name: Manager
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/7968_8589-20170627_115637_795.jpg?1498579001
+                - first_name: Cody
+                  last_name: A
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Katelynn
+                  last_name: Elliott
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10070_9746-20190621_155935_437.jpg?1561157975
+                - first_name: 'Nicholas '
+                  last_name: Miller
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Summer
+                  last_name: Schnell
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: 'Jennifer '
+                  last_name: Keys
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Erin
+                  last_name: Overman
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Lea
+                  last_name: Henderson
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Tiffany
+                  last_name: Smith
+                  profile_image_thumb_url: https://s3.amazonaws.com/shyftassets/avatar1.png
+                - first_name: Bin
+                  last_name: Li
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681
+  /api/customer/user_role/channels/{channel_id}:
+    put:
+      tags:
+      - Customer > Channels
+      summary: update channel
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"channel\": {\n    \"avatar_blob_id\": 1433\n  }\n}\t"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: channel_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+      - Customer > Channels
+      summary: delete channel
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: 68a5db7e-0a1c-48ba-b0c5-c0ae4fe0a7a7
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: channel_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/channels/3344/remove_user:
+    put:
+      tags:
+      - Customer > Channels
+      summary: remove a user
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: user_id
+        in: query
+        schema:
+          type: integer
+        example: '2549'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/channels/{channel_id}/leave:
+    put:
+      tags:
+      - Customer > Channels
+      summary: leave a channel
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: channel_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

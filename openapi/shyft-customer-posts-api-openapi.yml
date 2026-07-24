@@ -1,0 +1,3521 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Posts API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Posts
+  description: "Ojbect Serializer: \n\n\n[Receipt Serializer]\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\nuser_id | integer | * | User's ID who owns this receipt\ncreated_at | datetime | * | Time receipt generated\nfirst_name | string | * | User's first name\nlast_name | string | * | User's last name\nprofile_image_thumb_url | string | * | User's profile image\n\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\nid| integer |  | \norg_id|  integer|  | \nchannel_id| integer |  | \ntitle| string |  | \ncontent| string |  | \ncomments_count|  integer|  | \nlikes_count| integer |  | \nviews_count| integer |  | \nread_count| integer |  | \ncreated_at| datetime |  | \nattachment|  |  | \nuser_group|  integer |  | \nlocation|  integer |  | \npost_type| integer |  | \npinned| boolean |  | \npinned_by_id| integer |  | \nfinal_allow_delete| boolean |  | \nfinal_allow_comment| integer |  | \nfinal_allow_like| integer |  | \nfinal_allow_read| integer |  | \nowner_id| integer |  | \nowner| object |  | \nread| boolean |  | \nliked| boolean |  | \ncommented| boolean |  | \nschedule_element|  object |  | "
+paths:
+  /api/customer/user_role/posts:
+    get:
+      tags:
+      - Customer > Posts
+      summary: get posts
+      description: "Description\n- - - \n- Get posts accessialbe by current user\n- use `pinned=true` to only get `pinned` posts\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npinned | boolean | | get only `pinned` posts, or get only `unpinned` posts\nchannel_id | integer | | get posts from target channel\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"70a9c2aa6796d74a425be77d018b375f"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=SVFqWlBqT1crcHFxa0RNd21JT2FmeHZSb3FDL1FCa2pKWDBNZGMzZ2tiWkUrWnduT1licDBzbkQ2KzZweTFCOU54cTRwa2dsRDN0M1Arb1JSSW43RlE9PS0tL0NrNXB2ZGhOUDVFbFBrTEQ0NE1UZz09--610fcb09ca1d0b2024d4011e9ef9f7106fabf09a; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 4df243ee-28c2-4512-9a79-7423605d296c
+            X-Runtime:
+              schema:
+                type: number
+                example: '2.262664'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get posts - pinned
+                  value:
+                    posts:
+                    - _parent_object_id: null
+                      id: 16618
+                      org_id: 1
+                      channel_id: 3928
+                      title: $20 Gift Card For Your Location
+                      content: Nice! Your location now has 5 team members. Who's going to be the hero that gets 5 more coworkers to join this location before 2017-04-25 15:20:04 UTC and get a $20 gift card sent right to your store!? Don't forget, your manager needs to be an 'admin' to be eligible!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 4
+                      read_count: 0
+                      created_at: '2017-04-21T20:09:54.845Z'
+                      attachment: null
+                      user_group: 0
+                      location: 1991
+                      post_type: 1
+                      final_allow_delete: false
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: true
+                      owner_id: 134
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 16618
+                        id: 134
+                        active_org: 0
+                        first_name: Diya
+                        last_name: Kn
+                        email: diya@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 4cfae12a6ec19ed3d0b3863291898ea1
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: engineer
+                        current_user_privilege_id: 17416
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                    meta:
+                      pagination:
+                        current_page: 1
+                        per_page: 25
+                example-1:
+                  summary: get posts - filter the result by `base_type_is` and `base_type_description_is`
+                  value:
+                    posts:
+                    - _parent_object_id: null
+                      id: 88280
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: ''
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-11-16T20:01:31.528Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 88280
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 12227
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 88280
+                        id: 12227
+                        active_org: 0
+                        first_name: Etty7337
+                        last_name: Burstein
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/13933_12227-20200518_210921_848.jpg?1589861362
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/13933_12227-20200518_210921_848.jpg?1589861362
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/13933_12227-20200518_210921_848.jpg?1589861362
+                        current_position: Manager 1
+                        current_user_privilege_id: 20510
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 88282
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: ''
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-11-16T20:07:04.292Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 88282
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 12227
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 88282
+                        id: 12227
+                        active_org: 0
+                        first_name: Etty7337
+                        last_name: Burstein
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/13933_12227-20200518_210921_848.jpg?1589861362
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/13933_12227-20200518_210921_848.jpg?1589861362
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/13933_12227-20200518_210921_848.jpg?1589861362
+                        current_position: Manager 1
+                        current_user_privilege_id: 20510
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 88283
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: ''
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-11-16T20:10:52.215Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 88283
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 12227
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 88283
+                        id: 12227
+                        active_org: 0
+                        first_name: Etty7337
+                        last_name: Burstein
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/13933_12227-20200518_210921_848.jpg?1589861362
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/13933_12227-20200518_210921_848.jpg?1589861362
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/13933_12227-20200518_210921_848.jpg?1589861362
+                        current_position: Manager 1
+                        current_user_privilege_id: 20510
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 23084
+                      org_id: 1
+                      channel_id: 7173
+                      title: New Member!
+                      content: Hello, my name is Lauren Perez, I made it into this channel, let's do this!
+                      comments_count: 0
+                      likes_count: 1
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2018-03-29T21:53:18.784Z'
+                      attachment: null
+                      user_group: 0
+                      location: 5053
+                      post_type: 5
+                      pinned: true
+                      pinned_by_id: 12227
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9574
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23084
+                        id: 9574
+                        active_org: 1
+                        first_name: Lauren
+                        last_name: Perez
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8457_9574-20180329_145400_064.jpg?1522360443
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8457_9574-20180329_145400_064.jpg?1522360443
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8457_9574-20180329_145400_064.jpg?1522360443
+                        current_position: Associate
+                        current_user_privilege_id: 11373
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: null
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 88172
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: https://ca.yahoo.com/
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-11-13T19:56:07.401Z'
+                      attachment: null
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 14034
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 88172
+                        id: 14034
+                        active_org: 0
+                        first_name: Etty333
+                        last_name: Bar444
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        current_position: Lead
+                        current_user_privilege_id: 20374
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 88284
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: 'this is a text with no pic
+
+                        '
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-11-16T21:53:34.438Z'
+                      attachment: null
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 10913
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 88284
+                        id: 10913
+                        active_org: 0
+                        first_name: Etty8992
+                        last_name: Bar
+                        email: kyle@myshyft.com
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/15231_10913-20201124_191118_709.jpg?1606273879
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/15231_10913-20201124_191118_709.jpg?1606273879
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/15231_10913-20201124_191118_709.jpg?1606273879
+                        current_position: Cook
+                        current_user_privilege_id: 20600
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 88286
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: '1111111111'
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-11-16T21:57:02.635Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 88286
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 10913
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 88286
+                        id: 10913
+                        active_org: 0
+                        first_name: Etty8992
+                        last_name: Bar
+                        email: kyle@myshyft.com
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/15231_10913-20201124_191118_709.jpg?1606273879
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/15231_10913-20201124_191118_709.jpg?1606273879
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/15231_10913-20201124_191118_709.jpg?1606273879
+                        current_position: Cook
+                        current_user_privilege_id: 20600
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 90907
+                      org_id: 1
+                      channel_id: 10680
+                      title: Title
+                      content: ''
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2021-01-26T03:24:32.355Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 90907
+                      user_group: 0
+                      location: 7905
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 13409
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90907
+                        id: 13409
+                        active_org: 0
+                        first_name: Etty6644
+                        last_name: Bar11
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/16352_13409-20210209_124303_008.jpg?1612903384
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/16352_13409-20210209_124303_008.jpg?1612903384
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/16352_13409-20210209_124303_008.jpg?1612903384
+                        current_position: '   Lead'
+                        current_user_privilege_id: 16513
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: false
+                        schedule_push: false
+                        community_push: false
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 90910
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: post with pic
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2021-01-26T03:37:37.666Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 90910
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 12227
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90910
+                        id: 12227
+                        active_org: 0
+                        first_name: Etty7337
+                        last_name: Burstein
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/13933_12227-20200518_210921_848.jpg?1589861362
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/13933_12227-20200518_210921_848.jpg?1589861362
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/13933_12227-20200518_210921_848.jpg?1589861362
+                        current_position: Manager 1
+                        current_user_privilege_id: 20510
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 90912
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: ''
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2021-01-26T17:48:11.409Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 90912
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 14034
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90912
+                        id: 14034
+                        active_org: 0
+                        first_name: Etty333
+                        last_name: Bar444
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        current_position: Lead
+                        current_user_privilege_id: 20374
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 22468
+                      org_id: 1
+                      channel_id: 4755
+                      title: New Member!
+                      content: Hello, my name is Kyle4792 Liu, I made it into this channel, let's do this!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2018-01-19T20:09:59.923Z'
+                      attachment: null
+                      user_group: 0
+                      location: 2634
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9431
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 22468
+                        id: 9431
+                        active_org: 1
+                        first_name: Kyle4792
+                        last_name: Liu
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: null
+                        current_user_privilege_id: 11073
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: null
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 22585
+                      org_id: 1
+                      channel_id: 4927
+                      title: New Member!
+                      content: Hello, my name is Kyle Liu, I made it into this channel, let's do this!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 1
+                      read_count: 0
+                      created_at: '2018-01-24T21:25:23.911Z'
+                      attachment: null
+                      user_group: 0
+                      location: 2806
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: false
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9456
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 22585
+                        id: 9456
+                        active_org: 1
+                        first_name: Kyle
+                        last_name: Liu
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8425_9059-20180124_132521_235.jpg?1516829121
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8425_9059-20180124_132521_235.jpg?1516829121
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8425_9059-20180124_132521_235.jpg?1516829121
+                        current_position: Dev
+                        current_user_privilege_id: 11090
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: null
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 23956
+                      org_id: 1
+                      channel_id: 4927
+                      title: New Member!
+                      content: Hello, my name is Tstmanu Kyle System Again, I made it into this channel, let's do this!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2018-05-08T17:33:09.048Z'
+                      attachment: null
+                      user_group: 0
+                      location: 2756
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: false
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9707
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23956
+                        id: 9707
+                        active_org: 1
+                        first_name: Tstmanu Kyle
+                        last_name: System Again
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: null
+                        current_user_privilege_id: 11637
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 90913
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: ''
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2021-01-26T17:48:33.806Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 90913
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 14034
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90913
+                        id: 14034
+                        active_org: 0
+                        first_name: Etty333
+                        last_name: Bar444
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        current_position: Lead
+                        current_user_privilege_id: 20374
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 90914
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: ''
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2021-01-26T17:49:38.850Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 90914
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 14034
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90914
+                        id: 14034
+                        active_org: 0
+                        first_name: Etty333
+                        last_name: Bar444
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        current_position: Lead
+                        current_user_privilege_id: 20374
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 9170
+                      org_id: 1
+                      channel_id: 3265
+                      title: New Member!
+                      content: Hello, my name is Lily Jasmine, I am the newest member of the network.
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2015-08-15T15:14:04.869Z'
+                      attachment: null
+                      user_group: 0
+                      location: 1561
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: false
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 2351
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 9170
+                        id: 2351
+                        active_org: 1
+                        first_name: Lily
+                        last_name: Jasmine
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: F&F
+                        current_user_privilege_id: 2282
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: null
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 23632
+                      org_id: 1
+                      channel_id: 7217
+                      title: New Member!
+                      content: Hello, my name is Kyle8237 Lou, I made it into this channel, let's do this!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2018-04-24T20:42:38.821Z'
+                      attachment: null
+                      user_group: 0
+                      location: 4539
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9656
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23632
+                        id: 9656
+                        active_org: 1
+                        first_name: Kyle8237
+                        last_name: Lou
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: null
+                        current_user_privilege_id: 11495
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: null
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 90917
+                      org_id: 1
+                      channel_id: 11502
+                      title: New Member!
+                      content: Hey, my name is Test Test, and I just joined this channel!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2021-01-26T18:43:15.276Z'
+                      attachment: null
+                      user_group: 0
+                      location: 8394
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 14230
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90917
+                        id: 14230
+                        active_org: 0
+                        first_name: Test
+                        last_name: Test
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: Test
+                        current_user_privilege_id: 20682
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 89165
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: ''
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-12-01T18:45:04.260Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 89165
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 10913
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 89165
+                        id: 10913
+                        active_org: 0
+                        first_name: Etty8992
+                        last_name: Bar
+                        email: kyle@myshyft.com
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/15231_10913-20201124_191118_709.jpg?1606273879
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/15231_10913-20201124_191118_709.jpg?1606273879
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/15231_10913-20201124_191118_709.jpg?1606273879
+                        current_position: Cook
+                        current_user_privilege_id: 20600
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 90918
+                      org_id: 1
+                      channel_id: 10680
+                      title: Basic Post
+                      content: 'Posta '
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2021-01-26T18:45:02.710Z'
+                      attachment: null
+                      user_group: 0
+                      location: 7905
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 12227
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90918
+                        id: 12227
+                        active_org: 0
+                        first_name: Etty7337
+                        last_name: Burstein
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/13933_12227-20200518_210921_848.jpg?1589861362
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/13933_12227-20200518_210921_848.jpg?1589861362
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/13933_12227-20200518_210921_848.jpg?1589861362
+                        current_position: Manager 1
+                        current_user_privilege_id: 20510
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 23959
+                      org_id: 1
+                      channel_id: 7239
+                      title: Basic Post
+                      content: Hey
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2018-05-08T19:05:49.346Z'
+                      attachment: null
+                      user_group: 0
+                      location: 5053
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: false
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9577
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23959
+                        id: 9577
+                        active_org: 0
+                        first_name: Terry
+                        last_name: 'Walters '
+                        email: christina@myshyft.com
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8460_49799-20180329_150135_789.jpg?1522360898
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8460_49799-20180329_150135_789.jpg?1522360898
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8460_49799-20180329_150135_789.jpg?1522360898
+                        current_position: null
+                        current_user_privilege_id: 12260
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: null
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 23679
+                      org_id: 1
+                      channel_id: 4743
+                      title: New Member!
+                      content: Hello, my name is Sso3345 System Account, I made it into this channel, let's do this!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2018-04-26T05:00:32.266Z'
+                      attachment: null
+                      user_group: 0
+                      location: 2622
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9667
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23679
+                        id: 9667
+                        active_org: 1
+                        first_name: Sso3345
+                        last_name: System Account
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: Dev
+                        current_user_privilege_id: 11522
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: null
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 23991
+                      org_id: 1
+                      channel_id: 7182
+                      title: Basic Post
+                      content: 'Please keep updated '
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 1
+                      read_count: 0
+                      created_at: '2018-05-09T18:19:56.894Z'
+                      attachment: null
+                      user_group: 0
+                      location: 5053
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: false
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9577
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23991
+                        id: 9577
+                        active_org: 0
+                        first_name: Terry
+                        last_name: 'Walters '
+                        email: christina@myshyft.com
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8460_49799-20180329_150135_789.jpg?1522360898
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8460_49799-20180329_150135_789.jpg?1522360898
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8460_49799-20180329_150135_789.jpg?1522360898
+                        current_position: null
+                        current_user_privilege_id: 12260
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: null
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 23723
+                      org_id: 1
+                      channel_id: 4927
+                      title: New Member!
+                      content: Hello, my name is Kyle2502 Lou, I made it into this channel, let's do this!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2018-04-27T02:10:26.710Z'
+                      attachment: null
+                      user_group: 0
+                      location: 2763
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: false
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 9671
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23723
+                        id: 9671
+                        active_org: 0
+                        first_name: Kyle2502
+                        last_name: Lou
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: null
+                        current_user_privilege_id: 11536
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    - _parent_object_id: null
+                      id: 89099
+                      org_id: 1
+                      channel_id: 7780
+                      title: Title
+                      content: 10 images, enjoy!
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-11-30T02:17:47.086Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 89099
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 14034
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 89099
+                        id: 14034
+                        active_org: 0
+                        first_name: Etty333
+                        last_name: Bar444
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/14387_cropped2020-07-20T173752.538Z.jpg?1595266544
+                        current_position: Lead
+                        current_user_privilege_id: 20374
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                    meta:
+                      pagination:
+                        current_page: 1
+                        per_page: 25
+    post:
+      tags:
+      - Customer > Posts
+      summary: create a post
+      description: "Description\n- - - \n- Create a regular channel post\n- Create a free post\n- Create a announcement post by admin\n- Attach a picture along with post\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nchannel_id | integer | * | target channel's ID\ntitle | string | * | post title\ncontent | string | * | post content\nattached_files_blob_ids | array of integer |  | attached file IDs\npost_type | integer | * | for announcement, the value is `1`, only avaialble for admin users\n\nInput Sub attachment_attributes[object_instances]\n- - -\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nimage_name | string | * | value is `post_image`\nclass_name | string | * | value is `class_name`\nid | integer | * | the image ID generated from previous image uploading API"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"post\": {\n  \t\"channel_id\": 3344,\n    \"title\": \"PDF Sample\",\n    \"content\": \"This is a sample PDF file\",\n    \"attached_files_blob_ids\": [10]\n  }\n}\t"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Mon, 28 Dec 2020 22:10:43 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"daca30cd2a70dd9f0eeb08a293e7274c"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=blF6NUVPdTIvaC9LZ053SzNoWVFjRE41YlQ0ZUprQldzb1VTbUxGb2tTdWU2M216MkZKdDJXWEMwdzJpSjNaanBickpCT1puZTFLT0liUHBvVnJRL2c9PS0tSE9jZ2phaEhzKytoUm16UnhBNzlIUT09--b3c8fef90cd5bb6039d0ad7289a3dc3c0d599839; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 139aabdf-5259-445e-8eb4-92a633879475
+            X-Runtime:
+              schema:
+                type: number
+                example: '5.067743'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: create a regular post
+                  value:
+                    post:
+                      _parent_object_id: null
+                      id: 90204
+                      org_id: 1
+                      channel_id: 3344
+                      title: Regular Post
+                      content: This is a regualr post
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-12-28T22:10:38.669Z'
+                      attachment: null
+                      user_group: 0
+                      location: 2622
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      postable_type: null
+                      postable_id: null
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: null
+                      final_allow_read: false
+                      owner_id: 11284
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90204
+                        id: 11284
+                        active_org: 1
+                        first_name: Bin
+                        last_name: Li
+                        email: bin@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 6db93a877e2b70b40d3b2e98e958b979
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/10803_file.png?1574022681
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/10803_file.png?1574022681
+                        current_position: null
+                        current_user_privilege_id: 16429
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                example-1:
+                  summary: create a announcement
+                  value:
+                    post:
+                      _parent_object_id: null
+                      id: 74285
+                      org_id: 1
+                      channel_id: 3344
+                      title: hello world
+                      content: Hi, from outer space.
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      created_at: '2020-03-16T20:20:55.117Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 74285
+                      user_group: 0
+                      location: 8032
+                      final_allow_delete: false
+                      final_allow_comment: true
+                      final_allow_like: true
+                      owner_id: 134
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 74285
+                        id: 134
+                        active_org: 0
+                        first_name: Diya
+                        last_name: Kn
+                        email: diya@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 4cfae12a6ec19ed3d0b3863291898ea1
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: null
+                        gallery_url: null
+                        full_url: null
+                        current_position: null
+                        current_user_privilege_id: 17416
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        locale: en
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                example-2:
+                  summary: create a post with URL_META
+                  value:
+                    post:
+                      _parent_object_id: null
+                      id: 80344
+                      org_id: 1
+                      channel_id: 3344
+                      title: hello world
+                      content: Hi, from outer space.
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-04-06T17:17:53.749Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 80344
+                      user_group: 0
+                      location: 5459
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta:
+                        author: null
+                        date: '2020-04-07T19:00:00.000Z'
+                        description: Shyft is a mobile-first workforce management app for engaging hourly workers and driving efficiency on the frontline. Start evolving your workforce management strategy by visiting myshyft.com.
+                        image: https://mk0shyftwebsiteahx4q.kinstacdn.com/wp-content/uploads/2019/04/home_badges-01-1.svg
+                        logo: null
+                        publisher: Shyft
+                        title: Improve Employee Engagement with a Mobile-First Workforce Management App
+                        url: https://www.myshyft.com
+                        image_meta:
+                          height: 47
+                          width: 527
+                          type: svg
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 11284
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 80344
+                        id: 11284
+                        active_org: 1
+                        first_name: Bin
+                        last_name: Li
+                        email: bin@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 6db93a877e2b70b40d3b2e98e958b979
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://shyft-minio.myshyft.com/coffeemobile/images/thumb/10803_file.png?1574022681
+                        gallery_url: https://shyft-minio.myshyft.com/coffeemobile/images/gallery/10803_file.png?1574022681
+                        full_url: https://shyft-minio.myshyft.com/coffeemobile/images/full/10803_file.png?1574022681
+                        current_position: Engineer
+                        current_user_privilege_id: 13705
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                example-3:
+                  summary: create a post - with ID of existing image
+                  value:
+                    post:
+                      _parent_object_id: null
+                      id: 23155
+                      org_id: 1
+                      title: hello world
+                      content: Hi, from outer space.
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      created_at: '2018-11-07T05:48:36.509Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 23155
+                      user_group: 0
+                      location: 0
+                      settings:
+                        _associations_removed: true
+                        _parent_object_id: 23155
+                        base_type: announcement
+                        description: basic_announcement
+                        image_count: 0
+                        includes_video: false
+                        includes_audio: null
+                        includes_event: false
+                        includes_survey: false
+                        includes_shift: false
+                        includes_schedule: null
+                        includes_layover: f
+                        includes_url: null
+                        includes_pdf: false
+                        includes_safety_course: false
+                        allow_comments: true
+                        allow_likes: true
+                        allow_flags: false
+                        allow_delete: false
+                      owner_id: 9568
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23155
+                        id: 9568
+                        active_org: 0
+                        first_name: Bin
+                        last_name: Li
+                        email: bin6080@myshyft.com
+                        phone_number: '18880006515'
+                        gender: 0
+                        chat_handle: 38d65ba6e1369bb0ac883c70c983a3c3
+                        user_group: 0
+                        status: ''
+                      schedule_element: null
+                      organization:
+                        id: 1
+                        name: Coffee Mobile
+                        address: Queen St E
+                        city: Toronto
+                        country: CA
+                        secure_network: false
+                        profanity_filter: null
+                        formatted_address: <address>550 Queen St E<br />Toronto - ON - CA</address>
+                        profile_image:
+                          thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/3487_logo.png?1433262339
+                          gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/3487_logo.png?1433262339
+                          full_url: https://coffeemobile.s3.amazonaws.com/images/full/3487_logo.png?1433262339
+                example-4:
+                  summary: create a free_post for a post
+                  value:
+                    post:
+                      _parent_object_id: null
+                      id: 90207
+                      org_id: 1
+                      channel_id: null
+                      title: Free Post
+                      content: This is a sample free posts 2
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-12-28T22:36:19.713Z'
+                      attachment: null
+                      user_group: 0
+                      location: 2622
+                      post_type: 22
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      postable_type: Post
+                      postable_id: 90204
+                      final_allow_delete: true
+                      final_allow_comment: null
+                      final_allow_like: null
+                      final_allow_read: false
+                      owner_id: 11284
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90207
+                        id: 11284
+                        active_org: 1
+                        first_name: Bin
+                        last_name: Li
+                        email: bin@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 6db93a877e2b70b40d3b2e98e958b979
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/10803_file.png?1574022681
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/10803_file.png?1574022681
+                        current_position: null
+                        current_user_privilege_id: 16429
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                example-5:
+                  summary: create a free_post for an applicant
+                  value:
+                    post:
+                      _parent_object_id: null
+                      id: 90211
+                      org_id: 1
+                      channel_id: null
+                      title: Free Post
+                      content: This is a sample free posts 2
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-12-28T22:56:33.933Z'
+                      attachment: null
+                      user_group: 0
+                      location: 2622
+                      post_type: 22
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta: null
+                      postable_type: Applicant
+                      postable_id: 3227
+                      final_allow_delete: true
+                      final_allow_comment: null
+                      final_allow_like: null
+                      final_allow_read: false
+                      owner_id: 11284
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 90211
+                        id: 11284
+                        active_org: 1
+                        first_name: Bin
+                        last_name: Li
+                        email: bin@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 6db93a877e2b70b40d3b2e98e958b979
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/10803_file.png?1574022681
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/10803_file.png?1574022681
+                        current_position: null
+                        current_user_privilege_id: 16429
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                example-6:
+                  summary: create a post - giphy meta
+                  value:
+                    post:
+                      _parent_object_id: null
+                      id: 82513
+                      org_id: 1
+                      channel_id: 3344
+                      title: Happy
+                      content: null
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      read_count: 0
+                      created_at: '2020-06-08T20:35:13.211Z'
+                      attachment: null
+                      user_group: 0
+                      location: 1561
+                      post_type: 5
+                      pinned: false
+                      pinned_by_id: null
+                      url_meta: null
+                      giphy_meta:
+                        id: HFZwjdm5cNF3a
+                        url: https://media1.giphy.com/media/HFZwjdm5cNF3a/giphy.gif
+                      final_allow_delete: true
+                      final_allow_comment: true
+                      final_allow_like: true
+                      final_allow_read: false
+                      owner_id: 11284
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 82513
+                        id: 11284
+                        active_org: 1
+                        first_name: Bin
+                        last_name: Li
+                        email: bin@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 6db93a877e2b70b40d3b2e98e958b979
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/10803_file.png?1574022681
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/10803_file.png?1574022681
+                        current_position: null
+                        current_user_privilege_id: 14741
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: true
+                        locale: en
+                      read: false
+                      liked: false
+                      commented: false
+                      schedule_element: null
+                      attached_files_blobs: []
+                example-7:
+                  summary: create a post - with image (base64)
+                  value:
+                    post:
+                      _parent_object_id: null
+                      id: 23152
+                      org_id: 1
+                      title: hello world
+                      content: Hi, from outer space.
+                      comments_count: 0
+                      likes_count: 0
+                      views_count: 0
+                      created_at: '2018-11-07T05:34:11.500Z'
+                      attachment:
+                        _associations_removed: true
+                        _parent_object_id: 23152
+                      user_group: 0
+                      location: 0
+                      settings:
+                        _associations_removed: true
+                        _parent_object_id: 23152
+                        base_type: announcement
+                        description: basic_announcement
+                        image_count: 0
+                        includes_video: false
+                        includes_audio: null
+                        includes_event: false
+                        includes_survey: false
+                        includes_shift: false
+                        includes_schedule: null
+                        includes_layover: f
+                        includes_url: null
+                        includes_pdf: false
+                        includes_safety_course: false
+                        allow_comments: true
+                        allow_likes: true
+                        allow_flags: false
+                        allow_delete: false
+                      owner_id: 9568
+                      owner:
+                        _associations_removed: true
+                        _parent_object_id: 23152
+                        id: 9568
+                        active_org: 0
+                        first_name: Bin
+                        last_name: Li
+                        email: bin6080@myshyft.com
+                        phone_number: '18880006515'
+                        gender: 0
+                        chat_handle: 38d65ba6e1369bb0ac883c70c983a3c3
+                        user_group: 0
+                        status: ''
+                      schedule_element: null
+                      organization:
+                        id: 1
+                        name: Coffee Mobile
+                        address: Queen St E
+                        city: Toronto
+                        country: CA
+                        secure_network: false
+                        profanity_filter: null
+                        formatted_address: <address>550 Queen St E<br />Toronto - ON - CA</address>
+                        profile_image:
+                          thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/3487_logo.png?1433262339
+                          gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/3487_logo.png?1433262339
+                          full_url: https://coffeemobile.s3.amazonaws.com/images/full/3487_logo.png?1433262339
+        undefined:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: ''
+  /api/customer/user_role/posts/74300:
+    get:
+      tags:
+      - Customer > Posts
+      summary: get a post
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: response[nested]
+        in: query
+        schema:
+          type: integer
+        example: '1'
+      - name: response[keep]
+        in: query
+        schema:
+          type: string
+        example: likes
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"5482cb2df42bddcfe276d6559c028a64"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=QzlOSW9PZXhiZGNMWkFuTWZzcTFsTWlZbnFEUDZLQVRid0FHbS9iR05WQmV2VUJYa0lpeHlHMC9CcjVLcjR1alZtSWt4ZWpDTG9BRXpDUzlKeVRLUnc9PS0tdEp0L0xBazFabVVuTzA2ZE1HaHFuZz09--c3a82fdcbf4c3c5f95cce4afb2b1cd02e8a6d1c2; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 75a3baf4-3bcd-47d3-a212-2fa6038d3661
+            X-Runtime:
+              schema:
+                type: number
+                example: '51.772525'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                post:
+                  _parent_object_id: null
+                  id: 74285
+                  org_id: 1
+                  channel_id: 3344
+                  title: hello world
+                  content: Hi, from outer space.
+                  comments_count: 0
+                  likes_count: 0
+                  views_count: 6
+                  read_count: 0
+                  created_at: '2020-03-16T20:20:55.117Z'
+                  attachment:
+                    _associations_removed: true
+                    _parent_object_id: 74285
+                  user_group: 0
+                  location: 8032
+                  post_type: 1
+                  final_allow_delete: false
+                  final_allow_comment: true
+                  final_allow_like: true
+                  final_allow_read: true
+                  owner_id: 134
+                  owner:
+                    _associations_removed: true
+                    _parent_object_id: 74285
+                    id: 134
+                    active_org: 0
+                    first_name: Diya
+                    last_name: Kn
+                    email: diya@myshyft.com
+                    phone_number: '18083836511'
+                    gender: 0
+                    chat_handle: 4cfae12a6ec19ed3d0b3863291898ea1
+                    user_group: 0
+                    status: ''
+                    push_settings_list:
+                      shift_push:
+                        label: Shift Notifications
+                        type: boolean
+                      schedule_push:
+                        label: Schedule Notifications
+                        type: boolean
+                      community_push:
+                        label: Community Notifications
+                        type: boolean
+                    push_settings_list_array:
+                    - label: Shift Notifications
+                      type: boolean
+                      key: shift_push
+                    - label: Schedule Notifications
+                      type: boolean
+                      key: schedule_push
+                    - label: Community Notifications
+                      type: boolean
+                      key: community_push
+                    thumb_url: null
+                    gallery_url: null
+                    full_url: null
+                    current_position: engineer
+                    current_user_privilege_id: 17416
+                    current_is_approved: true
+                    current_is_admin: true
+                    all_push: true
+                    shift_push: true
+                    schedule_push: true
+                    community_push: true
+                    cfg_ewa_ok: true
+                    locale: en
+                  read: false
+                  liked: false
+                  commented: false
+                  schedule_element: null
+  /api/customer/user_role/posts/74282/receipts:
+    get:
+      tags:
+      - Customer > Posts
+      summary: get post receipts
+      description: "Description\n- - - \n- Get a list of receipts associated with target post.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to read\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[Receipt Serializer]"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"f14fd76e8d6c4ba9c1b918bffeab0344"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=WWxrTFc1WFM3OEVrTy9zMEFVZzBiQnNUbXlsVlVUcjRHSFNGdWx4MjB6WVU1VTR6VnhwdmloNGFiUjkxcEZBbDFIQ1ZDMFM1blM5M1pGMk9Rdk9rMFE9PS0tNlBiQ254U2g0QXltRG4xazllZGNyZz09--a490dd04171094a5a781dae7077a34abd9b9a650; path=/; secure; HttpOnly
+            X-Request-Id:
+              schema:
+                type: string
+                example: 3aa31d03-5b94-4f8f-9035-5780394b25c8
+            X-Runtime:
+              schema:
+                type: number
+                example: '1.826307'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000;
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                receipts:
+                - user_id: 11284
+                  created_at: '2020-03-17T02:28:25.685Z'
+                  first_name: Bin
+                  last_name: Li
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681
+                meta:
+                  pagination:
+                    current_page: 1
+                    per_page: 25
+  /api/customer/user_role/posts/80344:
+    put:
+      tags:
+      - Customer > Posts
+      summary: update a post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                post:
+                  url_meta:
+                    author: Mike Tang3
+                    date: '2020-04-07T19:00:00.000Z'
+                    description: Shyft is a mobile-first workforce management app for engaging hourly workers and driving efficiency on the frontline. Start evolving your workforce management strategy by visiting myshyft.com.
+                    image: https://mk0shyftwebsiteahx4q.kinstacdn.com/wp-content/uploads/2019/04/home_badges-01-1.svg
+                    logo: null
+                    publisher: Shyft
+                    title: Improve Employee Engagement with a Mobile-First Workforce Management App
+                    url: https://www.myshyft.com
+                    image_meta:
+                      height: 47
+                      width: 527
+                      type: svg
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: response[put_return_resource]
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"3cf48dcc877a1f9957ffee78e5e8a2b5"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=VThkMEd1MWdIOHBOa2pVUUxaanZSZmVneldhVGFOKzBGdlhoSGZDUmdDYzd3KythVW5YbkdtazV5dTMzSGh2cXlDSDFGZkIwY2FXeTZhL3NSRFYzUUE9PS0tRnRab25Kc3JqVFBLMmJoQ2NFdkNodz09--cb604fe3a3eb790852e316241b14c35f369ef0f6; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 0520c95f-a2ef-4a32-a7fa-493c30a326e7
+            X-Runtime:
+              schema:
+                type: number
+                example: '6.099903'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                post:
+                  _parent_object_id: null
+                  id: 80344
+                  org_id: 1
+                  channel_id: 3344
+                  title: Hello World2
+                  content: Hi, from outer space.
+                  comments_count: 0
+                  likes_count: 0
+                  views_count: 0
+                  read_count: 0
+                  created_at: '2020-04-06T17:17:53.749Z'
+                  attachment:
+                    _associations_removed: true
+                    _parent_object_id: 80344
+                  user_group: 0
+                  location: 5459
+                  post_type: 5
+                  pinned: false
+                  pinned_by_id: null
+                  url_meta:
+                    author: Mike Tang3
+                    date: '2020-04-07T19:00:00.000Z'
+                    description: Shyft is a mobile-first workforce management app for engaging hourly workers and driving efficiency on the frontline. Start evolving your workforce management strategy by visiting myshyft.com.
+                    image: https://mk0shyftwebsiteahx4q.kinstacdn.com/wp-content/uploads/2019/04/home_badges-01-1.svg
+                    logo: null
+                    publisher: Shyft
+                    title: Improve Employee Engagement with a Mobile-First Workforce Management App
+                    url: https://www.myshyft.com
+                    image_meta:
+                      height: 47
+                      width: 527
+                      type: svg
+                  final_allow_delete: true
+                  final_allow_comment: true
+                  final_allow_like: true
+                  final_allow_read: false
+                  owner_id: 11284
+                  owner:
+                    _associations_removed: true
+                    _parent_object_id: 80344
+                    id: 11284
+                    active_org: 1
+                    first_name: Bin
+                    last_name: Li
+                    email: bin@myshyft.com
+                    phone_number: '18083836511'
+                    gender: 0
+                    chat_handle: 6db93a877e2b70b40d3b2e98e958b979
+                    user_group: 0
+                    status: ''
+                    push_settings_list:
+                      shift_push:
+                        label: Shift Notifications
+                        type: boolean
+                      schedule_push:
+                        label: Schedule Notifications
+                        type: boolean
+                      community_push:
+                        label: Community Notifications
+                        type: boolean
+                    push_settings_list_array:
+                    - label: Shift Notifications
+                      type: boolean
+                      key: shift_push
+                    - label: Schedule Notifications
+                      type: boolean
+                      key: schedule_push
+                    - label: Community Notifications
+                      type: boolean
+                      key: community_push
+                    thumb_url: https://shyft-minio.myshyft.com/coffeemobile/images/thumb/10803_file.png?1574022681
+                    gallery_url: https://shyft-minio.myshyft.com/coffeemobile/images/gallery/10803_file.png?1574022681
+                    full_url: https://shyft-minio.myshyft.com/coffeemobile/images/full/10803_file.png?1574022681
+                    current_position: Engineer
+                    current_user_privilege_id: 13705
+                    current_is_approved: true
+                    current_is_admin: false
+                    all_push: true
+                    shift_push: true
+                    schedule_push: true
+                    community_push: true
+                    cfg_ewa_ok: true
+                    locale: en
+                  read: false
+                  liked: false
+                  commented: false
+                  schedule_element: null
+  /api/customer/user_role/posts/{post_id}/like:
+    put:
+      tags:
+      - Customer > Posts
+      summary: like a post
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: post_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/posts/{post_id}/unlike:
+    put:
+      tags:
+      - Customer > Posts
+      summary: unlike a post
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: post_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/posts/74282/read:
+    put:
+      tags:
+      - Customer > Posts
+      summary: read a post
+      description: "Description\n- - - \n- API to confirm receving and reading the target post for current user. \n- User can only confirm once for same post, repeating confirming will cause failure. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to read\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=bUVpbFhpbWRoWFJaanlDZm1NRUo1QVBzTG5LZU5BSmJKVVVpSUZabU1TQ3pFdW1VK25iNi9udFEyS0ZNMnJyZzB2cU1pUk9pWWFhU21FTksrYUk4K2c9PS0tOGlJSDZkYTFhenBxVld2TDZXWkp5UT09--4220965a66a51c666cba9714ec3f481910b59b19; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 37b9e6e9-d7e7-4a71-8f2d-eb64941cd680
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.515861'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {}
+  /api/customer/user_role/posts/74286/pin:
+    put:
+      tags:
+      - Customer > Posts
+      summary: pin a post
+      description: "Description\n- - - \n- API to pin a post to associated channel\n- The current user calling the API will be saved \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to pin\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/posts/{post_id}/unpin:
+    put:
+      tags:
+      - Customer > Posts
+      summary: unpin a post
+      description: "Description\n- - - \n- API to unpin a post from associated channel\n- The original user ID who pinned the will be removed. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to pin\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: post_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/posts/{post_id}:
+    delete:
+      tags:
+      - Customer > Posts
+      summary: destroy a post
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: post_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

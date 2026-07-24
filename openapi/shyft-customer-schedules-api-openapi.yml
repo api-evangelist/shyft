@@ -1,0 +1,510 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Schedules API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Schedules
+paths:
+  /api/customer/user_role/schedules:
+    get:
+      tags:
+      - Customer > Schedules
+      summary: get schedules
+      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id |   | * | associaged location |\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        description: '[MESSION] session token ID. deprecate it soon.'
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+      - Customer > Schedules
+      summary: create a schedule
+      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n\t\"schedule\": {\n\t\t\"name\": \"my schedule name\",\n\t\t\"start_date\": \"2018-10-01 00:00:00 UTC\",\n\t\t\"end_date\": \"2018-10-31 00:00:00 UTC\",\n\t\t\"location_id\": 2634\n\t}\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        description: '[MESSION] session token ID. deprecate it soon.'
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"2135805b6ede30af25cd5ba100fadefb"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=RGliT2JzaWlKT21jVEwrWGR6VUtPSG5sYW1vM0E3U09NN1dZMGRySkFEcjM3d1htcS9GdnFacFVTRVlsT0x0UlVmbXo5dEFlR1czZE1ZZS9hN0tLM1E9PS0tc1lTY0c1K1BsZFo1SlhJSU82YzVvdz09--c2b1d2b118beba5146f2a05056a8ce23599b66d2; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: 8d86c0fc-d05f-4f96-b4f6-890b1c246fec
+            X-Runtime:
+              schema:
+                type: number
+                example: '1.734343'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: close
+            Server:
+              schema:
+                type: string
+                example: thin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                schedule:
+                  _parent_object_id: null
+                  id: 10099
+                  name: my schedule name
+                  image_id: null
+                  snapshot_url: null
+                  created_at: '2018-12-11T19:42:01.107Z'
+                  start_date: '2018-10-31T00:00:00.000Z'
+                  end_date: null
+                  location:
+                    _parent_object_id: 10099
+                    id: 2029
+                    swift_code: P9F7KY
+                    location_name: New Star Seafood Restaurant
+                    unit_number: null
+                    street_number: null
+                    address: 516 South Jackson Street, Seattle
+                    province: null
+                    postal: null
+                    country: null
+                    lat: '47.5994261'
+                    lng: '-122.3268447'
+                    latitude: 47.5994261
+                    longitude: -122.3268447
+                    phone_number: (206) 622-8801
+                    created_at: '2017-04-29T01:06:26.502Z'
+                    users_count: 65
+                    formatted_address: 516 S Jackson St, Seattle, WA 98104, USA
+                    time_zone: null
+                    google_map_id: ChIJb1yyf7tqkFQRf1BR8KCmHak
+                    four_sq_id: null
+                    allow_tipping: true
+                    shift_require_approval: true
+                    shyft_pro_active: false
+                    shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                    fence_radius: null
+                    cfg_not_dm: null
+                    cfg_geofence_log: null
+                    cfg_timeout: null
+                    tos_url: null
+                    tos_version: null
+                    require_approval: false
+                    ip_blocked: false
+                    member_count: 53
+                    location_address: null
+                    location_city: ',  '
+                    division_names: []
+                    feed_channel_id: 3979
+                    pending_users_count: 0
+                  owner:
+                    _parent_object_id: 10099
+                    id: 1
+                    active_org: 1
+                    first_name: kyle1
+                    last_name: Liu
+                    email: null
+                    phone_number: null
+                    gender: 0
+                    chat_handle: a1b171e77831a00be9702b03c018296c
+                    user_group: 2
+                    status: ''
+                    current_position: null
+                    current_user_privilege_id: null
+                    current_is_approved: null
+                    all_push: true
+                    shift_push: true
+                    schedule_push: true
+                    community_push: true
+                    profile_image:
+                      thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/31_Img_20141216_105119.jpg?1418745446
+                      gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/31_Img_20141216_105119.jpg?1418745446
+                      full_url: https://coffeemobile.s3.amazonaws.com/images/full/31_Img_20141216_105119.jpg?1418745446
+                    recent_user_privilege:
+                      _parent_object_id: 1
+                      id: 12267
+                      email: null
+                      wage: 15
+                      position: sales
+                      is_approved: true
+                      owner_id: 1
+                      location_id: 2029
+                      org_id: 1
+                      is_admin: false
+                      read_only: false
+                      first_name: kyle1
+                      last_name: Liu
+                      phone_number: null
+                      profile_image_thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/31_Img_20141216_105119.jpg?1418745446
+                      internal_id: null
+                      admin_claim_pending: false
+                      status: active
+                      current_availability: null
+                      location:
+                        _associations_removed: true
+                        _parent_object_id: 12267
+                        id: 2029
+                        swift_code: P9F7KY
+                        location_name: New Star Seafood Restaurant
+                        unit_number: null
+                        street_number: null
+                        address: 516 South Jackson Street, Seattle
+                        province: null
+                        postal: null
+                        country: null
+                        lat: '47.5994261'
+                        lng: '-122.3268447'
+                        latitude: 47.5994261
+                        longitude: -122.3268447
+                        phone_number: (206) 622-8801
+                        created_at: '2017-04-29T01:06:26.502Z'
+                        users_count: 65
+                        formatted_address: 516 S Jackson St, Seattle, WA 98104, USA
+                        time_zone: null
+                        google_map_id: ChIJb1yyf7tqkFQRf1BR8KCmHak
+                        four_sq_id: null
+                        allow_tipping: true
+                        shift_require_approval: true
+                        shyft_pro_active: false
+                        shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                        fence_radius: null
+                        cfg_not_dm: null
+                        cfg_geofence_log: null
+                        cfg_timeout: null
+                        tos_url: null
+                        tos_version: null
+                        require_approval: false
+                        ip_blocked: false
+                        member_count: 53
+                        location_address: null
+                        location_city: ',  '
+                        division_names: []
+                        feed_channel_id: 3979
+                        pending_users_count: 0
+                      user:
+                        _associations_removed: true
+                        _parent_object_id: 12267
+                        id: 1
+                        active_org: 1
+                        first_name: kyle1
+                        last_name: Liu
+                        email: null
+                        phone_number: null
+                        gender: 0
+                        chat_handle: a1b171e77831a00be9702b03c018296c
+                        user_group: 2
+                        status: ''
+                        current_position: null
+                        current_user_privilege_id: null
+                        current_is_approved: null
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+  /api/customer/user_role/schedules/981:
+    get:
+      tags:
+      - Customer > Schedules
+      summary: get a schedule
+      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        description: '[MESSION] session token ID. deprecate it soon.'
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"50eb0d6ac093f7863825eb7b4a36b6ed"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=MUxZNVBVL0YvY3lLQ2E4Q0JHOFRybk1SY0lqYm1ROHBVWEd0b2tid2lYQnlmd1RTMFphbFh3VFk5Q0hzOGlnai9PNnhPL1p3WXdKNXhGVElKaldPbnc9PS0tUm03WTVwVzgzQjM5REt3cUZDM1gzZz09--1f5848c779c49661df99943e4a3617b9df98d05e; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: 2c469f19-d33f-4c1a-b24c-59824328476b
+            X-Runtime:
+              schema:
+                type: number
+                example: '7.073789'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: close
+            Server:
+              schema:
+                type: string
+                example: thin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                schedule:
+                  _parent_object_id: null
+                  id: 9964
+                  name: Retesting droid-69
+                  image_id: null
+                  snapshot_url: https://shyft-test-app-images.s3.amazonaws.com/images/original/10042-20180706_094337_351.jpg
+                  created_at: '2018-07-06T13:44:28.703Z'
+                  start_date: '2018-07-11T04:00:00.000Z'
+                  end_date: '2018-07-31T04:00:00.000Z'
+                  location:
+                    _parent_object_id: 9964
+                    id: 2029
+                    swift_code: P9F7KY
+                    location_name: New Star Seafood Restaurant
+                    unit_number: null
+                    street_number: null
+                    address: 516 South Jackson Street, Seattle
+                    province: null
+                    postal: null
+                    country: null
+                    lat: '47.5994261'
+                    lng: '-122.3268447'
+                    latitude: 47.5994261
+                    longitude: -122.3268447
+                    phone_number: (206) 622-8801
+                    created_at: '2017-04-29T01:06:26.502Z'
+                    users_count: 65
+                    formatted_address: 516 S Jackson St, Seattle, WA 98104, USA
+                    time_zone: null
+                    google_map_id: ChIJb1yyf7tqkFQRf1BR8KCmHak
+                    four_sq_id: null
+                    allow_tipping: true
+                    shift_require_approval: true
+                    shyft_pro_active: false
+                    shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                    fence_radius: null
+                    cfg_not_dm: null
+                    cfg_geofence_log: null
+                    cfg_timeout: null
+                    tos_url: null
+                    tos_version: null
+                    require_approval: false
+                    ip_blocked: false
+                    member_count: 53
+                    location_address: null
+                    location_city: ',  '
+                    division_names: []
+                    feed_channel_id: 3979
+                    pending_users_count: 0
+                  owner: null
+    delete:
+      tags:
+      - Customer > Schedules
+      summary: delete a schedule
+      description: "Description\n\n- delete a schedule will remove its shift inventories as well\n- schedule owner can delete it\n- location admin can delete it\n- integration generated schedule can not be deleted\n- schedule having shifts status changed can not be deleted\n    \n\n---\n\nParams\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        description: '[MESSION] session token ID. deprecate it soon.'
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/schedules/171263/publish:
+    put:
+      tags:
+      - Customer > Schedules
+      summary: publish a schedule
+      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |"
+      requestBody:
+        content: {}
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        description: '[MESSION] session token ID. deprecate it soon.'
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/schedules/171263/unpublish:
+    put:
+      tags:
+      - Customer > Schedules
+      summary: unpublish a schedule
+      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |"
+      requestBody:
+        content: {}
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        description: '[MESSION] session token ID. deprecate it soon.'
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

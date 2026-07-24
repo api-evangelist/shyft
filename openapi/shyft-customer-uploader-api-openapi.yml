@@ -1,0 +1,179 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Uploader API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Uploader
+paths:
+  /api/customer/uploader/file:
+    post:
+      tags:
+      - Customer > Uploader
+      summary: upload a file
+      description: "Description\n- - - \n- upload a file: PDF\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\n* Please use `form-data` \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nfile |  | * | file type blob"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"849b99df7f29e9b185233171f5db90ee"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=ZzV2VUFtYitjbXQ1M2JBTVNmdlpRdHNnUmlXNUkzRExxamhPdGxsMFpGTFJESnBEbzVTZFlwU0xBODU3Tml6QWRVbzkzYmhLeTQ3S1NtOWpwWFFzcHc9PS0tUU9mS2lyZk9raW5QRDNYd01VOHZ3dz09--fdbe7b667eff98ccb80012e285084bb692818565; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 876d1928-59f3-4840-b39e-e7e3c6aaf43e
+            X-Runtime:
+              schema:
+                type: number
+                example: '1.976292'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: upload a file - audio
+                  value:
+                    blob:
+                      _parent_object_id: null
+                      id: 126
+                      content_type: audio/mpeg
+                      service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/QjsCfPUivrmw22fKqi2eKW9H?sp=r&sv=2016-05-31&se=2020-06-01T19%3A56%3A01Z&rscd=attachment%3B+filename%3D%22sample.mp3%22%3B+filename*%3DUTF-8%27%27sample.mp3&rsct=audio%2Fmpeg&sr=b&sig=uuveugkh2943MPPo7Qne07up%2FgmQGre27U2xNlZuxc0%3D
+                      preview_service_url: null
+                      filename: sample.mp3
+                      byte_size: 764176
+                example-1:
+                  summary: upload a file - pdf
+                  value:
+                    blob:
+                      _parent_object_id: null
+                      id: 35
+                      content_type: application/pdf
+                      service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/MpwPmC5LVhzg6xRdkemJAy3e?sp=r&sv=2016-05-31&se=2020-05-29T22%3A14%3A58Z&rscd=inline%3B+filename%3D%22sample.pdf%22%3B+filename*%3DUTF-8%27%27sample.pdf&rsct=application%2Fpdf&sr=b&sig=0h2pk02Riuzr9c0Wli1KsI4B7pOABJoVu8aVXsH%2FoQc%3D
+                      preview_service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/variants/RnEvJCGTWb4pBkhQu4Le4ktX/a0ec96f9aeb9d604b7135a8679668c2926c2f2937213c3559f3a7ce8423393d2?sp=r&sv=2016-05-31&se=2020-05-29T22%3A15%3A00Z&rscd=inline%3B+filename%3D%22sample.png%22%3B+filename*%3DUTF-8%27%27sample.png&rsct=image%2Fpng&sr=b&sig=tfIQ0iTK5zYCqrW3dYaFa6Yhtrn%2BX0UaxmcIUtVw%2B%2BA%3D
+                      filename: sample.pdf
+                      byte_size: 3028
+                example-2:
+                  summary: upload a file -video
+                  value:
+                    blob:
+                      _parent_object_id: null
+                      id: 275
+                      content_type: video/mp4
+                      service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/FzSVZyQQEgJaooedmfWjACYu?sp=r&sv=2016-05-31&se=2020-06-03T22%3A32%3A11Z&rscd=attachment%3B+filename%3D%22sample.mp4%22%3B+filename*%3DUTF-8%27%27sample.mp4&rsct=video%2Fmp4&sr=b&sig=7kbjDyqK7UciFncS7NULH0sy3dFhmPyqOiJwntYm7HM%3D
+                      preview_service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/variants/UyGaFPmzgMWUcvwLuWoFFP4Y/a0ec96f9aeb9d604b7135a8679668c2926c2f2937213c3559f3a7ce8423393d2?sp=r&sv=2016-05-31&se=2020-06-03T22%3A32%3A12Z&rscd=inline%3B+filename%3D%22sample.png%22%3B+filename*%3DUTF-8%27%27sample.png&rsct=image%2Fpng&sr=b&sig=AqTdEWfQS5uWy1gJN2CKEzAfFEM5de8ATn09sYeQkww%3D
+                      filename: sample.mp4
+                      byte_size: 1055736
+                      blob_url: http://sp1-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1CIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2fdbac200c68cdb2dfc6d2a618e2e240243dc60b/sample.mp4
+                      preview_blob_url: http://sp1-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--05015ed49ecaad1de9e6a0ac11f2dd5cee383aa6/sample.png
+                example-3:
+                  summary: upload a file - image
+                  value:
+                    blob:
+                      _parent_object_id: null
+                      id: 1314
+                      content_type: image/jpeg
+                      service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/ZTPDDJ8aWSzLeJWccgUWvYsc?sp=r&sv=2016-05-31&se=2021-04-20T21%3A56%3A24Z&rscd=inline%3B+filename%3D%22sample.jpeg%22%3B+filename*%3DUTF-8%27%27sample.jpeg&rsct=image%2Fjpeg&sr=b&sig=%2BNP0GaEarIHE%2BmJcAPRU3ypi2vCHdPVgfkoA%2FCH3G%2Bs%3D
+                      filename: sample.jpeg
+                      byte_size: 32994
+                      blob_url: https://test-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--109658607da86322831edb0b946862a8819b66cb/sample.jpeg
+                      preview_blob_url: null
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

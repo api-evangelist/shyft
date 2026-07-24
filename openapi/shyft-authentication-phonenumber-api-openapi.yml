@@ -1,0 +1,525 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Authentication > PhoneNumber API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Authentication > PhoneNumber
+paths:
+  /api/users:
+    post:
+      tags:
+      - Authentication > PhoneNumber
+      summary: PhoneNumber - Signup
+      description: "Description\n- - - \n- Sign up with fields listed at input section\n- API will generate and send a Login Code to user\n- Follow up with `confirm` API.\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nreferral_code| | | |\nacceptor_branch_id| | | |\nprogram_code| | | |\nreferral_platform| | | |\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nfirst_name |  | * | |\nlast_name |   | | |\nunconfirmed_phone_number | | * ||"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"api_user\": {\n    \"unconfirmed_phone_number\": \"18883839002\"\n    }\n}   \t\t "'
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Tue, 20 Apr 2021 19:50:09 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Location:
+              schema:
+                type: string
+                example: /
+            ETag:
+              schema:
+                type: string
+                example: W/"79be1d2c12138c5acfdc1836a3d92e97"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 547e3128-2de8-4663-9eb3-c2590fb90c47
+            X-Runtime:
+              schema:
+                type: number
+                example: '1.056196'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: PhoneNumber - Signup with ONLY phone number
+                  value:
+                    user:
+                      _parent_object_id: null
+                      id: 14294
+                      active_org: 0
+                      first_name: null
+                      last_name: null
+                      email: null
+                      phone_number: null
+                      gender: 0
+                      chat_handle: e3a215ab27b5c6c958a3cd5a4f25dafb
+                      user_group: 0
+                      status: ''
+                      push_settings_list:
+                        shift_push:
+                          label: Shift Notifications
+                          type: boolean
+                        schedule_push:
+                          label: Schedule Notifications
+                          type: boolean
+                        community_push:
+                          label: Community Notifications
+                          type: boolean
+                      push_settings_list_array:
+                      - label: Shift Notifications
+                        type: boolean
+                        key: shift_push
+                      - label: Schedule Notifications
+                        type: boolean
+                        key: schedule_push
+                      - label: Community Notifications
+                        type: boolean
+                        key: community_push
+                      thumb_url: null
+                      gallery_url: null
+                      full_url: null
+                      current_position: null
+                      current_user_privilege_id: null
+                      current_is_approved: null
+                      current_is_admin: null
+                      all_push: true
+                      shift_push: true
+                      schedule_push: true
+                      community_push: true
+                      cfg_ewa_ok: null
+                      locale: null
+                      profile_image: null
+                      recent_user_privilege: null
+                example-1:
+                  summary: PhoneNumber - Signup - with `sso_session_ids`
+                  value:
+                    user:
+                      _parent_object_id: null
+                      id: 9629
+                      active_org: 0
+                      first_name: John
+                      last_name: Doe
+                      email: null
+                      phone_number: null
+                      gender: 0
+                      chat_handle: 3cc4ec7992af3e576322af368129901d
+                      user_group: 0
+                      status: ''
+                      current_position: null
+                      current_user_privilege_id: null
+                      current_is_approved: null
+                      profile_image: null
+                      recent_user_privilege: null
+                example-2:
+                  summary: PhoneNumber - Signup - with profile image
+                  value:
+                    user:
+                      _parent_object_id: null
+                      id: 9628
+                      active_org: 0
+                      first_name: John
+                      last_name: Doe
+                      email: null
+                      phone_number: null
+                      gender: 0
+                      chat_handle: 765629522ca204fdbde895943b9d9582
+                      user_group: 0
+                      status: ''
+                      current_position: null
+                      current_user_privilege_id: null
+                      current_is_approved: null
+                      profile_image:
+                        thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8476_file.png?1542408637
+                        gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/8476_file.png?1542408637
+                        full_url: https://coffeemobile.s3.amazonaws.com/images/full/8476_file.png?1542408637
+                      recent_user_privilege: null
+                example-3:
+                  summary: PhoneNumber - Signup using PhoneNumber with email attached
+                  value:
+                    user:
+                      _parent_object_id: null
+                      id: 14063
+                      active_org: 0
+                      first_name: John
+                      last_name: Doe
+                      email: bin+nz1@myshyft.com
+                      phone_number: null
+                      gender: 0
+                      chat_handle: 99db4cc977a5e9fa38bbcaeff352dd70
+                      user_group: 0
+                      status: ''
+                      push_settings_list:
+                        shift_push:
+                          label: Shift Notifications
+                          type: boolean
+                        schedule_push:
+                          label: Schedule Notifications
+                          type: boolean
+                        community_push:
+                          label: Community Notifications
+                          type: boolean
+                      push_settings_list_array:
+                      - label: Shift Notifications
+                        type: boolean
+                        key: shift_push
+                      - label: Schedule Notifications
+                        type: boolean
+                        key: schedule_push
+                      - label: Community Notifications
+                        type: boolean
+                        key: community_push
+                      thumb_url: null
+                      gallery_url: null
+                      full_url: null
+                      current_position: null
+                      current_user_privilege_id: null
+                      current_is_approved: null
+                      current_is_admin: null
+                      all_push: true
+                      shift_push: true
+                      schedule_push: true
+                      community_push: true
+                      cfg_ewa_ok: null
+                      locale: null
+                      profile_image: null
+                      recent_user_privilege: null
+  /api/users/sign_in:
+    post:
+      tags:
+      - Authentication > PhoneNumber
+      summary: PhoneNumber - Sign in/Confirm
+      description: "Description\n- - - \n- Sign in user with SMS code\n- Get `Session-Token` or `Session-Uukey` from response headers, and use for further API calls. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nphone_number |  | * | |\nsign_in_code |   |* | |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"api_user\": {\n    \"phone_number\": \"18883836001\",\n    \"sign_in_code\": \"9999\"\n  }\n}   "'
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: query
+        schema:
+          type: integer
+        example: '7'
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Location:
+              schema:
+                type: string
+                example: /
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Session-Token:
+              schema:
+                type: integer
+                example: '25764'
+            Session-Uukey:
+              schema:
+                type: string
+                example: 0ced24c0-cc32-418e-900e-1dea26e3c1cc
+            access-token:
+              schema:
+                type: string
+                example: dkEq2JQs5w0LXPPhGZUwhg
+            token-type:
+              schema:
+                type: string
+                example: Bearer
+            client:
+              schema:
+                type: string
+                example: bKC-6_hbF10ejlamKnDPkw
+            expiry:
+              schema:
+                type: integer
+                example: '1572547879'
+            uid:
+              schema:
+                type: integer
+                example: '18883836001'
+            Phone-Number:
+              schema:
+                type: integer
+                example: '18883836001'
+            Auth-Category:
+              schema:
+                type: string
+                example: phone_number
+            Auth-Target:
+              schema:
+                type: integer
+                example: '18883836001'
+            Authorization:
+              schema:
+                type: string
+                example: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5NjI1Iiwic2NwIjoiYXBpX3VzZXIiLCJhdWQiOm51bGwsImlhdCI6MTU0MTA5ODI3OSwiZXhwIjoxNTQxMTAxODc5LCJqdGkiOiIwMmFmYTRhMS05ZGJiLTQwMGQtYTc2MS1iNjRiMGRiZDJkODMifQ.l9sRtAAVmgJj03F9IzzEXtHo8K8UGYRWh27fdhJ1oCQ
+            ETag:
+              schema:
+                type: string
+                example: W/"9a7a5b72b492fe1b4e13268da2aaf631"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=N1BRTEY2dlNuTGZoVzZnVHNuSS9BQVVvRytEeld1WUQxN2hOVnFpcHVsWUwveExNU0ozU2hhOFBrTmttei80T1gvMUt6aWtONzNJblIreFNSY0NCZ2c9PS0tT0dVQ2dOZy9IWmNQZEczNDBoQk1PUT09--6123dd08017535690c0617f94304699c55d26c28; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: 3a9b263b-6772-474e-8a9d-bbc97b85798c
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.448973'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: close
+            Server:
+              schema:
+                type: string
+                example: thin 1.5.1 codename Straight Razor
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                user:
+                  _parent_object_id: null
+                  id: 9625
+                  active_org: 0
+                  first_name: John
+                  last_name: Doe
+                  email: null
+                  phone_number: '18883836001'
+                  gender: 0
+                  chat_handle: 911bf630a47c543b70303b3a42400f14
+                  user_group: 0
+                  status: ''
+                  profile_image: null
+                  recent_user_privilege: null
+  /api/code_auth/18885555555:
+    get:
+      tags:
+      - Authentication > PhoneNumber
+      summary: PhoneNumber - Get SMS Code
+      description: "Description\n- - - \n- Resend confirmation code if user did not get previous one\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nconfirm| true | * | Must set it be true\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_phone_number |  | * | |\nsign_in_code |   |* | |"
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: confirm
+        in: query
+        schema:
+          type: boolean
+        description: 'when first time login, target on unconfirmed account
+
+          '
+        example: 'true'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            X-Request-Id:
+              schema:
+                type: string
+                example: 578b6f22-0418-42e8-ad45-23dfbc607251
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.124879'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000;
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {}
+  /api/users/super_login:
+    get:
+      tags:
+      - Authentication > PhoneNumber
+      summary: PhoneNumber - SuperLogin
+      description: "Description\n- - - \n- Login as a God build\n- Get `Session-Token` or `Session-Uukey` from response headers, and use for further API calls. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlogin |  | * | | phone_number or email\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\nGod-Key | | * | |\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: God-Key
+        in: header
+        schema:
+          type: string
+        example: '{{god_key}}'
+      - name: login
+        in: query
+        schema:
+          type: integer
+        example: '18883836001'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

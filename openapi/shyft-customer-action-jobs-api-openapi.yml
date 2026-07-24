@@ -1,0 +1,657 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Action Jobs API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Action Jobs
+paths:
+  /api/customer/user_role/action_jobs/251020:
+    get:
+      tags:
+      - Customer > Action Jobs
+      summary: get an action job
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Thu, 09 Mar 2023 21:52:56 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"0e5fe908c37fc68e1a66079eb08359fd"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=T3lLVmF5QUJadGNOY3pMMGNTZklnc3NEQXMxZm9ZQ3dLaTV2d1hWaktaWm56QUlvWWx4WENCWlJnbVlXM28yMWU2cTRJRElqL0hrTEZMalpaMm13L1E9PS0taGQ5WGludVd3dEJSeHdNMDJNaUdCQT09--bbe22b0d32012a79414ec0867f9d17562065d7c3; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: bb24515d-9925-4420-87aa-3cdc42c00fcd
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.254471'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                action_job:
+                  _parent_object_id: null
+                  uuid: 9019ae6e-8917-469f-bb75-e66eb6687afe
+                  output:
+                  - _parent_object_id: null
+                    id: 3954308
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8740
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169673
+    delete:
+      tags:
+      - Customer > Action Jobs
+      summary: delete an action job
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: delete_schedule
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/action_jobs:
+    get:
+      tags:
+      - Customer > Action Jobs
+      summary: list action jobs
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Thu, 09 Mar 2023 21:52:39 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"11f817f4064ee6c063eb851ecd0124a8"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=TTlsUVU4aUw1UFpESkVUa3J2RVRKWHNWYVlFR0lrZXQ0eFEzajNZY0lsWWJ3YjkyeGF6ck5qUHljS05BWHByUDlPOXYrZG9BcmJQY0ptNnNiQmVLY1E9PS0tZksvQjB4WXZ2ZWV1UUZad2k4ckt0UT09--cf838ef5ae9b4bc96ec4975814073bdf6eab1899; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: f5f9f903-20b1-4a3b-a907-cb8211f5fa4c
+            X-Runtime:
+              schema:
+                type: number
+                example: '12.074400'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                action_jobs:
+                - _parent_object_id: null
+                  uuid: ee87e238-e694-4e96-a826-90e9b132ba6c
+                  output: []
+                  location_id: 8740
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: null
+                - _parent_object_id: null
+                  uuid: 6a132c76-0bd4-4468-b205-c71a4e43a17c
+                  output:
+                  - _parent_object_id: null
+                    id: 3954304
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8740
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169671
+                - _parent_object_id: null
+                  uuid: 7a301e23-4003-479b-a885-c4f82397c651
+                  output: []
+                  location_id: 8740
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: null
+                - _parent_object_id: null
+                  uuid: a44618ac-cfc4-4b8e-bfb6-21800788496e
+                  output: []
+                  location_id: 8740
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: null
+                - _parent_object_id: null
+                  uuid: 919d3399-725c-4b30-85da-6230127eaeb6
+                  output:
+                  - errors:
+                      location:
+                      - not found
+                    input:
+                      first_name: Bin
+                      last_name: Li
+                      start_at: '2019-12-19 11:00:00'
+                      end_at: '2019-12-19 19:00:00'
+                      location_swift_code: WPJRJI
+                  location_id: null
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 1
+                  schedule_id: 169641
+                - _parent_object_id: null
+                  uuid: 286be26f-4b04-4f31-ac31-717f1701e968
+                  output:
+                  - errors:
+                      location:
+                      - not found
+                    input:
+                      first_name: Bin
+                      last_name: Li
+                      start_at: '2019-12-19 11:00:00'
+                      end_at: '2019-12-19 19:00:00'
+                      location_swift_code: WPJRJI
+                  location_id: null
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 1
+                  schedule_id: 169643
+                - _parent_object_id: null
+                  uuid: f50867b6-294a-4d06-b0ce-912f60691c8d
+                  output: []
+                  location_id: 8730
+                  total_count: 0
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: 169664
+                - _parent_object_id: null
+                  uuid: 903f8a78-4aa7-4ac2-bea6-feb324f10e0b
+                  output:
+                  - errors:
+                      shift_reference_id:
+                      - is required.
+                    input:
+                      first_name: Bin
+                      last_name: Li
+                      start_at: '2019-12-19 11:00:00'
+                      end_at: '2019-12-19 19:00:00'
+                      location_swift_code: WPJRJI
+                  location_id: null
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 1
+                  schedule_id: 169644
+                - _parent_object_id: null
+                  uuid: f57a3f3e-a7ae-4572-b571-6dd7036cc18a
+                  output:
+                  - _parent_object_id: null
+                    id: 3954171
+                    start_at: 2019-12-19 19:00:00 UTC
+                    end_at: 2019-12-20 03:00:00 UTC
+                    taker_id: 14815
+                    shift_reference_id: null
+                    employee_id: null
+                    site_reference_id: null
+                    segments: []
+                  location_id: null
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169645
+                - _parent_object_id: null
+                  uuid: 926eeabc-d403-4fa5-a8dd-8d7f968e49cd
+                  output:
+                  - _parent_object_id: null
+                    id: 3954209
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  - _parent_object_id: null
+                    id: 3954211
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  - _parent_object_id: null
+                    id: 3954212
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  - _parent_object_id: null
+                    id: 3954213
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  - _parent_object_id: null
+                    id: 3954214
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 5
+                  failed_count: 0
+                  schedule_id: 169670
+                - _parent_object_id: null
+                  uuid: 77b685a0-70af-49cd-999c-a3e195ec7c51
+                  output: []
+                  location_id: null
+                  total_count: 0
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: 169647
+                - _parent_object_id: null
+                  uuid: 7bac83eb-2768-4bb0-8f06-2591e397a01b
+                  output: []
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: null
+                - _parent_object_id: null
+                  uuid: 6a45a610-9e3c-4829-a5de-871bba014e0e
+                  output: []
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: null
+                - _parent_object_id: null
+                  uuid: bcec3536-907b-4d23-b81e-8aa921bccb1f
+                  output: []
+                  location_id: 8740
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: null
+                - _parent_object_id: null
+                  uuid: dcbabe7f-e72e-42b0-a5f3-5eb6c64c3e60
+                  output: []
+                  location_id: null
+                  total_count: 0
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: 169649
+                - _parent_object_id: null
+                  uuid: eb9f9cd6-c93f-47ae-a5fc-78c06a79bbff
+                  output: []
+                  location_id: null
+                  total_count: 0
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: 169650
+                - _parent_object_id: null
+                  uuid: 9019ae6e-8917-469f-bb75-e66eb6687afe
+                  output:
+                  - _parent_object_id: null
+                    id: 3954308
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8740
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169673
+                - _parent_object_id: null
+                  uuid: 7e8b6c06-7fa4-4065-8327-38cdaabe13a5
+                  output:
+                  - errors:
+                      location:
+                      - not found
+                    input:
+                      first_name: Bin
+                      ' last_name': ' Li'
+                      ' start_at': ' 2019-12-19 11:00:00'
+                      ' end_at': ' 2019-12-19 19:00:00'
+                      ' location_swift_code': ' WPJRJI'
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 1
+                  schedule_id: 169662
+                - _parent_object_id: null
+                  uuid: c4d57a0c-d4e5-4f23-a755-0e21e26d6e3a
+                  output:
+                  - _parent_object_id: null
+                    id: 3954190
+                    start_at: 2019-12-19 19:00:00 UTC
+                    end_at: 2019-12-20 03:00:00 UTC
+                    taker_id: 14815
+                    shift_reference_id: null
+                    employee_id: null
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169663
+                - _parent_object_id: null
+                  uuid: 8ec9c350-7b94-4f7c-a547-04930bdbd091
+                  output: []
+                  location_id: 8730
+                  total_count: 0
+                  success_count: 0
+                  failed_count: 0
+                  schedule_id: 169665
+                - _parent_object_id: null
+                  uuid: 5dad4967-3e93-4146-8a7a-d4dff3e5688d
+                  output:
+                  - _parent_object_id: null
+                    id: 3954205
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169666
+                - _parent_object_id: null
+                  uuid: 77e7deda-afa1-4800-ad0b-c86a2acfd377
+                  output:
+                  - _parent_object_id: null
+                    id: 3954206
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169667
+                - _parent_object_id: null
+                  uuid: c4e2459f-5da8-44e4-9341-f8bd06adf778
+                  output:
+                  - _parent_object_id: null
+                    id: 3954207
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169668
+                - _parent_object_id: null
+                  uuid: 113a928f-1052-49c4-86b7-daa59d3d808b
+                  output:
+                  - _parent_object_id: null
+                    id: 3954208
+                    start_at: 2019-12-19 11:00:00 UTC
+                    end_at: 2019-12-19 19:00:00 UTC
+                    taker_id: null
+                    shift_reference_id: null
+                    employee_id: gap_dc_0000001
+                    site_reference_id: null
+                    segments: []
+                  location_id: 8730
+                  total_count: 1
+                  success_count: 1
+                  failed_count: 0
+                  schedule_id: 169669
+                - _parent_object_id: null
+                  uuid: 0de7bae3-e40b-4580-a238-d9662784c903
+                  output:
+                  - errors:
+                      location:
+                      - not found
+                    input:
+                      first_name: Bin
+                      last_name: Li
+                      start_at: '2019-12-19 11:00:00'
+                      end_at: '2019-12-19 19:00:00'
+                      location_swift_code: WPJRJI
+                  location_id: null
+                  total_count: 1
+                  success_count: 0
+                  failed_count: 1
+                  schedule_id: 169642
+                meta:
+                  pagination:
+                    current_page: 1
+                    per_page: 25
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

@@ -1,0 +1,431 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Chats > ChatMessages API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Chats > ChatMessages
+paths:
+  /api/customer/user_role/chat_sessions/{chat_session_id}/chat_messages:
+    get:
+      tags:
+      - Customer > Chats > ChatMessages
+      summary: get chat messages
+      description: "Description\n- - - \n- Get all visiable chat message with given session ID\n- Not showing message before quited \n- Still showing archived messages\n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: chat_session_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"ee7dc9088c241c39a750254a2a087b8a"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=ZURQL3RyV0pFSFlJbENWZ3lnM2U2MmRwMzRZS0hrQVdndHhLMUYydVB6WlY3T0ZDWWMrVmdLb09tUHQ1R2dva0ZhVFRHdE5aL0NHelJ0dkZkS0RrN3c9PS0tNERYZllUSGx3TUV2K2NIYXBTVkZWQT09--66fd3d65939cc5858deb79b37e6c74edf2e0ae90; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: e562c764-8d7f-406a-baf0-8e3efbdd2086
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.217722'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: close
+            Server:
+              schema:
+                type: string
+                example: thin 1.5.1 codename Straight Razor
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                chat_messages:
+                - _associations_removed: true
+                  _parent_object_id: null
+                  id: 12199
+                  message: hello world3
+                  sender_id: 9568
+                  session_id: 3033
+                  message_type: message_default
+                  attachment: null
+                  created_at: '2018-11-03T00:30:12.794Z'
+                - _associations_removed: true
+                  _parent_object_id: null
+                  id: 12200
+                  message: hello world3
+                  sender_id: 9568
+                  session_id: 3033
+                  message_type: message_default
+                  attachment: null
+                  created_at: '2018-11-03T00:30:27.043Z'
+                - _associations_removed: true
+                  _parent_object_id: null
+                  id: 12201
+                  message: hello world3
+                  sender_id: 9568
+                  session_id: 3033
+                  message_type: message_default
+                  attachment: null
+                  created_at: '2018-11-03T00:30:50.691Z'
+                - _associations_removed: true
+                  _parent_object_id: null
+                  id: 12202
+                  message: hello world3
+                  sender_id: 9568
+                  session_id: 3033
+                  message_type: message_default
+                  attachment: null
+                  created_at: '2018-11-03T03:42:38.805Z'
+                - _associations_removed: true
+                  _parent_object_id: null
+                  id: 12203
+                  message: hello world3
+                  sender_id: 9568
+                  session_id: 3033
+                  message_type: message_default
+                  attachment: null
+                  created_at: '2018-11-03T03:43:48.382Z'
+    post:
+      tags:
+      - Customer > Chats > ChatMessages
+      summary: create a chat message
+      description: "Description\n- - - \n- Ceate a chat message with given chat session\n- Send a image with format: [IMG]url[/IMG] #TODO: Upgrade it\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nmessage |  |  |  |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"\t{\n\t    \"chat_message\": {  \n\t\t  \"message\": \"hello world3\",\n\t      \"attached_files_blob_ids\": [10]\n\t  }\n\t}\n\t\n\t"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: chat_session_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"0d01c8c29b9001a8d2354606bef0c3bb"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=OGMrOERTWGdDcThBbnZNV2RJVllCenIrNFpkQjNTYjNoNzlVNXd1VjJxcVdZaUhuc244MEJMMWx0WmsxWEtMRERSQ1QzY2dQa3hXQmM4MHYveGkrQkE9PS0tY0lUMlo0bERENGEvZ1lVU2QwTEF3Zz09--83bf74af0bcc9619b330d509483e5757847778af; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: d8dea119-cf25-4077-a660-513358e16de1
+            X-Runtime:
+              schema:
+                type: number
+                example: '1.014101'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: create a chat message  - with attachment
+                  value:
+                    chat_message:
+                      _parent_object_id: null
+                      id: 15602
+                      message: hello world3
+                      sender_id: 11284
+                      session_id: 3459
+                      message_type: message_default
+                      attachment: null
+                      created_at: '2020-06-07T03:53:35.330Z'
+                      attached_files_blobs:
+                      - _parent_object_id: 15602
+                        id: 10
+                        content_type: application/pdf
+                        service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/EKHkMzkgvhiKqvMrXpvnmqmL?sp=r&sv=2016-05-31&se=2020-06-07T03%3A58%3A35Z&rscd=inline%3B+filename%3D%22sample.pdf%22%3B+filename*%3DUTF-8%27%27sample.pdf&rsct=application%2Fpdf&sr=b&sig=dXIDsblCK%2FOSUJLX4zwmeJOuCL0q8mliWJQMHqFG5MM%3D
+                        preview_service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/variants/foA5wLoV6SPQSdzgm4WB4WB3/a0ec96f9aeb9d604b7135a8679668c2926c2f2937213c3559f3a7ce8423393d2?sp=r&sv=2016-05-31&se=2020-06-07T03%3A58%3A35Z&rscd=inline%3B+filename%3D%22sample.png%22%3B+filename*%3DUTF-8%27%27sample.png&rsct=image%2Fpng&sr=b&sig=6EKa89l6SLnDs1XxR%2Fd2Lc7j07LGWY6UwaFBOfCugfY%3D
+                        filename: sample.pdf
+                        byte_size: 3028
+                        blob_url: http://service.myshyft.devel:4001/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d9d01b6d69c58f6115489b2dfc343ff646b7fd8/sample.pdf
+                        preview_blob_url: http://service.myshyft.devel:4001/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9aa240e9546913e2fbd8d3c557d9e763661b4c1/sample.png
+                example-1:
+                  summary: create chat message
+                  value:
+                    chat_message:
+                      _parent_object_id: null
+                      id: 12203
+                      message: hello world3
+                      sender_id: 9568
+                      session_id: 3033
+                      message_type: message_default
+                      attachment: null
+                      created_at: '2018-11-03T03:43:48.382Z'
+  /api/customer/user_role/chat_sessions/{chat_session_id}/chat_messages/{chat_message_id}:
+    get:
+      tags:
+      - Customer > Chats > ChatMessages
+      summary: get a chat message
+      description: "Description\n- - - \n- Get all visiable chat message with given session ID\n- Not showing message before quited \n- Still showing archived messages\n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: chat_session_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: chat_message_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/chat_sessions/{chat_session_id}/chat_messages/14830:
+    delete:
+      tags:
+      - Customer > Chats > ChatMessages
+      summary: delete a chat message
+      description: "Description\n- - - \n- Ceate a chat message with given chat session\n- Send a image with format: [IMG]url[/IMG] #TODO: Upgrade it\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nmessage |  |  |  |"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: chat_session_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: No Content
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=UVlWWTRKQzQrYjRVYjBYOXFDbTZXWDlHcGhOY2E0eUhMcmV3Wm91eElHVWZ1OHYxMXZXeTJ5dEVLQ3pXNzZ1dUhaNlN5eVFQaFZyQkNDWU9GU3R5akE9PS0tN3hjcDYwdDc4NFZLZElJbVd4d0d3UT09--0207036d223d818dfd13d4f9c98fa6d08966a42e; path=/; secure; HttpOnly
+            X-Request-Id:
+              schema:
+                type: string
+                example: d4d5e59c-e08d-4127-9b97-aa81ccca6192
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.074516'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000;
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: null
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

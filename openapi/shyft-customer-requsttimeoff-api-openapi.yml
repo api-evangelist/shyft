@@ -1,0 +1,1179 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > RequstTimeOff API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > RequstTimeOff
+paths:
+  /api/customer/user_role/request_time_offs/can_admin:
+    get:
+      tags:
+      - Customer > RequstTimeOff
+      summary: get manageable request time offs
+      description: "Description\n- - - \n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+      security:
+      - noauthAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: query
+        schema:
+          type: string
+        example: '{{location_id}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Tue, 31 Aug 2021 21:17:31 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"059458cb361ab108936fe1ee5e3f2729"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=b0dUQlVXRHY5N2EwaXBIdGd6WHVHVmlXbW1TR0VaOHNiNkRCcUhVRkY1U21iZHNMYmVjdUJjWnBXTlk4MWdPaC9KQzFWKzdNbEE5YkRYOW8yS29xWXc9PS0tMlNIUHBYc0gvSGFDelRFOHJHaDZoQT09--fadaca6abdbdfc848276e5df2b957af62973e51e; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 37f75bb2-8a3e-4c5b-bfa7-1d6201b6b7a1
+            X-Runtime:
+              schema:
+                type: number
+                example: '25.246289'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                request_time_offs:
+                - _parent_object_id: null
+                  id: 2
+                  user_id: 11284
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  days: 5
+                  day_hours: 8
+                  total_hours: 40
+                  latest_balance: null
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: '1'
+                  status: requested
+                  time_off_reason: null
+                  managed_reason: null
+                  user_privilege_id: 16429
+                  first_name: Bin
+                  last_name: Li
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681
+                - _parent_object_id: null
+                  id: 27
+                  user_id: 14601
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  days: 5
+                  day_hours: 8
+                  total_hours: 40
+                  latest_balance: null
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: requested
+                  time_off_reason: null
+                  managed_reason: null
+                  user_privilege_id: null
+                  first_name: Monica
+                  last_name: Lyons
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18127_14601-20210721_140611_108.jpg?1626901571
+                - _parent_object_id: null
+                  id: 1
+                  user_id: 11284
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  days: 5
+                  day_hours: 8
+                  total_hours: 40
+                  latest_balance: null
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: requested
+                  time_off_reason: null
+                  managed_reason: null
+                  user_privilege_id: 16429
+                  first_name: Bin
+                  last_name: Li
+                  profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681
+                meta:
+                  pagination:
+                    current_page: 1
+                    per_page: 25
+  /api/customer/user_role/request_time_offs/mine:
+    get:
+      tags:
+      - Customer > RequstTimeOff
+      summary: get my request time offs
+      description: "Description\n- - - \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+      security:
+      - noauthAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Fri, 13 Aug 2021 00:38:05 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"866f5211e07e525b95527877d16e5022"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=alRUTTZEL0F2UGdMaEF2SHlzbTFrNEN0SXVLdnZoRGk4UFk3WDBnalovL3dXMmpUWFRHTUc2YUQ4TStqVUV6MlFrL0RMc2pSZTlURXlkR3VHR25nNlE9PS0tdHZjVHQ1QmNCNThwdm1leHRWZmxvZz09--7234a8e15ae8b6e56965afcdb04f67acf171e6c1; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: df7fbe43-2650-4686-9fa4-af816196cbee
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.260220'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                request_time_offs:
+                - _parent_object_id: null
+                  id: 1
+                  user_id: 11284
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: requested
+                  time_off_reason: family event
+                  managed_reason: null
+                - _parent_object_id: null
+                  id: 2
+                  user_id: 11284
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: requested
+                  time_off_reason: family event
+                  managed_reason: null
+                - _parent_object_id: null
+                  id: 3
+                  user_id: 11284
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: requested
+                  time_off_reason: family event
+                  managed_reason: null
+                - _parent_object_id: null
+                  id: 4
+                  user_id: 11284
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: requested
+                  time_off_reason: family event
+                  managed_reason: null
+                meta:
+                  pagination:
+                    current_page: 1
+                    per_page: 25
+  /api/customer/user_role/user_privileges/{user_privilege_id}/rto_balances:
+    get:
+      tags:
+      - Customer > RequstTimeOff
+      summary: get user's request time off balances
+      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+      security:
+      - noauthAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: user_privilege_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Aug 2021 04:59:31 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"62aeca656c60593b80f661d0471bf873"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=M3Q1ajBicG8reDdqMlRudEw5T01iQnhyQWlBUnhYaElwQi82OUk0UkhWVzJTcXp0RUFrZm1ndlFxWHlDajgzVEx3Y1N6NjladlJaOGkwL3ZJSm5nQ2c9PS0tYmJHY3U1cVpEdzRWWVQvVU1Yd1pUZz09--9d0fbe4a3379bcbc5f51ca2b4ea72a39fdc767ca; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: b8e6d89f-6a22-401e-8c6c-5ad6bc2f0f84
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.955004'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get user's request time off balances
+                  value:
+                    rto_balances:
+                      rto_category_pto: 12
+                      rto_category_floating: 5
+                      rto_category_diversity: 3
+                example-1:
+                  summary: get user's request time off balances w/ queued hours
+                  value:
+                    rto_balances: null
+                    rto_in_queue:
+                      rto_category_pto: 2
+                      rto_category_diversity: 31
+  /api/customer/user_role/request_time_offs/{rto_id}:
+    get:
+      tags:
+      - Customer > RequstTimeOff
+      summary: get a single rto
+      description: "Description\n- - - \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+      security:
+      - noauthAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: rto_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Thu, 19 Aug 2021 02:17:46 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"164f608c471b32ae8fa87be5f1089eaa"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=dmg4OGQxRzAwWDRWaEwwU25QdTVqMWJ6MGJnM0JraVBTWnFCT0RPRm5COGJJNXYrTDBWeGY5RnBkRFpXV0lwSHNkdHpjV1gvd1htQ2VIWEtHWHJJUUE9PS0tUmk0SXB6WE5lVEFyeW5BTmNJL0padz09--a6bb5aecc7665634c4989c7ca85a59c000d40c62; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: abc310dd-50d2-453c-989b-5634ecf8eab0
+            X-Runtime:
+              schema:
+                type: number
+                example: '1.973070'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                request_time_off:
+                  _parent_object_id: null
+                  id: 1
+                  user_id: 11284
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  days: 5
+                  day_hours: 8
+                  total_hours: 40
+                  latest_balance: null
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: requested
+                  time_off_reason: family event
+                  managed_reason: null
+  /api/customer/user_role/request_time_offs:
+    post:
+      tags:
+      - Customer > RequstTimeOff
+      summary: create request time off
+      description: "Description\n- - - \n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                request_time_off:
+                  location_id: 2622
+                  start_date: '2021-09-01'
+                  end_date: '2021-09-05'
+                  start_time: '2021-09-01 09:00:00'
+                  end_time: '2021-09-01 17:00:00'
+                  category: pto
+                  time_off_reason: family event
+      security:
+      - noauthAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Fri, 13 Aug 2021 00:37:38 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"978f9fdb6439c6d3dedf438ce47530a4"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=WUI3dC9BbWJMcm1WN25zL0hIck0vcUlwMWx6ZTU5ajBrZWhoQzVid2oxL0k4QjNNQkhlNU1nL1dMaXJtWTh6K2hWSjVpcHh2MHprdXRzMVZDK2Z2QUE9PS0tVXdadGQ4NThQMm40V01ab28rU0NPQT09--f0e5c4746ded56dd8feecd98f1abf24f647b7604; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 395669c7-7aa2-47db-872d-06d495fc2bce
+            X-Runtime:
+              schema:
+                type: number
+                example: '13.284847'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                request_time_off:
+                  _parent_object_id: null
+                  id: 2
+                  user_id: 11284
+                  approver_id: null
+                  managed_at: null
+                  location_id: 2622
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: requested
+                  time_off_reason: family event
+                  managed_reason: null
+  /api/customer/user_role/request_time_offs/{request_time_off_id}/approve:
+    put:
+      tags:
+      - Customer > RequstTimeOff
+      summary: approve request time off
+      description: "Description\n- - - \n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                request_time_off:
+                  latest_balance: 10
+      security:
+      - noauthAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: response[put_return_resource]
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      - name: request_time_off_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Fri, 13 Aug 2021 00:38:22 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"03fa32339333b03f7ad0e1f21659c756"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=bDVPRU9mOTBtTjhXZGtPY3VNODJtbUpoZURqSmpMV0FjVVVpMCtJSjZVS2Y5TmV6eCtvN0t0aDhSbnRzVlkwN21sNnR0NGhRNVo4eWw3NXNlNktPdFE9PS0tL3lQcnE5T2N0eng5d2NLSmlpZUlsUT09--1cf39512649c99db58aecf1d859393f37f7261d5; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 3991f583-f066-42e4-8138-d697d965b3b8
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.285229'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                request_time_off:
+                  _parent_object_id: null
+                  id: 4
+                  user_id: 11284
+                  approver_id: 11284
+                  managed_at: '2021-08-13T00:38:22.181Z'
+                  location_id: 2622
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: approved
+                  time_off_reason: family event
+                  managed_reason: null
+  /api/customer/user_role/request_time_offs/1/deny:
+    put:
+      tags:
+      - Customer > RequstTimeOff
+      summary: deny request time off
+      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                request_time_off:
+                  latest_balance: 10
+      security:
+      - noauthAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: response[put_return_resource]
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Fri, 13 Aug 2021 00:40:19 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"19d8aab176525ad214e91c25d9e8dd1d"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=MzN1Nk9hVVhDeStWT1UxSjdOUG9obkNRUzR0S01tb0xzOVJUUWQ3cUhXR3JCVU5PM0xEdUdEQ0N3UTZvaS9ob2JFbUhTNmlMUElYUktkbTNQaGxkRUE9PS0tREsvNlhvN296bE9GTmJyVDIwY2Fmdz09--1d3734ed206d35826036f0c23557bfde01b9a32b; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: e2c2c37e-b71d-486b-a3b8-5f2918271a65
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.273760'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                request_time_off:
+                  _parent_object_id: null
+                  id: 1
+                  user_id: 11284
+                  approver_id: 11284
+                  managed_at: '2021-08-13T00:40:19.058Z'
+                  location_id: 2622
+                  start_date: '2021-09-01'
+                  start_time: '2021-09-01T09:00:00.000Z'
+                  end_date: '2021-09-05'
+                  end_time: '2021-09-01T17:00:00.000Z'
+                  category: pto
+                  status: denied
+                  time_off_reason: family event
+                  managed_reason: null
+  /api/customer/user_role/request_time_offs/1:
+    delete:
+      tags:
+      - Customer > RequstTimeOff
+      summary: cancel request time off
+      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+      security:
+      - noauthAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '204':
+          description: No Content
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Fri, 13 Aug 2021 02:43:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=amllb25nOWNWUERxZ2VMNFloRjFHQWlKeG1FRzJ4Z1Eyc3I2cWhkL2xnMGJrQmNRL0NKcTFlT2Q1ZTVwTFh5Z01LOUVrTXpQb0hsd1hKUjhHWEFIK2c9PS0tVG9KNUhqTjB0NDdlYm5qRUJ3Ym1BUT09--3a2b6a57e34e91b9e66aece7ab2913e8e31fd2fc; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 8750b79a-3891-4951-b7bc-5e6f727fb105
+            X-Runtime:
+              schema:
+                type: number
+                example: '6.978418'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: null
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

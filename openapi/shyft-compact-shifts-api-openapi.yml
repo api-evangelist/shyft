@@ -1,0 +1,3690 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Compact > Shifts API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Compact > Shifts
+paths:
+  /api/compact/schedule_elements:
+    get:
+      tags:
+      - Compact > Shifts
+      summary: '[shifts] get shifts from associated location'
+      description: "Description\n- - - \n- List the schedule elements for the requested location.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id | integer\nassociated_location_id | integer\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+        example: '10'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"b52f11af022721614d06c148a52f5198"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=QlJITHNBQzBCMVl6M0ltUkhCc0x1Wm1GaWlGMDZ5ak91TlZtOE9lR3Z6YnJIWmpkeUd1eUYzSlNVOFZLcXNQZlBObno2b3lSY2YyVHVNaWJDYnhLZEE9PS0tWVE4WnYvQnpVWi81am0wcnZLS2FaQT09--ab184602350f5bacc5125e8a0687d9d24d95b4a6; path=/; secure; HttpOnly
+            X-Request-Id:
+              schema:
+                type: string
+                example: 5be7dbe9-c63c-4496-8ca8-c8e24ea03ec9
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.173063'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000;
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: '[shifts] get shifts from associated location'
+                  value:
+                    schedule_elements:
+                    - _parent_object_id: null
+                      id: 7709
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-12T12:40:00.000Z'
+                      end_at: '2018-02-12T13:00:00.000Z'
+                      name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                    - _parent_object_id: null
+                      id: 7705
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:00:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 22650
+                    - _parent_object_id: null
+                      id: 7706
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:01:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                    - _parent_object_id: null
+                      id: 7707
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:02:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                    - _parent_object_id: null
+                      id: 7708
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:30:00.000Z'
+                      end_at: '2018-02-13T01:30:00.000Z'
+                      name: shift_inventory
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 22651
+                    - _parent_object_id: null
+                      id: 7710
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T01:00:00.000Z'
+                      end_at: '2018-02-13T02:00:00.000Z'
+                      name: shift_inventory
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 22652
+                    - _parent_object_id: null
+                      id: 7888
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-03-31T16:00:00.000Z'
+                      end_at: '2018-03-31T22:00:00.000Z'
+                      name: shift
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9582
+                      owner_id: 9579
+                      post_id: 23089
+                    - _parent_object_id: null
+                      id: 1117998
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37458
+                    - _parent_object_id: null
+                      id: 1117997
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37457
+                    - _parent_object_id: null
+                      id: 1117996
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37456
+                    - _parent_object_id: null
+                      id: 1117982
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37436
+                    - _parent_object_id: null
+                      id: 1117981
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37435
+                    - _parent_object_id: null
+                      id: 1117980
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37434
+                    - _parent_object_id: null
+                      id: 1117979
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37433
+                    - _parent_object_id: null
+                      id: 1117978
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37432
+                    - _parent_object_id: null
+                      id: 1117977
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37431
+                    - _parent_object_id: null
+                      id: 1117976
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37430
+                    - _parent_object_id: null
+                      id: 1117975
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37429
+                    - _parent_object_id: null
+                      id: 1117974
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37428
+                    - _parent_object_id: null
+                      id: 1117973
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37427
+                    - _parent_object_id: null
+                      id: 1117972
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37426
+                    - _parent_object_id: null
+                      id: 1117971
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37425
+                    - _parent_object_id: null
+                      id: 1117970
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37424
+                    - _parent_object_id: null
+                      id: 1117969
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37423
+                    - _parent_object_id: null
+                      id: 1117968
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37422
+                    meta:
+                      pagination:
+                        current_page: 1
+                        per_page: 25
+                example-1:
+                  summary: '[shifts] get shifts from associated location - with ui_data'
+                  value:
+                    schedule_elements:
+                    - _parent_object_id: null
+                      id: 2607249
+                      location_id: 2806
+                      channel_id: null
+                      start_at: '0002-11-30T10:14:58.000Z'
+                      end_at: '0002-11-30T13:47:58.000Z'
+                      name: shift_inventory
+                      old_name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 12227
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: null
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Etty7337 Burstein is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 2607234
+                      location_id: 2806
+                      channel_id: null
+                      start_at: '0002-11-30T10:14:58.000Z'
+                      end_at: '0002-11-30T13:47:58.000Z'
+                      name: shift_inventory
+                      old_name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 12227
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: null
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Etty7337 Burstein is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 2607325
+                      location_id: 2806
+                      channel_id: null
+                      start_at: '0002-11-30T10:14:58.000Z'
+                      end_at: '0002-11-30T11:25:58.000Z'
+                      name: shift_inventory
+                      old_name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 12227
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: null
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Etty7337 Burstein is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 2607329
+                      location_id: 2806
+                      channel_id: 4927
+                      start_at: '0002-11-30T19:03:58.000Z'
+                      end_at: '0002-12-01T19:03:58.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 12227
+                      post_id: 91999
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: multi_applicants_picked_by_manager
+                      primary_job: null
+                      total_shifts_available: 258
+                      content: "Note  \nTotal Posted: 258\nTotal Available: 258\nTotal Pending: 0\nTotal Approved: 0\n"
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: "Note  \nTotal Posted: 258\nTotal Available: 258\nTotal Pending: 0\nTotal Approved: 0\n"
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 258 Open Shifts
+                    - _parent_object_id: null
+                      id: 1683
+                      location_id: 2
+                      channel_id: null
+                      start_at: '2015-08-21T20:00:00.000Z'
+                      end_at: '2015-08-22T01:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: covered
+                      approver_id: null
+                      coverer_id: 2484
+                      owner_id: 2482
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Alessandro Barone is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 7709
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-12T12:40:00.000Z'
+                      end_at: '2018-02-12T13:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 7705
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:00:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 22650
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A test shift to remind
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A test shift to remind
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 7706
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:01:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 7707
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:02:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 7708
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:30:00.000Z'
+                      end_at: '2018-02-13T01:30:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 22651
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: 'Please cover it '
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 7710
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T01:00:00.000Z'
+                      end_at: '2018-02-13T02:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 22652
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ' Can someone cover it?'
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 7888
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-03-31T16:00:00.000Z'
+                      end_at: '2018-03-31T22:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9582
+                      owner_id: 9579
+                      post_id: 23089
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: Shift up for grabs! Family in town visiting
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Brandon Edwards is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 1117998
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37458
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117997
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37457
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117996
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37456
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117982
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37436
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117981
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37435
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117980
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37434
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117979
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37433
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117978
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37432
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117977
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37431
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117976
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37430
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117975
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37429
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117974
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37428
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117973
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37427
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117972
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37426
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117971
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37425
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117970
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37424
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117969
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37423
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117968
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37422
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117967
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37421
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117963
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37416
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117962
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37415
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1117961
+                      location_id: 2500
+                      channel_id: 4620
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 37414
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 1128222
+                      location_id: 2634
+                      channel_id: null
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2019-04-01T16:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 2570776
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 89621
+                      parent_id: null
+                      child_card: null
+                      cover_mode: multi_applicants_picked_by_manager
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2568894
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 88603
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: multi_applicants_picked_by_manager
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2568893
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 88602
+                      parent_id: null
+                      child_card: null
+                      cover_mode: multi_applicants_picked_by_manager
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2568892
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 88601
+                      parent_id: null
+                      child_card: null
+                      cover_mode: multi_applicants_picked_by_manager
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2566211
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87060
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2566210
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87059
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2566209
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87058
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2566208
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87057
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2566207
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87056
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2566204
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87051
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2566203
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87050
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2566202
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87049
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2566200
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87047
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2566199
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 87046
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2565423
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 86955
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2565421
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 86953
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2565420
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 86952
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2564036
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 86166
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2564007
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85940
+                      parent_id: null
+                      child_card: null
+                      cover_mode: multi_applicants_picked_by_manager
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids:
+                      - 11285
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids:
+                      - 11285
+                      ui_data:
+                        status_message: Employee 1000243 has been denied to take Bin1 Li's shift.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2564005
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift
+                      old_name: shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85933
+                      parent_id: null
+                      child_card: null
+                      cover_mode: multi_applicants_picked_by_manager
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 2564003
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85916
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2564002
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85915
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: null
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2564001
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85914
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: null
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2564000
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85913
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2563999
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85912
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2563998
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85909
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2563997
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85908
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2563862
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85766
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 2561181
+                      location_id: 2622
+                      channel_id: 4743
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 11284
+                      post_id: 85124
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: 5
+                      content: A Test Shift
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A Test Shift
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: 5 Open Shifts
+                    - _parent_object_id: null
+                      id: 668449
+                      location_id: 2622
+                      channel_id: null
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 8199
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Deepak Huuu is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 668448
+                      location_id: 2622
+                      channel_id: null
+                      start_at: '2018-04-01T09:00:00.000Z'
+                      end_at: '2018-04-01T16:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 8199
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Deepak Huuu is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8187
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-09T21:00:00.000Z'
+                      end_at: '2018-04-10T05:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8205
+                      location_id: 5053
+                      channel_id: 7182
+                      start_at: '2018-04-10T00:00:00.000Z'
+                      end_at: '2018-04-10T06:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9576
+                      owner_id: 9582
+                      post_id: 23407
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: 'Elder sitting '
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Peyton Piper is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8207
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-10T00:00:00.000Z'
+                      end_at: '2018-04-10T03:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9578
+                      owner_id: 9576
+                      post_id: 23409
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ''
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Stephen Smith is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8208
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-10T03:30:00.000Z'
+                      end_at: '2018-04-10T06:30:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9578
+                      owner_id: 9576
+                      post_id: 23410
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ''
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Stephen Smith is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8209
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-10T13:00:00.000Z'
+                      end_at: '2018-04-10T17:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9578
+                      owner_id: 9576
+                      post_id: 23411
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ''
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Stephen Smith is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8206
+                      location_id: 5053
+                      channel_id: 7182
+                      start_at: '2018-04-10T15:00:00.000Z'
+                      end_at: '2018-04-10T19:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9576
+                      owner_id: 9582
+                      post_id: 23408
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ''
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Peyton Piper is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8210
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-10T17:30:00.000Z'
+                      end_at: '2018-04-10T21:30:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9578
+                      owner_id: 9576
+                      post_id: 23412
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ''
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Stephen Smith is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8188
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-10T22:00:00.000Z'
+                      end_at: '2018-04-11T04:30:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8211
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-10T22:00:00.000Z'
+                      end_at: '2018-04-11T01:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9576
+                      post_id: 23413
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ''
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: ''
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 8212
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-11T01:30:00.000Z'
+                      end_at: '2018-04-11T06:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9576
+                      post_id: 23414
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ''
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: ''
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 8192
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-12T22:00:00.000Z'
+                      end_at: '2018-04-13T04:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8175
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-13T21:30:00.000Z'
+                      end_at: '2018-04-14T03:30:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9574
+                      owner_id: 9577
+                      post_id: 23391
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: Family event! Any help is greatly appreciated!
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8195
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-14T22:00:00.000Z'
+                      end_at: '2018-04-15T04:30:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8196
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-15T16:00:00.000Z'
+                      end_at: '2018-04-15T20:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8203
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-16T18:00:00.000Z'
+                      end_at: '2018-04-17T01:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9576
+                      owner_id: 9574
+                      post_id: 23405
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: 'My best friends wedding '
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Lauren Perez is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8191
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-16T21:30:00.000Z'
+                      end_at: '2018-04-17T04:30:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8190
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-17T21:00:00.000Z'
+                      end_at: '2018-04-18T05:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8244
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-18T21:00:00.000Z'
+                      end_at: '2018-04-19T05:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 23450
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: ''
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: ''
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 8177
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-18T21:30:00.000Z'
+                      end_at: '2018-04-19T20:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9582
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Peyton Piper is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8201
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-20T08:00:00.000Z'
+                      end_at: '2018-04-20T16:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9582
+                      owner_id: 9574
+                      post_id: 23403
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: 'Concert tickets '
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Lauren Perez is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8176
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-20T21:30:00.000Z'
+                      end_at: '2018-04-21T05:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9582
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Peyton Piper is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8189
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-20T22:00:00.000Z'
+                      end_at: '2018-04-21T05:30:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8199
+                      location_id: 5053
+                      channel_id: 7180
+                      start_at: '2018-04-20T22:00:00.000Z'
+                      end_at: '2018-04-21T05:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9578
+                      owner_id: 9574
+                      post_id: 23401
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: Hey I’m really sick, thanks!
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Lauren Perez is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8259
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-21T16:00:00.000Z'
+                      end_at: '2018-04-22T00:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9576
+                      owner_id: 9577
+                      post_id: 23483
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: 'Doctors appointment '
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8202
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-21T17:00:00.000Z'
+                      end_at: '2018-04-22T00:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9582
+                      owner_id: 9574
+                      post_id: 23404
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: 'Family Picnic '
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Lauren Perez is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8307
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-21T20:30:00.000Z'
+                      end_at: '2018-04-22T02:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 23581
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: Thanks!
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Thanks!
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Team Shift
+                    - _parent_object_id: null
+                      id: 8200
+                      location_id: 5053
+                      channel_id: 7181
+                      start_at: '2018-04-21T22:00:00.000Z'
+                      end_at: '2018-04-22T05:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: approved
+                      approver_id: 9577
+                      coverer_id: 9576
+                      owner_id: 9577
+                      post_id: 23402
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: Family event, any help is appreciated!
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8178
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-23T21:00:00.000Z'
+                      end_at: '2018-04-24T04:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9582
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Peyton Piper is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8245
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-24T00:00:00.000Z'
+                      end_at: '2018-04-24T05:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8179
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-24T21:00:00.000Z'
+                      end_at: '2018-04-25T04:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9582
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Peyton Piper is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8193
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-24T22:00:00.000Z'
+                      end_at: '2018-04-25T04:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8180
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-25T21:00:00.000Z'
+                      end_at: '2018-04-26T04:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9582
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Peyton Piper is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8194
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-25T22:00:00.000Z'
+                      end_at: '2018-04-26T04:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    - _parent_object_id: null
+                      id: 8318
+                      location_id: 5053
+                      channel_id: 7173
+                      start_at: '2018-04-26T22:00:00.000Z'
+                      end_at: '2018-04-27T04:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9577
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: null
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Terry Walters is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: Associate
+                        status_title_2: Scheduled Shift
+                    meta:
+                      pagination:
+                        current_page: 1
+                        per_page: 100
+                example-2:
+                  summary: '[shifts] get shifts from associated location - with ui_data'
+                  value:
+                    schedule_elements:
+                    - _parent_object_id: null
+                      id: 2607249
+                      location_id: 2806
+                      channel_id: null
+                      start_at: '0002-11-30T10:14:58.000Z'
+                      end_at: '0002-11-30T13:47:58.000Z'
+                      name: shift_inventory
+                      old_name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 12227
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: null
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Etty7337 Burstein is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Scheduled Shift
+                        status_needs_reach: false
+                    - _parent_object_id: null
+                      id: 2607234
+                      location_id: 2806
+                      channel_id: null
+                      start_at: '0002-11-30T10:14:58.000Z'
+                      end_at: '0002-11-30T13:47:58.000Z'
+                      name: shift_inventory
+                      old_name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 12227
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: null
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Etty7337 Burstein is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Scheduled Shift
+                        status_needs_reach: false
+                    - _parent_object_id: null
+                      id: 2607325
+                      location_id: 2806
+                      channel_id: null
+                      start_at: '0002-11-30T10:14:58.000Z'
+                      end_at: '0002-11-30T11:25:58.000Z'
+                      name: shift_inventory
+                      old_name: shift_inventory
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 12227
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: null
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Etty7337 Burstein is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Scheduled Shift
+                        status_needs_reach: false
+                    - _parent_object_id: null
+                      id: 2607329
+                      location_id: 2806
+                      channel_id: 4927
+                      start_at: '0002-11-30T19:03:58.000Z'
+                      end_at: '0002-12-01T19:03:58.000Z'
+                      name: open_shift
+                      old_name: open_shift
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 12227
+                      post_id: 91999
+                      parent_id: 0
+                      child_card: false
+                      cover_mode: multi_applicants_picked_by_manager
+                      primary_job: ''
+                      total_shifts_available: 258
+                      content: "Note  \nTotal Posted: 258\nTotal Available: 258\nTotal Pending: 0\nTotal Approved: 0\n"
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: "Note  \nTotal Posted: 258\nTotal Available: 258\nTotal Pending: 0\nTotal Approved: 0\n"
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: 258 Open Shifts
+                        status_needs_reach: true
+                    - _parent_object_id: null
+                      id: 1683
+                      location_id: 2
+                      channel_id: null
+                      start_at: '2015-08-21T20:00:00.000Z'
+                      end_at: '2015-08-22T01:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: covered
+                      approver_id: null
+                      coverer_id: 2484
+                      owner_id: 2482
+                      post_id: null
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Alessandro Barone is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Scheduled Shift
+                        status_needs_reach: false
+                    - _parent_object_id: null
+                      id: 7709
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-12T12:40:00.000Z'
+                      end_at: '2018-02-12T13:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Scheduled Shift
+                        status_needs_reach: false
+                    - _parent_object_id: null
+                      id: 7705
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:00:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 22650
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: A test shift to remind
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: A test shift to remind
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Team Shift
+                        status_needs_reach: true
+                    - _parent_object_id: null
+                      id: 7706
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:01:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Scheduled Shift
+                        status_needs_reach: false
+                    - _parent_object_id: null
+                      id: 7707
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:02:00.000Z'
+                      end_at: '2018-02-13T01:00:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: inventory
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 0
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: null
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Scheduled Shift
+                        status_needs_reach: false
+                    - _parent_object_id: null
+                      id: 7708
+                      location_id: 2634
+                      channel_id: 4755
+                      start_at: '2018-02-13T00:30:00.000Z'
+                      end_at: '2018-02-13T01:30:00.000Z'
+                      name: shift_inventory
+                      old_name: null
+                      trade_status: posted
+                      approver_id: null
+                      coverer_id: null
+                      owner_id: 9064
+                      post_id: 22651
+                      parent_id: null
+                      child_card: null
+                      cover_mode: default
+                      primary_job: ''
+                      total_shifts_available: null
+                      content: 'Please cover it '
+                      current_applicant_status: null
+                      current_applicants_user_ids: []
+                      current_applicants_pending_user_ids: []
+                      current_applicants_approved_user_ids: []
+                      current_applicants_denied_user_ids: []
+                      ui_data:
+                        status_message: Bin3 Li3 is scheduled to start this shift soon.
+                        status_earn: null
+                        status_title_1: ''
+                        status_title_2: Scheduled Shift
+                        status_needs_reach: true
+                    meta:
+                      pagination:
+                        current_page: 1
+                        per_page: 10
+  /api/compact/schedule_elements/all:
+    get:
+      tags:
+      - Compact > Shifts
+      summary: '[shifts] get ALL schedule_elements only with coworker inventory for specific date'
+      description: "Description\n- - - \n- List the schedule elements for the requested location.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id | integer\nassociated_location_id | integer\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+        example: '100'
+      - name: start_after
+        in: query
+        schema:
+          type: string
+        example: '2018-01-01 00:00:00'
+      - name: start_before
+        in: query
+        schema:
+          type: string
+        example: '2018-10-01 00:00:00'
+      - name: only_coworker_inventory
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

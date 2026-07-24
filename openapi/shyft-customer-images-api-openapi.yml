@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Images API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Images
+paths:
+  /api/customer/user_role/images:
+    post:
+      tags:
+      - Customer > Images
+      summary: create a image
+      description: "Description\n- - - \n- Ceate a image to link to other project\n- Return error with existing session ID if same group users session exists\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nimage_name | user_profile<br>user_gallery<br>post_image<br>organization_profile<br>announcement_image<br>schedule_snapshot |  | type of image|\navatar_remote_url |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nimage_name | user_profile<br>user_gallery<br>post_image<br>organization_profile<br>announcement_image<br>schedule_snapshot |  | type of image|\navatar | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nimage_name | user_profile<br>user_gallery<br>post_image<br>organization_profile<br>announcement_image<br>schedule_snapshot |  | type of image|\navatar_base | Base64 file data  | |  |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n\t\"image\": {\n\t\t\"image_name\": \"message_image\",\n\t\t\"avatar_base\": \"data:image/jpeg;base64,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\"\n\t}\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        description: '[MESSION] session token ID. deprecate it soon.'
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"1f5496779b8d750473040f62a55fe836"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=ZVd4Y2dkY1UyTlZTVk03OXc3aFJiazBoNFE4dUp5THAzY0M0Y3JNUnNzQlZvYnJqOHpJRmZXVk5yRml1b2lqaUlGVDhXZlN1Rld2ZE9IdDdRSFdtR0E9PS0tMGFmYWo3RjE2Z0xwSUdUSjh0OXhOZz09--a59827c6f10c322747a77164afecf310c24318a3; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: 408d7589-50fd-4e70-a3a3-c61ce4b0b51a
+            X-Runtime:
+              schema:
+                type: number
+                example: '12.992918'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: close
+            Server:
+              schema:
+                type: string
+                example: thin 1.5.1 codename Straight Razor
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: create a image - remote url
+                  value:
+                    image:
+                      id: 8455
+                      owner_id: 9064
+                      image_type: null
+                      image_name: post_image
+                      comments_count: 0
+                      likes_count: 0
+                      thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8455_logo-shyft.png?1541458200
+                      gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/8455_logo-shyft.png?1541458200
+                      full_url: https://coffeemobile.s3.amazonaws.com/images/full/8455_logo-shyft.png?1541458200
+                      liked: null
+                      flagged: null
+                      created_at: '2018-11-05T22:50:01.169Z'
+                      settings:
+                        image_settings: null
+                example-1:
+                  summary: create a image - use base64
+                  value:
+                    image:
+                      id: 8454
+                      owner_id: 9064
+                      image_type: null
+                      image_name: post_image
+                      comments_count: 0
+                      likes_count: 0
+                      thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8454_data.?1541457950
+                      gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/8454_data.?1541457950
+                      full_url: https://coffeemobile.s3.amazonaws.com/images/full/8454_data.?1541457950
+                      liked: null
+                      flagged: null
+                      created_at: '2018-11-05T22:45:50.795Z'
+                      settings:
+                        image_settings: null
+                example-2:
+                  summary: create a image - chat image
+                  value:
+                    image:
+                      id: 9383
+                      owner_id: 1
+                      image_type: 8
+                      image_name: message_image
+                      avatar_meta: '[268, 188]'
+                      comments_count: 0
+                      likes_count: 0
+                      thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/9383_file.png?1544511947
+                      gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/9383_file.png?1544511947
+                      full_url: https://coffeemobile.s3.amazonaws.com/images/full/9383_file.png?1544511947
+                      liked: null
+                      flagged: null
+                      created_at: '2018-12-11T07:05:48.522Z'
+                      class_name: Image
+                example-3:
+                  summary: create a image - form file
+                  value:
+                    image:
+                      id: 18704
+                      owner_id: 14566
+                      image_type: 4
+                      image_name: post_image
+                      avatar_meta: '[3024, 4032]'
+                      comments_count: 0
+                      likes_count: 0
+                      thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18704_IMG_3783.jpg?1636002416
+                      gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18704_IMG_3783.jpg?1636002416
+                      full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/original/18704_IMG_3783.jpg?1636002416
+                      original_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/original/18704_IMG_3783.jpg?1636002416
+                      liked: null
+                      flagged: null
+                      created_at: '2021-11-04T05:06:59.320Z'
+                      class_name: Image
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

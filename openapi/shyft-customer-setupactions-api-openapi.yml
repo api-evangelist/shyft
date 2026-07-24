@@ -1,0 +1,472 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > SetupActions API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > SetupActions
+paths:
+  /api/customer/user_role/setup_actions:
+    get:
+      tags:
+      - Customer > SetupActions
+      summary: '[users] get setup actions'
+      description: "All supported actions types: \n[\"action_cancel\", \"action_update_app\", \"action_logout\", \"action_switch_location\", \"action_update_cache\", \"action_goto_screen\", \"action_goto_page\", \"action_call_api\", \"action_prompt\", \"action_sso_logout\", \"action_restart_app\"]\n\nFor test purpose, you can supply `sample=true` parameter to get samples actions. Sample actions will not be erased upon visit.\n\nMany actions are user specific.\n\nMeta data only show when supplied the associated `location_id` parameter."
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: query
+        schema:
+          type: string
+        example: '{{sso_lbrand_location_id}}'
+      - name: local_auth
+        in: query
+        schema:
+          type: boolean
+        example: 'false'
+      responses:
+        '200':
+          description: 'OK '
+          headers:
+            Platform:
+              schema:
+                type: string
+                example: '{{platform}}'
+            Version:
+              schema:
+                type: string
+                example: '{{version}}'
+            Build-Number:
+              schema:
+                type: string
+                example: '{{build_number}}'
+            Push-Id:
+              schema:
+                type: string
+                example: '{{push_id}}'
+            X-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Session-Token:
+              schema:
+                type: string
+                example: '{{session_token}}'
+            Session-Uukey:
+              schema:
+                type: string
+                example: '{{session_uukey}}'
+            Authorization:
+              schema:
+                type: string
+                example: Token token={{api_key_access_token}}
+            Uid:
+              schema:
+                type: string
+                example: '{{uid}}'
+            Auth-Category:
+              schema:
+                type: string
+                example: '{{auth_category}}'
+            Auth-Target:
+              schema:
+                type: string
+                example: '{{auth_target}}'
+            Token-Type:
+              schema:
+                type: string
+                example: Bearer
+            Client:
+              schema:
+                type: string
+                example: '{{client}}'
+            Access-Token:
+              schema:
+                type: string
+                example: '{{access_token}}'
+            Expiry:
+              schema:
+                type: string
+                example: '{{expiry}}'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                setup_actions:
+                - _parent_object_id: null
+                  id: 28
+                  user_id: null
+                  operation: action_sso_logout
+                  options:
+                    location_id: 2634
+                    url: https://onelogonqa.gap.com/as/authorization.oauth2?response_type=code&redirect_uri=https://test-service.myshyft.com/gap_oauth&client_id=Shyftqa&scope=openid profile&response_mode=form_post
+                    redirect_uri: https://test-service.myshyft.com/gap_oauth
+                    sso_provider_name: sso_gap
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 3
+                  user_id: 9064
+                  operation: action_sso_logout
+                  options:
+                    location_id: 2634
+                    url: https://onelogonqa.gap.com/as/authorization.oauth2?response_type=code&redirect_uri=https://test-service.myshyft.com/gap_oauth&client_id=Shyftqa&scope=openid profile&response_mode=form_post
+                    redirect_uri: https://test-service.myshyft.com/gap_oauth
+                    sso_provider_name: sso_gap
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 30
+                  user_id: 9064
+                  operation: action_tos
+                  options:
+                    tos_url: https://www.myshyft.com/terms-app.html
+                    version: '1.0'
+                    news_id: 100
+                    location_id: 2634
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 2
+                  user_id: 9064
+                  operation: action_logout
+                  options: null
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 10
+                  user_id: 9064
+                  operation: action_prompt
+                  options:
+                    title: page visit
+                    message: choose a button to click
+                    news_id: 1000
+                    icon_url: http://www.google.com
+                    actions:
+                    - id: 9
+                      user_id: 9064
+                      operation: action_call_api
+                      title: button1
+                      options:
+                        url: http://www.google.com/
+                        method: get
+                        body: ''
+                    - id: 9
+                      user_id: 9064
+                      operation: action_call_api
+                      title: button1
+                      options:
+                        url: http://www.google.com/
+                        method: get
+                        body: ''
+                    - id: 9
+                      user_id: 9064
+                      operation: action_call_api
+                      title: button1
+                      options:
+                        url: http://www.google.com/
+                        method: get
+                        body: ''
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 21
+                  user_id: 9064
+                  operation: action_goto_page
+                  options:
+                    url: http://google.com
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 14
+                  user_id: 9064
+                  operation: action_goto_screen
+                  options:
+                    url: screen://user_profile/
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 12
+                  user_id: 9064
+                  operation: action_switch_location
+                  options:
+                    location_id: 1
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 11
+                  user_id: 9064
+                  operation: action_update_cache
+                  options:
+                    location_id: 1
+                    user_id: 1
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: 9
+                  user_id: 9064
+                  operation: action_call_api
+                  options:
+                    url: http://www.google.com/
+                    method: get
+                    body: ''
+                  platform: null
+                  build_start: null
+                  build_end: null
+                - _parent_object_id: null
+                  id: null
+                  user_id: 9064
+                  operation: action_sso_logout
+                  options:
+                    location_id: 2634
+                    url: https://onelogonqa.gap.com/as/authorization.oauth2?response_type=code&redirect_uri=https://test-service.myshyft.com/gap_oauth&client_id=Shyftqa&scope=openid profile&response_mode=form_post
+                    redirect_uri: https://test-service.myshyft.com/gap_oauth
+                    sso_provider_name: sso_gap
+                  platform: null
+                  build_start: null
+                  build_end: null
+                meta:
+                  current_user_privilege:
+                    _parent_object_id: null
+                    id: 11044
+                    email: bin@myshyft.com
+                    wage: 15
+                    position: Shyft Assis!
+                    is_approved: true
+                    owner_id: 9064
+                    location_id: 2634
+                    org_id: 1
+                    is_admin: true
+                    read_only: false
+                    first_name: Bin
+                    last_name: Li
+                    phone_number: '18083836511'
+                    profile_image_thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                    location:
+                      _parent_object_id: 11044
+                      id: 2634
+                      swift_code: 6UA3LI
+                      location_name: Gap - 7734
+                      unit_number: null
+                      street_number: null
+                      address: 1 Premium Outlet Blvd
+                      province: MA
+                      postal: '2093'
+                      country: United States
+                      lat: null
+                      lng: null
+                      latitude: 42.0381775
+                      longitude: -71.3524352
+                      phone_number: null
+                      created_at: '2018-01-18T06:33:13.382Z'
+                      users_count: 2
+                      formatted_address: 1 Premium Outlet Blvd, Wrentham, MA 02093, United States
+                      time_zone: null
+                      google_map_id: ChIJx-n2y8Bl5IkRuNonuunKN_c
+                      allow_tipping: true
+                      shift_require_approval: true
+                      shyft_pro_active: true
+                      shyft_pro_expiry_date: '2019-01-18T06:33:13.328Z'
+                      member_count: 2
+                      location_address: null
+                      location_city: WRENTHAM, MA, 2093
+                      division_names:
+                      - Boston
+                      feed_channel_id: 4755
+                    user:
+                      _parent_object_id: 11044
+                      id: 9064
+                      active_org: 0
+                      first_name: Bin
+                      last_name: Li
+                      email: bin@myshyft.com
+                      gender: 0
+                      user_group: 0
+                      profile_image:
+                        thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                        gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/8352_data.?1512600950
+                        full_url: https://coffeemobile.s3.amazonaws.com/images/full/8352_data.?1512600950
+                      recent_user_privilege:
+                        _parent_object_id: 9064
+                        id: 10684
+                        email: bin@myshyft.com
+                        wage: 15
+                        position: engineer
+                        is_approved: true
+                        owner_id: 9064
+                        location_id: 1658
+                        org_id: 1
+                        is_admin: true
+                        read_only: false
+                        first_name: Bin
+                        last_name: Li
+                        phone_number: '18083836511'
+                        profile_image_thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                        current_availability: null
+                        location:
+                          _associations_removed: true
+                          _parent_object_id: 10684
+                          id: 1658
+                          swift_code: EGDMIE
+                          location_name: Dog In The Park
+                          unit_number: null
+                          street_number: null
+                          address: 1520 4th Ave
+                          province: WA
+                          postal: '98101'
+                          country: United States
+                          lat: '47.611039'
+                          lng: '-122.337404'
+                          latitude: 47.6108886
+                          longitude: -122.336651
+                          phone_number: null
+                          created_at: '2016-03-13T02:56:14.302Z'
+                          users_count: 5
+                          formatted_address: 1520 4th Ave, Seattle, WA 98101, USA
+                          time_zone: null
+                          google_map_id: ChIJhauVnrRqkFQRhBms88INzM0
+                          allow_tipping: true
+                          shift_require_approval: true
+                          shyft_pro_active: false
+                          shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                          member_count: 1
+                          location_address: null
+                          location_city: Seattle, WA, 98101
+                          division_names: []
+                          feed_channel_id: 3424
+                        user:
+                          _associations_removed: true
+                          _parent_object_id: 10684
+                          id: 9064
+                          active_org: 0
+                          first_name: Bin
+                          last_name: Li
+                          email: bin@myshyft.com
+                          gender: 0
+                          user_group: 0
+                  current_user:
+                    _parent_object_id: null
+                    id: 9064
+                    active_org: 0
+                    first_name: Bin
+                    last_name: Li
+                    email: bin@myshyft.com
+                    gender: 0
+                    user_group: 0
+                    profile_image:
+                      thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                      gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/8352_data.?1512600950
+                      full_url: https://coffeemobile.s3.amazonaws.com/images/full/8352_data.?1512600950
+                    recent_user_privilege:
+                      _parent_object_id: 9064
+                      id: 10684
+                      email: bin@myshyft.com
+                      wage: 15
+                      position: engineer
+                      is_approved: true
+                      owner_id: 9064
+                      location_id: 1658
+                      org_id: 1
+                      is_admin: true
+                      read_only: false
+                      first_name: Bin
+                      last_name: Li
+                      phone_number: '18083836511'
+                      profile_image_thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                      current_availability: null
+                      location:
+                        _parent_object_id: 10684
+                        id: 1658
+                        swift_code: EGDMIE
+                        location_name: Dog In The Park
+                        unit_number: null
+                        street_number: null
+                        address: 1520 4th Ave
+                        province: WA
+                        postal: '98101'
+                        country: United States
+                        lat: '47.611039'
+                        lng: '-122.337404'
+                        latitude: 47.6108886
+                        longitude: -122.336651
+                        phone_number: null
+                        created_at: '2016-03-13T02:56:14.302Z'
+                        users_count: 5
+                        formatted_address: 1520 4th Ave, Seattle, WA 98101, USA
+                        time_zone: null
+                        google_map_id: ChIJhauVnrRqkFQRhBms88INzM0
+                        allow_tipping: true
+                        shift_require_approval: true
+                        shyft_pro_active: false
+                        shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                        member_count: 1
+                        location_address: null
+                        location_city: Seattle, WA, 98101
+                        division_names: []
+                        feed_channel_id: 3424
+                      user:
+                        _parent_object_id: 10684
+                        id: 9064
+                        active_org: 0
+                        first_name: Bin
+                        last_name: Li
+                        email: bin@myshyft.com
+                        gender: 0
+                        user_group: 0
+                        profile_image:
+                          thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                          gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/8352_data.?1512600950
+                          full_url: https://coffeemobile.s3.amazonaws.com/images/full/8352_data.?1512600950
+                        recent_user_privilege:
+                          _associations_removed: true
+                          _parent_object_id: 9064
+                          id: 10684
+                          email: bin@myshyft.com
+                          wage: 15
+                          position: engineer
+                          is_approved: true
+                          owner_id: 9064
+                          location_id: 1658
+                          org_id: 1
+                          is_admin: true
+                          read_only: false
+                          first_name: Bin
+                          last_name: Li
+                          phone_number: '18083836511'
+                          profile_image_thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

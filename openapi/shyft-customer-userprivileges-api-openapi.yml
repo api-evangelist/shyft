@@ -1,0 +1,1394 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > UserPrivileges API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > UserPrivileges
+paths:
+  /api/customer/user_role/user_privileges/can_view:
+    get:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege] get viewable user privileges'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: cbe20296-eba0-4f2e-92a7-5fca6bcad651
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/user_privileges:
+    get:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege] get my user privileges'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: sso_is
+        in: query
+        schema:
+          type: string
+        example: sso_gap
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege] join a location'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"user_privilege\": {\n  \t\"location_id\": 11, \n  \t\"position\": \"engineer\", \n  \t\"internal_id\": \"00000000\"\n  }\n}"'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '422':
+          description: Unprocessable Entity
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Thu, 13 May 2021 00:06:44 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=R0IyZW9SWWxjZ2hJUDJWeFJZbG1SWDdUNEpJNlVKSWJOTG1OUEJHcmZCSjIyRXdLWDJhb3RTMU4rTjZpWHBIVThXeWlUSkFMQTQ1VEVhcG1aeS9ZT0E9PS0tRkh6VmZ4bHFVT3JWTVcxTkdhV0JyZz09--5f5606aa176904b5b0e75f8087d8d6946bfc9682; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: f4a27326-6b31-46f2-a45c-595ca1930194
+            X-Runtime:
+              schema:
+                type: number
+                example: '41.913469'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                errors:
+                  user:
+                  - code: ERR_UP_0001
+                    message: You are already a team member at this location
+  /api/customer/user_role/user_privileges/can_admin:
+    get:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege] get manageable user privileges'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: approved
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      - name: pending
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      - name: removed
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/user_privileges/{user_privilege_id}/settings:
+    get:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege] get a user privilege settings'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: user_privilege_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/user_privileges/11334/approve:
+    put:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege]  approve user privilege'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"user_privilege\": {\n    \"wage\": 200,\n    \"position\": \"engineer2\"\n  }\n}"'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/user_privileges/21561:
+    put:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege]  update user privilege'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"user_privilege\": {\n    \"wage\": 200,\n    \"position\": \"engineer2\",\n    \"badge_id\": \"A0000002\"\n  }\n}"'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: response[put_return_resource]
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"73f56d64d55de28ef096f6acfe76f263"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=bFE4aFZzcjBtc3dhMTVCeGw4MTlRcUoycE9IbTJBcXlhblJlbmMxWDRqUE1HUGI2MWsyQ3Z5YkNNR01ibldxVUFrYnFONFk0OHlRRHI3dWFmMmlPOEE9PS0tNytVUFRGQWxVeVJNN1pZZmdHMzN1QT09--deee68a1cd92c3f6d55db66fdedea38cbf302936; path=/; secure; HttpOnly
+            X-Request-Id:
+              schema:
+                type: string
+                example: 6e9e1430-a271-429d-9897-ab3ee8b1d678
+            X-Runtime:
+              schema:
+                type: number
+                example: '2.531069'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000;
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: '[user_privilege]  update user privilege - badge ID'
+                  value:
+                    user_privilege:
+                      _parent_object_id: null
+                      id: 21568
+                      email: bin@myshyft.com
+                      wage: 200
+                      position: engineer2
+                      badge_id: '00000001'
+                      is_approved: true
+                      owner_id: 14815
+                      location_id: 5459
+                      org_id: 1
+                      is_admin: false
+                      read_only: false
+                      first_name: Bin
+                      last_name: Li
+                      phone_number: '18083836511'
+                      profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                      chat_handle: 8c1e4b01e6585ab51ecee9c9c6ca8306
+                      admin_claim_pending: false
+                      status: active
+                      allow_toggle_approve: null
+                      allow_toggle_shift_approval: null
+                      allow_toggle_dashboard: null
+                      allow_toggle_delete_content: null
+                      allow_toggle_tipping: null
+                      allow_approve: null
+                      allow_shift_approve: null
+                      allow_delete_user: null
+                      allow_delete_post: null
+                      allow_delete_schedule: null
+                      allow_tipping: null
+                      allow_delete_shift_inventory: null
+                      allow_delete_shift_posted: null
+                      allow_delete_shift_covered: null
+                      allow_delete_shift_pending: null
+                      allow_delete_shift_approved: null
+                      allow_delete_shift_rejected: null
+                      department_ids: []
+                      location:
+                        _parent_object_id: 21568
+                        id: 5459
+                        swift_code: CMSDEMO
+                        location_name: CMS Demo
+                        unit_number: '3131'
+                        street_number: ''
+                        address: 3131 Western Ave STE 515
+                        province: WA
+                        postal: '98121'
+                        country: USA
+                        lat: null
+                        lng: null
+                        latitude: 47.6181458
+                        longitude: -122.3574266
+                        phone_number: ''
+                        created_at: '2018-11-30T07:39:06.912Z'
+                        users_count: 138
+                        formatted_address: '3131 Western Ave STE 515 #3131, Seattle, WA 98121, USA'
+                        time_zone: America/Los_Angeles
+                        google_map_id: ChIJE2hfuLRqkFQRxQj8zSjtks8
+                        four_sq_id: null
+                        allow_tipping: true
+                        shift_require_approval: true
+                        shyft_pro_active: true
+                        shyft_pro_expiry_date: '2026-12-31T04:37:00.000Z'
+                        fence_radius: null
+                        cfg_not_dm: false
+                        cfg_geofence_log: false
+                        cfg_timeout: null
+                        cfg_vto: true
+                        cfg_call_off: null
+                        tos_url: ''
+                        tos_version: null
+                        require_approval: true
+                        documents:
+                        - title: Shyft Terms of Service
+                          url: https://myshyft.com/terms.en.html
+                        shyft_pro_subscription_status: 0
+                        admin_delete_content: true
+                        ip_blocked: false
+                        member_count: 17
+                        location_address: null
+                        location_city: Seattle, WA, 98121
+                        feed_channel_id: 7780
+                        pending_users_count: 1
+                        shyft_pro_trial_flag: false
+                        is_sso_required: false
+                        cfg_exclude_coworker_schedules: false
+                        cfg_exclude_coworker_schedules_from_admins: false
+                        cfg_user_signup_show_email: false
+                        available_cover_modes:
+                        - multi_applicants_picked_by_manager
+                        - default
+                        default_cover_mode: multi_applicants_picked_by_manager
+                        configuration: null
+                        avatar_blob:
+                          _parent_object_id: 5459
+                          id: 1558
+                          content_type: image/png
+                          service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/ESqAnhE3jTNaaUH6964arcDt?sp=r&sv=2016-05-31&se=2023-01-09T23%3A09%3A10Z&rscd=inline%3B+filename%3D%22shyft.png%22%3B+filename*%3DUTF-8%27%27shyft.png&rsct=image%2Fpng&sr=b&sig=FfxUPRvhOg7%2FVFIPSYHMnsKK8QEOSUj0uZKv0vLp0ws%3D
+                          filename: shyft.png
+                          byte_size: 15423
+                          blob_url: https://test-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlHIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42b195047758699474376584dc2e1179889b1be7/shyft.png
+                          preview_blob_url: null
+                      user:
+                        _parent_object_id: 21568
+                        id: 14815
+                        active_org: 0
+                        first_name: Bin
+                        last_name: Li
+                        email: bin@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 8c1e4b01e6585ab51ecee9c9c6ca8306
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398
+                        current_position: Cashier1
+                        current_user_privilege_id: 21574
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        cfg_lock_profile: null
+                        skill_ids:
+                        - 3
+                        locale: en
+                        profile_image:
+                          thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                          gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398
+                          full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398
+                        recent_user_privilege:
+                          _parent_object_id: 14815
+                          id: 21574
+                          email: bin@myshyft.com
+                          wage: null
+                          position: Cashier1
+                          badge_id: null
+                          is_approved: true
+                          owner_id: 14815
+                          location_id: 2806
+                          org_id: 1
+                          is_admin: true
+                          read_only: false
+                          first_name: Bin
+                          last_name: Li
+                          phone_number: '18083836511'
+                          profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                          chat_handle: 8c1e4b01e6585ab51ecee9c9c6ca8306
+                          admin_claim_pending: false
+                          status: active
+                          allow_toggle_approve: null
+                          allow_toggle_shift_approval: true
+                          allow_toggle_dashboard: null
+                          allow_toggle_delete_content: null
+                          allow_toggle_tipping: null
+                          allow_approve: null
+                          allow_shift_approve: null
+                          allow_delete_user: null
+                          allow_delete_post: null
+                          allow_delete_schedule: null
+                          allow_tipping: null
+                          allow_delete_shift_inventory: null
+                          allow_delete_shift_posted: null
+                          allow_delete_shift_covered: null
+                          allow_delete_shift_pending: null
+                          allow_delete_shift_approved: null
+                          allow_delete_shift_rejected: null
+                          department_ids: []
+                          location:
+                            _associations_removed: true
+                            _parent_object_id: 21574
+                            id: 2806
+                            swift_code: RSZPNM
+                            location_name: Mysterious Red X
+                            unit_number: ''
+                            street_number: ''
+                            address: 1111 18th Avenue
+                            province: Washington
+                            postal: '98122'
+                            country: United States
+                            lat: '47.612037'
+                            lng: '-122.309243'
+                            latitude: 47.6120608
+                            longitude: -122.3092501
+                            phone_number: +1 206-300-2056
+                            created_at: '2018-01-24T21:25:21.654Z'
+                            users_count: 288
+                            formatted_address: 1111 18th Ave, Seattle, WA 98122, USA
+                            time_zone: America/Los_Angeles
+                            google_map_id: ChIJf5JaJNBqkFQRkwKIHwjwbDA
+                            four_sq_id: null
+                            allow_tipping: true
+                            shift_require_approval: true
+                            shyft_pro_active: true
+                            shyft_pro_expiry_date: '2017-09-04T04:37:00.000Z'
+                            fence_radius: null
+                            cfg_not_dm: false
+                            cfg_geofence_log: false
+                            cfg_timeout: null
+                            cfg_vto: true
+                            cfg_call_off: true
+                            tos_url: ''
+                            tos_version: null
+                            require_approval: true
+                            documents:
+                            - title: Shyft Terms of Service
+                              url: https://myshyft.com/terms.en.html
+                            shyft_pro_subscription_status: 0
+                            admin_delete_content: true
+                            ip_blocked: false
+                            member_count: 139
+                            location_address: null
+                            location_city: Seattle, Washington, 98122
+                            feed_channel_id: 4927
+                            pending_users_count: 0
+                            shyft_pro_trial_flag: false
+                            is_sso_required: false
+                            cfg_exclude_coworker_schedules: false
+                            cfg_exclude_coworker_schedules_from_admins: false
+                            cfg_user_signup_show_email: true
+                            available_cover_modes:
+                            - multi_applicants_picked_by_manager
+                            - default
+                            default_cover_mode: multi_applicants_picked_by_manager
+                          user:
+                            _associations_removed: true
+                            _parent_object_id: 21574
+                            id: 14815
+                            active_org: 0
+                            first_name: Bin
+                            last_name: Li
+                            email: bin@myshyft.com
+                            phone_number: '18083836511'
+                            gender: 0
+                            chat_handle: 8c1e4b01e6585ab51ecee9c9c6ca8306
+                            user_group: 0
+                            status: ''
+                            push_settings_list:
+                              shift_push:
+                                label: Shift Notifications
+                                type: boolean
+                              schedule_push:
+                                label: Schedule Notifications
+                                type: boolean
+                              community_push:
+                                label: Community Notifications
+                                type: boolean
+                            push_settings_list_array:
+                            - label: Shift Notifications
+                              type: boolean
+                              key: shift_push
+                            - label: Schedule Notifications
+                              type: boolean
+                              key: schedule_push
+                            - label: Community Notifications
+                              type: boolean
+                              key: community_push
+                            thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                            gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398
+                            full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398
+                            current_position: Cashier1
+                            current_user_privilege_id: 21574
+                            current_is_approved: true
+                            current_is_admin: true
+                            all_push: true
+                            shift_push: true
+                            schedule_push: true
+                            community_push: true
+                            cfg_ewa_ok: null
+                            cfg_lock_profile: null
+                            skill_ids:
+                            - 3
+                            locale: en
+                          pending_legals: []
+                      pending_legals: []
+                example-1:
+                  summary: '[user_privilege]  update user privilege - associate can not change existing badge_id'
+                  value:
+                    user_privilege:
+                      _parent_object_id: null
+                      id: 21568
+                      email: bin@myshyft.com
+                      wage: 200
+                      position: engineer2
+                      badge_id: '00000001'
+                      is_approved: true
+                      owner_id: 14815
+                      location_id: 5459
+                      org_id: 1
+                      is_admin: false
+                      read_only: false
+                      first_name: Bin
+                      last_name: Li
+                      phone_number: '18083836511'
+                      profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                      chat_handle: 8c1e4b01e6585ab51ecee9c9c6ca8306
+                      admin_claim_pending: false
+                      status: active
+                      allow_toggle_approve: null
+                      allow_toggle_shift_approval: null
+                      allow_toggle_dashboard: null
+                      allow_toggle_delete_content: null
+                      allow_toggle_tipping: null
+                      allow_approve: null
+                      allow_shift_approve: null
+                      allow_delete_user: null
+                      allow_delete_post: null
+                      allow_delete_schedule: null
+                      allow_tipping: null
+                      allow_delete_shift_inventory: null
+                      allow_delete_shift_posted: null
+                      allow_delete_shift_covered: null
+                      allow_delete_shift_pending: null
+                      allow_delete_shift_approved: null
+                      allow_delete_shift_rejected: null
+                      department_ids: []
+                      location:
+                        _parent_object_id: 21568
+                        id: 5459
+                        swift_code: CMSDEMO
+                        location_name: CMS Demo
+                        unit_number: '3131'
+                        street_number: ''
+                        address: 3131 Western Ave STE 515
+                        province: WA
+                        postal: '98121'
+                        country: USA
+                        lat: null
+                        lng: null
+                        latitude: 47.6181458
+                        longitude: -122.3574266
+                        phone_number: ''
+                        created_at: '2018-11-30T07:39:06.912Z'
+                        users_count: 138
+                        formatted_address: '3131 Western Ave STE 515 #3131, Seattle, WA 98121, USA'
+                        time_zone: America/Los_Angeles
+                        google_map_id: ChIJE2hfuLRqkFQRxQj8zSjtks8
+                        four_sq_id: null
+                        allow_tipping: true
+                        shift_require_approval: true
+                        shyft_pro_active: true
+                        shyft_pro_expiry_date: '2026-12-31T04:37:00.000Z'
+                        fence_radius: null
+                        cfg_not_dm: false
+                        cfg_geofence_log: false
+                        cfg_timeout: null
+                        cfg_vto: true
+                        cfg_call_off: null
+                        tos_url: ''
+                        tos_version: null
+                        require_approval: true
+                        documents:
+                        - title: Shyft Terms of Service
+                          url: https://myshyft.com/terms.en.html
+                        shyft_pro_subscription_status: 0
+                        admin_delete_content: true
+                        ip_blocked: false
+                        member_count: 17
+                        location_address: null
+                        location_city: Seattle, WA, 98121
+                        feed_channel_id: 7780
+                        pending_users_count: 1
+                        shyft_pro_trial_flag: false
+                        is_sso_required: false
+                        cfg_exclude_coworker_schedules: false
+                        cfg_exclude_coworker_schedules_from_admins: false
+                        cfg_user_signup_show_email: false
+                        available_cover_modes:
+                        - multi_applicants_picked_by_manager
+                        - default
+                        default_cover_mode: multi_applicants_picked_by_manager
+                        configuration: null
+                        avatar_blob:
+                          _parent_object_id: 5459
+                          id: 1558
+                          content_type: image/png
+                          service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/ESqAnhE3jTNaaUH6964arcDt?sp=r&sv=2016-05-31&se=2023-01-09T23%3A10%3A41Z&rscd=inline%3B+filename%3D%22shyft.png%22%3B+filename*%3DUTF-8%27%27shyft.png&rsct=image%2Fpng&sr=b&sig=I185dGTvjzKk1vHV%2B8gfOaFt36gOBBz7GLWJxL8T7rk%3D
+                          filename: shyft.png
+                          byte_size: 15423
+                          blob_url: https://test-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlHIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42b195047758699474376584dc2e1179889b1be7/shyft.png
+                          preview_blob_url: null
+                      user:
+                        _parent_object_id: 21568
+                        id: 14815
+                        active_org: 0
+                        first_name: Bin
+                        last_name: Li
+                        email: bin@myshyft.com
+                        phone_number: '18083836511'
+                        gender: 0
+                        chat_handle: 8c1e4b01e6585ab51ecee9c9c6ca8306
+                        user_group: 0
+                        status: ''
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398
+                        current_position: Cashier1
+                        current_user_privilege_id: 21574
+                        current_is_approved: true
+                        current_is_admin: true
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        cfg_lock_profile: null
+                        skill_ids:
+                        - 3
+                        locale: en
+                        profile_image:
+                          thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                          gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398
+                          full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398
+                        recent_user_privilege:
+                          _parent_object_id: 14815
+                          id: 21574
+                          email: bin@myshyft.com
+                          wage: null
+                          position: Cashier1
+                          badge_id: null
+                          is_approved: true
+                          owner_id: 14815
+                          location_id: 2806
+                          org_id: 1
+                          is_admin: true
+                          read_only: false
+                          first_name: Bin
+                          last_name: Li
+                          phone_number: '18083836511'
+                          profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                          chat_handle: 8c1e4b01e6585ab51ecee9c9c6ca8306
+                          admin_claim_pending: false
+                          status: active
+                          allow_toggle_approve: null
+                          allow_toggle_shift_approval: true
+                          allow_toggle_dashboard: null
+                          allow_toggle_delete_content: null
+                          allow_toggle_tipping: null
+                          allow_approve: null
+                          allow_shift_approve: null
+                          allow_delete_user: null
+                          allow_delete_post: null
+                          allow_delete_schedule: null
+                          allow_tipping: null
+                          allow_delete_shift_inventory: null
+                          allow_delete_shift_posted: null
+                          allow_delete_shift_covered: null
+                          allow_delete_shift_pending: null
+                          allow_delete_shift_approved: null
+                          allow_delete_shift_rejected: null
+                          department_ids: []
+                          location:
+                            _associations_removed: true
+                            _parent_object_id: 21574
+                            id: 2806
+                            swift_code: RSZPNM
+                            location_name: Mysterious Red X
+                            unit_number: ''
+                            street_number: ''
+                            address: 1111 18th Avenue
+                            province: Washington
+                            postal: '98122'
+                            country: United States
+                            lat: '47.612037'
+                            lng: '-122.309243'
+                            latitude: 47.6120608
+                            longitude: -122.3092501
+                            phone_number: +1 206-300-2056
+                            created_at: '2018-01-24T21:25:21.654Z'
+                            users_count: 288
+                            formatted_address: 1111 18th Ave, Seattle, WA 98122, USA
+                            time_zone: America/Los_Angeles
+                            google_map_id: ChIJf5JaJNBqkFQRkwKIHwjwbDA
+                            four_sq_id: null
+                            allow_tipping: true
+                            shift_require_approval: true
+                            shyft_pro_active: true
+                            shyft_pro_expiry_date: '2017-09-04T04:37:00.000Z'
+                            fence_radius: null
+                            cfg_not_dm: false
+                            cfg_geofence_log: false
+                            cfg_timeout: null
+                            cfg_vto: true
+                            cfg_call_off: true
+                            tos_url: ''
+                            tos_version: null
+                            require_approval: true
+                            documents:
+                            - title: Shyft Terms of Service
+                              url: https://myshyft.com/terms.en.html
+                            shyft_pro_subscription_status: 0
+                            admin_delete_content: true
+                            ip_blocked: false
+                            member_count: 139
+                            location_address: null
+                            location_city: Seattle, Washington, 98122
+                            feed_channel_id: 4927
+                            pending_users_count: 0
+                            shyft_pro_trial_flag: false
+                            is_sso_required: false
+                            cfg_exclude_coworker_schedules: false
+                            cfg_exclude_coworker_schedules_from_admins: false
+                            cfg_user_signup_show_email: true
+                            available_cover_modes:
+                            - multi_applicants_picked_by_manager
+                            - default
+                            default_cover_mode: multi_applicants_picked_by_manager
+                          user:
+                            _associations_removed: true
+                            _parent_object_id: 21574
+                            id: 14815
+                            active_org: 0
+                            first_name: Bin
+                            last_name: Li
+                            email: bin@myshyft.com
+                            phone_number: '18083836511'
+                            gender: 0
+                            chat_handle: 8c1e4b01e6585ab51ecee9c9c6ca8306
+                            user_group: 0
+                            status: ''
+                            push_settings_list:
+                              shift_push:
+                                label: Shift Notifications
+                                type: boolean
+                              schedule_push:
+                                label: Schedule Notifications
+                                type: boolean
+                              community_push:
+                                label: Community Notifications
+                                type: boolean
+                            push_settings_list_array:
+                            - label: Shift Notifications
+                              type: boolean
+                              key: shift_push
+                            - label: Schedule Notifications
+                              type: boolean
+                              key: schedule_push
+                            - label: Community Notifications
+                              type: boolean
+                              key: community_push
+                            thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398
+                            gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398
+                            full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398
+                            current_position: Cashier1
+                            current_user_privilege_id: 21574
+                            current_is_approved: true
+                            current_is_admin: true
+                            all_push: true
+                            shift_push: true
+                            schedule_push: true
+                            community_push: true
+                            cfg_ewa_ok: null
+                            cfg_lock_profile: null
+                            skill_ids:
+                            - 3
+                            locale: en
+                          pending_legals: []
+                      pending_legals: []
+                example-2:
+                  summary: '[user_privilege]  update user privilege - admin can change badge_id anytime'
+                  value:
+                    user_privilege:
+                      _parent_object_id: null
+                      id: 21561
+                      email: null
+                      wage: 200
+                      position: engineer2
+                      badge_id: A0000002
+                      is_approved: true
+                      owner_id: 14794
+                      location_id: 2806
+                      org_id: 1
+                      is_admin: false
+                      read_only: false
+                      first_name: Kyle
+                      last_name: Eeee
+                      phone_number: '18885556487'
+                      profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18374_14794-20211006_115337_021.jpg?1633546417
+                      chat_handle: b26ea1bb3c8ea2a84b7342aeda81fc05
+                      admin_claim_pending: false
+                      status: active
+                      allow_toggle_approve: null
+                      allow_toggle_shift_approval: null
+                      allow_toggle_dashboard: null
+                      allow_toggle_delete_content: null
+                      allow_toggle_tipping: null
+                      allow_approve: null
+                      allow_shift_approve: null
+                      allow_delete_user: null
+                      allow_delete_post: null
+                      allow_delete_schedule: null
+                      allow_tipping: null
+                      allow_delete_shift_inventory: null
+                      allow_delete_shift_posted: null
+                      allow_delete_shift_covered: null
+                      allow_delete_shift_pending: null
+                      allow_delete_shift_approved: null
+                      allow_delete_shift_rejected: null
+                      department_ids: []
+                      location:
+                        _parent_object_id: 21561
+                        id: 2806
+                        swift_code: RSZPNM
+                        location_name: Mysterious Red X
+                        unit_number: ''
+                        street_number: ''
+                        address: 1111 18th Avenue
+                        province: Washington
+                        postal: '98122'
+                        country: United States
+                        lat: '47.612037'
+                        lng: '-122.309243'
+                        latitude: 47.6120608
+                        longitude: -122.3092501
+                        phone_number: +1 206-300-2056
+                        created_at: '2018-01-24T21:25:21.654Z'
+                        users_count: 288
+                        formatted_address: 1111 18th Ave, Seattle, WA 98122, USA
+                        time_zone: America/Los_Angeles
+                        google_map_id: ChIJf5JaJNBqkFQRkwKIHwjwbDA
+                        four_sq_id: null
+                        allow_tipping: true
+                        shift_require_approval: true
+                        shyft_pro_active: true
+                        shyft_pro_expiry_date: '2017-09-04T04:37:00.000Z'
+                        fence_radius: null
+                        cfg_not_dm: false
+                        cfg_geofence_log: false
+                        cfg_timeout: null
+                        cfg_vto: true
+                        cfg_call_off: true
+                        tos_url: ''
+                        tos_version: null
+                        require_approval: true
+                        documents:
+                        - title: Shyft Terms of Service
+                          url: https://myshyft.com/terms.en.html
+                        shyft_pro_subscription_status: 0
+                        admin_delete_content: true
+                        ip_blocked: false
+                        member_count: 139
+                        location_address: null
+                        location_city: Seattle, Washington, 98122
+                        feed_channel_id: 4927
+                        pending_users_count: 0
+                        shyft_pro_trial_flag: false
+                        is_sso_required: false
+                        cfg_exclude_coworker_schedules: false
+                        cfg_exclude_coworker_schedules_from_admins: false
+                        cfg_user_signup_show_email: true
+                        available_cover_modes:
+                        - multi_applicants_picked_by_manager
+                        - default
+                        default_cover_mode: multi_applicants_picked_by_manager
+                        configuration: null
+                        avatar_blob:
+                          _parent_object_id: 2806
+                          id: 2006
+                          content_type: image/png
+                          service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/g94YXQ1v5YPUps3QeDCoBQ7N?sp=r&sv=2016-05-31&se=2023-01-09T23%3A13%3A12Z&rscd=inline%3B+filename%3D%22shyft.png%22%3B+filename*%3DUTF-8%27%27shyft.png&rsct=image%2Fpng&sr=b&sig=U8l4Ns8byOrAG5fgh%2FJ5uDgIniyJTUB2x9dFZPn8w1o%3D
+                          filename: shyft.png
+                          byte_size: 15423
+                          blob_url: https://test-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlIIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9f0d7870f25f66acb498bf4df19255daa080dfb/shyft.png
+                          preview_blob_url: null
+                      user:
+                        _parent_object_id: 21561
+                        id: 14794
+                        active_org: 0
+                        first_name: Kyle
+                        last_name: Eeee
+                        email: null
+                        gender: 0
+                        user_group: 0
+                        push_settings_list:
+                          shift_push:
+                            label: Shift Notifications
+                            type: boolean
+                          schedule_push:
+                            label: Schedule Notifications
+                            type: boolean
+                          community_push:
+                            label: Community Notifications
+                            type: boolean
+                        push_settings_list_array:
+                        - label: Shift Notifications
+                          type: boolean
+                          key: shift_push
+                        - label: Schedule Notifications
+                          type: boolean
+                          key: schedule_push
+                        - label: Community Notifications
+                          type: boolean
+                          key: community_push
+                        thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18374_14794-20211006_115337_021.jpg?1633546417
+                        gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18374_14794-20211006_115337_021.jpg?1633546417
+                        full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18374_14794-20211006_115337_021.jpg?1633546417
+                        current_position: engineer2
+                        current_user_privilege_id: 21561
+                        current_is_approved: true
+                        current_is_admin: false
+                        all_push: true
+                        shift_push: true
+                        schedule_push: true
+                        community_push: true
+                        cfg_ewa_ok: null
+                        cfg_lock_profile: null
+                        skill_ids: []
+                        locale: en
+                        profile_image:
+                          thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18374_14794-20211006_115337_021.jpg?1633546417
+                          gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18374_14794-20211006_115337_021.jpg?1633546417
+                          full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18374_14794-20211006_115337_021.jpg?1633546417
+                        recent_user_privilege:
+                          _parent_object_id: 14794
+                          id: 21561
+                          email: null
+                          wage: 200
+                          position: engineer2
+                          badge_id: A0000002
+                          is_approved: true
+                          owner_id: 14794
+                          location_id: 2806
+                          org_id: 1
+                          is_admin: false
+                          read_only: false
+                          first_name: Kyle
+                          last_name: Eeee
+                          phone_number: '18885556487'
+                          profile_image_thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18374_14794-20211006_115337_021.jpg?1633546417
+                          chat_handle: b26ea1bb3c8ea2a84b7342aeda81fc05
+                          admin_claim_pending: false
+                          status: active
+                          allow_toggle_approve: null
+                          allow_toggle_shift_approval: null
+                          allow_toggle_dashboard: null
+                          allow_toggle_delete_content: null
+                          allow_toggle_tipping: null
+                          allow_approve: null
+                          allow_shift_approve: null
+                          allow_delete_user: null
+                          allow_delete_post: null
+                          allow_delete_schedule: null
+                          allow_tipping: null
+                          allow_delete_shift_inventory: null
+                          allow_delete_shift_posted: null
+                          allow_delete_shift_covered: null
+                          allow_delete_shift_pending: null
+                          allow_delete_shift_approved: null
+                          allow_delete_shift_rejected: null
+                          department_ids: []
+                          location:
+                            _associations_removed: true
+                            _parent_object_id: 21561
+                            id: 2806
+                            swift_code: RSZPNM
+                            location_name: Mysterious Red X
+                            unit_number: ''
+                            street_number: ''
+                            address: 1111 18th Avenue
+                            province: Washington
+                            postal: '98122'
+                            country: United States
+                            lat: '47.612037'
+                            lng: '-122.309243'
+                            latitude: 47.6120608
+                            longitude: -122.3092501
+                            phone_number: +1 206-300-2056
+                            created_at: '2018-01-24T21:25:21.654Z'
+                            users_count: 288
+                            formatted_address: 1111 18th Ave, Seattle, WA 98122, USA
+                            time_zone: America/Los_Angeles
+                            google_map_id: ChIJf5JaJNBqkFQRkwKIHwjwbDA
+                            four_sq_id: null
+                            allow_tipping: true
+                            shift_require_approval: true
+                            shyft_pro_active: true
+                            shyft_pro_expiry_date: '2017-09-04T04:37:00.000Z'
+                            fence_radius: null
+                            cfg_not_dm: false
+                            cfg_geofence_log: false
+                            cfg_timeout: null
+                            cfg_vto: true
+                            cfg_call_off: true
+                            tos_url: ''
+                            tos_version: null
+                            require_approval: true
+                            documents:
+                            - title: Shyft Terms of Service
+                              url: https://myshyft.com/terms.en.html
+                            shyft_pro_subscription_status: 0
+                            admin_delete_content: true
+                            ip_blocked: false
+                            member_count: 139
+                            location_address: null
+                            location_city: Seattle, Washington, 98122
+                            feed_channel_id: 4927
+                            pending_users_count: 0
+                            shyft_pro_trial_flag: false
+                            is_sso_required: false
+                            cfg_exclude_coworker_schedules: false
+                            cfg_exclude_coworker_schedules_from_admins: false
+                            cfg_user_signup_show_email: true
+                            available_cover_modes:
+                            - multi_applicants_picked_by_manager
+                            - default
+                            default_cover_mode: multi_applicants_picked_by_manager
+                          user:
+                            _associations_removed: true
+                            _parent_object_id: 21561
+                            id: 14794
+                            active_org: 0
+                            first_name: Kyle
+                            last_name: Eeee
+                            email: null
+                            gender: 0
+                            user_group: 0
+                            push_settings_list:
+                              shift_push:
+                                label: Shift Notifications
+                                type: boolean
+                              schedule_push:
+                                label: Schedule Notifications
+                                type: boolean
+                              community_push:
+                                label: Community Notifications
+                                type: boolean
+                            push_settings_list_array:
+                            - label: Shift Notifications
+                              type: boolean
+                              key: shift_push
+                            - label: Schedule Notifications
+                              type: boolean
+                              key: schedule_push
+                            - label: Community Notifications
+                              type: boolean
+                              key: community_push
+                            thumb_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18374_14794-20211006_115337_021.jpg?1633546417
+                            gallery_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18374_14794-20211006_115337_021.jpg?1633546417
+                            full_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18374_14794-20211006_115337_021.jpg?1633546417
+                            current_position: engineer2
+                            current_user_privilege_id: 21561
+                            current_is_approved: true
+                            current_is_admin: false
+                            all_push: true
+                            shift_push: true
+                            schedule_push: true
+                            community_push: true
+                            cfg_ewa_ok: null
+                            cfg_lock_profile: null
+                            skill_ids: []
+                            locale: en
+                          pending_legals: []
+                      pending_legals: []
+  /api/customer/user_role/user_privileges/11333:
+    delete:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege]  leave a loaction'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/user_privileges/11359/remove:
+    delete:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege] remove from a location'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/user_privileges/11355/withdraw:
+    delete:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege]  withdraw a location'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/user_privileges/11355/decline:
+    delete:
+      tags:
+      - Customer > UserPrivileges
+      summary: '[user_privilege]  decline join a location'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

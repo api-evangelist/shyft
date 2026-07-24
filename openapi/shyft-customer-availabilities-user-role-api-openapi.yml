@@ -1,0 +1,1312 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Availabilities > user_role API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Availabilities > user_role
+  description: Acting as a regular user for specific location
+paths:
+  /api/customer/user_role/locations/{location_id}/availabilities:
+    post:
+      tags:
+      - Customer > Availabilities > user_role
+      summary: '[availabilities] update your availability'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{ \n        \"availability\": {\n        \"availability_elements_attributes\": [\n            { \"day\": 0, \"start_at\": \"11:00\", \"end_at\": \"18:00\" },\n            { \"day\": 1, \"start_at\": \"14:00\", \"end_at\": \"21:00\" },\n            { \"day\": 2, \"start_at\": \"12:00\", \"end_at\": \"16:00\" },\n            { \"day\": 3, \"start_at\": \"12:00\", \"end_at\": \"16:00\" },\n            { \"day\": 4, \"start_at\": \"12:00\", \"end_at\": \"16:00\" },\n            { \"day\": 5, \"start_at\": \"05:00\", \"end_at\": \"18:00\" },\n            { \"day\": 6, \"start_at\": \"12:00\", \"end_at\": \"16:00\" }           \n        ]\n        }\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"524ba9f0817f1d96b320ad17058632bc"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=dzhtRzZSTS9TQ1QzOXpzejBJbk5nMjRFNUxJMGFacUJES3RZQk1aQkx1WC9QdG9hZ0JSQVFKajk4MGcvajIzbng2bWlMUFJUc3RYMzZrQzFTaS95Rmc9PS0tRW9TVGtqUEQ5eHJPbWRnSFRNNUd0QT09--b17a6dbd4634998f6bd963115093982a80569017; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 5391affa-f27a-4c7d-955c-0d8840445fe1
+            X-Runtime:
+              schema:
+                type: number
+                example: '54.663317'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                availability:
+                  _parent_object_id: null
+                  id: 225
+                  time_zone: America/Los_Angeles
+                  status: approved
+                  repeat_cycle: weekly
+                  notes: null
+                  user_id: 14815
+                  location_id: 2806
+                  range_start_date: null
+                  range_end_date: null
+                  availability_elements:
+                  - _parent_object_id: 225
+                    id: 1575
+                    availability_id: 225
+                    repeat_cycle: weekly
+                    start_at: '2024-04-06T19:00:00.000Z'
+                    end_at: '2024-04-06T23:00:00.000Z'
+                    start_time_local: '12:00'
+                    end_time_local: '16:00'
+                    open: true
+                    day: 6
+                    day_name: saturday
+                  - _parent_object_id: 225
+                    id: 1574
+                    availability_id: 225
+                    repeat_cycle: weekly
+                    start_at: '2024-04-06T12:00:00.000Z'
+                    end_at: '2024-04-07T01:00:00.000Z'
+                    start_time_local: 05:00
+                    end_time_local: '18:00'
+                    open: true
+                    day: 5
+                    day_name: friday
+                  - _parent_object_id: 225
+                    id: 1573
+                    availability_id: 225
+                    repeat_cycle: weekly
+                    start_at: '2024-04-06T19:00:00.000Z'
+                    end_at: '2024-04-06T23:00:00.000Z'
+                    start_time_local: '12:00'
+                    end_time_local: '16:00'
+                    open: true
+                    day: 4
+                    day_name: thursday
+                  - _parent_object_id: 225
+                    id: 1572
+                    availability_id: 225
+                    repeat_cycle: weekly
+                    start_at: '2024-04-06T19:00:00.000Z'
+                    end_at: '2024-04-06T23:00:00.000Z'
+                    start_time_local: '12:00'
+                    end_time_local: '16:00'
+                    open: true
+                    day: 3
+                    day_name: wednesday
+                  - _parent_object_id: 225
+                    id: 1571
+                    availability_id: 225
+                    repeat_cycle: weekly
+                    start_at: '2024-04-06T19:00:00.000Z'
+                    end_at: '2024-04-06T23:00:00.000Z'
+                    start_time_local: '12:00'
+                    end_time_local: '16:00'
+                    open: true
+                    day: 2
+                    day_name: tuesday
+                  - _parent_object_id: 225
+                    id: 1570
+                    availability_id: 225
+                    repeat_cycle: weekly
+                    start_at: '2024-04-06T21:00:00.000Z'
+                    end_at: '2024-04-07T04:00:00.000Z'
+                    start_time_local: '14:00'
+                    end_time_local: '21:00'
+                    open: true
+                    day: 1
+                    day_name: monday
+                  - _parent_object_id: 225
+                    id: 1569
+                    availability_id: 225
+                    repeat_cycle: weekly
+                    start_at: '2024-04-06T18:00:00.000Z'
+                    end_at: '2024-04-07T01:00:00.000Z'
+                    start_time_local: '11:00'
+                    end_time_local: '18:00'
+                    open: true
+                    day: 0
+                    day_name: sunday
+  /api/customer/user_role/locations/{location_id}/availabilities/225:
+    put:
+      tags:
+      - Customer > Availabilities > user_role
+      summary: '[availabilities] update your availability'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{ \n        \"availability\": {\n        \"availability_elements_attributes\": [   \n            { \"id\": 1575, \"open\": false }       \n        ]\n        }\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: response[put_return_resource]
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      - name: location_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"8af4fba2622cab0657998612e2580889"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=R215eGREL3UxYURkUUlCU2dJZDhvYUswUklVbXdMbmNPY2lvcW9abkc4akE0VUNvSTB5bEhYUXkrNmRNRjNjYU1hc0J3cW9mS3h3R2NmaWl4U3I0Zmc9PS0tVXk2c3RxSnA1cy9Pb0dMUncrZUdCdz09--aa6de8ccc4af0832e0bc3649b3f3b917fb1a688e; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 47f3de83-e5e6-40a3-81b5-e99c8182b97f
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.504094'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: '[availabilities] update your availability - update start_time'
+                  value:
+                    availability:
+                      _parent_object_id: null
+                      id: 225
+                      time_zone: America/Los_Angeles
+                      status: approved
+                      repeat_cycle: weekly
+                      notes: null
+                      user_id: 14815
+                      location_id: 2806
+                      range_start_date: null
+                      range_end_date: null
+                      availability_elements:
+                      - _parent_object_id: 225
+                        id: 1575
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T16:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: 09:00
+                        end_time_local: '16:00'
+                        open: true
+                        day: 6
+                        day_name: saturday
+                      - _parent_object_id: 225
+                        id: 1574
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T12:00:00.000Z'
+                        end_at: '2024-04-07T01:00:00.000Z'
+                        start_time_local: 05:00
+                        end_time_local: '18:00'
+                        open: true
+                        day: 5
+                        day_name: friday
+                      - _parent_object_id: 225
+                        id: 1573
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 4
+                        day_name: thursday
+                      - _parent_object_id: 225
+                        id: 1572
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 3
+                        day_name: wednesday
+                      - _parent_object_id: 225
+                        id: 1571
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 2
+                        day_name: tuesday
+                      - _parent_object_id: 225
+                        id: 1570
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T21:00:00.000Z'
+                        end_at: '2024-04-07T04:00:00.000Z'
+                        start_time_local: '14:00'
+                        end_time_local: '21:00'
+                        open: true
+                        day: 1
+                        day_name: monday
+                      - _parent_object_id: 225
+                        id: 1569
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T18:00:00.000Z'
+                        end_at: '2024-04-07T01:00:00.000Z'
+                        start_time_local: '11:00'
+                        end_time_local: '18:00'
+                        open: true
+                        day: 0
+                        day_name: sunday
+                example-1:
+                  summary: '[availabilities] update your availability - remove a avb element'
+                  value:
+                    availability:
+                      _parent_object_id: null
+                      id: 225
+                      time_zone: America/Los_Angeles
+                      status: approved
+                      repeat_cycle: weekly
+                      notes: null
+                      user_id: 14815
+                      location_id: 2806
+                      range_start_date: null
+                      range_end_date: null
+                      availability_elements:
+                      - _parent_object_id: 225
+                        id: 1575
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T16:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: 09:00
+                        end_time_local: '16:00'
+                        open: true
+                        day: 6
+                        day_name: saturday
+                      - _parent_object_id: 225
+                        id: 1574
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T12:00:00.000Z'
+                        end_at: '2024-04-07T01:00:00.000Z'
+                        start_time_local: 05:00
+                        end_time_local: '18:00'
+                        open: true
+                        day: 5
+                        day_name: friday
+                      - _parent_object_id: 225
+                        id: 1572
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 3
+                        day_name: wednesday
+                      - _parent_object_id: 225
+                        id: 1571
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 2
+                        day_name: tuesday
+                      - _parent_object_id: 225
+                        id: 1570
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T21:00:00.000Z'
+                        end_at: '2024-04-07T04:00:00.000Z'
+                        start_time_local: '14:00'
+                        end_time_local: '21:00'
+                        open: true
+                        day: 1
+                        day_name: monday
+                      - _parent_object_id: 225
+                        id: 1569
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T18:00:00.000Z'
+                        end_at: '2024-04-07T01:00:00.000Z'
+                        start_time_local: '11:00'
+                        end_time_local: '18:00'
+                        open: true
+                        day: 0
+                        day_name: sunday
+                example-2:
+                  summary: '[availabilities] update your availability - add another day''s element'
+                  value:
+                    availability:
+                      _parent_object_id: null
+                      id: 225
+                      time_zone: America/Los_Angeles
+                      status: approved
+                      repeat_cycle: weekly
+                      notes: null
+                      user_id: 14815
+                      location_id: 2806
+                      range_start_date: null
+                      range_end_date: null
+                      availability_elements:
+                      - _parent_object_id: 225
+                        id: 1575
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T16:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: 09:00
+                        end_time_local: '16:00'
+                        open: true
+                        day: 6
+                        day_name: saturday
+                      - _parent_object_id: 225
+                        id: 1574
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T12:00:00.000Z'
+                        end_at: '2024-04-07T01:00:00.000Z'
+                        start_time_local: 05:00
+                        end_time_local: '18:00'
+                        open: true
+                        day: 5
+                        day_name: friday
+                      - _parent_object_id: 225
+                        id: 1572
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 3
+                        day_name: wednesday
+                      - _parent_object_id: 225
+                        id: 1571
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 2
+                        day_name: tuesday
+                      - _parent_object_id: 225
+                        id: 1570
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T21:00:00.000Z'
+                        end_at: '2024-04-07T04:00:00.000Z'
+                        start_time_local: '14:00'
+                        end_time_local: '21:00'
+                        open: true
+                        day: 1
+                        day_name: monday
+                      - _parent_object_id: 225
+                        id: 1569
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T18:00:00.000Z'
+                        end_at: '2024-04-07T01:00:00.000Z'
+                        start_time_local: '11:00'
+                        end_time_local: '18:00'
+                        open: true
+                        day: 0
+                        day_name: sunday
+                      - _parent_object_id: 225
+                        id: 1576
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T14:00:00.000Z'
+                        end_at: '2024-04-06T18:00:00.000Z'
+                        start_time_local: 07:00
+                        end_time_local: '11:00'
+                        open: true
+                        day: 0
+                        day_name: sunday
+                example-3:
+                  summary: '[availabilities] update your availability - change `open` to `close`'
+                  value:
+                    availability:
+                      _parent_object_id: null
+                      id: 225
+                      time_zone: America/Los_Angeles
+                      status: approved
+                      repeat_cycle: weekly
+                      notes: null
+                      user_id: 14815
+                      location_id: 2806
+                      range_start_date: null
+                      range_end_date: null
+                      availability_elements:
+                      - _parent_object_id: 225
+                        id: 1576
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T14:00:00.000Z'
+                        end_at: '2024-04-06T18:00:00.000Z'
+                        start_time_local: 07:00
+                        end_time_local: '11:00'
+                        open: true
+                        day: 0
+                        day_name: sunday
+                      - _parent_object_id: 225
+                        id: 1575
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T16:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: 09:00
+                        end_time_local: '16:00'
+                        open: false
+                        day: 6
+                        day_name: saturday
+                      - _parent_object_id: 225
+                        id: 1574
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T12:00:00.000Z'
+                        end_at: '2024-04-07T01:00:00.000Z'
+                        start_time_local: 05:00
+                        end_time_local: '18:00'
+                        open: true
+                        day: 5
+                        day_name: friday
+                      - _parent_object_id: 225
+                        id: 1572
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 3
+                        day_name: wednesday
+                      - _parent_object_id: 225
+                        id: 1571
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T19:00:00.000Z'
+                        end_at: '2024-04-06T23:00:00.000Z'
+                        start_time_local: '12:00'
+                        end_time_local: '16:00'
+                        open: true
+                        day: 2
+                        day_name: tuesday
+                      - _parent_object_id: 225
+                        id: 1570
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T21:00:00.000Z'
+                        end_at: '2024-04-07T04:00:00.000Z'
+                        start_time_local: '14:00'
+                        end_time_local: '21:00'
+                        open: true
+                        day: 1
+                        day_name: monday
+                      - _parent_object_id: 225
+                        id: 1569
+                        availability_id: 225
+                        repeat_cycle: weekly
+                        start_at: '2024-04-06T18:00:00.000Z'
+                        end_at: '2024-04-07T01:00:00.000Z'
+                        start_time_local: '11:00'
+                        end_time_local: '18:00'
+                        open: true
+                        day: 0
+                        day_name: sunday
+  /api/customer/user_role/locations/{location_id}/availabilities/all:
+    get:
+      tags:
+      - Customer > Availabilities > user_role
+      summary: '[availabilities] get all availabilities from a location'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"c5c1289355a9c2b59f26987d4eee939e"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=dUczVFo3WjdncGVKQWcxVVQ5M2NOVDdMZDh2eVhHbCtFaHNEY3hkT3FiRzB6Rkt5MUMyZW5wVEoreDhjdVRzZGVwUTlUdEF2eGV4T0JTY2d0L1hzRmc9PS0tRHpHYlV4bkFjZXFBMytpdHRpd201Zz09--593d3ac76ecd932015b6b550cd111cd91b2cc6d6; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 48fafd6d-5d18-4d27-8481-32a08cd7efae
+            X-Runtime:
+              schema:
+                type: number
+                example: '12.463149'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                availabilities:
+                - _parent_object_id: null
+                  id: 223
+                  time_zone: America/Los_Angeles
+                  status: approved
+                  repeat_cycle: weekly
+                  notes: null
+                  user_id: 14467
+                  location_id: 2806
+                  range_start_date: null
+                  range_end_date: null
+                  availability_elements:
+                  - _parent_object_id: 223
+                    id: 1561
+                    availability_id: 223
+                    repeat_cycle: weekly
+                    start_at: '2024-03-08T20:00:00.000Z'
+                    end_at: null
+                    start_time_local: '12:00'
+                    end_time_local: null
+                    open: true
+                    day: 6
+                  - _parent_object_id: 223
+                    id: 1560
+                    availability_id: 223
+                    repeat_cycle: weekly
+                    start_at: '2021-05-13T02:00:00.000Z'
+                    end_at: '2021-05-13T15:00:00.000Z'
+                    start_time_local: '19:00'
+                    end_time_local: 08:00
+                    open: true
+                    day: 5
+                  - _parent_object_id: 223
+                    id: 1559
+                    availability_id: 223
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 4
+                  - _parent_object_id: 223
+                    id: 1558
+                    availability_id: 223
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 3
+                  - _parent_object_id: 223
+                    id: 1557
+                    availability_id: 223
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 2
+                  - _parent_object_id: 223
+                    id: 1556
+                    availability_id: 223
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 1
+                  - _parent_object_id: 223
+                    id: 1555
+                    availability_id: 223
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 0
+                - _parent_object_id: null
+                  id: 222
+                  time_zone: America/Los_Angeles
+                  status: approved
+                  repeat_cycle: weekly
+                  notes: null
+                  user_id: 12227
+                  location_id: 2806
+                  range_start_date: null
+                  range_end_date: null
+                  availability_elements:
+                  - _parent_object_id: 222
+                    id: 1554
+                    availability_id: 222
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 6
+                  - _parent_object_id: 222
+                    id: 1553
+                    availability_id: 222
+                    repeat_cycle: weekly
+                    start_at: '2021-05-13T02:00:00.000Z'
+                    end_at: '2021-05-13T15:00:00.000Z'
+                    start_time_local: '19:00'
+                    end_time_local: 08:00
+                    open: true
+                    day: 5
+                  - _parent_object_id: 222
+                    id: 1552
+                    availability_id: 222
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 4
+                  - _parent_object_id: 222
+                    id: 1551
+                    availability_id: 222
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 3
+                  - _parent_object_id: 222
+                    id: 1550
+                    availability_id: 222
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 2
+                  - _parent_object_id: 222
+                    id: 1549
+                    availability_id: 222
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 1
+                  - _parent_object_id: 222
+                    id: 1548
+                    availability_id: 222
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 0
+                - _parent_object_id: null
+                  id: 221
+                  time_zone: America/Los_Angeles
+                  status: approved
+                  repeat_cycle: weekly
+                  notes: null
+                  user_id: 14467
+                  location_id: 2806
+                  range_start_date: null
+                  range_end_date: null
+                  availability_elements:
+                  - _parent_object_id: 221
+                    id: 1547
+                    availability_id: 221
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 6
+                  - _parent_object_id: 221
+                    id: 1545
+                    availability_id: 221
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 4
+                  - _parent_object_id: 221
+                    id: 1544
+                    availability_id: 221
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 3
+                  - _parent_object_id: 221
+                    id: 1543
+                    availability_id: 221
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 2
+                  - _parent_object_id: 221
+                    id: 1542
+                    availability_id: 221
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 1
+                  - _parent_object_id: 221
+                    id: 1541
+                    availability_id: 221
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 0
+                  - _parent_object_id: 221
+                    id: 1546
+                    availability_id: 221
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 5
+                - _parent_object_id: null
+                  id: 220
+                  time_zone: America/Los_Angeles
+                  status: approved
+                  repeat_cycle: weekly
+                  notes: null
+                  user_id: 14005
+                  location_id: 2806
+                  range_start_date: null
+                  range_end_date: null
+                  availability_elements:
+                  - _parent_object_id: 220
+                    id: 1540
+                    availability_id: 220
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 6
+                  - _parent_object_id: 220
+                    id: 1539
+                    availability_id: 220
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 5
+                  - _parent_object_id: 220
+                    id: 1538
+                    availability_id: 220
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 4
+                  - _parent_object_id: 220
+                    id: 1537
+                    availability_id: 220
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 3
+                  - _parent_object_id: 220
+                    id: 1536
+                    availability_id: 220
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 2
+                  - _parent_object_id: 220
+                    id: 1535
+                    availability_id: 220
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 1
+                  - _parent_object_id: 220
+                    id: 1534
+                    availability_id: 220
+                    repeat_cycle: weekly
+                    start_at: null
+                    end_at: null
+                    start_time_local: null
+                    end_time_local: null
+                    open: true
+                    day: 0
+                meta:
+                  pagination:
+                    current_page: 1
+                    per_page: 25
+  /api/customer/user_role/locations/{location_id}/availabilities/mine:
+    get:
+      tags:
+      - Customer > Availabilities > user_role
+      summary: '[availabilities] get your availabilities from a location'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"17ad81cfed09e17d9800336f21fdbbd3"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=LzVvRkg2R0dBSEZwSyt1dElwTTV0enE1MVVicjQ2L2pWNU51djBJc29TODUreGtVN1Y1QjgvTXd2bUxpSXo5SmE2TUFEUnh2Y3J3TUJEalBwa1ZuNlE9PS0tcW9SNGdQbDI0UXZveXZVMXd3TzJPZz09--9d5e39fd24db91c0cc3a1c89d62cd522790bfbf1; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 8b528249-6f42-4e3a-a279-cf751215404e
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.318661'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                availabilities:
+                - _parent_object_id: null
+                  id: 224
+                  time_zone: America/Los_Angeles
+                  status: approved
+                  repeat_cycle: weekly
+                  notes: null
+                  user_id: 14815
+                  location_id: 2806
+                  range_start_date: null
+                  range_end_date: null
+                  availability_elements:
+                  - _parent_object_id: 224
+                    id: 1568
+                    availability_id: 224
+                    repeat_cycle: weekly
+                    start_at: '2024-04-05T19:00:00.000Z'
+                    end_at: '2024-04-05T23:00:00.000Z'
+                    start_time_local: '12:00'
+                    end_time_local: '16:00'
+                    open: true
+                    day: 6
+                  - _parent_object_id: 224
+                    id: 1567
+                    availability_id: 224
+                    repeat_cycle: weekly
+                    start_at: '2024-04-05T12:00:00.000Z'
+                    end_at: '2024-04-06T01:00:00.000Z'
+                    start_time_local: 05:00
+                    end_time_local: '18:00'
+                    open: true
+                    day: 5
+                  - _parent_object_id: 224
+                    id: 1566
+                    availability_id: 224
+                    repeat_cycle: weekly
+                    start_at: '2024-04-05T19:00:00.000Z'
+                    end_at: '2024-04-05T23:00:00.000Z'
+                    start_time_local: '12:00'
+                    end_time_local: '16:00'
+                    open: true
+                    day: 4
+                  - _parent_object_id: 224
+                    id: 1565
+                    availability_id: 224
+                    repeat_cycle: weekly
+                    start_at: '2024-04-05T19:00:00.000Z'
+                    end_at: '2024-04-05T23:00:00.000Z'
+                    start_time_local: '12:00'
+                    end_time_local: '16:00'
+                    open: true
+                    day: 3
+                  - _parent_object_id: 224
+                    id: 1564
+                    availability_id: 224
+                    repeat_cycle: weekly
+                    start_at: '2024-04-05T19:00:00.000Z'
+                    end_at: '2024-04-05T23:00:00.000Z'
+                    start_time_local: '12:00'
+                    end_time_local: '16:00'
+                    open: true
+                    day: 2
+                  - _parent_object_id: 224
+                    id: 1563
+                    availability_id: 224
+                    repeat_cycle: weekly
+                    start_at: '2024-04-05T21:00:00.000Z'
+                    end_at: '2024-04-06T04:00:00.000Z'
+                    start_time_local: '14:00'
+                    end_time_local: '21:00'
+                    open: true
+                    day: 1
+                  - _parent_object_id: 224
+                    id: 1562
+                    availability_id: 224
+                    repeat_cycle: weekly
+                    start_at: '2024-04-05T18:00:00.000Z'
+                    end_at: '2024-04-06T01:00:00.000Z'
+                    start_time_local: '11:00'
+                    end_time_local: '18:00'
+                    open: true
+                    day: 0
+                meta:
+                  pagination:
+                    current_page: 1
+                    per_page: 25
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth

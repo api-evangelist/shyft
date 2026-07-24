@@ -1,0 +1,2671 @@
+openapi: 3.0.0
+info:
+  title: Shyft Customer Authentication > Email Customer > Locations > user_role API
+  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: http://{{host}}
+- url: http://{{local-host}}
+- url: http://{{sp3-host}}
+- url: http://test-service.myshyft.com
+- url: http://localhost:4001
+- url: http://localhost:3000
+- url: http://{{local-host}}api
+- url: https://test-unfurl.myshyft.com
+tags:
+- name: Customer > Locations > user_role
+paths:
+  /api/customer/user_role/locations/{location_id}:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: '[2.0] get a location'
+      description: "Description\n- - - \n- Get a location object\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"b62ebd303d110521a1695c61a7e25112"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=RHl1eEs2MTNoekNpQ3lieitqNWFRdVp1b3dWdy9wMllIak55OXBmVk9pWVlPVEhPbUluenZUL2FmSVRwUExzUXVTMDJaa3g2OFBqdHEyV256VDAzN2c9PS0tY05rZldyK1gyV3ZqODYrYS84bHBIQT09--03339b2e884b227509f16ac0e1c85cd50a37671a; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: e105542e-2a1d-4050-abed-fba90678b907
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.317701'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: close
+            Server:
+              schema:
+                type: string
+                example: thin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                location:
+                  _parent_object_id: null
+                  id: 2324
+                  swift_code: QO9021
+                  location_name: Comfort Inn & Suites Bothell - Seattle North
+                  unit_number: null
+                  street_number: null
+                  address: 1414 228th Street Southeast
+                  province: Washington
+                  postal: '98021'
+                  country: United States
+                  lat: '47.790475'
+                  lng: '-122.213519'
+                  latitude: 47.7904654
+                  longitude: -122.2135587
+                  phone_number: +1 425-402-0900
+                  created_at: '2017-10-16T07:10:35.423Z'
+                  users_count: 3
+                  formatted_address: 1414 228th St SE, Bothell, WA 98021, USA
+                  time_zone: null
+                  google_map_id: ChIJA0sL1qkPkFQR43qJWFmWqvo
+                  allow_tipping: true
+                  shift_require_approval: true
+                  shyft_pro_active: false
+                  shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                  fence_radius: null
+                  cfg_not_dm: false
+                  cfg_geofence_log: null
+                  cfg_timeout: null
+                  tos_url: null
+                  tos_version: null
+                  ip_blocked: false
+                  member_count: 3
+                  location_address: null
+                  location_city: Bothell, Washington, 98021
+                  division_names: []
+                  feed_channel_id: 4359
+    put:
+      tags:
+      - Customer > Locations > user_role
+      summary: update a location
+      description: "Description\n- - - \n- Update a location\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nshift_require_approval| true/false| | |\nrequire_approval| true/false| | |\nallow_tipping| true/false| | |\nadmin_delete_content| true/false| | |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n    \"location\": {\n        \"time_zone\": \"America/Los_Angeles\"\n    }\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Platform:
+              schema:
+                type: string
+                example: '{{platform}}'
+            Version:
+              schema:
+                type: string
+                example: '{{version}}'
+            Build-Number:
+              schema:
+                type: string
+                example: '{{build_number}}'
+            Push-Id:
+              schema:
+                type: string
+                example: '{{push_id}}'
+            X-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Session-Token:
+              schema:
+                type: string
+                example: '{{session_token}}'
+            Session-Uukey:
+              schema:
+                type: string
+                example: '{{session_uukey}}'
+            Authorization:
+              schema:
+                type: string
+                example: Token token={{api_key_access_token}}
+            Uid:
+              schema:
+                type: string
+                example: '{{uid}}'
+            Auth-Category:
+              schema:
+                type: string
+                example: '{{auth_category}}'
+            Auth-Target:
+              schema:
+                type: string
+                example: '{{auth_target}}'
+            Token-Type:
+              schema:
+                type: string
+                example: Bearer
+            Client:
+              schema:
+                type: string
+                example: '{{client}}'
+            Access-Token:
+              schema:
+                type: string
+                example: '{{access_token}}'
+            Expiry:
+              schema:
+                type: string
+                example: '{{expiry}}'
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: '[users] get a location '
+                  value:
+                    location:
+                      _parent_object_id: null
+                      id: 2324
+                      swift_code: QO9021
+                      location_name: Comfort Inn & Suites Bothell - Seattle North
+                      unit_number: null
+                      street_number: null
+                      address: 1414 228th Street Southeast
+                      province: Washington
+                      postal: '98021'
+                      country: United States
+                      lat: '47.790475'
+                      lng: '-122.213519'
+                      latitude: 47.7904654
+                      longitude: -122.2135587
+                      phone_number: +1 425-402-0900
+                      created_at: '2017-10-16T07:10:35.423Z'
+                      users_count: 3
+                      formatted_address: 1414 228th St SE, Bothell, WA 98021, USA
+                      time_zone: null
+                      google_map_id: ChIJA0sL1qkPkFQR43qJWFmWqvo
+                      allow_tipping: true
+                      shift_require_approval: false
+                      shyft_pro_active: false
+                      shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                      fence_radius: null
+                      member_count: 3
+                      location_address: null
+                      location_city: Bothell, Washington, 98021
+                      division_names: []
+                      feed_channel_id: 4359
+                      current_user_privilege:
+                        _parent_object_id: 2324
+                        id: 11336
+                        email: bin+100@myshyft.com
+                        wage: 15
+                        position: null
+                        is_approved: true
+                        owner_id: 9064
+                        location_id: 2324
+                        org_id: 1
+                        is_admin: true
+                        read_only: false
+                        first_name: Bin
+                        last_name: Li
+                        phone_number: '18083836511'
+                        profile_image_thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                        current_availability: null
+                        location:
+                          _parent_object_id: 11336
+                          id: 2324
+                          swift_code: QO9021
+                          location_name: Comfort Inn & Suites Bothell - Seattle North
+                          unit_number: null
+                          street_number: null
+                          address: 1414 228th Street Southeast
+                          province: Washington
+                          postal: '98021'
+                          country: United States
+                          lat: '47.790475'
+                          lng: '-122.213519'
+                          latitude: 47.7904654
+                          longitude: -122.2135587
+                          phone_number: +1 425-402-0900
+                          created_at: '2017-10-16T07:10:35.423Z'
+                          users_count: 3
+                          formatted_address: 1414 228th St SE, Bothell, WA 98021, USA
+                          time_zone: null
+                          google_map_id: ChIJA0sL1qkPkFQR43qJWFmWqvo
+                          allow_tipping: true
+                          shift_require_approval: false
+                          shyft_pro_active: false
+                          shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                          fence_radius: null
+                          member_count: 3
+                          location_address: null
+                          location_city: Bothell, Washington, 98021
+                          division_names: []
+                          feed_channel_id: 4359
+                        user:
+                          _parent_object_id: 11336
+                          id: 9064
+                          active_org: 0
+                          first_name: Bin
+                          last_name: Li
+                          email: bin+100@myshyft.com
+                          gender: 0
+                          chat_handle: ab4693b99883e10dd5e7d17d0cf71200
+                          user_group: 0
+                          status: ''
+                          profile_image:
+                            thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                            gallery_url: https://coffeemobile.s3.amazonaws.com/images/gallery/8352_data.?1512600950
+                            full_url: https://coffeemobile.s3.amazonaws.com/images/full/8352_data.?1512600950
+                          recent_user_privilege:
+                            _associations_removed: true
+                            _parent_object_id: 9064
+                            id: 11336
+                            email: bin+100@myshyft.com
+                            wage: 15
+                            position: null
+                            is_approved: true
+                            owner_id: 9064
+                            location_id: 2324
+                            org_id: 1
+                            is_admin: true
+                            read_only: false
+                            first_name: Bin
+                            last_name: Li
+                            phone_number: '18083836511'
+                            profile_image_thumb_url: https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950
+                example-1:
+                  summary: '[users] get a location - success'
+                  value:
+                    location:
+                      _parent_object_id: null
+                      id: 2104
+                      swift_code: QFW80C
+                      location_name: Starbucks
+                      unit_number: null
+                      street_number: null
+                      address: 600 Walnut Street, Cincinnati
+                      province: null
+                      postal: null
+                      country: null
+                      lat: '39.1026554'
+                      lng: '-84.5102923'
+                      latitude: 39.1029633
+                      longitude: -84.5113859
+                      phone_number: +1 513-814-2912
+                      created_at: '2017-06-12T20:55:05.954Z'
+                      users_count: 8
+                      formatted_address: 600 Walnut St, Cincinnati, OH 45202, USA
+                      time_zone: null
+                      google_map_id: ChIJHdSGCVqxQYgRsurL7tJZkQI
+                      allow_tipping: true
+                      shift_require_approval: false
+                      shyft_pro_active: false
+                      shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                      fence_radius: null
+                      member_count: 5
+                      location_address: null
+                      location_city: ',  '
+                      division_names: []
+                      feed_channel_id: 4073
+                example-2:
+                  summary: '[users] get a location'
+                  value:
+                    location:
+                      _parent_object_id: null
+                      id: 2104
+                      swift_code: QFW80C
+                      location_name: Starbucks
+                      unit_number: null
+                      street_number: null
+                      address: 600 Walnut Street, Cincinnati
+                      province: null
+                      postal: null
+                      country: null
+                      lat: '39.1026554'
+                      lng: '-84.5102923'
+                      latitude: 39.1029633
+                      longitude: -84.5113859
+                      phone_number: +1 513-814-2912
+                      created_at: '2017-06-12T20:55:05.954Z'
+                      users_count: 8
+                      formatted_address: 600 Walnut St, Cincinnati, OH 45202, USA
+                      time_zone: null
+                      google_map_id: ChIJHdSGCVqxQYgRsurL7tJZkQI
+                      allow_tipping: true
+                      shift_require_approval: false
+                      shyft_pro_active: false
+                      shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                      fence_radius: null
+                      member_count: 5
+                      location_address: null
+                      location_city: ',  '
+                      division_names: []
+                      feed_channel_id: 4073
+        '204':
+          description: No Content
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Sun, 04 Jul 2021 05:07:02 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=czZ0NVJzUnA2bWU0ZVRYNXd1V05LZURTSzlFbDAySmk0TlpQSk5EMk9HSlBIRndRc05iR2d5NDI2aDBxeTlNaWU0OGphbFZDTXhjVFlYS3V2dTh4UkE9PS0tVDJQbFNWSXFIYUJXbFU1Q1BxYlBOQT09--5b73327d0776e9a4b6acd7e0c70252e5f54e3165; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 102c6e21-e9dd-4676-b90b-99ccbbef675a
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.508853'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                example-0:
+                  summary: update a location - with blob_id
+                  value: null
+                example-1:
+                  summary: update a location - time_zone
+                  value: null
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+                example: Basic realm="Application"
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: ccb01a29-33e9-429f-b630-d52a0eb1adfb
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.893943'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: You need to sign in or sign up before continuing.
+        '404':
+          description: Not Found
+          headers:
+            Platform:
+              schema:
+                type: string
+                example: '{{platform}}'
+            Version:
+              schema:
+                type: string
+                example: '{{version}}'
+            Build-Number:
+              schema:
+                type: string
+                example: '{{build_number}}'
+            Push-Id:
+              schema:
+                type: string
+                example: '{{push_id}}'
+            X-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Session-Token:
+              schema:
+                type: string
+                example: '{{session_token}}'
+            Session-Uukey:
+              schema:
+                type: string
+                example: '{{session_uukey}}'
+            Authorization:
+              schema:
+                type: string
+                example: Token token={{api_key_access_token}}
+            Uid:
+              schema:
+                type: string
+                example: '{{uid}}'
+            Auth-Category:
+              schema:
+                type: string
+                example: '{{auth_category}}'
+            Auth-Target:
+              schema:
+                type: string
+                example: '{{auth_target}}'
+            Token-Type:
+              schema:
+                type: string
+                example: Bearer
+            Client:
+              schema:
+                type: string
+                example: '{{client}}'
+            Access-Token:
+              schema:
+                type: string
+                example: '{{access_token}}'
+            Expiry:
+              schema:
+                type: string
+                example: '{{expiry}}'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                errors:
+                  not_found:
+                  - Couldn't find Location with 'id'=99999
+  /api/customer/user_role/locations/{swift_code}/look_up:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: '[2.0] get a location by swift_code only'
+      description: "Description\n- - - \n- Get a location object\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: swift_code
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Tue, 31 Aug 2021 21:03:42 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"af62b4313ad9ce94a26162cc6e8e910f"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=UmFXeXlpUTRCd2pJMXpzREdzUzczMEliVjA5cEJRaFhTOEEwVkhoMkZzdFpwVzBVb3A0cVlXblpYZXREcmc4NW5ocWVWdmZ3NnpiTWxsYjRkSk0wekE9PS0tQ1dJL3JxUFc2Yy84TlIxd0tjMERNQT09--cabf8fd49f4786f239e915b051974903c1d969c1; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 58895a6a-f7f8-4907-a740-daae048fa035
+            X-Runtime:
+              schema:
+                type: number
+                example: '5.237878'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                location:
+                  _parent_object_id: null
+                  id: 8421
+                  swift_code: GXO1015
+                  location_name: CAON Mississga2 Mississauga Courtneypark Drive West
+                  unit_number: null
+                  street_number: null
+                  address: 300 Courtneypark Drive West
+                  province: 'ON'
+                  postal: L5W 1Y6
+                  country: Canada
+                  lat: null
+                  lng: null
+                  latitude: 43.6288105
+                  longitude: -79.6989678
+                  phone_number: null
+                  created_at: '2021-05-27T21:15:50.121Z'
+                  users_count: 4
+                  formatted_address: 300 Courtneypark Dr W, Mississauga, ON L5W 1Y6, Canada
+                  time_zone: America/Toronto
+                  google_map_id: ChIJpSvGGn9AK4gRbDoT-OfdBoU
+                  four_sq_id: null
+                  allow_tipping: false
+                  shift_require_approval: true
+                  shyft_pro_active: true
+                  shyft_pro_expiry_date: '2031-05-27T22:16:39.655Z'
+                  fence_radius: null
+                  cfg_not_dm: true
+                  cfg_geofence_log: false
+                  cfg_timeout: null
+                  cfg_vto: null
+                  cfg_call_off: true
+                  tos_url: null
+                  tos_version: null
+                  require_approval: false
+                  documents:
+                  - title: Shyft Terms of Service
+                    url: https://myshyft.com/terms.en.html
+                  shyft_pro_subscription_status: 0
+                  admin_delete_content: true
+                  ip_blocked: false
+                  member_count: 0
+                  location_address: null
+                  location_city: Mississauga, ON, L5W 1Y6
+                  feed_channel_id: 12556
+                  pending_users_count: 0
+                  shyft_pro_trial_flag: false
+                  is_sso_required: true
+                  cfg_exclude_coworker_schedules: false
+                  cfg_exclude_coworker_schedules_from_admins: false
+                  cfg_user_signup_show_email: false
+                  available_cover_modes:
+                  - default
+                  default_cover_mode: null
+                  configuration: null
+                  avatar_blob:
+                    _parent_object_id: 8421
+                    id: 1433
+                    content_type: image/png
+                    service_url: https://miniobackingstore.blob.core.windows.net/coffeemobile/eTnNRfkuw4ZdKweGFTkNpDM7?sp=r&sv=2016-05-31&se=2021-08-31T21%3A08%3A42Z&rscd=inline%3B+filename%3D%22gxo-logo-png.png%22%3B+filename*%3DUTF-8%27%27gxo-logo-png.png&rsct=image%2Fpng&sr=b&sig=SfGYbCDe4nzV0yRanT4b9dbBS1W26HYg1MYfgDxnPlQ%3D
+                    filename: gxo-logo-png.png
+                    byte_size: 8973
+                    blob_url: http://local-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02dfa32ff1c011dd76b61976c6e05334a5b3b8f2/gxo-logo-png.png
+                    preview_blob_url: null
+  /api/customer/user_role/locations:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: search locations with given GPS and keywords
+      description: 'NOTE: Front-End will supply GAPS and keywords
+
+
+        Use Cases:
+
+        - Sign Up: Find locations when user choose keyword + address'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: within_range[latitude]
+        in: query
+        schema:
+          type: string
+        example: '{{latitude}}'
+      - name: within_range[longitude]
+        in: query
+        schema:
+          type: string
+        example: '{{longitude}}'
+      - name: keywords
+        in: query
+        schema:
+          type: string
+        example: '{{keywords}}'
+      - name: limit
+        in: query
+        schema:
+          type: string
+        example: '{{limit}}'
+      - name: within_range[distance]
+        in: query
+        schema:
+          type: string
+        example: '{{distance}}'
+      responses:
+        '200':
+          description: 'OK '
+          headers:
+            Platform:
+              schema:
+                type: string
+                example: '{{platform}}'
+            Version:
+              schema:
+                type: string
+                example: '{{version}}'
+            Build-Number:
+              schema:
+                type: string
+                example: '{{build_number}}'
+            Push-Id:
+              schema:
+                type: string
+                example: '{{push_id}}'
+            X-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Session-Token:
+              schema:
+                type: string
+                example: '{{session_token}}'
+            Session-Uukey:
+              schema:
+                type: string
+                example: '{{session_uukey}}'
+            Authorization:
+              schema:
+                type: string
+                example: Token token={{api_key_access_token}}
+            Uid:
+              schema:
+                type: string
+                example: '{{uid}}'
+            Auth-Category:
+              schema:
+                type: string
+                example: '{{auth_category}}'
+            Auth-Target:
+              schema:
+                type: string
+                example: '{{auth_target}}'
+            Token-Type:
+              schema:
+                type: string
+                example: Bearer
+            Client:
+              schema:
+                type: string
+                example: '{{client}}'
+            Access-Token:
+              schema:
+                type: string
+                example: '{{access_token}}'
+            Expiry:
+              schema:
+                type: string
+                example: '{{expiry}}'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                locations:
+                - id: 4875
+                  swift_code: 99VDE5
+                  location_name: Gap - Orlando Prime (Belz)
+                  unit_number: null
+                  street_number: null
+                  address: 4969 INTERNATIONAL DRIVE
+                  province: FL
+                  postal: '32819'
+                  country: United States
+                  lat: null
+                  lng: null
+                  latitude: 28.4752766
+                  longitude: -81.4503802
+                  phone_number: null
+                  created_at: '2018-01-18T05:50:18.569Z'
+                  users_count: 0
+                  member_count: 0
+                  location_address: null
+                  location_city: ORLANDO, FL, 32819
+                - id: 4874
+                  swift_code: BLB3U1
+                  location_name: Gap - Orlando Vineland
+                  unit_number: null
+                  street_number: null
+                  address: 8225 VINELAND AVE
+                  province: FL
+                  postal: '32821'
+                  country: United States
+                  lat: null
+                  lng: null
+                  latitude: 28.3909901
+                  longitude: -81.4904932
+                  phone_number: null
+                  created_at: '2018-01-18T05:50:18.407Z'
+                  users_count: 0
+                  member_count: 0
+                  location_address: null
+                  location_city: ORLANDO, FL, 32821
+                - id: 4986
+                  swift_code: TJKFBS
+                  location_name: Gap - Mall @ Millenia
+                  unit_number: null
+                  street_number: null
+                  address: 4200 CONROY RD
+                  province: FL
+                  postal: '32839'
+                  country: United States
+                  lat: null
+                  lng: null
+                  latitude: 28.4855865
+                  longitude: -81.4316811
+                  phone_number: null
+                  created_at: '2018-01-18T05:52:08.734Z'
+                  users_count: 0
+                  member_count: 0
+                  location_address: null
+                  location_city: ORLANDO, FL, 32839
+                - id: 4990
+                  swift_code: 5PNYBZ
+                  location_name: Gap - Florida Mall
+                  unit_number: null
+                  street_number: null
+                  address: 8001 South Orange Blossom Trail
+                  province: FL
+                  postal: '32809'
+                  country: United States
+                  lat: null
+                  lng: null
+                  latitude: 28.4454035
+                  longitude: -81.3954343
+                  phone_number: null
+                  created_at: '2018-01-18T05:52:14.019Z'
+                  users_count: 0
+                  member_count: 0
+                  location_address: null
+                  location_city: ORLANDO, FL, 32809
+                - id: 4873
+                  swift_code: 7JIWX3
+                  location_name: Gap - Orlando Premium
+                  unit_number: null
+                  street_number: null
+                  address: 8228 VINELAND AVENUE
+                  province: FL
+                  postal: '32821'
+                  country: United States
+                  lat: null
+                  lng: null
+                  latitude: 28.3862141
+                  longitude: -81.4950225
+                  phone_number: null
+                  created_at: '2018-01-18T05:50:17.519Z'
+                  users_count: 0
+                  member_count: 0
+                  location_address: null
+                  location_city: ORLANDO, FL, 32821
+    post:
+      tags:
+      - Customer > Locations > user_role
+      summary: create a location (option to join)
+      description: "Description\n- - - \n- Create a location object\n- `location_name` is always required. \n- Option1: supply address information, let backend figure out rest\n- Option2: supply the formatted address, and other required fields. \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - -\n\nOption 1\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name ||*| |\naddress | | * | |\ncity | | * | |\nprovince | | * | |\npostal | | * | |\ncountry | | * | |\n\n\nOption 2\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name | | * | |\nformatted_address | | * | |\nlatitude | | * | |\nlongitude | | * | |\ngoogle_map_id | | * | |\n\nWith join location\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name[user_privileges_attributes][owner_id] ||| |\nlocation_name[user_privileges_attributes][internal_id] ||| |\nlocation_name[user_privileges_attributes][position] ||| |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"location\": {\n  \t\"location_name\": \"Shyft Tech.\",\n  \t\"latitude\": \"90.0\",\n  \t\"longitude\": \"180.0\",\n  \t\"google_map_id\": \"xxxxxxx\",\n  \t\"time_zone\": \"America/Los_Angeles\",\n  \t\"formatted_address\": \"3131 Western Ave #515, Seattle, WA 98121\", \n  \t\"user_privileges_attributes\": [\n  \t\t{\n  \t\t\t\"owner_id\": 2, \n  \t\t\t\"internal_id\": \"0000000\",\n  \t\t\t\"position\": \"engineer\"\n  \t\t}\n  \t\t\n  \t]\n  }\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"433989b4fcbe5d6bc14ac42f50776b17"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=YnhDSEhVOFVlTitDdXhDdEIvZzZSSEdFY21kbFozTWVoaTFBUU1pZElvVk5VakZldjlDU3ZncHhWWlVRNUZPaHJZS3cyaU8wUndFZ1FoWDFHQXlPTDNtd3ExcVZwaDVJUXNoS0VEbGpFZ0dXTmJJdGI5K2tWbUduc0huQ1hsZW5tcW41QXNZbWZqZnRDUHhCa0o3UFRBSnJOenpyTGk4N0JaeTE4WXloaXdtMW41bVlZT3pHWTd1Y2UxU1RpRXdJL1dhMUJISGcybk5KWlYvaTBTYTc4YUFWZEpWaWM4dzd1SS9BQUE2Y0t5QT0tLWU0YVlxbXZia2xLSTZNOEpSYmdVcUE9PQ%3D%3D--b4fe0e14140292dfa5ca36276fda0a9b6cd5186d; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: 83f4b5d6-e490-4f1a-9435-8f8d85a538e6
+            X-Runtime:
+              schema:
+                type: number
+                example: '8.157500'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: close
+            Server:
+              schema:
+                type: string
+                example: thin 1.5.1 codename Straight Razor
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: create a location - from formatted address
+                  value:
+                    location:
+                      _parent_object_id: null
+                      id: 5250
+                      swift_code: YEUTBT
+                      location_name: Shyft Tech.
+                      unit_number: null
+                      street_number: null
+                      address: null
+                      province: null
+                      postal: null
+                      country: null
+                      lat: null
+                      lng: null
+                      latitude: 90
+                      longitude: 180
+                      phone_number: null
+                      created_at: '2018-11-02T20:51:33.842Z'
+                      users_count: 0
+                      formatted_address: '3131 Western Ave #515, Seattle, WA 98121'
+                      time_zone: America/Los_Angeles
+                      google_map_id: xxxxxxx
+                      allow_tipping: true
+                      shift_require_approval: false
+                      shyft_pro_active: false
+                      shyft_pro_expiry_date: '2017-09-04T04:37:28.839Z'
+                      fence_radius: null
+                      cfg_not_dm: null
+                      cfg_geofence_log: false
+                      cfg_timeout: null
+                      tos_url: null
+                      tos_version: null
+                      ip_blocked: false
+                      member_count: 0
+                      location_address: null
+                      location_city: ',  '
+                      division_names: []
+                      feed_channel_id: 7396
+                example-1:
+                  summary: create a location  - join with position information
+                  value:
+                    location:
+                      _parent_object_id: null
+                      id: 5255
+                      swift_code: RM5LQI
+                      location_name: Shyft Tech.
+                      unit_number: null
+                      street_number: null
+                      address: null
+                      province: null
+                      postal: null
+                      country: null
+                      lat: null
+                      lng: null
+                      latitude: 90
+                      longitude: 180
+                      phone_number: null
+                      created_at: '2018-11-17T00:18:13.964Z'
+                      users_count: 1
+                      formatted_address: '3131 Western Ave #515, Seattle, WA 98121'
+                      time_zone: America/Los_Angeles
+                      google_map_id: xxxxxxx
+                      four_sq_id: null
+                      allow_tipping: true
+                      shift_require_approval: false
+                      shyft_pro_active: false
+                      shyft_pro_expiry_date: '2017-09-04T04:37:28.839Z'
+                      fence_radius: null
+                      cfg_not_dm: null
+                      cfg_geofence_log: false
+                      cfg_timeout: null
+                      tos_url: null
+                      tos_version: null
+                      require_approval: false
+                      ip_blocked: false
+                      member_count: 0
+                      location_address: null
+                      location_city: ',  '
+                      division_names: []
+                      feed_channel_id: 7453
+                      pending_users_count: 0
+                example-2:
+                  summary: create a location - from address fields
+                  value:
+                    location:
+                      _parent_object_id: null
+                      id: 5249
+                      swift_code: ADH3HP
+                      location_name: Shyft Tech.
+                      unit_number: null
+                      street_number: null
+                      address: 3131 Western Ave
+                      province: WA
+                      postal: '98121'
+                      country: US
+                      lat: null
+                      lng: null
+                      latitude: 47.6181458
+                      longitude: -122.3574266
+                      phone_number: null
+                      created_at: '2018-11-02T20:47:52.429Z'
+                      users_count: 0
+                      formatted_address: 3131 Western Ave, Seattle, WA 98121, USA
+                      time_zone: America/Los_Angeles
+                      google_map_id: ChIJZz6_kfMUkFQRc2ewh_Lwdr0
+                      allow_tipping: true
+                      shift_require_approval: false
+                      shyft_pro_active: false
+                      shyft_pro_expiry_date: '2017-09-04T04:37:28.839Z'
+                      fence_radius: null
+                      cfg_not_dm: null
+                      cfg_geofence_log: false
+                      cfg_timeout: null
+                      tos_url: null
+                      tos_version: null
+                      ip_blocked: false
+                      member_count: 0
+                      location_address: null
+                      location_city: Seattle, WA, 98121
+                      division_names: []
+                      feed_channel_id: 7395
+  /api/customer/user_role/locations/can_access:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: '[users] get my associated locations'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Platform:
+              schema:
+                type: string
+                example: '{{platform}}'
+            Version:
+              schema:
+                type: string
+                example: '{{version}}'
+            Build-Number:
+              schema:
+                type: string
+                example: '{{build_number}}'
+            Push-Id:
+              schema:
+                type: string
+                example: '{{push_id}}'
+            X-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Session-Token:
+              schema:
+                type: string
+                example: '{{session_token}}'
+            Session-Uukey:
+              schema:
+                type: string
+                example: '{{session_uukey}}'
+            Authorization:
+              schema:
+                type: string
+                example: Token token={{api_key_access_token}}
+            Uid:
+              schema:
+                type: string
+                example: '{{uid}}'
+            Auth-Category:
+              schema:
+                type: string
+                example: '{{auth_category}}'
+            Auth-Target:
+              schema:
+                type: string
+                example: '{{auth_target}}'
+            Token-Type:
+              schema:
+                type: string
+                example: Bearer
+            Client:
+              schema:
+                type: string
+                example: '{{client}}'
+            Access-Token:
+              schema:
+                type: string
+                example: '{{access_token}}'
+            Expiry:
+              schema:
+                type: string
+                example: '{{expiry}}'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                locations:
+                - _parent_object_id: null
+                  id: 2088
+                  swift_code: K12YK5
+                  location_name: Green Lake Park Wading Pool
+                  unit_number: null
+                  street_number: null
+                  address: Green Lake Trail, Seattle
+                  province: null
+                  postal: null
+                  country: null
+                  lat: '47.68528'
+                  lng: '-122.3370426'
+                  latitude: 47.6774723
+                  longitude: -122.3325831
+                  phone_number: +1 206-684-4075
+                  created_at: '2017-05-15T19:13:19.362Z'
+                  users_count: 10
+                  formatted_address: Green Lake Trail, Seattle, WA 98115, USA
+                  time_zone: null
+                  google_map_id: ChIJud-1yxYUkFQRLblABqXsQcA
+                  allow_tipping: true
+                  shift_require_approval: false
+                  shyft_pro_active: false
+                  shyft_pro_expiry_date: '2018-12-04T19:10:49.425Z'
+                  member_count: 9
+                  location_address: null
+                  location_city: ',  '
+                  division_names: []
+                  feed_channel_id: 4053
+                - _parent_object_id: null
+                  id: 2332
+                  swift_code: 064O1P
+                  location_name: Sixth Avenue Wine Seller
+                  unit_number: ''
+                  street_number: ''
+                  address: 600 Pine Street
+                  province: Washington
+                  postal: '98101'
+                  country: United States
+                  lat: '47.6124706'
+                  lng: '-122.3350867'
+                  latitude: 47.6127702
+                  longitude: -122.3356358
+                  phone_number: +1 206-621-2669
+                  created_at: '2017-10-31T18:53:01.595Z'
+                  users_count: 6
+                  formatted_address: 600 Pine St, Seattle, WA 98101, USA
+                  time_zone: America/Adak
+                  google_map_id: ChIJLSDL0bRqkFQRxFmmvSccvhw
+                  allow_tipping: true
+                  shift_require_approval: false
+                  shyft_pro_active: false
+                  shyft_pro_expiry_date: '2018-12-04T19:10:00.000Z'
+                  member_count: 8
+                  location_address: null
+                  location_city: Seattle, Washington, 98101
+                  division_names:
+                  - Manhattan
+                  feed_channel_id: 4382
+  /api/customer/user_role/locations/can_admin:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: '[users] get my managable locations'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/locations/QFW80C/analytics:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: get location analytics
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: kpi_start_time
+        in: query
+        schema:
+          type: string
+        example: '2018-02-01 09:00:00'
+      - name: kpi_end_time
+        in: query
+        schema:
+          type: string
+        example: '2018-02-15 09:00:00'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/locations/2806/tag_groups:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: get location tag groups
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: ''
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Wed, 14 Jul 2021 07:14:56 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"850ee0dd46d302bf6a578580b3a8e2b0"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=Tm42dXd4UUxlQVpMMUhhSHoydGF6R3hqMXBnd1RCMzc0cFp4SFVULzBVWnVZUHhXQ0huS0dkaVRkeVhpZ0QyUHpUYVhpT1ZtM0lZdDRRSFNpdDJFTVE9PS0tZmFKdFRiNVI3d0NDdGpEbG9aQktIZz09--6c28b0353f5d89bc279e9a0f88666743cda2d19e; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: a1571114-6c52-4589-aee6-e60de04f452b
+            X-Runtime:
+              schema:
+                type: number
+                example: '22.880251'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: get location tag groups - xpo centers & call off reasons
+                  value:
+                    tag_groups:
+                    - _parent_object_id: null
+                      id: 1
+                      group_name: xpo_cost_work_centers
+                      tags:
+                      - _parent_object_id: 1
+                        id: 16
+                        tag_key: cost_work_9
+                        tag_type: incentive
+                        tag_content: COST009-WORK009
+                        incentives:
+                        - _parent_object_id: 16
+                          id: 10
+                          amount: '1.0'
+                          tag_id: 16
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 17
+                        tag_key: cost_work_10
+                        tag_type: incentive
+                        tag_content: COST010-WORK010
+                        incentives:
+                        - _parent_object_id: 17
+                          id: 11
+                          amount: '94.0'
+                          tag_id: 17
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 18
+                        tag_key: cost_work_11
+                        tag_type: incentive
+                        tag_content: COST011-WORK011
+                        incentives:
+                        - _parent_object_id: 18
+                          id: 12
+                          amount: '15.0'
+                          tag_id: 18
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 19
+                        tag_key: cost_work_12
+                        tag_type: incentive
+                        tag_content: COST012-WORK012
+                        incentives:
+                        - _parent_object_id: 19
+                          id: 13
+                          amount: '68.0'
+                          tag_id: 19
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 20
+                        tag_key: cost_work_13
+                        tag_type: incentive
+                        tag_content: COST013-WORK013
+                        incentives:
+                        - _parent_object_id: 20
+                          id: 14
+                          amount: '43.0'
+                          tag_id: 20
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 21
+                        tag_key: cost_work_14
+                        tag_type: incentive
+                        tag_content: COST014-WORK014
+                        incentives:
+                        - _parent_object_id: 21
+                          id: 15
+                          amount: '55.0'
+                          tag_id: 21
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 22
+                        tag_key: cost_work_15
+                        tag_type: incentive
+                        tag_content: COST015-WORK015
+                        incentives:
+                        - _parent_object_id: 22
+                          id: 16
+                          amount: '5.0'
+                          tag_id: 22
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 23
+                        tag_key: cost_work_16
+                        tag_type: incentive
+                        tag_content: COST016-WORK016
+                        incentives:
+                        - _parent_object_id: 23
+                          id: 17
+                          amount: '5.0'
+                          tag_id: 23
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 24
+                        tag_key: cost_work_17
+                        tag_type: incentive
+                        tag_content: COST017-WORK017
+                        incentives:
+                        - _parent_object_id: 24
+                          id: 18
+                          amount: '93.0'
+                          tag_id: 24
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 25
+                        tag_key: cost_work_18
+                        tag_type: incentive
+                        tag_content: COST018-WORK018
+                        incentives:
+                        - _parent_object_id: 25
+                          id: 19
+                          amount: '77.0'
+                          tag_id: 25
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 26
+                        tag_key: cost_work_19
+                        tag_type: incentive
+                        tag_content: COST019-WORK019
+                        incentives:
+                        - _parent_object_id: 26
+                          id: 20
+                          amount: '55.0'
+                          tag_id: 26
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 7
+                        tag_key: cost_work_0
+                        tag_type: incentive
+                        tag_content: COST000-WORK000
+                        incentives:
+                        - _parent_object_id: 7
+                          id: 1
+                          amount: '84.0'
+                          tag_id: 7
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 8
+                        tag_key: cost_work_1
+                        tag_type: incentive
+                        tag_content: COST001-WORK001
+                        incentives:
+                        - _parent_object_id: 8
+                          id: 2
+                          amount: '60.0'
+                          tag_id: 8
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 9
+                        tag_key: cost_work_2
+                        tag_type: incentive
+                        tag_content: COST002-WORK002
+                        incentives:
+                        - _parent_object_id: 9
+                          id: 3
+                          amount: '19.0'
+                          tag_id: 9
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 10
+                        tag_key: cost_work_3
+                        tag_type: incentive
+                        tag_content: COST003-WORK003
+                        incentives:
+                        - _parent_object_id: 10
+                          id: 4
+                          amount: '16.0'
+                          tag_id: 10
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 11
+                        tag_key: cost_work_4
+                        tag_type: incentive
+                        tag_content: COST004-WORK004
+                        incentives:
+                        - _parent_object_id: 11
+                          id: 5
+                          amount: '74.0'
+                          tag_id: 11
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 12
+                        tag_key: cost_work_5
+                        tag_type: incentive
+                        tag_content: COST005-WORK005
+                        incentives:
+                        - _parent_object_id: 12
+                          id: 6
+                          amount: '17.0'
+                          tag_id: 12
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 13
+                        tag_key: cost_work_6
+                        tag_type: incentive
+                        tag_content: COST006-WORK006
+                        incentives:
+                        - _parent_object_id: 13
+                          id: 7
+                          amount: '26.0'
+                          tag_id: 13
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 14
+                        tag_key: cost_work_7
+                        tag_type: incentive
+                        tag_content: COST007-WORK007
+                        incentives:
+                        - _parent_object_id: 14
+                          id: 8
+                          amount: '87.0'
+                          tag_id: 14
+                          start_time: null
+                          end_time: null
+                      - _parent_object_id: 1
+                        id: 15
+                        tag_key: cost_work_8
+                        tag_type: incentive
+                        tag_content: COST008-WORK008
+                        incentives:
+                        - _parent_object_id: 15
+                          id: 9
+                          amount: '35.0'
+                          tag_id: 15
+                          start_time: null
+                          end_time: null
+                    - _parent_object_id: null
+                      id: 2
+                      group_name: xpo_call_off_reasons
+                      tags:
+                      - _parent_object_id: 2
+                        id: 32
+                        tag_key: call_off_reason_0
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 0
+                      - _parent_object_id: 2
+                        id: 33
+                        tag_key: call_off_reason_1
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 1
+                      - _parent_object_id: 2
+                        id: 34
+                        tag_key: call_off_reason_2
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 2
+                      - _parent_object_id: 2
+                        id: 35
+                        tag_key: call_off_reason_3
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 3
+                      - _parent_object_id: 2
+                        id: 36
+                        tag_key: call_off_reason_4
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 4
+                      - _parent_object_id: 2
+                        id: 37
+                        tag_key: call_off_reason_5
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 5
+                      - _parent_object_id: 2
+                        id: 38
+                        tag_key: call_off_reason_6
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 6
+                      - _parent_object_id: 2
+                        id: 39
+                        tag_key: call_off_reason_7
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 7
+                      - _parent_object_id: 2
+                        id: 40
+                        tag_key: call_off_reason_8
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 8
+                      - _parent_object_id: 2
+                        id: 41
+                        tag_key: call_off_reason_9
+                        tag_type: call_off_reason
+                        tag_content: Call Off Reason 9
+                example-1:
+                  summary: get location tag groups - for RTO categories
+                  value:
+                    tag_groups:
+                    - _parent_object_id: null
+                      id: 267
+                      group_name: default rto categories
+                      group_type: rto_categories
+                      tags:
+                      - _parent_object_id: 267
+                        id: 3750
+                        tag_key: rto_category_diversity
+                        tag_type: rto_category
+                        tag_content: Diversity Day
+                        tag_meta:
+                          hour_step: 1
+                      - _parent_object_id: 267
+                        id: 3749
+                        tag_key: rto_category_floating
+                        tag_type: rto_category
+                        tag_content: Floating Holiday
+                        tag_meta:
+                          hour_step: 1
+                      - _parent_object_id: 267
+                        id: 3748
+                        tag_key: rto_category_pto
+                        tag_type: rto_category
+                        tag_content: Paid Time Off
+                        tag_meta:
+                          hour_step: 1
+  /api/customer/user_role/locations/2806/usable_skills:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: get location usable skills
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Mon, 16 May 2022 23:41:11 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"76a2a68e8d52f5d3ce31323ea771e856"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=K01qSy9ZTE5IWDZtbmhCWFd1d283OVVTdjIrck93U045MkZTMVRQQkErcTROc2pvblArdE5rWU5pTXZSS1FlVDQ4ZmpzWWZOOCtITUpkZGNlUlYzREE9PS0tY2J5RU05OTRVVkI5RURYOEpHSEFVUT09--feb63babdc8d38d186c0d97ab52c16e2aa702862; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 2ffa355d-f20a-44c4-8337-c20c0abaa071
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.864618'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                skills:
+                - _parent_object_id: null
+                  id: 5
+                  skill_content: skill 5
+                  user_ids:
+                  - 10
+                  - 9
+                  - 8
+                  - 7
+                  - 6
+                  - 5
+                  - 4
+                  - 3
+                  - 2
+                  - 1
+                  - 15047
+                  - 13991
+                  - 15001
+                  - 14005
+                  - 14212
+                  - 13992
+                  - 10913
+                  - 15046
+                  - 14971
+                  - 12222
+                  - 14028
+                  - 14049
+                  - 14977
+                  - 14068
+                  - 14793
+                  - 12344
+                  - 14228
+                  - 14186
+                  - 14224
+                  - 14419
+                  current_location_user_ids:
+                  - 15047
+                  - 13991
+                  - 15001
+                  - 14005
+                  - 14212
+                  - 13992
+                  - 10913
+                  - 15046
+                  - 14971
+                  - 12222
+                  - 14028
+                  - 14049
+                  - 14977
+                  - 14068
+                  - 14793
+                  - 12344
+                  - 14228
+                  - 14186
+                  - 14224
+                  - 14419
+                - _parent_object_id: null
+                  id: 4
+                  skill_content: skill 4
+                  user_ids:
+                  - 14789
+                  - 14788
+                  - 14528
+                  - 12215
+                  - 14793
+                  - 14049
+                  - 12344
+                  - 14005
+                  - 9456
+                  - 7605
+                  - 7610
+                  - 14157
+                  - 7608
+                  - 14211
+                  - 14181
+                  current_location_user_ids:
+                  - 14789
+                  - 14788
+                  - 14528
+                  - 14793
+                  - 14049
+                  - 12344
+                  - 14005
+                  - 9456
+                  - 7605
+                  - 7610
+                  - 14157
+                  - 7608
+                  - 14211
+                  - 14181
+                - _parent_object_id: null
+                  id: 3
+                  skill_content: skill 3
+                  user_ids:
+                  - 12227
+                  - 11932
+                  - 14225
+                  - 14207
+                  - 14181
+                  - 14815
+                  - 14211
+                  - 14186
+                  - 14228
+                  - 14224
+                  current_location_user_ids:
+                  - 12227
+                  - 14225
+                  - 14207
+                  - 14181
+                  - 14815
+                  - 14211
+                  - 14186
+                  - 14228
+                  - 14224
+                - _parent_object_id: null
+                  id: 2
+                  skill_content: skill 2
+                  user_ids:
+                  - 7613
+                  - 13409
+                  - 14522
+                  - 10913
+                  - 12227
+                  - 12222
+                  current_location_user_ids:
+                  - 7613
+                  - 13409
+                  - 14522
+                  - 10913
+                  - 12227
+                  - 12222
+                - _parent_object_id: null
+                  id: 1
+                  skill_content: skill 1
+                  user_ids:
+                  - 7613
+                  - 14211
+                  - 14186
+                  - 14419
+                  - 14437
+                  - 14815
+                  - 14181
+                  - 13409
+                  - 12227
+                  - 14525
+                  - 12222
+                  - 8529
+                  - 14200
+                  - 14587
+                  current_location_user_ids:
+                  - 7613
+                  - 14211
+                  - 14186
+                  - 14419
+                  - 14437
+                  - 14815
+                  - 14181
+                  - 13409
+                  - 12227
+                  - 14525
+                  - 12222
+                  - 8529
+                  - 14200
+                  - 14587
+  /api/customer/user_role/locations/2806/linked_tags:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: get location linked tags
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/locations/{location_id}/settings:
+    get:
+      tags:
+      - Customer > Locations > user_role
+      summary: '[location] get a user location settings'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.19.3
+            Date:
+              schema:
+                type: string
+                example: Tue, 10 Jan 2023 04:22:30 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            ETag:
+              schema:
+                type: string
+                example: W/"0addb825337898e7e98c8560996cfab3"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=Zy9ETkVsMitqcTBBbmlSQk4yWGNrcHZ5bnIweUpjcUdDcFhnTzJTUW5rNnEzM3o0YXBlaU1TMzdIanBBWkRFRllCWi9lWDZBVGhTL2ZYa2NyWTVNZmc9PS0tNk9DeFJVaDAzMGM4dEJMU0JEYk5ydz09--bd2125f9b05137d613cb2c3531a6878531045720; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 56a22ca3-2f24-4e60-a369-ef1a4a926079
+            X-Runtime:
+              schema:
+                type: number
+                example: '10.843919'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                location:
+                  _parent_object_id: null
+                  final_function_setting:
+                    _parent_object_id: null
+                    cfg__action_menu: 1
+                    cfg__invite_team: 1
+                    cfg__shyft_pro: 1
+                    cfg__show_ewa: 1
+                    cfg__availability: 1
+                    cfg__skill: 1
+                    cfg__departments: 0
+                    cfg__hide_associates: 0
+                    cfg__primary_job_and_department: 1
+                    cfg__shift__show_conflict: 1
+                    cfg__dm__disable_a2a_chat: 1
+                    cfg__group_chat: 1
+                    cfg__group_chat__private_group__create: 1
+                    cfg__group_chat__post__create: 1
+                    cfg__group_chat__comments: 1
+                    cfg__group_chat__likes: 1
+                    cfg__group_chat__user_joined_message: 1
+                    cfg__free_post__shift_post_comments: 0
+                    cfg__schedule_element__delete: 1
+                    cfg__shift__post_new: 1
+                    cfg__shift__post_open_shift: 1
+                    cfg__photo_schedule__post: 1
+                    cfg__shift_allow_deny_repost: 1
+                    cfg__shift__post_pickup: 1
+                    cfg__inventory_show: 1
+                    cfg__inventory__create: 1
+                    cfg__inventory__convert: 1
+                    cfg__allow__cover_team_shift: 1
+                    cfg__allow__cover_open_shift: 1
+                    cfg__allow__cover_vto: 1
+                    cfg__allow__call_off: 1
+                    cfg__rto: 1
+                    cfg__rto_balance: 1
+                    cfg__badge_id: 0
+  /api/customer/user_role/locations/find_or_create:
+    post:
+      tags:
+      - Customer > Locations > user_role
+      summary: find or create a location (option to join)
+      description: "Description\n- - - \n- Create a location object\n- `location_name` is always required. \n- Option1: supply address information, let backend figure out rest\n- Option2: supply the formatted address, and other required fields. \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\njoin | false/true | | | join the location created \n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - -\n\nOption 1\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name ||*| |\naddress | | * | |\ncity | | * | |\nprovince | | * | |\npostal | | * | |\ncountry | | * | |\n\n\nOption 2\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name | | * | |\nformatted_address | | * | |\nlatitude | | * | |\nlongitude | | * | |\ngoogle_map_id | | * | |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n  \"location\": {\n  \t\"location_name\": \"Shyft Tech.\",\n  \t\"latitude\": \"90.0\",\n  \t\"longitude\": \"180.0\",\n  \t\"google_map_id\": \"xxxxxxx\",\n  \t\"time_zone\": \"America/Los_Angeles\",\n  \t\"formatted_address\": \"3131 Western Ave #515, Seattle, WA 98121\"\n  }\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: join
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      - name: response[keep]
+        in: query
+        schema:
+          type: string
+        example: current_user_privilege
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: '{{x_method}}'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            ETag:
+              schema:
+                type: string
+                example: W/"e958852dc49f8e8d69600fbf6746e433"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=eHpSY3M2SkgxeGpsbnh4dmphKzRzRE0wUkJnNzFHLzdiUnk0UlhZMWMyWVJ3c2FPdDZPOStsR21VTklRMXZqVFBURmQwcHA5cExXaCtPWGphMXZZS3c9PS0tNW9DdWw0WitDTlBweGlmY01DakZ0dz09--f451e9c276b4e60230797999b97ef3b24143befb; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: Bin%27s+Local+Server
+            X-Request-Id:
+              schema:
+                type: string
+                example: 8adc32a8-5b6c-4fac-8ff1-c3b5eb6bfa07
+            X-Runtime:
+              schema:
+                type: number
+                example: '21.032087'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                location:
+                  _parent_object_id: null
+                  id: 5250
+                  swift_code: YEUTBT
+                  location_name: Shyft Tech.
+                  unit_number: null
+                  street_number: null
+                  address: null
+                  province: null
+                  postal: null
+                  country: null
+                  lat: null
+                  lng: null
+                  latitude: 90
+                  longitude: 180
+                  phone_number: null
+                  created_at: '2018-11-02T20:51:33.842Z'
+                  users_count: 1
+                  formatted_address: '3131 Western Ave #515, Seattle, WA 98121'
+                  time_zone: America/Los_Angeles
+                  google_map_id: xxxxxxx
+                  four_sq_id: null
+                  allow_tipping: true
+                  shift_require_approval: false
+                  shyft_pro_active: false
+                  shyft_pro_expiry_date: '2017-09-04T04:37:28.839Z'
+                  fence_radius: null
+                  cfg_not_dm: null
+                  cfg_geofence_log: false
+                  cfg_timeout: null
+                  tos_url: null
+                  tos_version: null
+                  ip_blocked: false
+                  member_count: 0
+                  location_address: null
+                  location_city: ',  '
+                  division_names: []
+                  feed_channel_id: 7396
+                  pending_users_count: 0
+  /api/customer/user_role/locations/{location_id}/broadcast_notification:
+    put:
+      tags:
+      - Customer > Locations > user_role
+      summary: broadcast notifications
+      description: "Description\n\n---\n\n- Send notifications to location users\n- `location_id` coulld be `ID` or `Swift Code`\n    \n\nParams\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| user_ids | integer array | optional | filter locations users list of supplied |\n| message | string/hash | required | predefined message key or message content |\n|  |  |  |  |\n|  |  |  |  |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n    \"user_ids\": [\n        1,\n        2\n    ],\n    \"n_event\": \"shift_covered\",\n    \"p_action\": \"shift_detail\",\n    \"message\": {\n        \"key\": \"notify_schedule_updated\"\n    }\n}"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: location_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/locations/9287/copy_week_planned_shifts:
+    put:
+      tags:
+      - Customer > Locations > user_role
+      summary: copy week planned shifts Copy
+      description: "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n    \"dest_week_day\": \"2024-02-11\",\n    \"src_week_day\": \"2024-02-18\",\n    \"owner_ids\": [1, 2, 3]\n}\n"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: 23518f45-0770-46f0-b842-3b7484678f00
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: has_open_shifts
+        in: query
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '204':
+          description: No Content
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx/1.27.3
+            Date:
+              schema:
+                type: string
+                example: Mon, 14 Apr 2025 17:20:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-LS-License:
+              schema:
+                type: string
+                example: All Rights Reserved Â© Coffee Enterprise
+            X-LS-Application:
+              schema:
+                type: string
+                example: Coffee Mobile
+            X-Request-Method:
+              schema:
+                type: string
+                example: none
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Set-Cookie:
+              schema:
+                type: string
+                example: _shyft_api_server_session=UmJTdWJ1ZTcyU2VkSjdRb0pKS2hRdDMwTmxtN1ZZZkxjWnhwU25GTGFld1J6WUZKSEswVjdoV1RCQ09NZWlINE1OTGlURGVvQzVYZkpiQUxHcCtQcmc9PS0teHV0aDNlT2g2ZjFFNmM3Um9WdTVZZz09--e746253f6178bdc35da8cef42e2950ca2285a84c; path=/; HttpOnly
+            X-Rack-Dev-Mark-Env:
+              schema:
+                type: string
+                example: BinLocalServer
+            X-Request-Id:
+              schema:
+                type: string
+                example: 8eb1090d-7a55-446b-b5dd-45daed7889d3
+            X-Runtime:
+              schema:
+                type: number
+                example: '21.891146'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: null
+  /api/customer/user_role/locations/9287/delete_demo_data:
+    put:
+      tags:
+      - Customer > Locations > user_role
+      summary: create  demo data
+      description: "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n   \n}\n"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/user_role/locations/9287/create_demo_data:
+    put:
+      tags:
+      - Customer > Locations > user_role
+      summary: delete  demo data
+      description: "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n\n}\n"'
+      parameters:
+      - name: Session-Uukey
+        in: header
+        schema:
+          type: string
+        example: '{{session_uukey}}'
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth
