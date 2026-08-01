@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: searched
+source: https://customer-api-doc.myshyft.com/
+derived_from: openapi/shyft-customer-openapi-original.json
+note: Cross-cutting request/response semantics for the Shyft Customer API, captured
+  from the public Redoc documentation and derived from the OpenAPI.
+authentication:
+  style: HTTP Bearer JWT
+  header: 'Authorization: Bearer <jwt>'
+  obtain: POST /api/users/sign_in (phone) then use the returned token
+  public_endpoints: noauth scheme on signup/confirmation/password-reset/code_auth
+  session_header: Session-Uukey (custom per-session header present on most authenticated
+    operations)
+  ref: authentication/shyft-authentication.yml
+roles:
+  model: path-segment role gating
+  values:
+  - user_role
+  - admin_role
+  note: Most collections are exposed twice, under /api/customer/user_role/... and
+    /api/customer/admin_role/...; a 403 indicates the caller lacks the role.
+pagination:
+  style: page-based
+  params:
+  - per_page
+  note: Page-based pagination via the per_page query parameter; no cursor pagination.
+response_shaping:
+  params:
+  - response[keep]
+  - response[nested]
+  - response[put_return_resource]
+  note: 'Custom query-parameter response shaping: response[nested] expands nested
+    resources, response[keep] selects fields, response[put_return_resource] controls
+    whether a PUT echoes the updated resource.'
+request_tracing:
+  header: x-request-id
+  direction: response
+  note: Responses carry x-request-id for correlation/debugging.
+content_type:
+  required: true
+  value: application/json
+  note: Content-Type header is set on the large majority of operations.
+idempotency:
+  supported: false
+  note: No idempotency-key mechanism is documented for write operations.
+versioning:
+  scheme: uri-path
+  base: /api
+  current: 1.0.0
+  ref: lifecycle/shyft-lifecycle.yml
+errors:
+  format: application/json
+  validation_status: 422
+  ref: errors/shyft-problem-types.yml
+rate_limiting:
+  documented: false
+  note: No rate-limit headers or policy documented in the spec.

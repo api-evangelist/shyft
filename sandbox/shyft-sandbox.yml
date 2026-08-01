@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://customer-api-doc.myshyft.com/
+derived_from: openapi/shyft-customer-openapi-original.json
+note: Test/sandbox affordances for the Shyft Customer API. The OpenAPI declares dedicated
+  test service hosts, and the phone-signup flow exposes an SMS-code retrieval helper
+  intended for testing. No published test card numbers or hosted test tokens (billing
+  is handled via embedded Stripe objects on the Products/Subscriptions/EWA surface).
+  Never invent test values.
+test_hosts:
+- https://test-service.myshyft.com
+- https://test-unfurl.myshyft.com
+test_host_reachable:
+  https://test-service.myshyft.com: 200
+helpers:
+- operation: GET /api/code_auth/{phone_number}
+  purpose: Retrieve the SMS verification code for a phone number to complete PhoneNumber
+    signup/sign-in in a test context.
+test_cards: null
+test_credentials: Not published in the public documentation.

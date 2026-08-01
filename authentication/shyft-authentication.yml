@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/shyft-customer-openapi-original.json
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/shyft-customer-openapi-original.json
+- name: noauthAuth
+  type: http
+  scheme: noauth
+  sources:
+  - openapi/shyft-customer-openapi-original.json

@@ -1,0 +1,14 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Shyft Customer API
+  version: 1.0.0
+extends: openapi/shyft-customer-openapi-original.json
+actions:
+- target: $.info
+  description: Annotate provenance + AE rating context
+  update:
+    x-apievangelist-source: https://customer-api-doc.myshyft.com/
+    x-apievangelist-harvested: '2026-07-21'
+    x-apievangelist-note: 'Spec exported from public Redoc docs (Postman origin):
+      operations lack operationId and components.schemas; servers are templated placeholders.
+      Production base host is not published in the spec.'

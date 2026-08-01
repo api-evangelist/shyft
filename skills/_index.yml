@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: generated
+note: >-
+  Agent Skills for the Shyft Customer API, generated from the harvested OpenAPI and
+  the captured conventions/errors. The source spec declares no operationId values, so
+  each skill grounds its steps in real HTTP method + path operations verified against
+  openapi/shyft-customer-openapi-original.json.
+skills:
+  - file: shyft-phone-authentication.md
+    name: Authenticate a user by phone number
+    api: openapi/shyft-customer-openapi-original.json
+    operations:
+      - "POST /api/users"
+      - "GET /api/code_auth/{phone_number}"
+      - "POST /api/code_auth/{phone_number}"
+      - "POST /api/users/sign_in"
+  - file: shyft-manage-availability.md
+    name: Read and set a worker's availability
+    api: openapi/shyft-customer-openapi-original.json
+    operations:
+      - "GET /api/customer/user_role/locations/{location_id}/availabilities/mine_current"
+      - "GET /api/customer/user_role/locations/{location_id}/availabilities/all"
+      - "POST /api/customer/user_role/locations/{location_id}/availabilities"
+      - "PUT /api/customer/user_role/locations/{location_id}/availabilities/{availability_id}"
+  - file: shyft-manage-shifts.md
+    name: Create, publish and cover shifts
+    api: openapi/shyft-customer-openapi-original.json
+    operations:
+      - "GET /api/customer/user_role/schedule_elements"
+      - "POST /api/customer/user_role/locations/{location_id}/schedule_elements"
+      - "PUT /api/customer/user_role/schedule_elements/{shift_id}/publish"
+      - "PUT /api/customer/user_role/schedule_elements/{shift_id}/cover"

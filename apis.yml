@@ -1,8 +1,27 @@
 aid: shyft
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/shyft.png
 name: Shyft
-description: Shyft is a company surfaced as a portfolio company of general-catalyst, techstars and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Shyft is a mobile-first workforce management platform for hourly and shift-based
+  teams — employees swap shifts, message teammates, set their availability, and manage
+  schedules from their phone, while managers build and publish schedules from a
+  dashboard. The Shyft Customer API is the REST/JSON backend behind the Shyft iOS and
+  Android apps, the web app, and the Manager Dashboard, covering authentication, users,
+  locations, availabilities, schedules and shifts, channels and chats, posts and
+  notifications, departments, subscriptions, and earned wage access (EWA). It is
+  secured with HTTP Bearer (JWT) tokens. Shyft is backed by General Catalyst and Techstars.
 url: https://raw.githubusercontent.com/api-evangelist/shyft/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,15 +32,668 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Workforce Management
+- Employee Scheduling
+- Shift Swapping
+- Team Communication
+- Hourly Workers
+- Earned Wage Access
+- HR Tech
+- REST API
+apis:
+- aid: shyft:shyft-authentication-email-api
+  name: Shyft Authentication > Email API
+  description: The Authentication > Email API from Shyft — 2 operation(s) for authentication > email.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Authentication > Email
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-authentication-email-api-openapi.yml
+- aid: shyft:shyft-authentication-phonenumber-api
+  name: Shyft Authentication > PhoneNumber API
+  description: >-
+    The Authentication > PhoneNumber API from Shyft — 4 operation(s) for authentication > phonenumber.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Authentication > PhoneNumber
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-authentication-phonenumber-api-openapi.yml
+- aid: shyft:shyft-callbacks-api
+  name: Shyft Callbacks API
+  description: The Callbacks API from Shyft — 3 operation(s) for callbacks.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Callbacks
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-callbacks-api-openapi.yml
+- aid: shyft:shyft-compact-applicants-api
+  name: Shyft Compact > Applicants API
+  description: The Compact > Applicants API from Shyft — 1 operation(s) for compact > applicants.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Compact > Applicants
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-compact-applicants-api-openapi.yml
+- aid: shyft:shyft-compact-plans-api
+  name: Shyft Compact > Plans API
+  description: The Compact > Plans API from Shyft — 1 operation(s) for compact > plans.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Compact > Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-compact-plans-api-openapi.yml
+- aid: shyft:shyft-compact-posts-api
+  name: Shyft Compact > Posts API
+  description: "What is Free Post? \n\nFree Post is basically a type of `post`, with `post_type = 22`\
+    \ \n\n* free post requires `postable_type` and `postable_id`\n* current user must has visibility of\
+    \ `postable` to create a free_post for it. \n* free post does not take a `channel_id` as input\n*\
+    \ any API targeting on a single post can be used for `free_post`\n\nPlease use the regular post `create`\
+    \ API to create a free_post\n\n* Here we are applying `compact` serializer to the result."
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Compact > Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-compact-posts-api-openapi.yml
+- aid: shyft:shyft-compact-requsttimeoff-api
+  name: Shyft Compact > RequstTimeOff API
+  description: The Compact > RequstTimeOff API from Shyft — 2 operation(s) for compact > requsttimeoff.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Compact > RequstTimeOff
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-compact-requsttimeoff-api-openapi.yml
+- aid: shyft:shyft-compact-shifts-api
+  name: Shyft Compact > Shifts API
+  description: The Compact > Shifts API from Shyft — 2 operation(s) for compact > shifts.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Compact > Shifts
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-compact-shifts-api-openapi.yml
+- aid: shyft:shyft-compact-subscriptions-api
+  name: Shyft Compact > Subscriptions API
+  description: The Compact > Subscriptions API from Shyft — 1 operation(s) for compact > subscriptions.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Compact > Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-compact-subscriptions-api-openapi.yml
+- aid: shyft:shyft-compact-userprivileges-api
+  name: Shyft Compact > UserPrivileges API
+  description: >-
+    The Compact > UserPrivileges API from Shyft — 1 operation(s) for compact > userprivileges.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Compact > UserPrivileges
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-compact-userprivileges-api-openapi.yml
+- aid: shyft:shyft-customer-action-jobs-api
+  name: Shyft Customer > Action Jobs API
+  description: The Customer > Action Jobs API from Shyft — 2 operation(s) for customer > action jobs.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Action Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-action-jobs-api-openapi.yml
+- aid: shyft:shyft-customer-adminclaims-api
+  name: Shyft Customer > AdminClaims API
+  description: The Customer > AdminClaims API from Shyft — 2 operation(s) for customer > adminclaims.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > AdminClaims
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-adminclaims-api-openapi.yml
+- aid: shyft:shyft-customer-ai-api
+  name: Shyft Customer > AI API
+  description: The Customer > AI API from Shyft — 1 operation(s) for customer > ai.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > AI
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-ai-api-openapi.yml
+- aid: shyft:shyft-customer-applicants-api
+  name: Shyft Customer > Applicants API
+  description: The Customer > Applicants API from Shyft — 3 operation(s) for customer > applicants.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Applicants
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-applicants-api-openapi.yml
+- aid: shyft:shyft-customer-availabilities-admin-role-request-api
+  name: Shyft Customer > Availabilities > admin_role > request API
+  description: >-
+    The Customer > Availabilities > admin_role > request API from Shyft — 3 operation(s) for customer
+    > availabilities > admin_role > request.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Availabilities > admin_role > request
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-availabilities-admin-role-request-api-openapi.yml
+- aid: shyft:shyft-customer-availabilities-user-role-api
+  name: Shyft Customer > Availabilities > user_role API
+  description: Acting as a regular user for specific location
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Availabilities > user_role
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-availabilities-user-role-api-openapi.yml
+- aid: shyft:shyft-customer-availabilities-user-role-deprecated-api
+  name: Shyft Customer > Availabilities > user_role > Deprecated API
+  description: >-
+    The Customer > Availabilities > user_role > Deprecated API from Shyft — 2 operation(s) for customer
+    > availabilities > user_role > deprecated.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Availabilities > user_role > Deprecated
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-availabilities-user-role-deprecated-api-openapi.yml
+- aid: shyft:shyft-customer-availabilities-user-role-deprecated-request-api
+  name: Shyft Customer > Availabilities > user_role > Deprecated > request API
+  description: >-
+    The Customer > Availabilities > user_role > Deprecated > request API from Shyft — 1 operation(s) for
+    customer > availabilities > user_role > deprecated > request.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Availabilities > user_role > Deprecated > request
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-availabilities-user-role-deprecated-request-api-openapi.yml
+- aid: shyft:shyft-customer-channels-api
+  name: Shyft Customer > Channels API
+  description: The Customer > Channels API from Shyft — 7 operation(s) for customer > channels.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-channels-api-openapi.yml
+- aid: shyft:shyft-customer-chats-chatmessages-api
+  name: Shyft Customer > Chats > ChatMessages API
+  description: >-
+    The Customer > Chats > ChatMessages API from Shyft — 3 operation(s) for customer > chats > chatmessages.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Chats > ChatMessages
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-chats-chatmessages-api-openapi.yml
+- aid: shyft:shyft-customer-chats-chatsessions-api
+  name: Shyft Customer > Chats > ChatSessions API
+  description: >-
+    The Customer > Chats > ChatSessions API from Shyft — 5 operation(s) for customer > chats > chatsessions.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Chats > ChatSessions
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-chats-chatsessions-api-openapi.yml
+- aid: shyft:shyft-customer-comments-api
+  name: Shyft Customer > Comments API
+  description: The Customer > Comments API from Shyft — 3 operation(s) for customer > comments.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-comments-api-openapi.yml
+- aid: shyft:shyft-customer-demands-api
+  name: Shyft Customer > Demands API
+  description: The Customer > Demands API from Shyft — 3 operation(s) for customer > demands.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Demands
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-demands-api-openapi.yml
+- aid: shyft:shyft-customer-departments-api
+  name: Shyft Customer > Departments API
+  description: The Customer > Departments API from Shyft — 6 operation(s) for customer > departments.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Departments
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-departments-api-openapi.yml
+- aid: shyft:shyft-customer-departments-memberships-api
+  name: Shyft Customer > Departments > Memberships API
+  description: >-
+    The Customer > Departments > Memberships API from Shyft — 3 operation(s) for customer > departments
+    > memberships.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Departments > Memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-departments-memberships-api-openapi.yml
+- aid: shyft:shyft-customer-ewa-api
+  name: Shyft Customer > EWA API
+  description: "Ojbect Serializer: \n\n\n[EWA Account Serializer]\n\nAttribute | Values | R | Description\n\
+    --- | --- | --- | ---\nid | | | \ntos_yes | | | Indciate if user has accepted the TOS by going through\
+    \ all pages. \nis_active |\newa_score | | | The score Shyft give by anazlyzing the bank account data\n\
+    ewa_maximal | | | The maximal user can borrow in total\newa_status| string | |one of values: ewa_not_applicable_user\
+    \ / ewa_not_setup / ewa_has_balance / ewa_out_of_fund / ewa_normal\nnext_payback_date | datetime |\
+    \ | The date customer need to payback\nemail | datetime | | The confirmed email address\nis_confirmation_requested\
+    \ | boolean | | Is there a pending email confirmation?\nis_confirmed |  boolean | |  Has customer\
+    \ been confirmed via email?\n\n\n\n[Bank Account Serializer]\n\nAttribute | Values | R | Description\n\
+    --- | --- | --- | ---\naccount_owner_name | | | Bank account holder full naem\nbank_name | | | Bank\
+    \ name\nbank_code | | | Bank code\ndescription] | | | \nis_active | | |\n\n\n\n[EWA Transaction Serializer]\n\
+    \nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer |  | in cents\n\
+    amount_currency| string |  | \newa_balance| string |  | how much money customer borrowed so far\n\
+    transaction_type| string |  | `borrow/payback`"
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > EWA
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-ewa-api-openapi.yml
+- aid: shyft:shyft-customer-geofencelogs-api
+  name: Shyft Customer > GeofenceLogs API
+  description: The Customer > GeofenceLogs API from Shyft — 1 operation(s) for customer > geofencelogs.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > GeofenceLogs
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-geofencelogs-api-openapi.yml
+- aid: shyft:shyft-customer-griddler-api
+  name: Shyft Customer > Griddler API
+  description: The Customer > Griddler API from Shyft — 1 operation(s) for customer > griddler.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Griddler
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-griddler-api-openapi.yml
+- aid: shyft:shyft-customer-images-api
+  name: Shyft Customer > Images API
+  description: The Customer > Images API from Shyft — 1 operation(s) for customer > images.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Images
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-images-api-openapi.yml
+- aid: shyft:shyft-customer-invitations-api
+  name: Shyft Customer > Invitations API
+  description: The Customer > Invitations API from Shyft — 1 operation(s) for customer > invitations.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Invitations
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-invitations-api-openapi.yml
+- aid: shyft:shyft-customer-locations-user-role-api
+  name: Shyft Customer > Locations > user_role API
+  description: >-
+    The Customer > Locations > user_role API from Shyft — 15 operation(s) for customer > locations > user_role.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Locations > user_role
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-locations-user-role-api-openapi.yml
+- aid: shyft:shyft-customer-messions-api
+  name: Shyft Customer > Messions API
+  description: The Customer > Messions API from Shyft — 4 operation(s) for customer > messions.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Messions
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-messions-api-openapi.yml
+- aid: shyft:shyft-customer-notifications-api
+  name: Shyft Customer > Notifications API
+  description: APIs for user/admin to manage notifications belonging to him/her
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-notifications-api-openapi.yml
+- aid: shyft:shyft-customer-posts-api
+  name: Shyft Customer > Posts API
+  description: "Ojbect Serializer: \n\n\n[Receipt Serializer]\n\nAttribute | Values | R | Description\n\
+    --- | --- | --- | ---\nuser_id | integer | * | User's ID who owns this receipt\ncreated_at | datetime\
+    \ | * | Time receipt generated\nfirst_name | string | * | User's first name\nlast_name | string |\
+    \ * | User's last name\nprofile_image_thumb_url | string | * | User's profile image\n\n\nAttribute\
+    \ | Values | R | Description\n--- | --- | --- | ---\nid| integer |  | \norg_id|  integer|  | \nchannel_id|\
+    \ integer |  | \ntitle| string |  | \ncontent| string |  | \ncomments_count|  integer|  | \nlikes_count|\
+    \ integer |  | \nviews_count| integer |  | \nread_count| integer |  | \ncreated_at| datetime |  |\
+    \ \nattachment|  |  | \nuser_group|  integer |  | \nlocation|  integer |  | \npost_type| integer |\
+    \  | \npinned| boolean |  | \npinned_by_id| integer |  | \nfinal_allow_delete| boolean |  | \nfinal_allow_comment|\
+    \ integer |  | \nfinal_allow_like| integer |  | \nfinal_allow_read| integer |  | \nowner_id| integer\
+    \ |  | \nowner| object |  | \nread| boolean |  | \nliked| boolean |  | \ncommented| boolean |  | \n\
+    schedule_element|  object |  |"
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-posts-api-openapi.yml
+- aid: shyft:shyft-customer-products-api
+  name: Shyft Customer > Products API
+  description: The Customer > Products API from Shyft — 1 operation(s) for customer > products.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Products
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-products-api-openapi.yml
+- aid: shyft:shyft-customer-requestjobs-api
+  name: Shyft Customer > RequestJobs API
+  description: The Customer > RequestJobs API from Shyft — 1 operation(s) for customer > requestjobs.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > RequestJobs
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-requestjobs-api-openapi.yml
+- aid: shyft:shyft-customer-requsttimeoff-api
+  name: Shyft Customer > RequstTimeOff API
+  description: >-
+    The Customer > RequstTimeOff API from Shyft — 8 operation(s) for customer > requsttimeoff.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > RequstTimeOff
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-requsttimeoff-api-openapi.yml
+- aid: shyft:shyft-customer-schedules-api
+  name: Shyft Customer > Schedules API
+  description: The Customer > Schedules API from Shyft — 4 operation(s) for customer > schedules.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-schedules-api-openapi.yml
+- aid: shyft:shyft-customer-segments-api
+  name: Shyft Customer > Segments API
+  description: The Customer > Segments API from Shyft — 1 operation(s) for customer > segments.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Segments
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-segments-api-openapi.yml
+- aid: shyft:shyft-customer-setupactions-api
+  name: Shyft Customer > SetupActions API
+  description: The Customer > SetupActions API from Shyft — 1 operation(s) for customer > setupactions.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > SetupActions
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-setupactions-api-openapi.yml
+- aid: shyft:shyft-customer-shifts-api
+  name: Shyft Customer > Shifts API
+  description: The Customer > Shifts API from Shyft — 25 operation(s) for customer > shifts.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Shifts
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-shifts-api-openapi.yml
+- aid: shyft:shyft-customer-skill-api
+  name: Shyft Customer > Skill API
+  description: The Customer > Skill API from Shyft — 4 operation(s) for customer > skill.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Skill
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-skill-api-openapi.yml
+- aid: shyft:shyft-customer-ssosessions-api
+  name: Shyft Customer > SsoSessions API
+  description: The Customer > SsoSessions API from Shyft — 2 operation(s) for customer > ssosessions.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > SsoSessions
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-ssosessions-api-openapi.yml
+- aid: shyft:shyft-customer-subscriptions-api
+  name: Shyft Customer > Subscriptions API
+  description: >-
+    The Customer > Subscriptions API from Shyft — 6 operation(s) for customer > subscriptions.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-subscriptions-api-openapi.yml
+- aid: shyft:shyft-customer-tag-api
+  name: Shyft Customer > Tag API
+  description: The Customer > Tag API from Shyft — 6 operation(s) for customer > tag.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Tag
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-tag-api-openapi.yml
+- aid: shyft:shyft-customer-tos-api
+  name: Shyft Customer > ToS API
+  description: The Customer > ToS API from Shyft — 1 operation(s) for customer > tos.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > ToS
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-tos-api-openapi.yml
+- aid: shyft:shyft-customer-unregisteredusers-api
+  name: Shyft Customer > UnregisteredUsers API
+  description: >-
+    The Customer > UnregisteredUsers API from Shyft — 5 operation(s) for customer > unregisteredusers.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > UnregisteredUsers
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-unregisteredusers-api-openapi.yml
+- aid: shyft:shyft-customer-uploader-api
+  name: Shyft Customer > Uploader API
+  description: The Customer > Uploader API from Shyft — 1 operation(s) for customer > uploader.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Uploader
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-uploader-api-openapi.yml
+- aid: shyft:shyft-customer-usernews-api
+  name: Shyft Customer > UserNews API
+  description: The Customer > UserNews API from Shyft — 3 operation(s) for customer > usernews.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > UserNews
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-usernews-api-openapi.yml
+- aid: shyft:shyft-customer-userprivileges-admin-role-api
+  name: Shyft Customer > UserPrivileges > admin_role API
+  description: >-
+    The Customer > UserPrivileges > admin_role API from Shyft — 1 operation(s) for customer > userprivileges
+    > admin_role.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > UserPrivileges > admin_role
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-userprivileges-admin-role-api-openapi.yml
+- aid: shyft:shyft-customer-userprivileges-api
+  name: Shyft Customer > UserPrivileges API
+  description: >-
+    The Customer > UserPrivileges API from Shyft — 10 operation(s) for customer > userprivileges.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > UserPrivileges
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-userprivileges-api-openapi.yml
+- aid: shyft:shyft-customer-users-admin-role-api
+  name: Shyft Customer > Users > admin_role API
+  description: >-
+    The Customer > Users > admin_role API from Shyft — 2 operation(s) for customer > users > admin_role.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Users > admin_role
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-users-admin-role-api-openapi.yml
+- aid: shyft:shyft-customer-users-user-role-api
+  name: Shyft Customer > Users > user_role API
+  description: >-
+    The Customer > Users > user_role API from Shyft — 7 operation(s) for customer > users > user_role.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Customer > Users > user_role
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-customer-users-user-role-api-openapi.yml
+- aid: shyft:shyft-deprecated-api
+  name: Shyft Deprecated API
+  description: The Deprecated API from Shyft — 1 operation(s) for deprecated.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Deprecated
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-deprecated-api-openapi.yml
+- aid: shyft:shyft-general-api
+  name: Shyft General API
+  description: The General API from Shyft — 1 operation(s) for general.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - General
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-general-api-openapi.yml
+- aid: shyft:shyft-support-api
+  name: Shyft Support API
+  description: The Support API from Shyft — 2 operation(s) for support.
+  humanURL: https://customer-api-doc.myshyft.com/
+  baseURL: https://app.myshyft.com
+  tags:
+  - Support
+  properties:
+  - type: OpenAPI
+    url: openapi/shyft-support-api-openapi.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/shyft-domain-security.yml
+- type: Authentication
+  url: authentication/shyft-authentication.yml
 - type: Website
   url: https://myshyft.com/
+- type: Documentation
+  url: https://customer-api-doc.myshyft.com/
+- type: APIReference
+  url: https://customer-api-doc.myshyft.com/
+- type: Pricing
+  url: https://www.myshyft.com/pricing/
+- type: SignUp
+  url: https://app.myshyft.com/
+- type: Login
+  url: https://app.myshyft.com/
+- type: MCPServer
+  url: mcp/shyft-mcp.yml
+- type: ErrorCatalog
+  url: errors/shyft-problem-types.yml
+- type: Conventions
+  url: conventions/shyft-conventions.yml
+- type: DataModel
+  url: data-model/shyft-data-model.yml
+- type: Lifecycle
+  url: lifecycle/shyft-lifecycle.yml
+- type: Conformance
+  url: conformance/shyft-conformance.yml
+- type: Sandbox
+  url: sandbox/shyft-sandbox.yml
+- type: LLMsTxt
+  url: llms/shyft-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml

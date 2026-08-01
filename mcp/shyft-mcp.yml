@@ -1,0 +1,716 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/shyft-customer-openapi-original.json
+note: Candidate MCP tool surface derived one-tool-per-operation from the Shyft Customer
+  API OpenAPI. No official Shyft MCP server was found. Operations have no operationId
+  in the source spec, so tools are keyed by HTTP method + path.
+server:
+  name: shyft-customer
+  transport: stdio
+  url: null
+tool_count: 234
+tools:
+- name: get_api_users_confirmation
+  description: Email - Confirmation
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/users/confirmation
+- name: post_api_users_confirmation
+  description: "Email - Confirmation \bResend"
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/users/confirmation
+- name: post_api_users
+  description: PhoneNumber - Signup
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/users
+- name: post_api_users_password
+  description: Email - Reset Password (request)
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/users/password
+- name: put_api_users_password
+  description: Email - Reset Password (update)
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/users/password
+- name: post_api_users_sign_in
+  description: PhoneNumber - Sign in/Confirm
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/users/sign_in
+- name: get_api_code_auth
+  description: PhoneNumber - Get SMS Code
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/code_auth/18885555555
+- name: get_api_users_super_login
+  description: PhoneNumber - SuperLogin
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/users/super_login
+- name: get_api_customer_user_role_admin_claims_claim
+  description: claim admin by code
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/admin_claims/claim
+- name: post_api_customer_user_role_admin_claims
+  description: create admin claim
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/admin_claims
+- name: get_api_customer_user_role_locations_availability_requests_curre
+  description: '[availability request] get curent open request'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/availability_requests/current
+- name: get_api_customer_user_role_locations_availabilities_all_current
+  description: '[availabilities] get members'' current availabilites'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/availabilities/all_current
+- name: get_api_customer_user_role_locations_availabilities_mine_current
+  description: '[availabilities] get your current availability'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/availabilities/mine_current
+- name: post_api_customer_user_role_locations_availabilities
+  description: '[availabilities] update your availability'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations/{location_id}/availabilities
+- name: put_api_customer_user_role_locations_availabilities
+  description: '[availabilities] update your availability'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/{location_id}/availabilities/225
+- name: get_api_customer_user_role_locations_availabilities_all
+  description: '[availabilities] get all availabilities from a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/availabilities/all
+- name: get_api_customer_user_role_locations_availabilities_mine
+  description: '[availabilities] get your availabilities from a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/availabilities/mine
+- name: get_api_customer_admin_role_locations_availability_requests_curr
+  description: '[availability request] get curent open one for admin'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/admin_role/locations/{location_id}/availability_requests/current
+- name: get_api_customer_admin_role_locations_availability_requests
+  description: '[availability request] get specfic request'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/admin_role/locations/{location_id}/availability_requests/56
+- name: put_api_customer_admin_role_locations_availability_requests
+  description: '[availability request] update request or close it'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/admin_role/locations/{location_id}/availability_requests/56
+- name: post_api_customer_admin_role_locations_availability_requests
+  description: '[availability request] create request'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/admin_role/locations/{location_id}/availability_requests
+- name: get_api_customer_user_role_comments
+  description: get comments
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/comments
+- name: post_api_customer_user_role_comments
+  description: create comment
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/comments
+- name: get_api_customer_user_role_comments_2
+  description: get a single comment
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/comments/7093
+- name: delete_api_customer_user_role_comments
+  description: delete comment
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/comments/6649
+- name: get_api_customer_user_role_chat_sessions
+  description: get chat sessions
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/chat_sessions
+- name: post_api_customer_user_role_chat_sessions
+  description: create a chat session
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/chat_sessions
+- name: get_api_customer_user_role_chat_sessions_2
+  description: get a chat session
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/chat_sessions/76
+- name: put_api_customer_user_role_chat_sessions__archive
+  description: archive a chat sessions
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/chat_sessions//{chat_session_id}/archive
+- name: put_api_customer_user_role_chat_sessions_quit
+  description: quit a chat sessions
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/chat_sessions/{chat_session_id}/quit
+- name: put_api_customer_user_role_chat_sessions_read_all
+  description: read all a chat session
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/chat_sessions/{chat_session_id}/read_all
+- name: get_api_customer_user_role_chat_sessions_chat_messages
+  description: get chat messages
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/chat_sessions/{chat_session_id}/chat_messages
+- name: post_api_customer_user_role_chat_sessions_chat_messages
+  description: create a chat message
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/chat_sessions/{chat_session_id}/chat_messages
+- name: get_api_customer_user_role_chat_sessions_chat_messages_2
+  description: get a chat message
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/chat_sessions/{chat_session_id}/chat_messages/{chat_message_id}
+- name: delete_api_customer_user_role_chat_sessions_chat_messages
+  description: delete a chat message
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/chat_sessions/{chat_session_id}/chat_messages/14830
+- name: post_api_customer_user_role_geofence_logs
+  description: create geofence_log
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/geofence_logs
+- name: get_api_customer_user_role_channels
+  description: get channels
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/channels
+- name: post_api_customer_user_role_channels
+  description: create channel
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/channels
+- name: get_api_customer_user_role_channels_can_admin
+  description: get manageable channels
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/channels/can_admin
+- name: get_api_customer_user_role_channels_2
+  description: get a channel
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/channels/12558
+- name: get_api_customer_user_role_channels_member_users
+  description: get a channel's active members(users)
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/channels/3344/member_users
+- name: put_api_customer_user_role_channels
+  description: update channel
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/channels/{channel_id}
+- name: delete_api_customer_user_role_channels
+  description: delete channel
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/channels/{channel_id}
+- name: put_api_customer_user_role_channels_remove_user
+  description: remove a user
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/channels/3344/remove_user
+- name: put_api_customer_user_role_channels_leave
+  description: leave a channel
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/channels/{channel_id}/leave
+- name: post_api_customer_user_role_images
+  description: create a image
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/images
+- name: post_api_customer_user_role_locations_invitations_invite
+  description: Invite contacts
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations/{location_id}/invitations/invite
+- name: get_api_customer_user_role_locations
+  description: '[2.0] get a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}
+- name: put_api_customer_user_role_locations
+  description: update a location
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/{location_id}
+- name: get_api_customer_user_role_locations_look_up
+  description: '[2.0] get a location by swift_code only'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{swift_code}/look_up
+- name: get_api_customer_user_role_locations_2
+  description: search locations with given GPS and keywords
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations
+- name: post_api_customer_user_role_locations
+  description: create a location (option to join)
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations
+- name: get_api_customer_user_role_locations_can_access
+  description: '[users] get my associated locations'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/can_access
+- name: get_api_customer_user_role_locations_can_admin
+  description: '[users] get my managable locations'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/can_admin
+- name: get_api_customer_user_role_locations_qfw80c_analytics
+  description: get location analytics
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/QFW80C/analytics
+- name: get_api_customer_user_role_locations_tag_groups
+  description: get location tag groups
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/tag_groups
+- name: get_api_customer_user_role_locations_usable_skills
+  description: get location usable skills
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/usable_skills
+- name: get_api_customer_user_role_locations_linked_tags
+  description: get location linked tags
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/linked_tags
+- name: get_api_customer_user_role_locations_settings
+  description: '[location] get a user location settings'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/settings
+- name: post_api_customer_user_role_locations_find_or_create
+  description: find or create a location (option to join)
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations/find_or_create
+- name: put_api_customer_user_role_locations_broadcast_notification
+  description: broadcast notifications
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/{location_id}/broadcast_notification
+- name: put_api_customer_user_role_locations_copy_week_planned_shifts
+  description: copy week planned shifts Copy
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/9287/copy_week_planned_shifts
+- name: put_api_customer_user_role_locations_delete_demo_data
+  description: create  demo data
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/9287/delete_demo_data
+- name: put_api_customer_user_role_locations_create_demo_data
+  description: delete  demo data
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/9287/create_demo_data
+- name: get_api_customer_user_role_messions_test_push
+  description: Get test push notification
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/messions/{mession_id}/test_push
+- name: put_api_customer_user_role_messions
+  description: Update mession
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/messions/{mession_id}
+- name: delete_api_customer_user_role_messions
+  description: Logout mession - Deprecated
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/messions/{session_uukey}
+- name: delete_api_customer_user_role_messions_logout
+  description: Logout mession - Option 2
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/messions/logout
+- name: get_api_customer_user_role_setup_actions
+  description: '[users] get setup actions'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/setup_actions
+- name: get_api_customer_user_role_notifications
+  description: get one notification
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/notifications/145093
+- name: put_api_customer_user_role_notifications
+  description: read one notification
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/notifications/145093
+- name: put_api_customer_user_role_notifications_viewed_all
+  description: view all my notifications
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/notifications/viewed_all
+- name: delete_api_customer_user_role_notifications_destroy_all
+  description: Remove all my notifications
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/notifications/destroy_all
+- name: delete_api_customer_user_role_notifications
+  description: Remove one notification
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/notifications/145936
+- name: get_api_customer_user_role_posts
+  description: get posts
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/posts
+- name: post_api_customer_user_role_posts
+  description: create a post
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/posts
+- name: get_api_customer_user_role_posts_2
+  description: get a post
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/posts/74300
+- name: get_api_customer_user_role_posts_receipts
+  description: get post receipts
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/posts/74282/receipts
+- name: put_api_customer_user_role_posts
+  description: update a post
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/posts/80344
+- name: put_api_customer_user_role_posts_like
+  description: like a post
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/posts/{post_id}/like
+- name: put_api_customer_user_role_posts_unlike
+  description: unlike a post
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/posts/{post_id}/unlike
+- name: put_api_customer_user_role_posts_read
+  description: read a post
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/posts/74282/read
+- name: put_api_customer_user_role_posts_pin
+  description: pin a post
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/posts/74286/pin
+- name: put_api_customer_user_role_posts_unpin
+  description: unpin a post
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/posts/{post_id}/unpin
+- name: delete_api_customer_user_role_posts
+  description: destroy a post
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/posts/{post_id}
+- name: get_api_customer_user_role_schedules
+  description: get schedules
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedules
+- name: post_api_customer_user_role_schedules
+  description: create a schedule
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/schedules
+- name: get_api_customer_user_role_schedules_2
+  description: get a schedule
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedules/981
+- name: delete_api_customer_user_role_schedules
+  description: delete a schedule
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/schedules/981
+- name: put_api_customer_user_role_schedules_publish
+  description: publish a schedule
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedules/171263/publish
+- name: put_api_customer_user_role_schedules_unpublish
+  description: unpublish a schedule
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedules/171263/unpublish
+- name: get_api_customer_user_role_schedule_elements
+  description: '[shifts] get segments'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedule_elements/7715
+- name: get_api_customer_user_role_schedule_elements_2
+  description: '[shifts] get associated shifts'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedule_elements
+- name: get_api_customer_user_role_schedule_elements_calendar
+  description: '[shifts] get items for mobile app calendar view'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedule_elements/calendar
+- name: get_api_customer_user_role_schedule_elements_can_admin
+  description: '[shifts] get managable shifts'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedule_elements/can_admin
+- name: get_api_customer_user_role_schedule_elements_group_count
+  description: '[shifts] count shifts group by date'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedule_elements/group_count
+- name: get_api_customer_user_role_schedule_elements_3
+  description: '[shifts] get a shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedule_elements/2699959
+- name: get_api_customer_user_role_schedule_elements_get_current_applica
+  description: '[shifts] get shift applicants'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/schedule_elements/3948024/get_current_applicants
+- name: post_api_customer_user_role_locations_schedule_elements
+  description: '[shifts] create shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations/2806/schedule_elements
+- name: post_api_customer_user_role_schedule_elements_one_point_five_cre
+  description: '[shifts] create shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/schedule_elements/one_point_five_create
+- name: post_api_customer_user_role_locations_schedule_elements_draft_cr
+  description: '[shifts] draft create shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations/{location_id}/schedule_elements/draft_create
+- name: post_api_customer_user_role_schedule_elements_bulk_create
+  description: '[shifts] create bulk shifts'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/schedule_elements/bulk_create
+- name: post_api_integration_shifts_bulk_upsync
+  description: '[shifts] bulk upsync shifts'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/integration/shifts/bulk_upsync
+- name: put_api_customer_user_role_schedule_elements_convert
+  description: '[schedule] convert schedule to shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/{inventory_id}/convert
+- name: put_api_customer_user_role_schedule_elements
+  description: '[shifts] edit shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/943268
+- name: put_api_customer_user_role_schedule_elements_draft_update
+  description: '[shifts] draft update'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/5672529/draft_update
+- name: put_api_customer_user_role_schedule_elements_publish
+  description: '[shifts] publish a shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/5758408/publish
+- name: put_api_customer_user_role_schedule_elements_unpublish
+  description: '[shifts] unpublish a shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/4749081/unpublish
+- name: put_api_customer_user_role_schedule_elements_bulk_publish
+  description: '[shifts] bulk publish shifts'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/bulk_publish
+- name: put_api_customer_user_role_schedule_elements_cover
+  description: '[shifts] cover shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/2564007/cover
+- name: put_api_customer_user_role_schedule_elements_approve
+  description: '[shifts] approve shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/22027/approve
+- name: put_api_customer_user_role_schedule_elements_reject
+  description: '[shifts] reject shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/22035/reject
+- name: put_api_customer_user_role_schedule_elements_pick_applicant
+  description: '[shifts] pick an applicant'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/2564007/pick_applicant
+- name: put_api_customer_user_role_schedule_elements_deny_applicant
+  description: '[shifts] deny an applicant'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/2564007/deny_applicant
+- name: put_api_customer_user_role_schedule_elements_call_off
+  description: '[shifts] call off'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/2568755/call_off
+- name: put_api_customer_user_role_schedule_elements_revoke
+  description: '[shifts] revoke'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/schedule_elements/000/revoke
+- name: delete_api_customer_user_role_locations_schedule_elements
+  description: '[shifts] destroy shift'
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/locations/{location_id}/schedule_elements/{shift_id}
+- name: post_api_customer_user_role_sso_sessions_renew
+  description: '[users] renew sso session'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/sso_sessions/renew
+- name: put_api_customer_user_role_sso_sessions_link
+  description: '[users] link sso_session to current_user'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/sso_sessions/{sso_session_id}/link
+- name: get_api_customer_user_role_subscriptions
+  description: get my subscriptions
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/subscriptions
+- name: post_api_customer_user_role_subscriptions
+  description: create subscription
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/subscriptions
+- name: get_api_customer_user_role_subscriptions_can_view
+  description: get viewable subscriptions
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/subscriptions/can_view
+- name: get_api_customer_user_role_subscriptions_2
+  description: get a subscription
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/subscriptions/7385
+- name: get_api_customer_user_role_subscriptions_can_admin
+  description: get managable subscriptions
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/subscriptions/can_admin
+- name: put_api_customer_user_role_subscriptions
+  description: update subscription
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/subscriptions/22449
+- name: delete_api_customer_user_role_subscriptions
+  description: delete subscription
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/subscriptions/1111
+- name: get_api_customer_user_role_user_news
+  description: get user news
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/user_news
+- name: get_api_customer_user_role_user_news_2
+  description: show usernews
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/user_news/613
+- name: put_api_customer_user_role_user_news
+  description: "\bupdate user new as viewed"
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/user_news/{user_news_id}
+- name: get_api_customer_admin_role_user_privileges
+  description: '[user_privilege] get managable user privielges'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/admin_role/user_privileges
+- name: get_api_customer_user_role_user_privileges_can_view
+  description: '[user_privilege] get viewable user privileges'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/user_privileges/can_view
+- name: get_api_customer_user_role_user_privileges
+  description: '[user_privilege] get my user privileges'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/user_privileges
+- name: post_api_customer_user_role_user_privileges
+  description: '[user_privilege] join a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/user_privileges
+- name: get_api_customer_user_role_user_privileges_can_admin
+  description: '[user_privilege] get manageable user privileges'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/user_privileges/can_admin
+- name: get_api_customer_user_role_user_privileges_settings
+  description: '[user_privilege] get a user privilege settings'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/user_privileges/{user_privilege_id}/settings
+- name: put_api_customer_user_role_user_privileges_approve
+  description: '[user_privilege]  approve user privilege'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/user_privileges/11334/approve
+- name: put_api_customer_user_role_user_privileges
+  description: '[user_privilege]  update user privilege'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/user_privileges/21561
+- name: delete_api_customer_user_role_user_privileges
+  description: '[user_privilege]  leave a loaction'
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/user_privileges/11333
+- name: delete_api_customer_user_role_user_privileges_remove
+  description: '[user_privilege] remove from a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/user_privileges/11359/remove
+- name: delete_api_customer_user_role_user_privileges_withdraw
+  description: '[user_privilege]  withdraw a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/user_privileges/11355/withdraw
+- name: delete_api_customer_user_role_user_privileges_decline
+  description: '[user_privilege]  decline join a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/user_privileges/11355/decline
+- name: get_api_customer_user_role_locations_users
+  description: '[users] get coworkers  of specific location'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/users
+- name: get_api_customer_user_role_users_get_counters
+  description: '[users]  get current user''s content counters'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/users/{user_id}/get_counters
+- name: get_api_customer_user_role_users
+  description: '[users] Get user profile'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/users/{user_id}
+- name: put_api_customer_user_role_users
+  description: '[users] update user profile'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/users/{user_id}
+- name: get_api_customer_user_role_users_search
+  description: '[users] find users by given criterias'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/users/search
+- name: get_api_customer_user_role_locations_users_2
+  description: '[users] get speficic members  of specific location by given ID'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/users/{user_id}
+- name: put_api_customer_user_role_users_change_location
+  description: '[users] change user''s current location'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/users/{user_id}/change_location
+- name: delete_api_customer_user_role_users_remove_me
+  description: '[users] remove my account'
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/users/remove_me
+- name: get_api_customer_admin_role_locations_users
+  description: '[users] get members  of specific location'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/admin_role/locations/{location_id}/users
+- name: get_api_customer_admin_role_locations_users_2
+  description: '[users] get speficic members  of specific location by given ID'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/admin_role/locations/{location_id}/users/{user_id}
+- name: post_api_customer_user_role_legal_user_privileges
+  description: approve/deny TOS
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/legal_user_privileges
+- name: get_api_customer_request_jobs
+  description: Get request jobs
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/request_jobs
+- name: get_api_customer_user_role_ewa_ewa_accounts_my_account
+  description: '[ewa_account] get or create my EWA account'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/ewa/ewa_accounts/my_account
+- name: get_api_customer_user_role_ewa_ewa_accounts_request_email_confir
+  description: '[ewa_account] request email confirmation'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/ewa/ewa_accounts/request_email_confirmation
+- name: get_api_customer_user_role_ewa_ewa_accounts_borrow_estimate
+  description: '[ewa_account] get the estimation of capability of borrowing'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/ewa/ewa_accounts/borrow_estimate
+- name: get_api_customer_user_role_ewa_ewa_accounts_confirm_email_with_c
+  description: '[ewa_account] confirm EWA account''s email with code'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/ewa/ewa_accounts/confirm_email_with_code
+- name: put_api_customer_user_role_ewa_ewa_accounts
+  description: '[ewa_account] confirm the TOS agreement'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/ewa/ewa_accounts/{ewa_account_id}
+- name: post_api_customer_user_role_ewa_ewa_transactions_borrow
+  description: '[ewa_transaction] borrow money'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/ewa/ewa_transactions/borrow
+- name: post_api_customer_user_role_ewa_ewa_transactions_payback
+  description: '[ewa_transaction] return money'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/ewa/ewa_transactions/payback
+- name: post_api_customer_user_role_ewa_bank_accounts_add_account
+  description: '[bank_account] create and active bank_account'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/ewa/bank_accounts/add_account
+- name: post_api_customer_user_role_users_fetch_products
+  description: fetch products
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/users/{user_id}/fetch_products
+- name: post_api_customer_uploader_file
+  description: upload a file
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/uploader/file
+- name: get_api_customer_user_role_applicants
+  description: '[shifts] get a sginle shift applicant'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/applicants/{applicant_id}
+- name: delete_api_customer_user_role_applicants
+  description: '[shifts] cancel you application'
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/applicants/6
+- name: get_api_customer_user_role_locations_applicants
+  description: get a location's applicants
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/5459/applicants
+- name: get_api_customer_user_role_request_time_offs_can_admin
+  description: get manageable request time offs
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/request_time_offs/can_admin
+- name: get_api_customer_user_role_request_time_offs_mine
+  description: get my request time offs
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/request_time_offs/mine
+- name: get_api_customer_user_role_user_privileges_rto_balances
+  description: get user's request time off balances
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/user_privileges/{user_privilege_id}/rto_balances
+- name: get_api_customer_user_role_request_time_offs
+  description: get a single rto
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/request_time_offs/{rto_id}
+- name: post_api_customer_user_role_request_time_offs
+  description: create request time off
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/request_time_offs
+- name: put_api_customer_user_role_request_time_offs_approve
+  description: approve request time off
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/request_time_offs/{request_time_off_id}/approve
+- name: put_api_customer_user_role_request_time_offs_deny
+  description: deny request time off
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/request_time_offs/1/deny
+- name: delete_api_customer_user_role_request_time_offs
+  description: cancel request time off
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/request_time_offs/1
+- name: get_api_customer_user_role_department_memberships_mine
+  description: get mine department memberships
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/department_memberships/mine
+- name: post_api_customer_user_role_department_memberships
+  description: create a new department membership
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/department_memberships
+- name: put_api_customer_user_role_department_memberships
+  description: udpate a department membership
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/department_memberships/10
+- name: delete_api_customer_user_role_department_memberships
+  description: delete a department membership
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/department_memberships/10
+- name: get_api_customer_user_role_locations_inner_departments
+  description: get location inner departments
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/inner_departments
+- name: get_api_customer_user_role_departments_mine
+  description: get mine departments
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/departments/mine
+- name: post_api_customer_user_role_departments
+  description: create a new department
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/departments
+- name: put_api_customer_user_role_departments
+  description: update a new department
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/departments/1
+- name: put_api_customer_user_role_departments_assign_users
+  description: assign a department users
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/departments/1/assign_users
+- name: delete_api_customer_user_role_departments
+  description: delete a department
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/departments/2
+- name: post_email_processor
+  description: receive email from sendgrid Copy
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /email_processor
+- name: get_api_customer_user_role_action_jobs
+  description: get an action job
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/action_jobs/251020
+- name: delete_api_customer_user_role_action_jobs
+  description: delete an action job
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/action_jobs/251020
+- name: get_api_customer_user_role_action_jobs_2
+  description: list action jobs
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/action_jobs
+- name: put_api_customer_user_role_unregistered_users
+  description: '[unregistered users] update unregistered user'
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/unregistered_users/466344
+- name: get_api_customer_user_role_locations_unregistered_users
+  description: '[unregistered users] load all uus from a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/unregistered_users
+- name: get_api_customer_user_role_locations_unregistered_users_unsettle
+  description: '[unregistered users] load all (unsettled) uus from a location'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/unregistered_users/unsettled
+- name: delete_api_customer_user_role_unregistered_users
+  description: '[unregistered users] delete one'
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/unregistered_users/1
+- name: post_api_customer_user_role_unregistered_users
+  description: '[unregistered users] create one'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/unregistered_users
+- name: get_api_customer_user_role_locations_skills_managable
+  description: load location's managable skills
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/skills/managable
+- name: get_api_customer_user_role_locations_skills
+  description: load a single mangable skill
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/skills/{skill_id}
+- name: put_api_customer_user_role_locations_skills
+  description: update a skill
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/2806/skills/{skill_id}
+- name: delete_api_customer_user_role_locations_skills
+  description: delete a skill
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/locations/2806/skills/{skill_id}
+- name: post_api_customer_user_role_locations_skills
+  description: create a new skill
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations/2806/skills
+- name: put_api_customer_user_role_locations_assign_user_skills
+  description: assign a location user's skills
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/2806/assign_user_skills/7613
+- name: put_api_customer_user_role_locations_assign_skill_users
+  description: assign a location tag's users
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/2806/assign_skill_users/1
+- name: get_api_customer_user_role_locations_tags_managable
+  description: list location's managable tags
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/tags/managable
+- name: get_api_customer_user_role_locations_tags
+  description: list location's tags
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/tags
+- name: post_api_customer_user_role_locations_tags
+  description: create a new tag
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations/2806/tags
+- name: get_api_customer_user_role_locations_tags_2
+  description: read a tag
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/2806/tags/{tag_id}
+- name: put_api_customer_user_role_locations_tags
+  description: update a tag
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/2806/tags/{tag_id}
+- name: delete_api_customer_user_role_locations_tags
+  description: delete a tag
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/locations/2806/tags/{tag_id}
+- name: put_api_customer_user_role_locations_assign_tags
+  description: assign a location tags
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/2806/assign_tags
+- name: put_api_customer_user_role_locations_assign_user_tags
+  description: assign a location user's tags
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/2806/assign_user_tags/7613
+- name: post_api_customer_ai_agent_command
+  description: AI Ccommands
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/ai_agent/command
+- name: get_api_customer_user_role_locations_demands
+  description: List Demands
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/customer/user_role/locations/{location_id}/demands
+- name: post_api_customer_user_role_locations_demands
+  description: Create Demand
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/customer/user_role/locations/{location_id}/demands
+- name: get_customer_user_role_locations_demands
+  description: Show Demand
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /customer/user_role/locations/{location_id}/demands/{demand_id}
+- name: put_api_customer_user_role_locations_demands
+  description: Update Demand
+  source_operation: openapi/shyft-customer-openapi-original.json#PUT /api/customer/user_role/locations/{location_id}/demands/{demand_id}
+- name: delete_api_customer_user_role_locations_demands
+  description: Delete Demand
+  source_operation: openapi/shyft-customer-openapi-original.json#DELETE /api/customer/user_role/locations/{location_id}/demands/{demand_id}
+- name: get_api_compact_schedule_elements
+  description: '[shifts] get shifts from associated location'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/schedule_elements
+- name: get_api_compact_schedule_elements_all
+  description: '[shifts] get ALL schedule_elements only with coworker inventory for
+    specific date'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/schedule_elements/all
+- name: get_api_compact_posts_free_posts
+  description: get a post's free_posts
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/posts/{post_id}/free_posts
+- name: get_api_compact_posts_get_current_applicants
+  description: get a post's applicants
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/posts/{post_id}/get_current_applicants
+- name: get_api_compact_applicants_free_posts
+  description: get a applicant's free_posts
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/applicants/{applicant_id}/free_posts
+- name: get_api_compact_posts_like_owner_ids
+  description: get a post's like user ids
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/posts/{post_id}/like_owner_ids
+- name: get_api_compact_posts_receipt_user_ids
+  description: get a post's read user ids
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/posts/{post_id}/receipt_user_ids
+- name: get_api_compact_subscriptions_can_view
+  description: get viewable subscriptions
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/subscriptions/can_view
+- name: get_api_compact_posts_applicants
+  description: get a post's applicants
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/posts/110116/applicants
+- name: get_api_compact_request_time_offs_can_admin
+  description: get manageable request time offs
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/request_time_offs/can_admin
+- name: get_api_compact_request_time_offs_mine
+  description: get my request time offs
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/request_time_offs/mine
+- name: get_api_compact_plans
+  description: get plans
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/plans
+- name: get_api_compact_user_privileges_ui_dash_user_management
+  description: 'UI API: Dash User Managements'
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/user_privileges/ui_dash_user_management
+- name: post_stripe_new_subscription
+  description: Stripe callback
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /stripe_new_subscription
+- name: post_gap_oauth
+  description: '{{host}}/gap_oauth Copy'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /gap_oauth
+- name: post_lb_sso
+  description: '{{host}}/lb_sso'
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /lb_sso
+- name: post_api_code_auth
+  description: PhoneNumber - Sign in (verify SMS)
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/code_auth/18083836511
+- name: get_
+  description: Unfurl URL
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /
+- name: post_api_stripe_create-portal-session
+  description: Stripe session
+  source_operation: openapi/shyft-customer-openapi-original.json#POST /api/stripe/create-portal-session
+- name: get_api
+  description: Sample
+  source_operation: openapi/shyft-customer-openapi-original.json#GET /api

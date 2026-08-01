@@ -1,0 +1,60 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/shyft-customer-openapi-original.json
+format: custom-json
+note: Shyft Customer API returns conventional HTTP status codes; error bodies are
+  JSON (not RFC 9457 application/problem+json). 422 carries field-level validation
+  errors. Derived from the OpenAPI response declarations exported from the public
+  Redoc documentation.
+envelope:
+  content_type: application/json
+  shape: JSON object with error/message and (for 422) field-level validation details
+problems:
+- status: 400
+  title: Bad Request
+  descriptions:
+  - Bad Request
+  remediation: Validate request body/params against the endpoint schema before retrying.
+  example_operations:
+  - GET /api/customer/user_role/ewa/ewa_accounts/confirm_email_with_code
+  - PUT /api/customer/user_role/locations/2806/assign_user_skills/7613
+- status: 401
+  title: Unauthorized
+  descriptions:
+  - Unauthorized
+  remediation: Provide a valid Bearer JWT in the Authorization header (obtain via
+    /api/users/sign_in).
+  example_operations:
+  - PUT /api/customer/user_role/locations/{location_id}
+  - POST /api/customer/user_role/locations/2806/schedule_elements
+- status: 403
+  title: Forbidden
+  descriptions:
+  - Forbidden
+  remediation: The authenticated user lacks the role/privilege for this resource (user_role
+    vs admin_role).
+  example_operations:
+  - PUT /api/customer/user_role/schedule_elements/2564007/pick_applicant
+  - DELETE /api/customer/user_role/applicants/6
+- status: 404
+  title: Not Found
+  descriptions:
+  - Not Found
+  remediation: The referenced resource id (location, user, shift, channel, ...) does
+    not exist or is not visible to you.
+  example_operations:
+  - PUT /api/customer/user_role/locations/{location_id}
+- status: 422
+  title: Unprocessable Entity (validation failed)
+  descriptions:
+  - Unprocessable Entity
+  - Unprocessable Entity (WebDAV) (RFC 4918)
+  remediation: Fix the invalid/missing fields reported in the validation error body
+    and resubmit.
+  example_operations:
+  - GET /api/users/confirmation
+  - PUT /api/users/password
+  - POST /api/customer/admin_role/locations/{location_id}/availability_requests
+  - POST /api/customer/user_role/chat_sessions
+  - POST /api/customer/user_role/locations/2806/schedule_elements
+  - PUT /api/customer/user_role/schedule_elements/2564007/cover

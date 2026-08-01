@@ -1,0 +1,112 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/shyft-customer-openapi-original.json
+note: Entity graph derived from the Shyft Customer API tag taxonomy and URL resource
+  hierarchy. The source spec declares no components.schemas, so entities are the documented
+  resource collections and relationships are inferred from path nesting (parent/{id}/child).
+  The user_role and admin_role path segments gate most collections by caller role.
+roles:
+- user_role
+- admin_role
+core_entities:
+- name: admin_claims
+  operations: 2
+- name: applicants
+  operations: 5
+- name: availabilities
+  operations: 6
+- name: availability_requests
+  operations: 4
+- name: channels
+  operations: 7
+- name: chat_messages
+  operations: 3
+- name: chat_sessions
+  operations: 8
+- name: comments
+  operations: 3
+- name: demands
+  operations: 3
+- name: department_memberships
+  operations: 3
+- name: departments
+  operations: 5
+- name: ewa
+  operations: 8
+- name: ewa_accounts
+  operations: 5
+- name: ewa_transactions
+  operations: 2
+- name: geofence_logs
+  operations: 1
+- name: images
+  operations: 1
+- name: invitations
+  operations: 1
+- name: locations
+  operations: 50
+- name: messions
+  operations: 4
+- name: notifications
+  operations: 4
+- name: posts
+  operations: 15
+- name: request_time_offs
+  operations: 9
+- name: schedule_elements
+  operations: 27
+- name: schedules
+  operations: 4
+- name: setup_actions
+  operations: 1
+- name: shifts
+  operations: 1
+- name: skills
+  operations: 3
+- name: sso_sessions
+  operations: 2
+- name: subscriptions
+  operations: 7
+- name: tags
+  operations: 3
+- name: unregistered_users
+  operations: 5
+- name: user_news
+  operations: 3
+- name: user_privileges
+  operations: 13
+- name: users
+  operations: 15
+relationships:
+- from: locations
+  to: availabilities
+  type: has_many
+  via: path
+- from: locations
+  to: availability_requests
+  type: has_many
+  via: path
+- from: locations
+  to: users
+  type: has_many
+  via: path
+- from: chat_sessions
+  to: chat_messages
+  type: has_many
+  via: path
+- from: locations
+  to: demands
+  type: has_many
+  via: path
+- from: locations
+  to: schedule_elements
+  type: has_many
+  via: path
+- from: locations
+  to: unregistered_users
+  type: has_many
+  via: path
+- from: locations
+  to: invitations
+  type: has_many
+  via: path

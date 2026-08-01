@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://customer-api-doc.myshyft.com/
+note: Lifecycle facts for the Shyft Customer API. Searched the public site for a status
+  page and a deprecation policy; none were found (status.myshyft.com does not resolve;
+  the marketing site publishes no developer deprecation policy). No operations are
+  marked deprecated in the OpenAPI.
+versioning:
+  scheme: uri-path
+  current: 1.0.0
+  base_path: /api
+  docs: https://customer-api-doc.myshyft.com/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation/sunset policy found.
+status_page: null
+sla: null
+deprecated_operations: []
