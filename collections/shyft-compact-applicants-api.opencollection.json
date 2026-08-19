@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Compact > Applicants API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compact > Applicants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get a post's applicants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/posts/110116/applicants",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "14423",
+                "type": "query",
+                "description": "filter the result by user"
+              }
+            ]
+          },
+          "docs": "NOTE: Only applicable for `shift post` , otherwise raise `403`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

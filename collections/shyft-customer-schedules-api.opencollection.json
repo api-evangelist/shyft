@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Schedules API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/schedules",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id |   | * | associaged location |\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "create a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/schedules",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | ---"
+        },
+        {
+          "info": {
+            "name": "get a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/schedules/981",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | ---"
+        },
+        {
+          "info": {
+            "name": "delete a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/schedules/981",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n\n- delete a schedule will remove its shift inventories as well\n- schedule owner can delete it\n- location admin can delete it\n- integration generated schedule can not be deleted\n- schedule having shifts status changed can not be deleted\n    \n\n---\n\nParams\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |"
+        },
+        {
+          "info": {
+            "name": "publish a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedules/171263/publish",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | ---"
+        },
+        {
+          "info": {
+            "name": "unpublish a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedules/171263/unpublish",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | ---"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

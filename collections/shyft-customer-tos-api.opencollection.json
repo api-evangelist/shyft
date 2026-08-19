@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > ToS API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > ToS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "approve/deny TOS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/legal_user_privileges",
+            "headers": [
+              {
+                "name": "Platform",
+                "value": "{{platform}}"
+              },
+              {
+                "name": "Version",
+                "value": "{{version}}"
+              },
+              {
+                "name": "Build-Number",
+                "value": "{{build_number}}"
+              },
+              {
+                "name": "Push-Id",
+                "value": "{{push_id}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Session-Token",
+                "value": "30216"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Approve/Deny ToS\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nuser_privilege_id | | * | \nlegal_id | | * | you get it inside user's user privilege object\nstatus | | * | accepted/denied"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

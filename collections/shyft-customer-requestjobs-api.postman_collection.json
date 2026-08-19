@@ -1,0 +1,280 @@
+{
+  "item": [
+    {
+      "id": "0ed5c6ec-0188-434c-955b-a127bb1ce16a",
+      "name": "Customer > RequestJobs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a19e8f7-9351-46d9-a423-a23f63643a2d",
+          "name": "Get request jobs",
+          "request": {
+            "name": "Get request jobs",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "request_jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "uuid_is",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bb71cfb1-a32c-477d-a54a-b6ef65c3bb39",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "request_jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uuid_is",
+                      "value": "ccc12dbc-181b-4c52-ab11-080f4b8a3d1c,f95e8398-f902-46c4-bd4b-bd73ddedc0f4"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "86c78555-b722-42e0-a722-7ba2789a109c",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "[MESSION] api key, preset inside app, not secure\n",
+                    "key": "Authorization",
+                    "value": "Token token={{api_key_access_token}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Fri, 13 Sep 2019 17:29:00 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"52cd9c19bedb5e14f46e5ed41aa935e8\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.14.1 + Phusion Passenger 4.0.60",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=dXhZeEJ0ZkFvQnQwNWdNSllNY254NkZwYUkxV0E1TmVtbzd6NDB6UTdPRjlqam1LNzNubVRaQXl6SHRNaXUxK1FncnJTMW9QdkFNdFhIWlpHN1dVUHc9PS0tYWl1ZGdEVWxVMWduK1RqUmZ6OFNDdz09--0273f07b93e058ae2fc24453f7f1f76b2b979e1d; path=/; secure; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Status",
+                  "value": "200 OK",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Powered-By",
+                  "value": "Phusion Passenger 4.0.60",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "development3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "9ab3742f-5dff-4b6a-99b8-e18cb558ac9d",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "4893.678264947553",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "transfer-encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_jobs\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 32,\n      \"uuid\": \"ccc12dbc-181b-4c52-ab11-080f4b8a3d1c\",\n      \"total_count\": 2,\n      \"success_count\": 0,\n      \"failed_count\": 2,\n      \"output\": [\n        {\n          \"errors\": {\n            \"owner_id\": [\n              \"Sorry, this user is not approved to create shifts.\"\n            ]\n          }\n        },\n        {\n          \"errors\": {\n            \"owner_id\": [\n              \"Sorry, this user is not approved to create shifts.\"\n            ]\n          }\n        }\n      ],\n      \"input\": {\n        \"params\": \"{\\\"schedule_elements\\\"=>[<ActionController::Parameters {\\\"name\\\"=>\\\"open_shift\\\", \\\"owner_id\\\"=>9679, \\\"location_id\\\"=>5539, \\\"start_at\\\"=>\\\"2019-10-01 09:00:00\\\", \\\"end_at\\\"=>\\\"2019-10-01 16:00:00\\\", \\\"shift_content\\\"=>\\\"(Open Shift #1 of 2) Open Shift A\\\"} permitted: true>, <ActionController::Parameters {\\\"name\\\"=>\\\"open_shift\\\", \\\"owner_id\\\"=>9679, \\\"location_id\\\"=>5539, \\\"start_at\\\"=>\\\"2019-10-01 09:00:00\\\", \\\"end_at\\\"=>\\\"2019-10-01 16:00:00\\\", \\\"shift_content\\\"=>\\\"(Open Shift #2 of 2) Open Shift A\\\"} permitted: true>], \\\"format\\\"=>:json, \\\"controller\\\"=>\\\"api/customer/user_role/schedule_elements\\\", \\\"action\\\"=>\\\"bulk_create\\\", \\\"schedule_element\\\"=>{}, \\\"response\\\"=><ActionController::Parameters {} permitted: true>, \\\"page\\\"=>1, \\\"per_page\\\"=>25, \\\"owner_id\\\"=>nil, \\\"async_mode\\\"=>\\\"true\\\"}\",\n        \"options\": {},\n        \"pundit_user\": \"#<AuthorizationContext:0x000055d9d3241118>\",\n        \"base_chain\": \"#<ActiveRecord::Relation:0x000055d9d7bc3598>\"\n      }\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 35,\n      \"uuid\": \"f95e8398-f902-46c4-bd4b-bd73ddedc0f4\",\n      \"total_count\": 2,\n      \"success_count\": 2,\n      \"failed_count\": 0,\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 1772281,\n          \"name\": \"open_shift\",\n          \"start_at\": \"2019-10-01 09:00:00 UTC\",\n          \"end_at\": \"2019-10-01 16:00:00 UTC\",\n          \"trade_status\": \"posted\",\n          \"channel_name\": \"Victoria's Secret Logan Valley\",\n          \"channel_type\": \"location_feed\",\n          \"tip_amount\": 0,\n          \"location_id\": 5535,\n          \"owner_id\": 9679,\n          \"coverer_id\": null,\n          \"approver_id\": null,\n          \"coverer_time\": null,\n          \"manager_time\": null,\n          \"owner_position\": null,\n          \"require_approval\": false,\n          \"can_approve\": false,\n          \"channel_id\": 8079,\n          \"post_id\": 41659,\n          \"schedule_id\": 0,\n          \"content\": \"(Open Shift #1 of 2) Open Shift A\",\n          \"created_at\": \"2019-09-13 17:28:52 UTC\",\n          \"updated_at\": \"2019-09-13 17:28:52 UTC\",\n          \"allow_delete\": true,\n          \"segment_count\": 0,\n          \"extra_segment_count\": 0,\n          \"published_at\": \"2019-09-13 17:28:52 UTC\",\n          \"owner\": {\n            \"_parent_object_id\": 1772281,\n            \"id\": 9679,\n            \"active_org\": 1,\n            \"first_name\": \"Profile Time\",\n            \"last_name\": \"System Account\",\n            \"email\": \"steve@myshyft.com\",\n            \"phone_number\": \"18003382002\",\n            \"gender\": 0,\n            \"chat_handle\": \"83eb30122be8c87b8eae806f93519ff1\",\n            \"user_group\": 0,\n            \"status\": \"\",\n            \"push_settings_list\": {\n              \"shift_push\": {\n                \"label\": \"Shift Notifications\",\n                \"type\": \"boolean\"\n              },\n              \"schedule_push\": {\n                \"label\": \"Schedule Notifications\",\n                \"type\": \"boolean\"\n              },\n              \"community_push\": {\n                \"label\": \"Community Notifications\",\n                \"type\": \"boolean\"\n              }\n            },\n            \"push_settings_list_array\": [\n              {\n                \"label\": \"Shift Notifications\",\n                \"type\": \"boolean\",\n                \"key\": \"shift_push\"\n              },\n              {\n                \"label\": \"Schedule Notifications\",\n                \"type\": \"boolean\",\n                \"key\": \"schedule_push\"\n              },\n              {\n                \"label\": \"Community Notifications\",\n                \"type\": \"boolean\",\n                \"key\": \"community_push\"\n              }\n            ],\n            \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8485_9679-20180427_230134_422.jpg?1524884495\",\n            \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8485_9679-20180427_230134_422.jpg?1524884495\",\n            \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8485_9679-20180427_230134_422.jpg?1524884495\",\n            \"current_position\": null,\n            \"current_user_privilege_id\": 16618,\n            \"current_is_approved\": true,\n            \"all_push\": true,\n            \"shift_push\": true,\n            \"schedule_push\": true,\n            \"community_push\": true,\n            \"locale\": null,\n            \"profile_image\": {\n              \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8485_9679-20180427_230134_422.jpg?1524884495\",\n              \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8485_9679-20180427_230134_422.jpg?1524884495\",\n              \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8485_9679-20180427_230134_422.jpg?1524884495\"\n            },\n            \"recent_user_privilege\": {\n              \"_parent_object_id\": 9679,\n              \"id\": 16618,\n              \"email\": \"steve@myshyft.com\",\n              \"wage\": 15,\n              \"position\": null,\n              \"is_approved\": true,\n              \"owner_id\": 9679,\n              \"location_id\": 5535,\n              \"org_id\": 1,\n              \"is_admin\": false,\n              \"read_only\": false,\n              \"first_name\": \"Profile Time\",\n              \"last_name\": \"System Account\",\n              \"phone_number\": \"18003382002\",\n              \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8485_9679-20180427_230134_422.jpg?1524884495\",\n              \"admin_claim_pending\": false,\n              \"status\": \"active\",\n              \"allow_toggle_approve\": null,\n              \"allow_toggle_shift_approval\": null,\n              \"allow_toggle_dashboard\": null,\n              \"allow_toggle_delete_content\": null,\n              \"allow_toggle_tipping\": null,\n              \"allow_approve\": false,\n              \"allow_shift_approve\": null,\n              \"allow_delete_user\": null,\n              \"allow_delete_post\": null,\n              \"allow_delete_schedule\": null,\n              \"allow_tipping\": false,\n              \"allow_delete_shift_inventory\": null,\n              \"allow_delete_shift_posted\": null,\n              \"allow_delete_shift_covered\": null,\n              \"allow_delete_shift_pending\": null,\n              \"allow_delete_shift_approved\": null,\n              \"allow_delete_shift_rejected\": null,\n              \"location\": {\n                \"_associations_removed\": true,\n                \"_parent_object_id\": 16618,\n                \"id\": 5535,\n                \"swift_code\": \"VSS0363\",\n                \"location_name\": \"Victoria's Secret Logan Valley\",\n                \"unit_number\": null,\n                \"street_number\": null,\n                \"address\": \"Route 220 & Goods Lane\",\n                \"province\": \"PA\",\n                \"postal\": \"16602\",\n                \"country\": \"United States\",\n                \"lat\": null,\n                \"lng\": null,\n                \"latitude\": 40.469316,\n                \"longitude\": -78.414226,\n                \"phone_number\": \"(814) 944-5213\",\n                \"created_at\": \"2019-02-27 01:25:08 UTC\",\n                \"users_count\": 1,\n                \"formatted_address\": \"Route 220 and, Goods Ln, Altoona, PA 16602, United States\",\n                \"time_zone\": \"America/New_York\",\n                \"google_map_id\": \"ChIJ67_TfTiRy4kRtDp4cmz6WdI\",\n                \"four_sq_id\": null,\n                \"allow_tipping\": false,\n                \"shift_require_approval\": true,\n                \"shyft_pro_active\": true,\n                \"shyft_pro_expiry_date\": \"2020-02-27 01:25:06 UTC\",\n                \"fence_radius\": null,\n                \"cfg_not_dm\": true,\n                \"cfg_geofence_log\": true,\n                \"cfg_timeout\": 15,\n                \"cfg_vto\": null,\n                \"tos_url\": \"https://myshyft.com/vss-terms.2.en.html\",\n                \"tos_version\": \"8.0\",\n                \"require_approval\": false,\n                \"documents\": [\n                  {\n                    \"title\": \"Shyft Terms of Service\",\n                    \"url\": \"https://myshyft.com/terms.en.html\"\n                  },\n                  {\n                    \"title\": \"LBrands Acknowledgement & Agreement\",\n                    \"url\": \"https://myshyft.com/vss-terms.2.en.html\"\n                  }\n                ],\n                \"shyft_pro_subscription_status\": 0,\n                \"admin_delete_content\": true,\n                \"ip_blocked\": true,\n                \"member_count\": 0,\n                \"location_address\": null,\n                \"location_city\": \"Altoona, PA, 16602\",\n                \"feed_channel_id\": 8079,\n                \"pending_users_count\": 0,\n                \"shyft_pro_trial_flag\": false,\n                \"is_sso_required\": true,\n                \"cfg_exclude_coworker_schedules\": true\n              },\n              \"user\": {\n                \"_associations_removed\": true,\n                \"_parent_object_id\": 16618,\n                \"id\": 9679,\n                \"active_org\": 1,\n                \"first_name\": \"Profile Time\",\n                \"last_name\": \"System Account\",\n                \"email\": \"steve@myshyft.com\",\n                \"phone_number\": \"18003382002\",\n                \"gender\": 0,\n                \"chat_handle\": \"83eb30122be8c87b8eae806f93519ff1\",\n                \"user_group\": 0,\n                \"status\": \"\",\n                \"push_settings_list\": {\n                  \"shift_push\": {\n                    \"label\": \"Shift Notifications\",\n                    \"type\": \"boolean\"\n                  },\n                  \"schedule_push\": {\n                    \"label\": \"Schedule Notifications\",\n                    \"type\": \"boolean\"\n                  },\n                  \"community_push\": {\n                    \"label\": \"Community Notifications\",\n                    \"type\": \"boolean\"\n                  }\n                },\n                \"push_settings_list_array\": [\n                  {\n                    \"label\": \"Shift Notifications\",\n                    \"type\": \"boolean\",\n                    \"key\": \"shift_push\"\n                  },\n                  {\n                    \"label\": \"Schedule Notifications\",\n                    \"type\": \"boolean\",\n                    \"key\": \"schedule_push\"\n                  },\n                  {\n                    \"label\": \"Community Notifications\",\n                    \"type\": \"boolean\",\n                    \"key\": \"community_push\"\n                  }\n                ],\n                \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8485_9679-20180427_230134_422.jpg?1524884495\",\n                \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8485_9679-20180427_230134_422.jpg?1524884495\",\n                \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8485_9679-20180427_230134_422.jpg?1524884495\",\n                \"current_position\": null,\n                \"current_user_privilege_id\": 16618,\n                \"current_is_approved\": true,\n                \"all_push\": true,\n                \"shift_push\": true,\n                \"schedule_push\": true,\n                \"community_push\": true,\n                \"locale\": null\n              },\n              \"pending_legals\": []\n            }\n          },\n          \"coverer\": null,\n          \"approver\": null,\n          \"reposted_object\": null\n        },\n        {\n          \"_parent_object_id\": null,\n          \"id\": 1772282,\n          \"name\": \"open_shift\",\n          \"start_at\": \"2019-10-01 09:00:00 UTC\",\n          \"end_at\": \"2019-10-01 16:00:00 UTC\",\n          \"trade_status\": \"posted\",\n          \"channel_name\": \"Victoria's Secret Logan Valley\",\n          \"channel_type\": \"location_feed\",\n          \"tip_amount\": 0,\n          \"location_id\": 5535,\n          \"owner_id\": 9679,\n          \"coverer_id\": null,\n          \"approver_id\": null,\n          \"coverer_time\": null,\n          \"manager_time\": null,\n          \"owner_position\": null,\n          \"require_approval\": false,\n          \"can_approve\": false,\n          \"channel_id\": 8079,\n          \"post_id\": 41660,\n          \"schedule_id\": 0,\n          \"content\": \"(Open Shift #2 of 2) Open Shift A\",\n          \"created_at\": \"2019-09-13 17:28:53 UTC\",\n          \"updated_at\": \"2019-09-13 17:28:53 UTC\",\n          \"allow_delete\": true,\n          \"segment_count\": 0,\n          \"extra_segment_count\": 0,\n          \"published_at\": \"2019-09-13 17:28:53 UTC\",\n          \"owner\": {\n            \"_parent_object_id\": 1772282,\n            \"id\": 9679,\n            \"active_org\": 1,\n            \"first_name\": \"Profile Time\",\n            \"last_name\": \"System Account\",\n            \"email\": \"steve@myshyft.com\",\n            \"phone_number\": \"18003382002\",\n            \"gender\": 0,\n            \"chat_handle\": \"83eb30122be8c87b8eae806f93519ff1\",\n            \"user_group\": 0,\n            \"status\": \"\",\n            \"push_settings_list\": {\n              \"shift_push\": {\n                \"label\": \"Shift Notifications\",\n                \"type\": \"boolean\"\n              },\n              \"schedule_push\": {\n                \"label\": \"Schedule Notifications\",\n                \"type\": \"boolean\"\n              },\n              \"community_push\": {\n                \"label\": \"Community Notifications\",\n                \"type\": \"boolean\"\n              }\n            },\n            \"push_settings_list_array\": [\n              {\n                \"label\": \"Shift Notifications\",\n                \"type\": \"boolean\",\n                \"key\": \"shift_push\"\n              },\n              {\n                \"label\": \"Schedule Notifications\",\n                \"type\": \"boolean\",\n                \"key\": \"schedule_push\"\n              },\n              {\n                \"label\": \"Community Notifications\",\n                \"type\": \"boolean\",\n                \"key\": \"community_push\"\n              }\n            ],\n            \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8485_9679-20180427_230134_422.jpg?1524884495\",\n            \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8485_9679-20180427_230134_422.jpg?1524884495\",\n            \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8485_9679-20180427_230134_422.jpg?1524884495\",\n            \"current_position\": null,\n            \"current_user_privilege_id\": 16618,\n            \"current_is_approved\": true,\n            \"all_push\": true,\n            \"shift_push\": true,\n            \"schedule_push\": true,\n            \"community_push\": true,\n            \"locale\": null,\n            \"profile_image\": {\n              \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8485_9679-20180427_230134_422.jpg?1524884495\",\n              \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8485_9679-20180427_230134_422.jpg?1524884495\",\n              \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8485_9679-20180427_230134_422.jpg?1524884495\"\n            },\n            \"recent_user_privilege\": {\n              \"_parent_object_id\": 9679,\n              \"id\": 16618,\n              \"email\": \"steve@myshyft.com\",\n              \"wage\": 15,\n              \"position\": null,\n              \"is_approved\": true,\n              \"owner_id\": 9679,\n              \"location_id\": 5535,\n              \"org_id\": 1,\n              \"is_admin\": false,\n              \"read_only\": false,\n              \"first_name\": \"Profile Time\",\n              \"last_name\": \"System Account\",\n              \"phone_number\": \"18003382002\",\n              \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8485_9679-20180427_230134_422.jpg?1524884495\",\n              \"admin_claim_pending\": false,\n              \"status\": \"active\",\n              \"allow_toggle_approve\": null,\n              \"allow_toggle_shift_approval\": null,\n              \"allow_toggle_dashboard\": null,\n              \"allow_toggle_delete_content\": null,\n              \"allow_toggle_tipping\": null,\n              \"allow_approve\": false,\n              \"allow_shift_approve\": null,\n              \"allow_delete_user\": null,\n              \"allow_delete_post\": null,\n              \"allow_delete_schedule\": null,\n              \"allow_tipping\": false,\n              \"allow_delete_shift_inventory\": null,\n              \"allow_delete_shift_posted\": null,\n              \"allow_delete_shift_covered\": null,\n              \"allow_delete_shift_pending\": null,\n              \"allow_delete_shift_approved\": null,\n              \"allow_delete_shift_rejected\": null,\n              \"location\": {\n                \"_associations_removed\": true,\n                \"_parent_object_id\": 16618,\n                \"id\": 5535,\n                \"swift_code\": \"VSS0363\",\n                \"location_name\": \"Victoria's Secret Logan Valley\",\n                \"unit_number\": null,\n                \"street_number\": null,\n                \"address\": \"Route 220 & Goods Lane\",\n                \"province\": \"PA\",\n                \"postal\": \"16602\",\n                \"country\": \"United States\",\n                \"lat\": null,\n                \"lng\": null,\n                \"latitude\": 40.469316,\n                \"longitude\": -78.414226,\n                \"phone_number\": \"(814) 944-5213\",\n                \"created_at\": \"2019-02-27 01:25:08 UTC\",\n                \"users_count\": 1,\n                \"formatted_address\": \"Route 220 and, Goods Ln, Altoona, PA 16602, United States\",\n                \"time_zone\": \"America/New_York\",\n                \"google_map_id\": \"ChIJ67_TfTiRy4kRtDp4cmz6WdI\",\n                \"four_sq_id\": null,\n                \"allow_tipping\": false,\n                \"shift_require_approval\": true,\n                \"shyft_pro_active\": true,\n                \"shyft_pro_expiry_date\": \"2020-02-27 01:25:06 UTC\",\n                \"fence_radius\": null,\n                \"cfg_not_dm\": true,\n                \"cfg_geofence_log\": true,\n                \"cfg_timeout\": 15,\n                \"cfg_vto\": null,\n                \"tos_url\": \"https://myshyft.com/vss-terms.2.en.html\",\n                \"tos_version\": \"8.0\",\n                \"require_approval\": false,\n                \"documents\": [\n                  {\n                    \"title\": \"Shyft Terms of Service\",\n                    \"url\": \"https://myshyft.com/terms.en.html\"\n                  },\n                  {\n                    \"title\": \"LBrands Acknowledgement & Agreement\",\n                    \"url\": \"https://myshyft.com/vss-terms.2.en.html\"\n                  }\n                ],\n                \"shyft_pro_subscription_status\": 0,\n                \"admin_delete_content\": true,\n                \"ip_blocked\": true,\n                \"member_count\": 0,\n                \"location_address\": null,\n                \"location_city\": \"Altoona, PA, 16602\",\n                \"feed_channel_id\": 8079,\n                \"pending_users_count\": 0,\n                \"shyft_pro_trial_flag\": false,\n                \"is_sso_required\": true,\n                \"cfg_exclude_coworker_schedules\": true\n              },\n              \"user\": {\n                \"_associations_removed\": true,\n                \"_parent_object_id\": 16618,\n                \"id\": 9679,\n                \"active_org\": 1,\n                \"first_name\": \"Profile Time\",\n                \"last_name\": \"System Account\",\n                \"email\": \"steve@myshyft.com\",\n                \"phone_number\": \"18003382002\",\n                \"gender\": 0,\n                \"chat_handle\": \"83eb30122be8c87b8eae806f93519ff1\",\n                \"user_group\": 0,\n                \"status\": \"\",\n                \"push_settings_list\": {\n                  \"shift_push\": {\n                    \"label\": \"Shift Notifications\",\n                    \"type\": \"boolean\"\n                  },\n                  \"schedule_push\": {\n                    \"label\": \"Schedule Notifications\",\n                    \"type\": \"boolean\"\n                  },\n                  \"community_push\": {\n                    \"label\": \"Community Notifications\",\n                    \"type\": \"boolean\"\n                  }\n                },\n                \"push_settings_list_array\": [\n                  {\n                    \"label\": \"Shift Notifications\",\n                    \"type\": \"boolean\",\n                    \"key\": \"shift_push\"\n                  },\n                  {\n                    \"label\": \"Schedule Notifications\",\n                    \"type\": \"boolean\",\n                    \"key\": \"schedule_push\"\n                  },\n                  {\n                    \"label\": \"Community Notifications\",\n                    \"type\": \"boolean\",\n                    \"key\": \"community_push\"\n                  }\n                ],\n                \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8485_9679-20180427_230134_422.jpg?1524884495\",\n                \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/8485_9679-20180427_230134_422.jpg?1524884495\",\n                \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/8485_9679-20180427_230134_422.jpg?1524884495\",\n                \"current_position\": null,\n                \"current_user_privilege_id\": 16618,\n                \"current_is_approved\": true,\n                \"all_push\": true,\n                \"shift_push\": true,\n                \"schedule_push\": true,\n                \"community_push\": true,\n                \"locale\": null\n              },\n              \"pending_legals\": []\n            }\n          },\n          \"coverer\": null,\n          \"approver\": null,\n          \"reposted_object\": null\n        }\n      ],\n      \"input\": {\n        \"params\": \"{\\\"schedule_elements\\\"=>[<ActionController::Parameters {\\\"name\\\"=>\\\"open_shift\\\", \\\"owner_id\\\"=>9679, \\\"location_id\\\"=>5535, \\\"start_at\\\"=>\\\"2019-10-01 09:00:00\\\", \\\"end_at\\\"=>\\\"2019-10-01 16:00:00\\\", \\\"shift_content\\\"=>\\\"(Open Shift #1 of 2) Open Shift A\\\"} permitted: true>, <ActionController::Parameters {\\\"name\\\"=>\\\"open_shift\\\", \\\"owner_id\\\"=>9679, \\\"location_id\\\"=>5535, \\\"start_at\\\"=>\\\"2019-10-01 09:00:00\\\", \\\"end_at\\\"=>\\\"2019-10-01 16:00:00\\\", \\\"shift_content\\\"=>\\\"(Open Shift #2 of 2) Open Shift A\\\"} permitted: true>], \\\"format\\\"=>:json, \\\"controller\\\"=>\\\"api/customer/user_role/schedule_elements\\\", \\\"action\\\"=>\\\"bulk_create\\\", \\\"schedule_element\\\"=>{}, \\\"response\\\"=><ActionController::Parameters {} permitted: true>, \\\"page\\\"=>1, \\\"per_page\\\"=>25, \\\"owner_id\\\"=>nil, \\\"async_mode\\\"=>\\\"true\\\"}\",\n        \"options\": {},\n        \"pundit_user\": \"#<AuthorizationContext:0x000055d9d55eeb38>\",\n        \"base_chain\": \"#<ActiveRecord::Relation:0x000055d9d5313e90>\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"per_page\": 25\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "53a10476-5fdd-45a0-9637-5ab1eec94309",
+    "name": "Shyft Customer Authentication > Email Customer > RequestJobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

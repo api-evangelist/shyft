@@ -1,0 +1,1332 @@
+{
+  "item": [
+    {
+      "id": "fcbe9f5b-e566-4a8a-b551-ed174cee683e",
+      "name": "Customer > Departments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed44e2a8-47b7-4074-9de9-0345ff3044f6",
+          "name": "get location inner departments",
+          "request": {
+            "name": "get location inner departments",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "2806",
+                "inner_departments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f92a9e29-4d7b-43dc-8c87-3f9573337410",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "2806",
+                    "inner_departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Sun, 18 Sep 2022 03:23:00 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"1155cb1a6df8ee1e83400febb3f2e30f\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=allLMCtQSDQyVUpmUGtVUjNFUzZlTVBoZmtLOHhLTmhtNmFFUFFsZWM4dFl2dUlKVElCVkF3a0RPUjJ2NmNJMElLTzN5eWZ2bmhiQ3ZWMm5jOUpYMnc9PS0tSkp0aUU4c2t3ay9DK3BHY3N1OS80QT09--82153287fea5bc9f0e12d6e6b31b33bae83f08a7; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "fbc54ba3-4ffe-45ed-b040-0d31bd6949a9",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "3260.534962953511",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"departments\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1,\n      \"location_id\": 2806,\n      \"name\": \"Sample Department\",\n      \"description\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff994db3-0acd-45ba-95cf-2eb063bf8a03",
+          "name": "get mine departments",
+          "request": {
+            "name": "get mine departments",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "departments",
+                "mine"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c186ca8-7b01-45ee-a43f-f324be9b2e2f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "departments",
+                    "mine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Mon, 19 Sep 2022 06:13:13 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"5c46867ece13ab7e25b71012c0a55cc9\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=S1dFSFRZMnNKMkc4aER0Qjgzbm55NjNHcVZOd2h2eGZ6azFnVkc0ZUVDT2Zwb0pjcjVFUEc1TlV3TGU4c2NaMjkrbjAyY0RGWEh4ck1RWGtIYjVqM0E9PS0tS3JGT1NmSHkrZnZlZ0k5TlA4eHkrUT09--2cb857ae1ccb27b9803bae64697ea7b5b0cd33cd; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "7277b3dd-e3de-43aa-a790-26261567e591",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "4020.687620882322",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"departments\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1,\n      \"location_id\": 2806,\n      \"name\": \"Sample Department 2\",\n      \"description\": null,\n      \"users_count\": 5,\n      \"user_ids\": [\n        14196,\n        14199,\n        14206,\n        7613,\n        14815\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"per_page\": 25\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b399028-5279-43c2-85cd-1ecc45e03272",
+          "name": "create a new department",
+          "request": {
+            "name": "create a new department",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "departments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "adf36202-242f-4732-80a2-b5c99e195319",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\\"department\\\": {\\n    \\\"location_id\\\": 2806,\\n    \\\"name\\\": \\\"Sample Department\\\",\\n    \\\"description\\\": \\\"Test Sample Department\\\"\\n    }\\n}\\t\\t\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Sun, 18 Sep 2022 22:56:38 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"2431117b344f7e250ca30b7b0e36678a\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=NVcvQXN6ZWdRV0h5ckxqVGF5M0NPK21Bekl2ck9PdnRJYkhnaURCQ3FFV2wybDJaOUNzVU84bE9zYll0SGZrRU1uMVFZNEIyT2tkNDJ4OHZybW1Pb0E9PS0tWXZoM0FxUld6TzYvUmpmUjVNWlR2Zz09--30cc94175768c6d1e76558c5f819a45bc812641d; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "f9e1591b-aa50-4f0c-9bc8-097595cdfa82",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "3759.0755674540555",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"department\": {\n    \"_parent_object_id\": null,\n    \"id\": 2,\n    \"location_id\": 2806,\n    \"name\": \"Sample Department\",\n    \"description\": \"Test Sample Department\",\n    \"users_count\": 0\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "417cb431-7f8e-4b0f-968b-1c917cea196b",
+          "name": "update a new department",
+          "request": {
+            "name": "update a new department",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "departments",
+                "1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "e780a485-5036-403d-9570-edfc7b30e709",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "departments",
+                    "1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\\"department\\\": {\\n    \\\"name\\\": \\\"Sample Department 2\\\"\\n    }\\n}\\t\\t\""
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Sun, 18 Sep 2022 23:00:02 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=OHJtMlN0U3N5cGRzYStSTmtXZjZTVkU2WGNhWWxRbEdldFlybGo0bkExVUFYbEUrd0FFVWFIek50cnpBK0tDTVQ1OVAraGdLRGdTNGJBMmlJNzh4UUE9PS0tMExaQ2VZd3N2Vm9KUFM3YVo0NHBydz09--07e7dd47e69f99b4fb2076a29f591f55600d6778; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "1dd2554f-3735-41f7-9cac-1dfbcb93af52",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "5151.5179741534985",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c58d326-5f13-453f-b0d3-3d7c8de1b9d9",
+          "name": "assign a department users",
+          "request": {
+            "name": "assign a department users",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "departments",
+                "1",
+                "assign_users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[put_return_resource]",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "c6713e75-5f07-40f3-9762-23680528ec2d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "departments",
+                    "1",
+                    "assign_users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[put_return_resource]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"department\\\": {\\n        \\\"remove_user_ids\\\": [ 14794, 14992, 14474, 14974]\\n    }\\n}\\t\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Mon, 19 Sep 2022 04:58:37 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"ef0a0816122ded71c6a6db9a2e42c1a2\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=ejlyWWdLU3BYa05JelRFVmhqWFdSbU1aWGx3cktZdEFTMUMrSDJUM1NtaGtUYll5cC8wWnYvdi81K1Vya3F3YTVTdmhUTHdkNzdzd0JEY0JtVVh6Vmc9PS0tY0tLNFp1eFhjZ2JaMGhKdDFCdkp6dz09--00c4c9d0893f2b78a3e8d946a3f953a69861f995; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "45659acd-0efc-46d9-b139-03959889f113",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "9617.378906563796",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"department\": {\n    \"_parent_object_id\": null,\n    \"id\": 1,\n    \"location_id\": 2806,\n    \"name\": \"Sample Department 2\",\n    \"description\": null,\n    \"users_count\": 8\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32679f6c-74bf-4f8a-a30a-2ba5cc816aca",
+          "name": "delete a department",
+          "request": {
+            "name": "delete a department",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "departments",
+                "2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8dab3ec6-00ca-4b3c-a167-2167adf6040d",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "departments",
+                    "2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Sun, 18 Sep 2022 23:05:23 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=TEFERlFTcHhsdjJ6TlhRZ2xhVzFOSVBkZlgzdFROMU13Qkw1V0VXN1BRcXUxSXY0WFpRRGZOM2ptWkFXVjJXZFdvZUJldGtYTE14WWVEUlJLc2ZCZlE9PS0tNDhzWEFBYmlQZmdGNXhsSHhWYWI2Zz09--8cea5ae86d841368b618c11c57fe7cb77191f8c8; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "692f08f0-de64-4923-8bec-b893830928fc",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "9277.942862140026",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cc4ea651-0d3e-4a9d-a6d2-7f462a846851",
+    "name": "Shyft Customer Authentication > Email Customer > Departments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

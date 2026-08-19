@@ -1,0 +1,300 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Posts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/posts",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Get posts accessialbe by current user\n- use `pinned=true` to only get `pinned` posts\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npinned | boolean | | get only `pinned` posts, or get only `unpinned` posts\nchannel_id | integer | | get posts from target channel\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "create a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/posts",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Create a regular channel post\n- Create a free post\n- Create a announcement post by admin\n- Attach a picture along with post\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nchannel_id | integer | * | target channel's ID\ntitle | string | * | post title\ncontent | string | * | post content\nattached_files_blob_ids |"
+        },
+        {
+          "info": {
+            "name": "get a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/posts/74300",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[nested]",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "response[keep]",
+                "value": "likes",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "get a post"
+        },
+        {
+          "info": {
+            "name": "get post receipts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/posts/74282/receipts",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Get a list of receipts associated with target post.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to read\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[Receipt Serializer]"
+        },
+        {
+          "info": {
+            "name": "update a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/posts/80344",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "update a post"
+        },
+        {
+          "info": {
+            "name": "like a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/posts/:post_id/like",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "like a post"
+        },
+        {
+          "info": {
+            "name": "unlike a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/posts/:post_id/unlike",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "unlike a post"
+        },
+        {
+          "info": {
+            "name": "read a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/posts/74282/read",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- API to confirm receving and reading the target post for current user. \n- User can only confirm once for same post, repeating confirming will cause failure. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to read\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "pin a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/posts/74286/pin",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- API to pin a post to associated channel\n- The current user calling the API will be saved \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to pin\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "unpin a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/posts/:post_id/unpin",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- API to unpin a post from associated channel\n- The original user ID who pinned the will be removed. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to pin\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "destroy a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/posts/:post_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "destroy a post"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

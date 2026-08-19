@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Compact > RequstTimeOff API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compact > RequstTimeOff",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get manageable request time offs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/request_time_offs/can_admin",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "{{location_id}}",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+        },
+        {
+          "info": {
+            "name": "get my request time offs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/request_time_offs/mine",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

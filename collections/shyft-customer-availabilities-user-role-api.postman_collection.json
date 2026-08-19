@@ -1,0 +1,923 @@
+{
+  "item": [
+    {
+      "id": "5c82650c-6cea-481f-9535-d66d5de2a187",
+      "name": "Customer > Availabilities > user_role",
+      "description": {
+        "content": "Acting as a regular user for specific location",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64ce1e72-0978-4258-9bba-7f3584811b24",
+          "name": "[availabilities] update your availability",
+          "request": {
+            "name": "[availabilities] update your availability",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id",
+                "availabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "7670c852-e928-4c03-ad42-ccf97ef4d263",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id",
+                    "availabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{ \\n        \\\"availability\\\": {\\n        \\\"availability_elements_attributes\\\": [\\n            { \\\"day\\\": 0, \\\"start_at\\\": \\\"11:00\\\", \\\"end_at\\\": \\\"18:00\\\" },\\n            { \\\"day\\\": 1, \\\"start_at\\\": \\\"14:00\\\", \\\"end_at\\\": \\\"21:00\\\" },\\n            { \\\"day\\\": 2, \\\"start_at\\\": \\\"12:00\\\", \\\"end_at\\\": \\\"16:00\\\" },\\n            { \\\"day\\\": 3, \\\"start_at\\\": \\\"12:00\\\", \\\"end_at\\\": \\\"16:00\\\" },\\n            { \\\"day\\\": 4, \\\"start_at\\\": \\\"12:00\\\", \\\"end_at\\\": \\\"16:00\\\" },\\n            { \\\"day\\\": 5, \\\"start_at\\\": \\\"05:00\\\", \\\"end_at\\\": \\\"18:00\\\" },\\n            { \\\"day\\\": 6, \\\"start_at\\\": \\\"12:00\\\", \\\"end_at\\\": \\\"16:00\\\" }           \\n        ]\\n        }\\n}\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"524ba9f0817f1d96b320ad17058632bc\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=dzhtRzZSTS9TQ1QzOXpzejBJbk5nMjRFNUxJMGFacUJES3RZQk1aQkx1WC9QdG9hZ0JSQVFKajk4MGcvajIzbng2bWlMUFJUc3RYMzZrQzFTaS95Rmc9PS0tRW9TVGtqUEQ5eHJPbWRnSFRNNUd0QT09--b17a6dbd4634998f6bd963115093982a80569017; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "5391affa-f27a-4c7d-955c-0d8840445fe1",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "2093.1804134931176",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availability\": {\n    \"_parent_object_id\": null,\n    \"id\": 225,\n    \"time_zone\": \"America/Los_Angeles\",\n    \"status\": \"approved\",\n    \"repeat_cycle\": \"weekly\",\n    \"notes\": null,\n    \"user_id\": 14815,\n    \"location_id\": 2806,\n    \"range_start_date\": null,\n    \"range_end_date\": null,\n    \"availability_elements\": [\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1575,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T19:00:00.000Z\",\n        \"end_at\": \"2024-04-06T23:00:00.000Z\",\n        \"start_time_local\": \"12:00\",\n        \"end_time_local\": \"16:00\",\n        \"open\": true,\n        \"day\": 6,\n        \"day_name\": \"saturday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1574,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T12:00:00.000Z\",\n        \"end_at\": \"2024-04-07T01:00:00.000Z\",\n        \"start_time_local\": \"05:00\",\n        \"end_time_local\": \"18:00\",\n        \"open\": true,\n        \"day\": 5,\n        \"day_name\": \"friday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1573,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T19:00:00.000Z\",\n        \"end_at\": \"2024-04-06T23:00:00.000Z\",\n        \"start_time_local\": \"12:00\",\n        \"end_time_local\": \"16:00\",\n        \"open\": true,\n        \"day\": 4,\n        \"day_name\": \"thursday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1572,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T19:00:00.000Z\",\n        \"end_at\": \"2024-04-06T23:00:00.000Z\",\n        \"start_time_local\": \"12:00\",\n        \"end_time_local\": \"16:00\",\n        \"open\": true,\n        \"day\": 3,\n        \"day_name\": \"wednesday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1571,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T19:00:00.000Z\",\n        \"end_at\": \"2024-04-06T23:00:00.000Z\",\n        \"start_time_local\": \"12:00\",\n        \"end_time_local\": \"16:00\",\n        \"open\": true,\n        \"day\": 2,\n        \"day_name\": \"tuesday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1570,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T21:00:00.000Z\",\n        \"end_at\": \"2024-04-07T04:00:00.000Z\",\n        \"start_time_local\": \"14:00\",\n        \"end_time_local\": \"21:00\",\n        \"open\": true,\n        \"day\": 1,\n        \"day_name\": \"monday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1569,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T18:00:00.000Z\",\n        \"end_at\": \"2024-04-07T01:00:00.000Z\",\n        \"start_time_local\": \"11:00\",\n        \"end_time_local\": \"18:00\",\n        \"open\": true,\n        \"day\": 0,\n        \"day_name\": \"sunday\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7e0b3d1-840a-441e-87d8-34a20bcf20bf",
+          "name": "[availabilities] update your availability",
+          "request": {
+            "name": "[availabilities] update your availability",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id",
+                "availabilities",
+                "225"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[put_return_resource]",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "52328e72-91ce-4f48-afa9-e66eac002bb1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id",
+                    "availabilities",
+                    "225"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[put_return_resource]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{ \\n        \\\"availability\\\": {\\n        \\\"availability_elements_attributes\\\": [   \\n            { \\\"id\\\": 1575, \\\"open\\\": false }       \\n        ]\\n        }\\n}\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"8af4fba2622cab0657998612e2580889\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=R215eGREL3UxYURkUUlCU2dJZDhvYUswUklVbXdMbmNPY2lvcW9abkc4akE0VUNvSTB5bEhYUXkrNmRNRjNjYU1hc0J3cW9mS3h3R2NmaWl4U3I0Zmc9PS0tVXk2c3RxSnA1cy9Pb0dMUncrZUdCdz09--aa6de8ccc4af0832e0bc3649b3f3b917fb1a688e; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "47f3de83-e5e6-40a3-81b5-e99c8182b97f",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "6311.967605119689",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availability\": {\n    \"_parent_object_id\": null,\n    \"id\": 225,\n    \"time_zone\": \"America/Los_Angeles\",\n    \"status\": \"approved\",\n    \"repeat_cycle\": \"weekly\",\n    \"notes\": null,\n    \"user_id\": 14815,\n    \"location_id\": 2806,\n    \"range_start_date\": null,\n    \"range_end_date\": null,\n    \"availability_elements\": [\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1575,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T16:00:00.000Z\",\n        \"end_at\": \"2024-04-06T23:00:00.000Z\",\n        \"start_time_local\": \"09:00\",\n        \"end_time_local\": \"16:00\",\n        \"open\": true,\n        \"day\": 6,\n        \"day_name\": \"saturday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1574,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T12:00:00.000Z\",\n        \"end_at\": \"2024-04-07T01:00:00.000Z\",\n        \"start_time_local\": \"05:00\",\n        \"end_time_local\": \"18:00\",\n        \"open\": true,\n        \"day\": 5,\n        \"day_name\": \"friday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1573,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T19:00:00.000Z\",\n        \"end_at\": \"2024-04-06T23:00:00.000Z\",\n        \"start_time_local\": \"12:00\",\n        \"end_time_local\": \"16:00\",\n        \"open\": true,\n        \"day\": 4,\n        \"day_name\": \"thursday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1572,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T19:00:00.000Z\",\n        \"end_at\": \"2024-04-06T23:00:00.000Z\",\n        \"start_time_local\": \"12:00\",\n        \"end_time_local\": \"16:00\",\n        \"open\": true,\n        \"day\": 3,\n        \"day_name\": \"wednesday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1571,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T19:00:00.000Z\",\n        \"end_at\": \"2024-04-06T23:00:00.000Z\",\n        \"start_time_local\": \"12:00\",\n        \"end_time_local\": \"16:00\",\n        \"open\": true,\n        \"day\": 2,\n        \"day_name\": \"tuesday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1570,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T21:00:00.000Z\",\n        \"end_at\": \"2024-04-07T04:00:00.000Z\",\n        \"start_time_local\": \"14:00\",\n        \"end_time_local\": \"21:00\",\n        \"open\": true,\n        \"day\": 1,\n        \"day_name\": \"monday\"\n      },\n      {\n        \"_parent_object_id\": 225,\n        \"id\": 1569,\n        \"availability_id\": 225,\n        \"repeat_cycle\": \"weekly\",\n        \"start_at\": \"2024-04-06T18:00:00.000Z\",\n        \"end_at\": \"2024-04-07T01:00:00.000Z\",\n        \"start_time_local\": \"11:00\",\n        \"end_time_local\": \"18:00\",\n        \"open\": true,\n        \"day\": 0,\n        \"day_name\": \"sunday\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcd94a8d-235a-45b5-add4-be808c8b55b3",
+          "name": "[availabilities] get all availabilities from a location",
+          "request": {
+            "name": "[availabilities] get all availabilities from a location",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id",
+                "availabilities",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e23ff35-5178-4987-9c69-c7ce815eee49",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id",
+                    "availabilities",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"c5c1289355a9c2b59f26987d4eee939e\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=dUczVFo3WjdncGVKQWcxVVQ5M2NOVDdMZDh2eVhHbCtFaHNEY3hkT3FiRzB6Rkt5MUMyZW5wVEoreDhjdVRzZGVwUTlUdEF2eGV4T0JTY2d0L1hzRmc9PS0tRHpHYlV4bkFjZXFBMytpdHRpd201Zz09--593d3ac76ecd932015b6b550cd111cd91b2cc6d6; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "48fafd6d-5d18-4d27-8481-32a08cd7efae",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "6182.646141569948",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availabilities\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 223,\n      \"time_zone\": \"America/Los_Angeles\",\n      \"status\": \"approved\",\n      \"repeat_cycle\": \"weekly\",\n      \"notes\": null,\n      \"user_id\": 14467,\n      \"location_id\": 2806,\n      \"range_start_date\": null,\n      \"range_end_date\": null,\n      \"availability_elements\": [\n        {\n          \"_parent_object_id\": 223,\n          \"id\": 1561,\n          \"availability_id\": 223,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2024-03-08T20:00:00.000Z\",\n          \"end_at\": null,\n          \"start_time_local\": \"12:00\",\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 6\n        },\n        {\n          \"_parent_object_id\": 223,\n          \"id\": 1560,\n          \"availability_id\": 223,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2021-05-13T02:00:00.000Z\",\n          \"end_at\": \"2021-05-13T15:00:00.000Z\",\n          \"start_time_local\": \"19:00\",\n          \"end_time_local\": \"08:00\",\n          \"open\": true,\n          \"day\": 5\n        },\n        {\n          \"_parent_object_id\": 223,\n          \"id\": 1559,\n          \"availability_id\": 223,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 4\n        },\n        {\n          \"_parent_object_id\": 223,\n          \"id\": 1558,\n          \"availability_id\": 223,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 3\n        },\n        {\n          \"_parent_object_id\": 223,\n          \"id\": 1557,\n          \"availability_id\": 223,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 2\n        },\n        {\n          \"_parent_object_id\": 223,\n          \"id\": 1556,\n          \"availability_id\": 223,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 1\n        },\n        {\n          \"_parent_object_id\": 223,\n          \"id\": 1555,\n          \"availability_id\": 223,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 0\n        }\n      ]\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 222,\n      \"time_zone\": \"America/Los_Angeles\",\n      \"status\": \"approved\",\n      \"repeat_cycle\": \"weekly\",\n      \"notes\": null,\n      \"user_id\": 12227,\n      \"location_id\": 2806,\n      \"range_start_date\": null,\n      \"range_end_date\": null,\n      \"availability_elements\": [\n        {\n          \"_parent_object_id\": 222,\n          \"id\": 1554,\n          \"availability_id\": 222,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 6\n        },\n        {\n          \"_parent_object_id\": 222,\n          \"id\": 1553,\n          \"availability_id\": 222,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2021-05-13T02:00:00.000Z\",\n          \"end_at\": \"2021-05-13T15:00:00.000Z\",\n          \"start_time_local\": \"19:00\",\n          \"end_time_local\": \"08:00\",\n          \"open\": true,\n          \"day\": 5\n        },\n        {\n          \"_parent_object_id\": 222,\n          \"id\": 1552,\n          \"availability_id\": 222,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 4\n        },\n        {\n          \"_parent_object_id\": 222,\n          \"id\": 1551,\n          \"availability_id\": 222,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 3\n        },\n        {\n          \"_parent_object_id\": 222,\n          \"id\": 1550,\n          \"availability_id\": 222,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 2\n        },\n        {\n          \"_parent_object_id\": 222,\n          \"id\": 1549,\n          \"availability_id\": 222,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 1\n        },\n        {\n          \"_parent_object_id\": 222,\n          \"id\": 1548,\n          \"availability_id\": 222,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 0\n        }\n      ]\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 221,\n      \"time_zone\": \"America/Los_Angeles\",\n      \"status\": \"approved\",\n      \"repeat_cycle\": \"weekly\",\n      \"notes\": null,\n      \"user_id\": 14467,\n      \"location_id\": 2806,\n      \"range_start_date\": null,\n      \"range_end_date\": null,\n      \"availability_elements\": [\n        {\n          \"_parent_object_id\": 221,\n          \"id\": 1547,\n          \"availability_id\": 221,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 6\n        },\n        {\n          \"_parent_object_id\": 221,\n          \"id\": 1545,\n          \"availability_id\": 221,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 4\n        },\n        {\n          \"_parent_object_id\": 221,\n          \"id\": 1544,\n          \"availability_id\": 221,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 3\n        },\n        {\n          \"_parent_object_id\": 221,\n          \"id\": 1543,\n          \"availability_id\": 221,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 2\n        },\n        {\n          \"_parent_object_id\": 221,\n          \"id\": 1542,\n          \"availability_id\": 221,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 1\n        },\n        {\n          \"_parent_object_id\": 221,\n          \"id\": 1541,\n          \"availability_id\": 221,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 0\n        },\n        {\n          \"_parent_object_id\": 221,\n          \"id\": 1546,\n          \"availability_id\": 221,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 5\n        }\n      ]\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 220,\n      \"time_zone\": \"America/Los_Angeles\",\n      \"status\": \"approved\",\n      \"repeat_cycle\": \"weekly\",\n      \"notes\": null,\n      \"user_id\": 14005,\n      \"location_id\": 2806,\n      \"range_start_date\": null,\n      \"range_end_date\": null,\n      \"availability_elements\": [\n        {\n          \"_parent_object_id\": 220,\n          \"id\": 1540,\n          \"availability_id\": 220,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 6\n        },\n        {\n          \"_parent_object_id\": 220,\n          \"id\": 1539,\n          \"availability_id\": 220,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 5\n        },\n        {\n          \"_parent_object_id\": 220,\n          \"id\": 1538,\n          \"availability_id\": 220,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 4\n        },\n        {\n          \"_parent_object_id\": 220,\n          \"id\": 1537,\n          \"availability_id\": 220,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 3\n        },\n        {\n          \"_parent_object_id\": 220,\n          \"id\": 1536,\n          \"availability_id\": 220,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 2\n        },\n        {\n          \"_parent_object_id\": 220,\n          \"id\": 1535,\n          \"availability_id\": 220,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 1\n        },\n        {\n          \"_parent_object_id\": 220,\n          \"id\": 1534,\n          \"availability_id\": 220,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": null,\n          \"end_at\": null,\n          \"start_time_local\": null,\n          \"end_time_local\": null,\n          \"open\": true,\n          \"day\": 0\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"per_page\": 25\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "369b285c-dbf6-467f-b26c-b7298c2210ee",
+          "name": "[availabilities] get your availabilities from a location",
+          "request": {
+            "name": "[availabilities] get your availabilities from a location",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id",
+                "availabilities",
+                "mine"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3531686-6a4b-4cac-85f1-2d9d10fdf9d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id",
+                    "availabilities",
+                    "mine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"17ad81cfed09e17d9800336f21fdbbd3\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=LzVvRkg2R0dBSEZwSyt1dElwTTV0enE1MVVicjQ2L2pWNU51djBJc29TODUreGtVN1Y1QjgvTXd2bUxpSXo5SmE2TUFEUnh2Y3J3TUJEalBwa1ZuNlE9PS0tcW9SNGdQbDI0UXZveXZVMXd3TzJPZz09--9d5e39fd24db91c0cc3a1c89d62cd522790bfbf1; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "8b528249-6f42-4e3a-a279-cf751215404e",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "4527.69342481205",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availabilities\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 224,\n      \"time_zone\": \"America/Los_Angeles\",\n      \"status\": \"approved\",\n      \"repeat_cycle\": \"weekly\",\n      \"notes\": null,\n      \"user_id\": 14815,\n      \"location_id\": 2806,\n      \"range_start_date\": null,\n      \"range_end_date\": null,\n      \"availability_elements\": [\n        {\n          \"_parent_object_id\": 224,\n          \"id\": 1568,\n          \"availability_id\": 224,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2024-04-05T19:00:00.000Z\",\n          \"end_at\": \"2024-04-05T23:00:00.000Z\",\n          \"start_time_local\": \"12:00\",\n          \"end_time_local\": \"16:00\",\n          \"open\": true,\n          \"day\": 6\n        },\n        {\n          \"_parent_object_id\": 224,\n          \"id\": 1567,\n          \"availability_id\": 224,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2024-04-05T12:00:00.000Z\",\n          \"end_at\": \"2024-04-06T01:00:00.000Z\",\n          \"start_time_local\": \"05:00\",\n          \"end_time_local\": \"18:00\",\n          \"open\": true,\n          \"day\": 5\n        },\n        {\n          \"_parent_object_id\": 224,\n          \"id\": 1566,\n          \"availability_id\": 224,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2024-04-05T19:00:00.000Z\",\n          \"end_at\": \"2024-04-05T23:00:00.000Z\",\n          \"start_time_local\": \"12:00\",\n          \"end_time_local\": \"16:00\",\n          \"open\": true,\n          \"day\": 4\n        },\n        {\n          \"_parent_object_id\": 224,\n          \"id\": 1565,\n          \"availability_id\": 224,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2024-04-05T19:00:00.000Z\",\n          \"end_at\": \"2024-04-05T23:00:00.000Z\",\n          \"start_time_local\": \"12:00\",\n          \"end_time_local\": \"16:00\",\n          \"open\": true,\n          \"day\": 3\n        },\n        {\n          \"_parent_object_id\": 224,\n          \"id\": 1564,\n          \"availability_id\": 224,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2024-04-05T19:00:00.000Z\",\n          \"end_at\": \"2024-04-05T23:00:00.000Z\",\n          \"start_time_local\": \"12:00\",\n          \"end_time_local\": \"16:00\",\n          \"open\": true,\n          \"day\": 2\n        },\n        {\n          \"_parent_object_id\": 224,\n          \"id\": 1563,\n          \"availability_id\": 224,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2024-04-05T21:00:00.000Z\",\n          \"end_at\": \"2024-04-06T04:00:00.000Z\",\n          \"start_time_local\": \"14:00\",\n          \"end_time_local\": \"21:00\",\n          \"open\": true,\n          \"day\": 1\n        },\n        {\n          \"_parent_object_id\": 224,\n          \"id\": 1562,\n          \"availability_id\": 224,\n          \"repeat_cycle\": \"weekly\",\n          \"start_at\": \"2024-04-05T18:00:00.000Z\",\n          \"end_at\": \"2024-04-06T01:00:00.000Z\",\n          \"start_time_local\": \"11:00\",\n          \"end_time_local\": \"18:00\",\n          \"open\": true,\n          \"day\": 0\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"per_page\": 25\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7f0157ef-8ceb-4769-ae86-3812a81a8142",
+    "name": "Shyft Customer Authentication > Email Customer > Availabilities > user_role API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

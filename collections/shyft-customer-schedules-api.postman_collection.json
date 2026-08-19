@@ -1,0 +1,821 @@
+{
+  "item": [
+    {
+      "id": "ce2770cb-b866-4534-a096-4c0b4f6feef8",
+      "name": "Customer > Schedules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da4e3489-09a6-4c77-b184-50e484839883",
+          "name": "get schedules",
+          "request": {
+            "name": "get schedules",
+            "description": {
+              "content": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id |   | * | associaged location |\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c179b09c-d2ef-4655-9521-66a560387de4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "[MESSION] session token ID. deprecate it soon.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "640a3d52-598f-4909-9724-0f03e76ef0a4",
+          "name": "create a schedule",
+          "request": {
+            "name": "create a schedule",
+            "description": {
+              "content": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "9b3dfde5-6652-47d7-aec3-d1b5c42ba20e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "[MESSION] session token ID. deprecate it soon.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\t\\\"schedule\\\": {\\n\\t\\t\\\"name\\\": \\\"my schedule name\\\",\\n\\t\\t\\\"start_date\\\": \\\"2018-10-01 00:00:00 UTC\\\",\\n\\t\\t\\\"end_date\\\": \\\"2018-10-31 00:00:00 UTC\\\",\\n\\t\\t\\\"location_id\\\": 2634\\n\\t}\\n}\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"2135805b6ede30af25cd5ba100fadefb\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=RGliT2JzaWlKT21jVEwrWGR6VUtPSG5sYW1vM0E3U09NN1dZMGRySkFEcjM3d1htcS9GdnFacFVTRVlsT0x0UlVmbXo5dEFlR1czZE1ZZS9hN0tLM1E9PS0tc1lTY0c1K1BsZFo1SlhJSU82YzVvdz09--c2b1d2b118beba5146f2a05056a8ce23599b66d2; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "8d86c0fc-d05f-4f96-b4f6-890b1c246fec",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "5983.8867293046205",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schedule\": {\n    \"_parent_object_id\": null,\n    \"id\": 10099,\n    \"name\": \"my schedule name\",\n    \"image_id\": null,\n    \"snapshot_url\": null,\n    \"created_at\": \"2018-12-11T19:42:01.107Z\",\n    \"start_date\": \"2018-10-31T00:00:00.000Z\",\n    \"end_date\": null,\n    \"location\": {\n      \"_parent_object_id\": 10099,\n      \"id\": 2029,\n      \"swift_code\": \"P9F7KY\",\n      \"location_name\": \"New Star Seafood Restaurant\",\n      \"unit_number\": null,\n      \"street_number\": null,\n      \"address\": \"516 South Jackson Street, Seattle\",\n      \"province\": null,\n      \"postal\": null,\n      \"country\": null,\n      \"lat\": \"47.5994261\",\n      \"lng\": \"-122.3268447\",\n      \"latitude\": 47.5994261,\n      \"longitude\": -122.3268447,\n      \"phone_number\": \"(206) 622-8801\",\n      \"created_at\": \"2017-04-29T01:06:26.502Z\",\n      \"users_count\": 65,\n      \"formatted_address\": \"516 S Jackson St, Seattle, WA 98104, USA\",\n      \"time_zone\": null,\n      \"google_map_id\": \"ChIJb1yyf7tqkFQRf1BR8KCmHak\",\n      \"four_sq_id\": null,\n      \"allow_tipping\": true,\n      \"shift_require_approval\": true,\n      \"shyft_pro_active\": false,\n      \"shyft_pro_expiry_date\": \"2018-12-04T19:10:49.425Z\",\n      \"fence_radius\": null,\n      \"cfg_not_dm\": null,\n      \"cfg_geofence_log\": null,\n      \"cfg_timeout\": null,\n      \"tos_url\": null,\n      \"tos_version\": null,\n      \"require_approval\": false,\n      \"ip_blocked\": false,\n      \"member_count\": 53,\n      \"location_address\": null,\n      \"location_city\": \",  \",\n      \"division_names\": [],\n      \"feed_channel_id\": 3979,\n      \"pending_users_count\": 0\n    },\n    \"owner\": {\n      \"_parent_object_id\": 10099,\n      \"id\": 1,\n      \"active_org\": 1,\n      \"first_name\": \"kyle1\",\n      \"last_name\": \"Liu\",\n      \"email\": null,\n      \"phone_number\": null,\n      \"gender\": 0,\n      \"chat_handle\": \"a1b171e77831a00be9702b03c018296c\",\n      \"user_group\": 2,\n      \"status\": \"\",\n      \"current_position\": null,\n      \"current_user_privilege_id\": null,\n      \"current_is_approved\": null,\n      \"all_push\": true,\n      \"shift_push\": true,\n      \"schedule_push\": true,\n      \"community_push\": true,\n      \"profile_image\": {\n        \"thumb_url\": \"https://coffeemobile.s3.amazonaws.com/images/thumb/31_Img_20141216_105119.jpg?1418745446\",\n        \"gallery_url\": \"https://coffeemobile.s3.amazonaws.com/images/gallery/31_Img_20141216_105119.jpg?1418745446\",\n        \"full_url\": \"https://coffeemobile.s3.amazonaws.com/images/full/31_Img_20141216_105119.jpg?1418745446\"\n      },\n      \"recent_user_privilege\": {\n        \"_parent_object_id\": 1,\n        \"id\": 12267,\n        \"email\": null,\n        \"wage\": 15,\n        \"position\": \"sales\",\n        \"is_approved\": true,\n        \"owner_id\": 1,\n        \"location_id\": 2029,\n        \"org_id\": 1,\n        \"is_admin\": false,\n        \"read_only\": false,\n        \"first_name\": \"kyle1\",\n        \"last_name\": \"Liu\",\n        \"phone_number\": null,\n        \"profile_image_thumb_url\": \"https://coffeemobile.s3.amazonaws.com/images/thumb/31_Img_20141216_105119.jpg?1418745446\",\n        \"internal_id\": null,\n        \"admin_claim_pending\": false,\n        \"status\": \"active\",\n        \"current_availability\": null,\n        \"location\": {\n          \"_associations_removed\": true,\n          \"_parent_object_id\": 12267,\n          \"id\": 2029,\n          \"swift_code\": \"P9F7KY\",\n          \"location_name\": \"New Star Seafood Restaurant\",\n          \"unit_number\": null,\n          \"street_number\": null,\n          \"address\": \"516 South Jackson Street, Seattle\",\n          \"province\": null,\n          \"postal\": null,\n          \"country\": null,\n          \"lat\": \"47.5994261\",\n          \"lng\": \"-122.3268447\",\n          \"latitude\": 47.5994261,\n          \"longitude\": -122.3268447,\n          \"phone_number\": \"(206) 622-8801\",\n          \"created_at\": \"2017-04-29T01:06:26.502Z\",\n          \"users_count\": 65,\n          \"formatted_address\": \"516 S Jackson St, Seattle, WA 98104, USA\",\n          \"time_zone\": null,\n          \"google_map_id\": \"ChIJb1yyf7tqkFQRf1BR8KCmHak\",\n          \"four_sq_id\": null,\n          \"allow_tipping\": true,\n          \"shift_require_approval\": true,\n          \"shyft_pro_active\": false,\n          \"shyft_pro_expiry_date\": \"2018-12-04T19:10:49.425Z\",\n          \"fence_radius\": null,\n          \"cfg_not_dm\": null,\n          \"cfg_geofence_log\": null,\n          \"cfg_timeout\": null,\n          \"tos_url\": null,\n          \"tos_version\": null,\n          \"require_approval\": false,\n          \"ip_blocked\": false,\n          \"member_count\": 53,\n          \"location_address\": null,\n          \"location_city\": \",  \",\n          \"division_names\": [],\n          \"feed_channel_id\": 3979,\n          \"pending_users_count\": 0\n        },\n        \"user\": {\n          \"_associations_removed\": true,\n          \"_parent_object_id\": 12267,\n          \"id\": 1,\n          \"active_org\": 1,\n          \"first_name\": \"kyle1\",\n          \"last_name\": \"Liu\",\n          \"email\": null,\n          \"phone_number\": null,\n          \"gender\": 0,\n          \"chat_handle\": \"a1b171e77831a00be9702b03c018296c\",\n          \"user_group\": 2,\n          \"status\": \"\",\n          \"current_position\": null,\n          \"current_user_privilege_id\": null,\n          \"current_is_approved\": null,\n          \"all_push\": true,\n          \"shift_push\": true,\n          \"schedule_push\": true,\n          \"community_push\": true\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "addd5599-a912-4d57-8968-075f8fbb8341",
+          "name": "get a schedule",
+          "request": {
+            "name": "get a schedule",
+            "description": {
+              "content": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "schedules",
+                "981"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8dff4369-f94b-4b4e-bba2-ca468ecac4b4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "schedules",
+                    "981"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "[MESSION] session token ID. deprecate it soon.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"50eb0d6ac093f7863825eb7b4a36b6ed\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=MUxZNVBVL0YvY3lLQ2E4Q0JHOFRybk1SY0lqYm1ROHBVWEd0b2tid2lYQnlmd1RTMFphbFh3VFk5Q0hzOGlnai9PNnhPL1p3WXdKNXhGVElKaldPbnc9PS0tUm03WTVwVzgzQjM5REt3cUZDM1gzZz09--1f5848c779c49661df99943e4a3617b9df98d05e; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "2c469f19-d33f-4c1a-b24c-59824328476b",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "1702.5781490300885",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schedule\": {\n    \"_parent_object_id\": null,\n    \"id\": 9964,\n    \"name\": \"Retesting droid-69\",\n    \"image_id\": null,\n    \"snapshot_url\": \"https://shyft-test-app-images.s3.amazonaws.com/images/original/10042-20180706_094337_351.jpg\",\n    \"created_at\": \"2018-07-06T13:44:28.703Z\",\n    \"start_date\": \"2018-07-11T04:00:00.000Z\",\n    \"end_date\": \"2018-07-31T04:00:00.000Z\",\n    \"location\": {\n      \"_parent_object_id\": 9964,\n      \"id\": 2029,\n      \"swift_code\": \"P9F7KY\",\n      \"location_name\": \"New Star Seafood Restaurant\",\n      \"unit_number\": null,\n      \"street_number\": null,\n      \"address\": \"516 South Jackson Street, Seattle\",\n      \"province\": null,\n      \"postal\": null,\n      \"country\": null,\n      \"lat\": \"47.5994261\",\n      \"lng\": \"-122.3268447\",\n      \"latitude\": 47.5994261,\n      \"longitude\": -122.3268447,\n      \"phone_number\": \"(206) 622-8801\",\n      \"created_at\": \"2017-04-29T01:06:26.502Z\",\n      \"users_count\": 65,\n      \"formatted_address\": \"516 S Jackson St, Seattle, WA 98104, USA\",\n      \"time_zone\": null,\n      \"google_map_id\": \"ChIJb1yyf7tqkFQRf1BR8KCmHak\",\n      \"four_sq_id\": null,\n      \"allow_tipping\": true,\n      \"shift_require_approval\": true,\n      \"shyft_pro_active\": false,\n      \"shyft_pro_expiry_date\": \"2018-12-04T19:10:49.425Z\",\n      \"fence_radius\": null,\n      \"cfg_not_dm\": null,\n      \"cfg_geofence_log\": null,\n      \"cfg_timeout\": null,\n      \"tos_url\": null,\n      \"tos_version\": null,\n      \"require_approval\": false,\n      \"ip_blocked\": false,\n      \"member_count\": 53,\n      \"location_address\": null,\n      \"location_city\": \",  \",\n      \"division_names\": [],\n      \"feed_channel_id\": 3979,\n      \"pending_users_count\": 0\n    },\n    \"owner\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3aa939d6-92ab-4932-9f44-67fc98085bbe",
+          "name": "delete a schedule",
+          "request": {
+            "name": "delete a schedule",
+            "description": {
+              "content": "Description\n\n- delete a schedule will remove its shift inventories as well\n- schedule owner can delete it\n- location admin can delete it\n- integration generated schedule can not be deleted\n- schedule having shifts status changed can not be deleted\n    \n\n---\n\nParams\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "schedules",
+                "981"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6be82480-a8de-4778-8357-620059446faf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "schedules",
+                    "981"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "[MESSION] session token ID. deprecate it soon.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9a3e423-7eb1-4127-a96c-5db021a5026e",
+          "name": "publish a schedule",
+          "request": {
+            "name": "publish a schedule",
+            "description": {
+              "content": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "schedules",
+                "171263",
+                "publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "id": "eca58c62-facd-4804-8597-16d05fb071f4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "schedules",
+                    "171263",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "[MESSION] session token ID. deprecate it soon.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e7f577f-8c75-4afe-a730-32454446df73",
+          "name": "unpublish a schedule",
+          "request": {
+            "name": "unpublish a schedule",
+            "description": {
+              "content": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "schedules",
+                "171263",
+                "unpublish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "id": "94e2a03a-58cd-423d-9a6f-f6798949be26",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "schedules",
+                    "171263",
+                    "unpublish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "[MESSION] session token ID. deprecate it soon.",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a470bf38-38ad-4167-a7e9-13b0c020767b",
+    "name": "Shyft Customer Authentication > Email Customer > Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

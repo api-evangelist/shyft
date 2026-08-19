@@ -1,0 +1,1888 @@
+{
+  "item": [
+    {
+      "id": "a50e18cb-8cbe-4d35-8b40-00821a606796",
+      "name": "Customer > RequstTimeOff",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "15550e56-85d5-4bba-85be-49c21c050a40",
+          "name": "get manageable request time offs",
+          "request": {
+            "name": "get manageable request time offs",
+            "description": {
+              "content": "Description\n- - - \n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "request_time_offs",
+                "can_admin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "1e39f934-759d-4012-98c0-b32147fd6777",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "request_time_offs",
+                    "can_admin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location_id",
+                      "value": "{{location_id}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Tue, 31 Aug 2021 21:17:31 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"059458cb361ab108936fe1ee5e3f2729\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=b0dUQlVXRHY5N2EwaXBIdGd6WHVHVmlXbW1TR0VaOHNiNkRCcUhVRkY1U21iZHNMYmVjdUJjWnBXTlk4MWdPaC9KQzFWKzdNbEE5YkRYOW8yS29xWXc9PS0tMlNIUHBYc0gvSGFDelRFOHJHaDZoQT09--fadaca6abdbdfc848276e5df2b957af62973e51e; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "37f75bb2-8a3e-4c5b-bfa7-1d6201b6b7a1",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "1598.3235674813222",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_time_offs\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 2,\n      \"user_id\": 11284,\n      \"approver_id\": null,\n      \"managed_at\": null,\n      \"location_id\": 2622,\n      \"days\": 5,\n      \"day_hours\": 8,\n      \"total_hours\": 40,\n      \"latest_balance\": null,\n      \"start_date\": \"2021-09-01\",\n      \"start_time\": \"2021-09-01T09:00:00.000Z\",\n      \"end_date\": \"2021-09-05\",\n      \"end_time\": \"2021-09-01T17:00:00.000Z\",\n      \"category\": \"1\",\n      \"status\": \"requested\",\n      \"time_off_reason\": null,\n      \"managed_reason\": null,\n      \"user_privilege_id\": 16429,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 27,\n      \"user_id\": 14601,\n      \"approver_id\": null,\n      \"managed_at\": null,\n      \"location_id\": 2622,\n      \"days\": 5,\n      \"day_hours\": 8,\n      \"total_hours\": 40,\n      \"latest_balance\": null,\n      \"start_date\": \"2021-09-01\",\n      \"start_time\": \"2021-09-01T09:00:00.000Z\",\n      \"end_date\": \"2021-09-05\",\n      \"end_time\": \"2021-09-01T17:00:00.000Z\",\n      \"category\": \"pto\",\n      \"status\": \"requested\",\n      \"time_off_reason\": null,\n      \"managed_reason\": null,\n      \"user_privilege_id\": null,\n      \"first_name\": \"Monica\",\n      \"last_name\": \"Lyons\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18127_14601-20210721_140611_108.jpg?1626901571\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1,\n      \"user_id\": 11284,\n      \"approver_id\": null,\n      \"managed_at\": null,\n      \"location_id\": 2622,\n      \"days\": 5,\n      \"day_hours\": 8,\n      \"total_hours\": 40,\n      \"latest_balance\": null,\n      \"start_date\": \"2021-09-01\",\n      \"start_time\": \"2021-09-01T09:00:00.000Z\",\n      \"end_date\": \"2021-09-05\",\n      \"end_time\": \"2021-09-01T17:00:00.000Z\",\n      \"category\": \"pto\",\n      \"status\": \"requested\",\n      \"time_off_reason\": null,\n      \"managed_reason\": null,\n      \"user_privilege_id\": 16429,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"per_page\": 25\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52cdcfef-454a-418b-96db-93983712006c",
+          "name": "get my request time offs",
+          "request": {
+            "name": "get my request time offs",
+            "description": {
+              "content": "Description\n- - - \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "request_time_offs",
+                "mine"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "e55711d3-c943-4a7b-a962-b34f2384adc5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "request_time_offs",
+                    "mine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Fri, 13 Aug 2021 00:38:05 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"866f5211e07e525b95527877d16e5022\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=alRUTTZEL0F2UGdMaEF2SHlzbTFrNEN0SXVLdnZoRGk4UFk3WDBnalovL3dXMmpUWFRHTUc2YUQ4TStqVUV6MlFrL0RMc2pSZTlURXlkR3VHR25nNlE9PS0tdHZjVHQ1QmNCNThwdm1leHRWZmxvZz09--7234a8e15ae8b6e56965afcdb04f67acf171e6c1; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "df7fbe43-2650-4686-9fa4-af816196cbee",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "290.6746392666137",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_time_offs\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1,\n      \"user_id\": 11284,\n      \"approver_id\": null,\n      \"managed_at\": null,\n      \"location_id\": 2622,\n      \"start_date\": \"2021-09-01\",\n      \"start_time\": \"2021-09-01T09:00:00.000Z\",\n      \"end_date\": \"2021-09-05\",\n      \"end_time\": \"2021-09-01T17:00:00.000Z\",\n      \"category\": \"pto\",\n      \"status\": \"requested\",\n      \"time_off_reason\": \"family event\",\n      \"managed_reason\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 2,\n      \"user_id\": 11284,\n      \"approver_id\": null,\n      \"managed_at\": null,\n      \"location_id\": 2622,\n      \"start_date\": \"2021-09-01\",\n      \"start_time\": \"2021-09-01T09:00:00.000Z\",\n      \"end_date\": \"2021-09-05\",\n      \"end_time\": \"2021-09-01T17:00:00.000Z\",\n      \"category\": \"pto\",\n      \"status\": \"requested\",\n      \"time_off_reason\": \"family event\",\n      \"managed_reason\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 3,\n      \"user_id\": 11284,\n      \"approver_id\": null,\n      \"managed_at\": null,\n      \"location_id\": 2622,\n      \"start_date\": \"2021-09-01\",\n      \"start_time\": \"2021-09-01T09:00:00.000Z\",\n      \"end_date\": \"2021-09-05\",\n      \"end_time\": \"2021-09-01T17:00:00.000Z\",\n      \"category\": \"pto\",\n      \"status\": \"requested\",\n      \"time_off_reason\": \"family event\",\n      \"managed_reason\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 4,\n      \"user_id\": 11284,\n      \"approver_id\": null,\n      \"managed_at\": null,\n      \"location_id\": 2622,\n      \"start_date\": \"2021-09-01\",\n      \"start_time\": \"2021-09-01T09:00:00.000Z\",\n      \"end_date\": \"2021-09-05\",\n      \"end_time\": \"2021-09-01T17:00:00.000Z\",\n      \"category\": \"pto\",\n      \"status\": \"requested\",\n      \"time_off_reason\": \"family event\",\n      \"managed_reason\": null\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"per_page\": 25\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "318d52d1-c525-4faa-96a7-3ca2c660d006",
+          "name": "get user's request time off balances",
+          "request": {
+            "name": "get user's request time off balances",
+            "description": {
+              "content": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                ":user_privilege_id",
+                "rto_balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_privilege_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "63080c9f-623f-4318-908f-58f8f78f4ba5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    ":user_privilege_id",
+                    "rto_balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_privilege_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Fri, 20 Aug 2021 04:59:31 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"62aeca656c60593b80f661d0471bf873\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=M3Q1ajBicG8reDdqMlRudEw5T01iQnhyQWlBUnhYaElwQi82OUk0UkhWVzJTcXp0RUFrZm1ndlFxWHlDajgzVEx3Y1N6NjladlJaOGkwL3ZJSm5nQ2c9PS0tYmJHY3U1cVpEdzRWWVQvVU1Yd1pUZz09--9d0fbe4a3379bcbc5f51ca2b4ea72a39fdc767ca; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "b8e6d89f-6a22-401e-8c6c-5ad6bc2f0f84",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "1414.9199290508896",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rto_balances\": {\n    \"rto_category_pto\": 12,\n    \"rto_category_floating\": 5,\n    \"rto_category_diversity\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b31d39a0-19d3-4450-93b9-e627768466a1",
+          "name": "get a single rto",
+          "request": {
+            "name": "get a single rto",
+            "description": {
+              "content": "Description\n- - - \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "request_time_offs",
+                ":rto_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rto_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "74d92223-bd3f-4f85-aa68-fa3327c5dff2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "request_time_offs",
+                    ":rto_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rto_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Thu, 19 Aug 2021 02:17:46 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"164f608c471b32ae8fa87be5f1089eaa\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=dmg4OGQxRzAwWDRWaEwwU25QdTVqMWJ6MGJnM0JraVBTWnFCT0RPRm5COGJJNXYrTDBWeGY5RnBkRFpXV0lwSHNkdHpjV1gvd1htQ2VIWEtHWHJJUUE9PS0tUmk0SXB6WE5lVEFyeW5BTmNJL0padz09--a6bb5aecc7665634c4989c7ca85a59c000d40c62; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "abc310dd-50d2-453c-989b-5634ecf8eab0",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "9572.259129057553",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_time_off\": {\n    \"_parent_object_id\": null,\n    \"id\": 1,\n    \"user_id\": 11284,\n    \"approver_id\": null,\n    \"managed_at\": null,\n    \"location_id\": 2622,\n    \"days\": 5,\n    \"day_hours\": 8,\n    \"total_hours\": 40,\n    \"latest_balance\": null,\n    \"start_date\": \"2021-09-01\",\n    \"start_time\": \"2021-09-01T09:00:00.000Z\",\n    \"end_date\": \"2021-09-05\",\n    \"end_time\": \"2021-09-01T17:00:00.000Z\",\n    \"category\": \"pto\",\n    \"status\": \"requested\",\n    \"time_off_reason\": \"family event\",\n    \"managed_reason\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a609a4a7-af4b-4d42-b205-f59d40b735c0",
+          "name": "create request time off",
+          "request": {
+            "name": "create request time off",
+            "description": {
+              "content": "Description\n- - - \n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "request_time_offs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70d12e41-522c-4071-8774-f61d04ae67b2",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "request_time_offs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_time_off\": {\n    \"location_id\": 2622,\n    \"start_date\": \"2021-09-01\",\n    \"end_date\": \"2021-09-05\",\n    \"start_time\": \"2021-09-01 09:00:00\",\n    \"end_time\": \"2021-09-01 17:00:00\",\n    \"category\": \"pto\",\n    \"time_off_reason\": \"family event\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Fri, 13 Aug 2021 00:37:38 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"978f9fdb6439c6d3dedf438ce47530a4\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=WUI3dC9BbWJMcm1WN25zL0hIck0vcUlwMWx6ZTU5ajBrZWhoQzVid2oxL0k4QjNNQkhlNU1nL1dMaXJtWTh6K2hWSjVpcHh2MHprdXRzMVZDK2Z2QUE9PS0tVXdadGQ4NThQMm40V01ab28rU0NPQT09--f0e5c4746ded56dd8feecd98f1abf24f647b7604; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "395669c7-7aa2-47db-872d-06d495fc2bce",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "2005.3538706147956",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_time_off\": {\n    \"_parent_object_id\": null,\n    \"id\": 2,\n    \"user_id\": 11284,\n    \"approver_id\": null,\n    \"managed_at\": null,\n    \"location_id\": 2622,\n    \"start_date\": \"2021-09-01\",\n    \"start_time\": \"2021-09-01T09:00:00.000Z\",\n    \"end_date\": \"2021-09-05\",\n    \"end_time\": \"2021-09-01T17:00:00.000Z\",\n    \"category\": \"pto\",\n    \"status\": \"requested\",\n    \"time_off_reason\": \"family event\",\n    \"managed_reason\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e67602d-bf81-40bb-85a2-d408bb38b836",
+          "name": "approve request time off",
+          "request": {
+            "name": "approve request time off",
+            "description": {
+              "content": "Description\n- - - \n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "request_time_offs",
+                ":request_time_off_id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[put_return_resource]",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "request_time_off_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5726ead-d7c2-4b31-9b10-1a30392ef6cf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "request_time_offs",
+                    ":request_time_off_id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[put_return_resource]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "request_time_off_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_time_off\": {\n    \"latest_balance\": 10\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Fri, 13 Aug 2021 00:38:22 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"03fa32339333b03f7ad0e1f21659c756\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=bDVPRU9mOTBtTjhXZGtPY3VNODJtbUpoZURqSmpMV0FjVVVpMCtJSjZVS2Y5TmV6eCtvN0t0aDhSbnRzVlkwN21sNnR0NGhRNVo4eWw3NXNlNktPdFE9PS0tL3lQcnE5T2N0eng5d2NLSmlpZUlsUT09--1cf39512649c99db58aecf1d859393f37f7261d5; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "3991f583-f066-42e4-8138-d697d965b3b8",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "1687.8078405984254",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_time_off\": {\n    \"_parent_object_id\": null,\n    \"id\": 4,\n    \"user_id\": 11284,\n    \"approver_id\": 11284,\n    \"managed_at\": \"2021-08-13T00:38:22.181Z\",\n    \"location_id\": 2622,\n    \"start_date\": \"2021-09-01\",\n    \"start_time\": \"2021-09-01T09:00:00.000Z\",\n    \"end_date\": \"2021-09-05\",\n    \"end_time\": \"2021-09-01T17:00:00.000Z\",\n    \"category\": \"pto\",\n    \"status\": \"approved\",\n    \"time_off_reason\": \"family event\",\n    \"managed_reason\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5485ed4a-182c-4670-8a04-21bea85962d6",
+          "name": "deny request time off",
+          "request": {
+            "name": "deny request time off",
+            "description": {
+              "content": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "request_time_offs",
+                "1",
+                "deny"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[put_return_resource]",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db83588d-69de-4711-80c4-55b9cfa22cb4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "request_time_offs",
+                    "1",
+                    "deny"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[put_return_resource]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_time_off\": {\n    \"latest_balance\": 10\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Fri, 13 Aug 2021 00:40:19 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"19d8aab176525ad214e91c25d9e8dd1d\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=MzN1Nk9hVVhDeStWT1UxSjdOUG9obkNRUzR0S01tb0xzOVJUUWQ3cUhXR3JCVU5PM0xEdUdEQ0N3UTZvaS9ob2JFbUhTNmlMUElYUktkbTNQaGxkRUE9PS0tREsvNlhvN296bE9GTmJyVDIwY2Fmdz09--1d3734ed206d35826036f0c23557bfde01b9a32b; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "e2c2c37e-b71d-486b-a3b8-5f2918271a65",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "8135.646427963601",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_time_off\": {\n    \"_parent_object_id\": null,\n    \"id\": 1,\n    \"user_id\": 11284,\n    \"approver_id\": 11284,\n    \"managed_at\": \"2021-08-13T00:40:19.058Z\",\n    \"location_id\": 2622,\n    \"start_date\": \"2021-09-01\",\n    \"start_time\": \"2021-09-01T09:00:00.000Z\",\n    \"end_date\": \"2021-09-05\",\n    \"end_time\": \"2021-09-01T17:00:00.000Z\",\n    \"category\": \"pto\",\n    \"status\": \"denied\",\n    \"time_off_reason\": \"family event\",\n    \"managed_reason\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b99b09b-44a3-4ceb-bda4-6eec09684ace",
+          "name": "cancel request time off",
+          "request": {
+            "name": "cancel request time off",
+            "description": {
+              "content": "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - -",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "request_time_offs",
+                "1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [
+            {
+              "id": "1b842a2c-b4e1-4712-955d-bda970e6d57b",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "request_time_offs",
+                    "1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Fri, 13 Aug 2021 02:43:54 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=amllb25nOWNWUERxZ2VMNFloRjFHQWlKeG1FRzJ4Z1Eyc3I2cWhkL2xnMGJrQmNRL0NKcTFlT2Q1ZTVwTFh5Z01LOUVrTXpQb0hsd1hKUjhHWEFIK2c9PS0tVG9KNUhqTjB0NDdlYm5qRUJ3Ym1BUT09--3a2b6a57e34e91b9e66aece7ab2913e8e31fd2fc; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "8750b79a-3891-4951-b7bc-5e6f727fb105",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "9082.62377520502",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fce1989c-aec6-457b-a3d9-4b8d49197e9d",
+    "name": "Shyft Customer Authentication > Email Customer > RequstTimeOff API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

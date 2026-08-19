@@ -1,0 +1,331 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > UserPrivileges API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > UserPrivileges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[user_privilege] get viewable user privileges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/can_view",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "cbe20296-eba0-4f2e-92a7-5fca6bcad651"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege] get viewable user privileges"
+        },
+        {
+          "info": {
+            "name": "[user_privilege] get my user privileges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "sso_is",
+                "value": "sso_gap",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege] get my user privileges"
+        },
+        {
+          "info": {
+            "name": "[user_privilege] join a location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege] join a location"
+        },
+        {
+          "info": {
+            "name": "[user_privilege] get manageable user privileges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/can_admin",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "approved",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "pending",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "removed",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege] get manageable user privileges"
+        },
+        {
+          "info": {
+            "name": "[user_privilege] get a user privilege settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/:user_privilege_id/settings",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_privilege_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege] get a user privilege settings"
+        },
+        {
+          "info": {
+            "name": "[user_privilege]  approve user privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/11334/approve",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege]  approve user privilege"
+        },
+        {
+          "info": {
+            "name": "[user_privilege]  update user privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/21561",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege]  update user privilege"
+        },
+        {
+          "info": {
+            "name": "[user_privilege]  leave a loaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/11333",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege]  leave a loaction"
+        },
+        {
+          "info": {
+            "name": "[user_privilege] remove from a location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/11359/remove",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege] remove from a location"
+        },
+        {
+          "info": {
+            "name": "[user_privilege]  withdraw a location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/11355/withdraw",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege]  withdraw a location"
+        },
+        {
+          "info": {
+            "name": "[user_privilege]  decline join a location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/user_privileges/11355/decline",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege]  decline join a location"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

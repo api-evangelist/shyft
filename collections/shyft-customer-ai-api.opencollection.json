@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > AI API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > AI",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AI Ccommands",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/ai_agent/command",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "AI Ccommands"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

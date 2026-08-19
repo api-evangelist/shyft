@@ -1,0 +1,1787 @@
+{
+  "item": [
+    {
+      "id": "089e6089-71f4-4737-8de7-c91b5d7e31f3",
+      "name": "Customer > EWA",
+      "description": {
+        "content": "Ojbect Serializer: \n\n\n[EWA Account Serializer]\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\nid | | | \ntos_yes | | | Indciate if user has accepted the TOS by going through all pages. \nis_active |\newa_score | | | The score Shyft give by anazlyzing the bank account data\newa_maximal | | | The maximal user can borrow in total\newa_status| string | |one of values: ewa_not_applicable_user / ewa_not_setup / ewa_has_balance / ewa_out_of_fund / ewa_normal\nnext_payback_date | datetime | | The date customer need to payback\nemail | datetime | | The confirmed email address\nis_confirmation_requested | boolean | | Is there a pending email confirmation?\nis_confirmed |  boolean | |  Has customer been confirmed via email?\n\n\n\n[Bank Account Serializer]\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\naccount_owner_name | | | Bank account holder full naem\nbank_name | | | Bank name\nbank_code | | | Bank code\ndescription] | | | \nis_active | | |\n\n\n\n[EWA Transaction Serializer]\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer |  | in cents\namount_currency| string |  | \newa_balance| string |  | how much money customer borrowed so far\ntransaction_type| string |  | `borrow/payback`\n\n\n\n\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9f4ac205-064f-4968-9772-df2945a3f8cc",
+          "name": "[ewa_account] get or create my EWA account",
+          "request": {
+            "name": "[ewa_account] get or create my EWA account",
+            "description": {
+              "content": "Description\n- - - \n- This is the first API call when user choose to use EWA by clicking the function button.\n- It will find the current user's existing EWA account and return its profile. \n- It will create a new basic EWA account for current user if not found one, and return its profile \n\nIf got `tos_yes=false`, front-end want to present these TOS pages again. \nIf got no `active_bank_account`, front-end want to present the bacnk account linking page\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "ewa",
+                "ewa_accounts",
+                "my_account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2669faba-29a9-4f8f-83c5-8cab7058a1a6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "ewa_accounts",
+                    "my_account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"7454061f2b2878f16873587f2716b90e\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=ZVR1d3g1cXFOaCtLZkJQR0FCWlNIQWdIS1NzN3c4RkpoWll0b08wTGcrSU1sUW43OUJaYkFja2FZTVJRejlVZGhCWEF3b3d1VEhZNGNVOVlLYUliZVE9PS0ta2hnY1ljUDVjTzhQSFBhRmlOL0xpdz09--8bfd3743ff86cefa6b6480e7b6cef744e9c7c8ad; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "e8ca009c-3c0e-4417-8965-15e6ebfdd206",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "8095.834366175007",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ewa_account\": {\n    \"_parent_object_id\": null,\n    \"id\": 1,\n    \"tos_yes\": true,\n    \"is_active\": true,\n    \"ewa_score\": null,\n    \"ewa_balance_cents\": -400,\n    \"ewa_maximal\": null,\n    \"ewa_status\": \"ewa_not_applicable_user\",\n    \"active_bank_account\": {\n      \"_parent_object_id\": 1,\n      \"account_owner_name\": \"Plaid Checking\",\n      \"bank_name\": \"US Bank\",\n      \"bank_code\": null,\n      \"description\": \"Plaid Gold Standard 0% Interest Checking\",\n      \"is_active\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67f2fa16-3788-41b3-b6c1-946dad08b345",
+          "name": "[ewa_account] request email confirmation",
+          "request": {
+            "name": "[ewa_account] request email confirmation",
+            "description": {
+              "content": "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "ewa",
+                "ewa_accounts",
+                "request_email_confirmation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "unconfirmed_email",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "393d830a-c11b-436f-a21b-935e012b9f33",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "ewa_accounts",
+                    "request_email_confirmation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "unconfirmed_email",
+                      "value": "bin%2Bewa@myshyft.com"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"6e9067066cf31b2cb28986215e4a5b33\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=ZGR1M3M2SHdEb0pYL0VCWkFUM0RxelRDNENLY3RaQlNpQnZXSlZKTUJZT0gvaXo4VzJnY0VQYjNQYXMzeUowMTA5Mm9TT2ZQVFVaa2ZZOTZXTGQwR3c9PS0tbUFiOHZ0RzZ0c2d0SS9uZDhnUTVXUT09--f4946504823c25fe4d0eb8def0c1b96d5dbc4dc0; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "f57c4f37-1d00-4041-8d9e-947a29523720",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "5145.112047323527",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ewa_account\": {\n    \"_parent_object_id\": null,\n    \"id\": 1,\n    \"tos_yes\": true,\n    \"is_active\": true,\n    \"ewa_score\": null,\n    \"ewa_balance_cents\": 300,\n    \"ewa_maximal_cents\": null,\n    \"ewa_status\": \"ewa_has_balance\",\n    \"next_payback_date\": null,\n    \"email\": null,\n    \"is_confirmation_requested\": true,\n    \"is_confirmed\": false,\n    \"active_bank_account\": {\n      \"_parent_object_id\": 1,\n      \"account_owner_name\": \"Plaid Checking\",\n      \"bank_name\": \"US Bank\",\n      \"bank_code\": null,\n      \"description\": \"Plaid Gold Standard 0% Interest Checking\",\n      \"is_active\": true,\n      \"ewa_maximal_cents\": null,\n      \"next_payback_date\": null,\n      \"maximal_payback_date\": null\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "188f3a75-7247-473f-9af8-30107e5d0e96",
+          "name": "[ewa_account] get the estimation of capability of borrowing",
+          "request": {
+            "name": "[ewa_account] get the estimation of capability of borrowing",
+            "description": {
+              "content": "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "ewa",
+                "ewa_accounts",
+                "borrow_estimate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32ef3d7b-e6f4-46cc-bf0a-981f580db3ab",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "ewa_accounts",
+                    "borrow_estimate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7a5de2f-3a1f-49be-bd02-da0c6de5ada4",
+          "name": "[ewa_account] confirm EWA account's email with code",
+          "request": {
+            "name": "[ewa_account] confirm EWA account's email with code",
+            "description": {
+              "content": "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "ewa",
+                "ewa_accounts",
+                "confirm_email_with_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "confirmation_code",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41863604-5a14-4b68-aba7-f621fa7bd5dc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "ewa_accounts",
+                    "confirm_email_with_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "confirmation_code",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"39648b13d4d79c68b207d5618a628db4\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=NmpBTXZsSmh2ZmlBOHVSNy9FTjdka0ZOWjRRUEVTSDNqTFBzeGtRYkVqdnBmZEJ3ZTdUNHViU0N5Vm56azZGSEkxT3JUVlRoSVJVRTdtWU1jMVhrcGc9PS0tbkVSSk9wVWdFbk9JWERnNTdSMnZjdz09--6626ab9bd8e1f7d6d8f986a7b09fa0e1738368bc; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "4e5c69e1-93d7-41e6-9877-d0dfea208c58",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "1221.7862084887788",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ewa_account\": {\n    \"_parent_object_id\": null,\n    \"id\": 1,\n    \"tos_yes\": true,\n    \"is_active\": true,\n    \"ewa_score\": null,\n    \"ewa_balance_cents\": 300,\n    \"ewa_maximal_cents\": null,\n    \"ewa_status\": \"ewa_has_balance\",\n    \"next_payback_date\": null,\n    \"email\": \"bin+ewa@myshyft.com\",\n    \"is_confirmation_requested\": false,\n    \"is_confirmed\": true,\n    \"active_bank_account\": {\n      \"_parent_object_id\": 1,\n      \"account_owner_name\": \"Plaid Checking\",\n      \"bank_name\": \"US Bank\",\n      \"bank_code\": null,\n      \"description\": \"Plaid Gold Standard 0% Interest Checking\",\n      \"is_active\": true,\n      \"ewa_maximal_cents\": null,\n      \"next_payback_date\": null,\n      \"maximal_payback_date\": null\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6a9f748-54e6-423c-9a7c-e5c0d5a56386",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "ewa_accounts",
+                    "confirm_email_with_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "confirmation_code",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=dWZBNDYrRVNCZXU0STNpR2MyTkRLZXFIbmVFVitPdXBka1U1aytMeHBDWnRuN0lhRzVneDRvUnhOSGpLU3ZPay9OSXhqcGpVa1U4SDIwTVVZa3NCcUE9PS0tbkozSHdWOWg2THVnaHZJdW9BTW9KQT09--630b475879160686902c6f5a2250482003e55630; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "338294f0-e44a-4617-a36c-d50f008ff273",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "7927.016944943668",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"confirmation_code\": [\n      \"invalid code.\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32c489d0-7cad-41e1-b57b-61caeec8f729",
+          "name": "[ewa_account] confirm the TOS agreement",
+          "request": {
+            "name": "[ewa_account] confirm the TOS agreement",
+            "description": {
+              "content": "Description\n- - - \n- Once user went through all TOS pages, mark it. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\ntos_yes | boolean | * |\n\n\nOutput\n- - - \n[EWA Account Serializer]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "ewa",
+                "ewa_accounts",
+                ":ewa_account_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[put_return_resource]",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ewa_account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "f3034a6f-d96d-4bd7-992a-85497284cd13",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "ewa_accounts",
+                    ":ewa_account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[put_return_resource]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ewa_account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\t\\\"ewa_account\\\": {\\n\\t\\t\\\"tos_yes\\\": true\\n\\t}\\t\\n}\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"8a268f25cb24149c0c300b4b492defd7\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=VVBmaW1pVklTbXRxWjY5bmdkSUg3L2lmRFYxK0RPWlRRSkhBVEJTQW5Tc0ZuMWtQWnJUNTBFVWtyOWNxbEZ2QXM3aHBoTHNLZWROVS9DYTBzUU1SRlE9PS0tR1M4V0ZGYWIraGlGVFltUG5LVHNmQT09--5fa013bc3df6d04ab1b5d0a5ae91343db0411599; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "22bde3ef-7b80-4c61-985e-aac3b3754c0c",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "5474.604348726263",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ewa_account\": {\n    \"_parent_object_id\": null,\n    \"id\": 1,\n    \"tos_yes\": true,\n    \"is_active\": true,\n    \"ewa_score\": null,\n    \"ewa_balance\": \"-100.0\",\n    \"ewa_maximal\": null,\n    \"active_bank_account\": {\n      \"_parent_object_id\": 1,\n      \"account_owner_name\": \"Bin Li\",\n      \"bank_name\": \"Fake Bank\",\n      \"bank_code\": \"FAKE_BANK_CODE\",\n      \"description\": null,\n      \"is_active\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c0d55a3-9894-4f7d-ba5f-a8dd844ceb74",
+          "name": "[ewa_transaction] borrow money",
+          "request": {
+            "name": "[ewa_transaction] borrow money",
+            "description": {
+              "content": "Description\n- - - \n- Call this API when customer want borrow money from Shyft\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer | * | in cents\ndue_at | date | | customer selected payback date\n\n\nOutput\n- - - \n\n[EWA Transaction Serializer]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "ewa",
+                "ewa_transactions",
+                "borrow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "6e93ff85-eb3c-4efb-aedd-17781d81bc0e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "ewa_transactions",
+                    "borrow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"ewa_transaction\\\": {  \\n\\t\\t\\\"amount_cents\\\": 100,\\n\\t\\t\\\"due_at\\\": \\\"2020-03-01\\\"\\n\\t}\\n}\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"7e9929e5a92ca1944ad4ecb6d7fb29e8\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=WGxJRExIVGNQZDRNTHZCeEFjaU14Q1hqd29Mck05Vm1UakRhckJpemhSZDNIaGdSVURhNUVHeEoyem14RktHeDJaQ1grU2ZNTEdQM043Zm1pWnJQVWc9PS0tdkwxZjFQelBjWVBmTFhjNXcreW51QT09--8b1fe2624aebb2751ae548e4f6e19dcd82347234; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "213f18e6-f02b-4d64-8b6c-a7639b02709e",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "5235.133142724831",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ewa_transaction\": {\n    \"_parent_object_id\": null,\n    \"amount_cents\": 100,\n    \"amount_currency\": \"USD\",\n    \"source_ewa_balance\": 600,\n    \"transaction_type\": \"borrow\",\n    \"due_at\": \"2020-03-01\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b9cfe2f-8a29-4552-95f5-1757f000d78b",
+          "name": "[ewa_transaction] return money",
+          "request": {
+            "name": "[ewa_transaction] return money",
+            "description": {
+              "content": "Description\n- - - \n- Call this API when customer want return money from Shyft\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer | * | in cents\n\n\nOutput\n- - - \n[EWA Transaction Serializer]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "ewa",
+                "ewa_transactions",
+                "payback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "bcb3dc83-1fc2-487f-b538-6dd998ddb22a",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "ewa_transactions",
+                    "payback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"ewa_transaction\\\": {  \\n\\t\\t\\\"amount_cents\\\": 100\\n\\t}\\n}\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"15102346a360f0201ec43481a49fc7e7\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=QTMwNjlPYUNaNkdtdERCZTFzdGtZSXRwS0xGdXJob1JkRHJhOHBQWkR2aXNXVmNBY2N3NS9DcE1RdWpsL3R0OGppdjh0Mm9SUTd1c1lmTXpZVGRpakE9PS0tUzgwek5CN1NySytqVXlXRFZ1Y0JFdz09--4720b9a87a68f5381a41feed518084f4f00aa754; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "c3e25dda-544f-4937-b5a3-6c0e6b38c8a2",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "3184.0012550734377",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ewa_transaction\": {\n    \"_parent_object_id\": null,\n    \"amount_cents\": -100,\n    \"amount_currency\": \"USD\",\n    \"ewa_balance\": \"-300.0\",\n    \"transaction_type\": \"payback\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "544d768d-5d85-4051-a689-6fd1fc906605",
+          "name": "[bank_account] create and active bank_account",
+          "request": {
+            "name": "[bank_account] create and active bank_account",
+            "description": {
+              "content": "Description\n- - - \n- Add a new bank account to current user's EWA account\n- Will deactive all other bank accounts if new one added\n- \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npublic_token | string | * | the token got from Plaid\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nbank_name | string | * | the bank name got from Plaid\n\n\nOutput\n- - - \n\n[Bank Account Serializer]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "ewa",
+                "bank_accounts",
+                "add_account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "public_token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "8c6288da-7ded-44b5-870c-75a3fbbdec2d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "ewa",
+                    "bank_accounts",
+                    "add_account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "public_token",
+                      "value": "public-sandbox-5df51fa7-25e5-4c1f-ba0b-87705ccbfc1b"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\t\\\"bank_account\\\": {\\n\\t\\t\\\"bank_name\\\": \\\"US Bank\\\"\\n\\t}\\n}\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"5ad087b5ade9216cd3239ebbb62c3644\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=UXZOWkZLb2o2UlNubjgyTDc3RVlYUElJazlmK1NWTkNSZmpwY0dQWHlHMVduY0l1N25tV2E5aGlzS1cwSnNSZWJmY2I3d3BIc213b3dYNzhHM3F2T3c9PS0tcmdoOENZM2lrdUM3MWhCV3pvREQrQT09--909aa3fbdbb36d5dac3c6396a7903193fe0996a6; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "f37bef60-6ad6-4ec1-8783-7979e20ab080",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "4157.415227744094",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_account\": {\n    \"_parent_object_id\": null,\n    \"account_owner_name\": \"Plaid Checking\",\n    \"bank_name\": \"US Bank\",\n    \"bank_code\": null,\n    \"description\": \"Plaid Gold Standard 0% Interest Checking\",\n    \"is_active\": true,\n    \"ewa_maximal_cents\": 100,\n    \"next_payback_date\": \"2020-03-06T01:35:21.740Z\",\n    \"maximal_payback_date\": \"2020-03-20T01:35:21.740Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1006bb28-da4d-4a30-b1f6-ff21eb059a64",
+    "name": "Shyft Customer Authentication > Email Customer > EWA API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

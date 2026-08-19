@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Comments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/comments",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[nested]",
+                "value": "2",
+                "type": "query"
+              },
+              {
+                "name": "response[keep]",
+                "value": "like_owners",
+                "type": "query"
+              },
+              {
+                "name": "post_id",
+                "value": "143548",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "please supply `post_id` for getting commeents for particular post"
+        },
+        {
+          "info": {
+            "name": "create comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/comments",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "create comment"
+        },
+        {
+          "info": {
+            "name": "get a single comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/comments/7093",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "get a single comment"
+        },
+        {
+          "info": {
+            "name": "delete comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/comments/6649",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "delete comment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

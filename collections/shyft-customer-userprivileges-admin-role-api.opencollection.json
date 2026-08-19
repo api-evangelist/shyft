@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > UserPrivileges > admin_role API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > UserPrivileges > admin_role",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[user_privilege] get managable user privielges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/admin_role/user_privileges",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "c14cbc26-a5d9-45c3-8ab9-cb4de0ac8ba3"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "search_term",
+                "value": "ABCD",
+                "type": "query"
+              },
+              {
+                "name": "location_id",
+                "value": "5493",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[user_privilege] get managable user privielges"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

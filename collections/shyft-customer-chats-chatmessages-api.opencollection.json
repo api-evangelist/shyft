@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Chats > ChatMessages API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Chats > ChatMessages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get chat messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/chat_sessions/:chat_session_id/chat_messages",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "chat_session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Get all visiable chat message with given session ID\n- Not showing message before quited \n- Still showing archived messages\n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "create a chat message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/chat_sessions/:chat_session_id/chat_messages",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "chat_session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Ceate a chat message with given chat session\n- Send a image with format: [IMG]url[/IMG] #TODO: Upgrade it\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nmessage |  |  |  |"
+        },
+        {
+          "info": {
+            "name": "get a chat message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/chat_sessions/:chat_session_id/chat_messages/:chat_message_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "chat_session_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "chat_message_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Get all visiable chat message with given session ID\n- Not showing message before quited \n- Still showing archived messages\n\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "delete a chat message",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/chat_sessions/:chat_session_id/chat_messages/14830",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "chat_session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Ceate a chat message with given chat session\n- Send a image with format: [IMG]url[/IMG] #TODO: Upgrade it\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nmessage |  |  |  |"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Availabilities > user_role > Deprecated > request API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Availabilities > user_role > Deprecated > request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[availability request] get curent open request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/availability_requests/current",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[availability request] get curent open request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

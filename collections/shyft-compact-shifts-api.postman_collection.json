@@ -1,0 +1,389 @@
+{
+  "item": [
+    {
+      "id": "59aa6017-b303-4b9c-a87c-e1d3ecf277f0",
+      "name": "Compact > Shifts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7020bcd8-a986-48f4-8d9d-988d0a5b0609",
+          "name": "[shifts] get shifts from associated location",
+          "request": {
+            "name": "[shifts] get shifts from associated location",
+            "description": {
+              "content": "Description\n- - - \n- List the schedule elements for the requested location.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id | integer\nassociated_location_id | integer\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "compact",
+                "schedule_elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b80f1cc6-89c2-42a8-b000-97689f3c4890",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "compact",
+                    "schedule_elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"b52f11af022721614d06c148a52f5198\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=QlJITHNBQzBCMVl6M0ltUkhCc0x1Wm1GaWlGMDZ5ak91TlZtOE9lR3Z6YnJIWmpkeUd1eUYzSlNVOFZLcXNQZlBObno2b3lSY2YyVHVNaWJDYnhLZEE9PS0tWVE4WnYvQnpVWi81am0wcnZLS2FaQT09--ab184602350f5bacc5125e8a0687d9d24d95b4a6; path=/; secure; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "5be7dbe9-c63c-4496-8ca8-c8e24ea03ec9",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "6533.8959979742085",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000;",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schedule_elements\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 7709,\n      \"location_id\": 2634,\n      \"channel_id\": 4755,\n      \"start_at\": \"2018-02-12T12:40:00.000Z\",\n      \"end_at\": \"2018-02-12T13:00:00.000Z\",\n      \"name\": \"shift_inventory\",\n      \"trade_status\": \"inventory\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 9064,\n      \"post_id\": 0\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 7705,\n      \"location_id\": 2634,\n      \"channel_id\": 4755,\n      \"start_at\": \"2018-02-13T00:00:00.000Z\",\n      \"end_at\": \"2018-02-13T01:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 9064,\n      \"post_id\": 22650\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 7706,\n      \"location_id\": 2634,\n      \"channel_id\": 4755,\n      \"start_at\": \"2018-02-13T00:01:00.000Z\",\n      \"end_at\": \"2018-02-13T01:00:00.000Z\",\n      \"name\": \"shift_inventory\",\n      \"trade_status\": \"inventory\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 9064,\n      \"post_id\": 0\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 7707,\n      \"location_id\": 2634,\n      \"channel_id\": 4755,\n      \"start_at\": \"2018-02-13T00:02:00.000Z\",\n      \"end_at\": \"2018-02-13T01:00:00.000Z\",\n      \"name\": \"shift_inventory\",\n      \"trade_status\": \"inventory\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 9064,\n      \"post_id\": 0\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 7708,\n      \"location_id\": 2634,\n      \"channel_id\": 4755,\n      \"start_at\": \"2018-02-13T00:30:00.000Z\",\n      \"end_at\": \"2018-02-13T01:30:00.000Z\",\n      \"name\": \"shift_inventory\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 9064,\n      \"post_id\": 22651\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 7710,\n      \"location_id\": 2634,\n      \"channel_id\": 4755,\n      \"start_at\": \"2018-02-13T01:00:00.000Z\",\n      \"end_at\": \"2018-02-13T02:00:00.000Z\",\n      \"name\": \"shift_inventory\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 9064,\n      \"post_id\": 22652\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 7888,\n      \"location_id\": 5053,\n      \"channel_id\": 7173,\n      \"start_at\": \"2018-03-31T16:00:00.000Z\",\n      \"end_at\": \"2018-03-31T22:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"approved\",\n      \"approver_id\": 9577,\n      \"coverer_id\": 9582,\n      \"owner_id\": 9579,\n      \"post_id\": 23089\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117998,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37458\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117997,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37457\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117996,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37456\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117982,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37436\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117981,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37435\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117980,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37434\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117979,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37433\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117978,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37432\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117977,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37431\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117976,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37430\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117975,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37429\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117974,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37428\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117973,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37427\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117972,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37426\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117971,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37425\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117970,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37424\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117969,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37423\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1117968,\n      \"location_id\": 2500,\n      \"channel_id\": 4620,\n      \"start_at\": \"2018-04-01T09:00:00.000Z\",\n      \"end_at\": \"2019-04-01T16:00:00.000Z\",\n      \"name\": \"shift\",\n      \"trade_status\": \"posted\",\n      \"approver_id\": null,\n      \"coverer_id\": null,\n      \"owner_id\": 11284,\n      \"post_id\": 37422\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"per_page\": 25\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac6d623c-14f4-4d51-90f3-704eb15bc4c0",
+          "name": "[shifts] get ALL schedule_elements only with coworker inventory for specific date",
+          "request": {
+            "name": "[shifts] get ALL schedule_elements only with coworker inventory for specific date",
+            "description": {
+              "content": "Description\n- - - \n- List the schedule elements for the requested location.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id | integer\nassociated_location_id | integer\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "compact",
+                "schedule_elements",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_before",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "only_coworker_inventory",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8a9b1a2b-e071-4bcc-bb1f-b947fc9b3512",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "compact",
+                    "schedule_elements",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_after",
+                      "value": "2018-01-01 00:00:00"
+                    },
+                    {
+                      "key": "start_before",
+                      "value": "2018-10-01 00:00:00"
+                    },
+                    {
+                      "key": "only_coworker_inventory",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "91bc97a9-0b93-4005-a124-26d71104d7dd",
+    "name": "Shyft Customer Authentication > Email Compact > Shifts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

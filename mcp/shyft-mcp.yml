@@ -2,9 +2,9 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/shyft-customer-openapi-original.json
-note: Candidate MCP tool surface derived one-tool-per-operation from the Shyft Customer
-  API OpenAPI. No official Shyft MCP server was found. Operations have no operationId
-  in the source spec, so tools are keyed by HTTP method + path.
+note: Candidate MCP tool surface derived one-tool-per-operation from the Shyft Customer API OpenAPI. No
+  official Shyft MCP server was found. Operations have no operationId in the source spec, so tools are
+  keyed by HTTP method + path.
 server:
   name: shyft-customer
   transport: stdio
@@ -657,8 +657,7 @@ tools:
   description: '[shifts] get shifts from associated location'
   source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/schedule_elements
 - name: get_api_compact_schedule_elements_all
-  description: '[shifts] get ALL schedule_elements only with coworker inventory for
-    specific date'
+  description: '[shifts] get ALL schedule_elements only with coworker inventory for specific date'
   source_operation: openapi/shyft-customer-openapi-original.json#GET /api/compact/schedule_elements/all
 - name: get_api_compact_posts_free_posts
   description: get a post's free_posts
@@ -714,3 +713,9 @@ tools:
 - name: get_api
   description: Sample
   source_operation: openapi/shyft-customer-openapi-original.json#GET /api
+deployment:
+  mode: none
+  verified: derived
+  tools: 234
+  checked: '2026-08-12'
+  source: catalog MCP census

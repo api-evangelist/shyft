@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Availabilities > user_role > Deprecated API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Availabilities > user_role > Deprecated",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[availabilities] get members' current availabilites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/availabilities/all_current",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[availabilities] get members' current availabilites"
+        },
+        {
+          "info": {
+            "name": "[availabilities] get your current availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/availabilities/mine_current",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[availabilities] get your current availability"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

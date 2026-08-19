@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > UserNews API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > UserNews",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get user news",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/user_news",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "5487",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get only not viewed, not expired and already sent news."
+        },
+        {
+          "info": {
+            "name": "show usernews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/user_news/613",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Get only not viewed, not expired and already sent news."
+        },
+        {
+          "info": {
+            "name": "\bupdate user new as viewed",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/user_news/:user_news_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_news_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\bupdate user new as viewed"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

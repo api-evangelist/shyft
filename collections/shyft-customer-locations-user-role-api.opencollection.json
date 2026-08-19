@@ -1,0 +1,472 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Locations > user_role API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Locations > user_role",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[2.0] get a location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Get a location object\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "update a location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Update a location\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nshift_require_approval| true/false| | |\nrequire_approval| true/false| | |\nallow_tipping| true/false| | |\nadmin_delete_content| true/false| | |"
+        },
+        {
+          "info": {
+            "name": "[2.0] get a location by swift_code only",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/:swift_code/look_up",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "swift_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Get a location object\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "search locations with given GPS and keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "within_range[latitude]",
+                "value": "{{latitude}}",
+                "type": "query"
+              },
+              {
+                "name": "within_range[longitude]",
+                "value": "{{longitude}}",
+                "type": "query"
+              },
+              {
+                "name": "keywords",
+                "value": "{{keywords}}",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "{{limit}}",
+                "type": "query"
+              },
+              {
+                "name": "within_range[distance]",
+                "value": "{{distance}}",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "NOTE: Front-End will supply GAPS and keywords\n\nUse Cases:\n- Sign Up: Find locations when user choose keyword + address"
+        },
+        {
+          "info": {
+            "name": "create a location (option to join)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/locations",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Create a location object\n- `location_name` is always required. \n- Option1: supply address information, let backend figure out rest\n- Option2: supply the formatted address, and other required fields. \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - -\n\nOption 1\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name ||*| |\naddress | | * | |\ncity | | * | |\npr"
+        },
+        {
+          "info": {
+            "name": "[users] get my associated locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/can_access",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "[users] get my associated locations"
+        },
+        {
+          "info": {
+            "name": "[users] get my managable locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/can_admin",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "[users] get my managable locations"
+        },
+        {
+          "info": {
+            "name": "get location analytics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/QFW80C/analytics",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "kpi_start_time",
+                "value": "2018-02-01 09:00:00",
+                "type": "query"
+              },
+              {
+                "name": "kpi_end_time",
+                "value": "2018-02-15 09:00:00",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "get location analytics"
+        },
+        {
+          "info": {
+            "name": "get location tag groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/tag_groups",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "get location tag groups"
+        },
+        {
+          "info": {
+            "name": "get location usable skills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/usable_skills",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "get location usable skills"
+        },
+        {
+          "info": {
+            "name": "get location linked tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/linked_tags",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "get location linked tags"
+        },
+        {
+          "info": {
+            "name": "[location] get a user location settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/settings",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[location] get a user location settings"
+        },
+        {
+          "info": {
+            "name": "find or create a location (option to join)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/locations/find_or_create",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "join",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "response[keep]",
+                "value": "current_user_privilege",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Create a location object\n- `location_name` is always required. \n- Option1: supply address information, let backend figure out rest\n- Option2: supply the formatted address, and other required fields. \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\njoin | false/true | | | join the location created \n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - -\n\nOption 1\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocati"
+        },
+        {
+          "info": {
+            "name": "broadcast notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/broadcast_notification",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n\n---\n\n- Send notifications to location users\n- `location_id` coulld be `ID` or `Swift Code`\n    \n\nParams\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| user_ids | integer array | optional | filter locations users list of supplied |\n| message | string/hash | required | predefined message key or message co"
+        },
+        {
+          "info": {
+            "name": "copy week planned shifts Copy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/9287/copy_week_planned_shifts",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "23518f45-0770-46f0-b842-3b7484678f00"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "has_open_shifts",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs "
+        },
+        {
+          "info": {
+            "name": "create  demo data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/9287/delete_demo_data",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs "
+        },
+        {
+          "info": {
+            "name": "delete  demo data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/9287/create_demo_data",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

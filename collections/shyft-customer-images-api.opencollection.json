@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Images API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "create a image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/images",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Ceate a image to link to other project\n- Return error with existing session ID if same group users session exists\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nimage_name | user_profile<br>user_gallery<br>post_image<br>organization_profile<br>anno"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

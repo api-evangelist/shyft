@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Subscriptions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get my subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/subscriptions",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id_is",
+                "value": "{{location_id}}",
+                "type": "query",
+                "description": "filter my subscriptions by location"
+              },
+              {
+                "name": "channel_id",
+                "value": "{{channel_id}}",
+                "type": "query",
+                "description": "filter my subscriptions by channel\n"
+              },
+              {
+                "name": "channel_type_is[]",
+                "value": "custom_feed",
+                "type": "query"
+              },
+              {
+                "name": "updated_after",
+                "value": "2020-01-01",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all my subscriptions"
+        },
+        {
+          "info": {
+            "name": "create subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/subscriptions",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "create subscription"
+        },
+        {
+          "info": {
+            "name": "get viewable subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/subscriptions/can_view",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "channel_id",
+                "value": "4115",
+                "type": "query",
+                "description": "filter my subscriptions by channel\n"
+              }
+            ]
+          },
+          "docs": "Get all my subscriptions"
+        },
+        {
+          "info": {
+            "name": "get a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/subscriptions/7385",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Get all my subscriptions"
+        },
+        {
+          "info": {
+            "name": "get managable subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/subscriptions/can_admin",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Get all subscriptions I can manage"
+        },
+        {
+          "info": {
+            "name": "update subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/subscriptions/22449",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- API to update specific user's subscritpion \n- Subscripton owner can update it. \n- Channel admin can update it. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsubscription_last_synchronize | {timestamp} | | Posts prior to this time point will be considered as read already by client side.\npost_id_last_synchroni"
+        },
+        {
+          "info": {
+            "name": "delete subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/subscriptions/1111",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "delete subscription"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

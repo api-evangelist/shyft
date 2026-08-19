@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Skill API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Skill",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "load location's managable skills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/skills/managable",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "load location's managable skills"
+        },
+        {
+          "info": {
+            "name": "load a single mangable skill",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/skills/:skill_id",
+            "params": [
+              {
+                "name": "skill_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "load a single mangable skill"
+        },
+        {
+          "info": {
+            "name": "update a skill",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/skills/:skill_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "skill_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "update a skill"
+        },
+        {
+          "info": {
+            "name": "delete a skill",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/skills/:skill_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "skill_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "delete a skill"
+        },
+        {
+          "info": {
+            "name": "create a new skill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/skills",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "create a new skill"
+        },
+        {
+          "info": {
+            "name": "assign a location user's skills",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/assign_user_skills/7613",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Update a location\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nshift_require_approval| true/false| | |\nrequire_approval| true/false| | |\nallow_tipping| true/false| | |\nadmin_delete_content| true/false| | |"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

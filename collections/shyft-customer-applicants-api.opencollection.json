@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Applicants API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Applicants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[shifts] get a sginle shift applicant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/applicants/:applicant_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[keep]",
+                "value": "badge_id,internal_id,available",
+                "type": "query"
+              },
+              {
+                "name": "applicant_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Pull one applicant on target posted shift\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\napplicant_id | integer | * | path variable\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[Applicant Object]\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nstatus | string | | applied / picked / denied"
+        },
+        {
+          "info": {
+            "name": "[shifts] cancel you application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/applicants/6",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Only application owner can call it.\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\napplicant_id | integer | * | path variable\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[Applicant Object]\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nstatus | string | | applied / picked / denied"
+        },
+        {
+          "info": {
+            "name": "get a location's applicants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/5459/applicants",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "ids",
+                "value": "1120,1030",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "NOTE: Only applicable for `shift post` , otherwise raise `403`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

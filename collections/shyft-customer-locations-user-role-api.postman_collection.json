@@ -1,0 +1,3465 @@
+{
+  "item": [
+    {
+      "id": "f77c8eea-586f-41c5-af62-d9402026af21",
+      "name": "Customer > Locations > user_role",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "57d7d41a-6558-4bd1-9e69-9c4be06bd855",
+          "name": "[2.0] get a location",
+          "request": {
+            "name": "[2.0] get a location",
+            "description": {
+              "content": "Description\n- - - \n- Get a location object\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39e2ee61-58e6-4812-92c1-0e0ec77591b5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"b62ebd303d110521a1695c61a7e25112\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=RHl1eEs2MTNoekNpQ3lieitqNWFRdVp1b3dWdy9wMllIak55OXBmVk9pWVlPVEhPbUluenZUL2FmSVRwUExzUXVTMDJaa3g2OFBqdHEyV256VDAzN2c9PS0tY05rZldyK1gyV3ZqODYrYS84bHBIQT09--03339b2e884b227509f16ac0e1c85cd50a37671a; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "e105542e-2a1d-4050-abed-fba90678b907",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "1511.2990133331905",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": {\n    \"_parent_object_id\": null,\n    \"id\": 2324,\n    \"swift_code\": \"QO9021\",\n    \"location_name\": \"Comfort Inn & Suites Bothell - Seattle North\",\n    \"unit_number\": null,\n    \"street_number\": null,\n    \"address\": \"1414 228th Street Southeast\",\n    \"province\": \"Washington\",\n    \"postal\": \"98021\",\n    \"country\": \"United States\",\n    \"lat\": \"47.790475\",\n    \"lng\": \"-122.213519\",\n    \"latitude\": 47.7904654,\n    \"longitude\": -122.2135587,\n    \"phone_number\": \"+1 425-402-0900\",\n    \"created_at\": \"2017-10-16T07:10:35.423Z\",\n    \"users_count\": 3,\n    \"formatted_address\": \"1414 228th St SE, Bothell, WA 98021, USA\",\n    \"time_zone\": null,\n    \"google_map_id\": \"ChIJA0sL1qkPkFQR43qJWFmWqvo\",\n    \"allow_tipping\": true,\n    \"shift_require_approval\": true,\n    \"shyft_pro_active\": false,\n    \"shyft_pro_expiry_date\": \"2018-12-04T19:10:49.425Z\",\n    \"fence_radius\": null,\n    \"cfg_not_dm\": false,\n    \"cfg_geofence_log\": null,\n    \"cfg_timeout\": null,\n    \"tos_url\": null,\n    \"tos_version\": null,\n    \"ip_blocked\": false,\n    \"member_count\": 3,\n    \"location_address\": null,\n    \"location_city\": \"Bothell, Washington, 98021\",\n    \"division_names\": [],\n    \"feed_channel_id\": 4359\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f9d78e7-3d6a-46d7-9264-e7f6f67ff04e",
+          "name": "update a location",
+          "request": {
+            "name": "update a location",
+            "description": {
+              "content": "Description\n- - - \n- Update a location\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nshift_require_approval| true/false| | |\nrequire_approval| true/false| | |\nallow_tipping| true/false| | |\nadmin_delete_content| true/false| | |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "7c1ff188-25f2-483f-9917-7be736ccb001",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"location\\\": {\\n        \\\"time_zone\\\": \\\"America/Los_Angeles\\\"\\n    }\\n}\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Platform",
+                  "value": "{{platform}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "{{version}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Build-Number",
+                  "value": "{{build_number}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Push-Id",
+                  "value": "{{push_id}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "{{session_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "{{session_uukey}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Uid",
+                  "value": "{{uid}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "{{auth_category}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "{{auth_target}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Token-Type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Client",
+                  "value": "{{client}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Access-Token",
+                  "value": "{{access_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Expiry",
+                  "value": "{{expiry}}",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": {\n    \"_parent_object_id\": null,\n    \"id\": 2324,\n    \"swift_code\": \"QO9021\",\n    \"location_name\": \"Comfort Inn & Suites Bothell - Seattle North\",\n    \"unit_number\": null,\n    \"street_number\": null,\n    \"address\": \"1414 228th Street Southeast\",\n    \"province\": \"Washington\",\n    \"postal\": \"98021\",\n    \"country\": \"United States\",\n    \"lat\": \"47.790475\",\n    \"lng\": \"-122.213519\",\n    \"latitude\": 47.7904654,\n    \"longitude\": -122.2135587,\n    \"phone_number\": \"+1 425-402-0900\",\n    \"created_at\": \"2017-10-16T07:10:35.423Z\",\n    \"users_count\": 3,\n    \"formatted_address\": \"1414 228th St SE, Bothell, WA 98021, USA\",\n    \"time_zone\": null,\n    \"google_map_id\": \"ChIJA0sL1qkPkFQR43qJWFmWqvo\",\n    \"allow_tipping\": true,\n    \"shift_require_approval\": false,\n    \"shyft_pro_active\": false,\n    \"shyft_pro_expiry_date\": \"2018-12-04T19:10:49.425Z\",\n    \"fence_radius\": null,\n    \"member_count\": 3,\n    \"location_address\": null,\n    \"location_city\": \"Bothell, Washington, 98021\",\n    \"division_names\": [],\n    \"feed_channel_id\": 4359,\n    \"current_user_privilege\": {\n      \"_parent_object_id\": 2324,\n      \"id\": 11336,\n      \"email\": \"bin+100@myshyft.com\",\n      \"wage\": 15,\n      \"position\": null,\n      \"is_approved\": true,\n      \"owner_id\": 9064,\n      \"location_id\": 2324,\n      \"org_id\": 1,\n      \"is_admin\": true,\n      \"read_only\": false,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"phone_number\": \"18083836511\",\n      \"profile_image_thumb_url\": \"https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950\",\n      \"current_availability\": null,\n      \"location\": {\n        \"_parent_object_id\": 11336,\n        \"id\": 2324,\n        \"swift_code\": \"QO9021\",\n        \"location_name\": \"Comfort Inn & Suites Bothell - Seattle North\",\n        \"unit_number\": null,\n        \"street_number\": null,\n        \"address\": \"1414 228th Street Southeast\",\n        \"province\": \"Washington\",\n        \"postal\": \"98021\",\n        \"country\": \"United States\",\n        \"lat\": \"47.790475\",\n        \"lng\": \"-122.213519\",\n        \"latitude\": 47.7904654,\n        \"longitude\": -122.2135587,\n        \"phone_number\": \"+1 425-402-0900\",\n        \"created_at\": \"2017-10-16T07:10:35.423Z\",\n        \"users_count\": 3,\n        \"formatted_address\": \"1414 228th St SE, Bothell, WA 98021, USA\",\n        \"time_zone\": null,\n        \"google_map_id\": \"ChIJA0sL1qkPkFQR43qJWFmWqvo\",\n        \"allow_tipping\": true,\n        \"shift_require_approval\": false,\n        \"shyft_pro_active\": false,\n        \"shyft_pro_expiry_date\": \"2018-12-04T19:10:49.425Z\",\n        \"fence_radius\": null,\n        \"member_count\": 3,\n        \"location_address\": null,\n        \"location_city\": \"Bothell, Washington, 98021\",\n        \"division_names\": [],\n        \"feed_channel_id\": 4359\n      },\n      \"user\": {\n        \"_parent_object_id\": 11336,\n        \"id\": 9064,\n        \"active_org\": 0,\n        \"first_name\": \"Bin\",\n        \"last_name\": \"Li\",\n        \"email\": \"bin+100@myshyft.com\",\n        \"gender\": 0,\n        \"chat_handle\": \"ab4693b99883e10dd5e7d17d0cf71200\",\n        \"user_group\": 0,\n        \"status\": \"\",\n        \"profile_image\": {\n          \"thumb_url\": \"https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950\",\n          \"gallery_url\": \"https://coffeemobile.s3.amazonaws.com/images/gallery/8352_data.?1512600950\",\n          \"full_url\": \"https://coffeemobile.s3.amazonaws.com/images/full/8352_data.?1512600950\"\n        },\n        \"recent_user_privilege\": {\n          \"_associations_removed\": true,\n          \"_parent_object_id\": 9064,\n          \"id\": 11336,\n          \"email\": \"bin+100@myshyft.com\",\n          \"wage\": 15,\n          \"position\": null,\n          \"is_approved\": true,\n          \"owner_id\": 9064,\n          \"location_id\": 2324,\n          \"org_id\": 1,\n          \"is_admin\": true,\n          \"read_only\": false,\n          \"first_name\": \"Bin\",\n          \"last_name\": \"Li\",\n          \"phone_number\": \"18083836511\",\n          \"profile_image_thumb_url\": \"https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98f99848-1870-46a4-a6dd-99dfd5ce83cf",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"location\\\": {\\n        \\\"time_zone\\\": \\\"America/Los_Angeles\\\"\\n    }\\n}\""
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Sun, 04 Jul 2021 05:07:02 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=czZ0NVJzUnA2bWU0ZVRYNXd1V05LZURTSzlFbDAySmk0TlpQSk5EMk9HSlBIRndRc05iR2d5NDI2aDBxeTlNaWU0OGphbFZDTXhjVFlYS3V2dTh4UkE9PS0tVDJQbFNWSXFIYUJXbFU1Q1BxYlBOQT09--5b73327d0776e9a4b6acd7e0c70252e5f54e3165; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "102c6e21-e9dd-4676-b90b-99ccbbef675a",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "9969.056977201304",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9168afe-a6f4-4581-95bf-818ca8bc8f81",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"location\\\": {\\n        \\\"time_zone\\\": \\\"America/Los_Angeles\\\"\\n    }\\n}\""
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "WWW-Authenticate",
+                  "value": "Basic realm=\"Application\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "ccb01a29-33e9-429f-b630-d52a0eb1adfb",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "206.78213997843088",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"You need to sign in or sign up before continuing.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba4c9408-060a-44f8-8b6c-bbbc8991e5d4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"location\\\": {\\n        \\\"time_zone\\\": \\\"America/Los_Angeles\\\"\\n    }\\n}\""
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Platform",
+                  "value": "{{platform}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "{{version}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Build-Number",
+                  "value": "{{build_number}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Push-Id",
+                  "value": "{{push_id}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "{{session_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "{{session_uukey}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Uid",
+                  "value": "{{uid}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "{{auth_category}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "{{auth_target}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Token-Type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Client",
+                  "value": "{{client}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Access-Token",
+                  "value": "{{access_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Expiry",
+                  "value": "{{expiry}}",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"not_found\": [\n      \"Couldn't find Location with 'id'=99999\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cc4f072-cf8f-4325-9623-a704455dbcaa",
+          "name": "[2.0] get a location by swift_code only",
+          "request": {
+            "name": "[2.0] get a location by swift_code only",
+            "description": {
+              "content": "Description\n- - - \n- Get a location object\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":swift_code",
+                "look_up"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "swift_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5651107-96d3-4a50-a05d-291a819e1a0f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":swift_code",
+                    "look_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "swift_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Tue, 31 Aug 2021 21:03:42 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"af62b4313ad9ce94a26162cc6e8e910f\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=UmFXeXlpUTRCd2pJMXpzREdzUzczMEliVjA5cEJRaFhTOEEwVkhoMkZzdFpwVzBVb3A0cVlXblpYZXREcmc4NW5ocWVWdmZ3NnpiTWxsYjRkSk0wekE9PS0tQ1dJL3JxUFc2Yy84TlIxd0tjMERNQT09--cabf8fd49f4786f239e915b051974903c1d969c1; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "58895a6a-f7f8-4907-a740-daae048fa035",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "4592.659993626016",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": {\n    \"_parent_object_id\": null,\n    \"id\": 8421,\n    \"swift_code\": \"GXO1015\",\n    \"location_name\": \"CAON Mississga2 Mississauga Courtneypark Drive West\",\n    \"unit_number\": null,\n    \"street_number\": null,\n    \"address\": \"300 Courtneypark Drive West\",\n    \"province\": \"ON\",\n    \"postal\": \"L5W 1Y6\",\n    \"country\": \"Canada\",\n    \"lat\": null,\n    \"lng\": null,\n    \"latitude\": 43.6288105,\n    \"longitude\": -79.6989678,\n    \"phone_number\": null,\n    \"created_at\": \"2021-05-27T21:15:50.121Z\",\n    \"users_count\": 4,\n    \"formatted_address\": \"300 Courtneypark Dr W, Mississauga, ON L5W 1Y6, Canada\",\n    \"time_zone\": \"America/Toronto\",\n    \"google_map_id\": \"ChIJpSvGGn9AK4gRbDoT-OfdBoU\",\n    \"four_sq_id\": null,\n    \"allow_tipping\": false,\n    \"shift_require_approval\": true,\n    \"shyft_pro_active\": true,\n    \"shyft_pro_expiry_date\": \"2031-05-27T22:16:39.655Z\",\n    \"fence_radius\": null,\n    \"cfg_not_dm\": true,\n    \"cfg_geofence_log\": false,\n    \"cfg_timeout\": null,\n    \"cfg_vto\": null,\n    \"cfg_call_off\": true,\n    \"tos_url\": null,\n    \"tos_version\": null,\n    \"require_approval\": false,\n    \"documents\": [\n      {\n        \"title\": \"Shyft Terms of Service\",\n        \"url\": \"https://myshyft.com/terms.en.html\"\n      }\n    ],\n    \"shyft_pro_subscription_status\": 0,\n    \"admin_delete_content\": true,\n    \"ip_blocked\": false,\n    \"member_count\": 0,\n    \"location_address\": null,\n    \"location_city\": \"Mississauga, ON, L5W 1Y6\",\n    \"feed_channel_id\": 12556,\n    \"pending_users_count\": 0,\n    \"shyft_pro_trial_flag\": false,\n    \"is_sso_required\": true,\n    \"cfg_exclude_coworker_schedules\": false,\n    \"cfg_exclude_coworker_schedules_from_admins\": false,\n    \"cfg_user_signup_show_email\": false,\n    \"available_cover_modes\": [\n      \"default\"\n    ],\n    \"default_cover_mode\": null,\n    \"configuration\": null,\n    \"avatar_blob\": {\n      \"_parent_object_id\": 8421,\n      \"id\": 1433,\n      \"content_type\": \"image/png\",\n      \"service_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/eTnNRfkuw4ZdKweGFTkNpDM7?sp=r&sv=2016-05-31&se=2021-08-31T21%3A08%3A42Z&rscd=inline%3B+filename%3D%22gxo-logo-png.png%22%3B+filename*%3DUTF-8%27%27gxo-logo-png.png&rsct=image%2Fpng&sr=b&sig=SfGYbCDe4nzV0yRanT4b9dbBS1W26HYg1MYfgDxnPlQ%3D\",\n      \"filename\": \"gxo-logo-png.png\",\n      \"byte_size\": 8973,\n      \"blob_url\": \"http://local-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02dfa32ff1c011dd76b61976c6e05334a5b3b8f2/gxo-logo-png.png\",\n      \"preview_blob_url\": null\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05ab042d-57ac-4f1b-aa3f-cf5fdb2594eb",
+          "name": "search locations with given GPS and keywords",
+          "request": {
+            "name": "search locations with given GPS and keywords",
+            "description": {
+              "content": "NOTE: Front-End will supply GAPS and keywords\n\nUse Cases:\n- Sign Up: Find locations when user choose keyword + address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "within_range[latitude]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "within_range[longitude]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywords",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "within_range[distance]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "360afec4-278d-4769-a35f-be872223db7f",
+              "name": "OK ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "within_range[latitude]",
+                      "value": "{{latitude}}"
+                    },
+                    {
+                      "key": "within_range[longitude]",
+                      "value": "{{longitude}}"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "{{keywords}}"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "{{limit}}"
+                    },
+                    {
+                      "key": "within_range[distance]",
+                      "value": "{{distance}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Platform",
+                  "value": "{{platform}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "{{version}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Build-Number",
+                  "value": "{{build_number}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Push-Id",
+                  "value": "{{push_id}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "{{session_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "{{session_uukey}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Uid",
+                  "value": "{{uid}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "{{auth_category}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "{{auth_target}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Token-Type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Client",
+                  "value": "{{client}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Access-Token",
+                  "value": "{{access_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Expiry",
+                  "value": "{{expiry}}",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"locations\": [\n    {\n      \"id\": 4875,\n      \"swift_code\": \"99VDE5\",\n      \"location_name\": \"Gap - Orlando Prime (Belz)\",\n      \"unit_number\": null,\n      \"street_number\": null,\n      \"address\": \"4969 INTERNATIONAL DRIVE\",\n      \"province\": \"FL\",\n      \"postal\": \"32819\",\n      \"country\": \"United States\",\n      \"lat\": null,\n      \"lng\": null,\n      \"latitude\": 28.4752766,\n      \"longitude\": -81.4503802,\n      \"phone_number\": null,\n      \"created_at\": \"2018-01-18T05:50:18.569Z\",\n      \"users_count\": 0,\n      \"member_count\": 0,\n      \"location_address\": null,\n      \"location_city\": \"ORLANDO, FL, 32819\"\n    },\n    {\n      \"id\": 4874,\n      \"swift_code\": \"BLB3U1\",\n      \"location_name\": \"Gap - Orlando Vineland\",\n      \"unit_number\": null,\n      \"street_number\": null,\n      \"address\": \"8225 VINELAND AVE\",\n      \"province\": \"FL\",\n      \"postal\": \"32821\",\n      \"country\": \"United States\",\n      \"lat\": null,\n      \"lng\": null,\n      \"latitude\": 28.3909901,\n      \"longitude\": -81.4904932,\n      \"phone_number\": null,\n      \"created_at\": \"2018-01-18T05:50:18.407Z\",\n      \"users_count\": 0,\n      \"member_count\": 0,\n      \"location_address\": null,\n      \"location_city\": \"ORLANDO, FL, 32821\"\n    },\n    {\n      \"id\": 4986,\n      \"swift_code\": \"TJKFBS\",\n      \"location_name\": \"Gap - Mall @ Millenia\",\n      \"unit_number\": null,\n      \"street_number\": null,\n      \"address\": \"4200 CONROY RD\",\n      \"province\": \"FL\",\n      \"postal\": \"32839\",\n      \"country\": \"United States\",\n      \"lat\": null,\n      \"lng\": null,\n      \"latitude\": 28.4855865,\n      \"longitude\": -81.4316811,\n      \"phone_number\": null,\n      \"created_at\": \"2018-01-18T05:52:08.734Z\",\n      \"users_count\": 0,\n      \"member_count\": 0,\n      \"location_address\": null,\n      \"location_city\": \"ORLANDO, FL, 32839\"\n    },\n    {\n      \"id\": 4990,\n      \"swift_code\": \"5PNYBZ\",\n      \"location_name\": \"Gap - Florida Mall\",\n      \"unit_number\": null,\n      \"street_number\": null,\n      \"address\": \"8001 South Orange Blossom Trail\",\n      \"province\": \"FL\",\n      \"postal\": \"32809\",\n      \"country\": \"United States\",\n      \"lat\": null,\n      \"lng\": null,\n      \"latitude\": 28.4454035,\n      \"longitude\": -81.3954343,\n      \"phone_number\": null,\n      \"created_at\": \"2018-01-18T05:52:14.019Z\",\n      \"users_count\": 0,\n      \"member_count\": 0,\n      \"location_address\": null,\n      \"location_city\": \"ORLANDO, FL, 32809\"\n    },\n    {\n      \"id\": 4873,\n      \"swift_code\": \"7JIWX3\",\n      \"location_name\": \"Gap - Orlando Premium\",\n      \"unit_number\": null,\n      \"street_number\": null,\n      \"address\": \"8228 VINELAND AVENUE\",\n      \"province\": \"FL\",\n      \"postal\": \"32821\",\n      \"country\": \"United States\",\n      \"lat\": null,\n      \"lng\": null,\n      \"latitude\": 28.3862141,\n      \"longitude\": -81.4950225,\n      \"phone_number\": null,\n      \"created_at\": \"2018-01-18T05:50:17.519Z\",\n      \"users_count\": 0,\n      \"member_count\": 0,\n      \"location_address\": null,\n      \"location_city\": \"ORLANDO, FL, 32821\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a706356-5dda-43d4-b0f5-f21687fcd46c",
+          "name": "create a location (option to join)",
+          "request": {
+            "name": "create a location (option to join)",
+            "description": {
+              "content": "Description\n- - - \n- Create a location object\n- `location_name` is always required. \n- Option1: supply address information, let backend figure out rest\n- Option2: supply the formatted address, and other required fields. \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - -\n\nOption 1\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name ||*| |\naddress | | * | |\ncity | | * | |\nprovince | | * | |\npostal | | * | |\ncountry | | * | |\n\n\nOption 2\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name | | * | |\nformatted_address | | * | |\nlatitude | | * | |\nlongitude | | * | |\ngoogle_map_id | | * | |\n\nWith join location\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name[user_privileges_attributes][owner_id] ||| |\nlocation_name[user_privileges_attributes][internal_id] ||| |\nlocation_name[user_privileges_attributes][position] ||| |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "3fea1326-61f7-45a1-a85d-55a4a394cefb",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"location\\\": {\\n  \\t\\\"location_name\\\": \\\"Shyft Tech.\\\",\\n  \\t\\\"latitude\\\": \\\"90.0\\\",\\n  \\t\\\"longitude\\\": \\\"180.0\\\",\\n  \\t\\\"google_map_id\\\": \\\"xxxxxxx\\\",\\n  \\t\\\"time_zone\\\": \\\"America/Los_Angeles\\\",\\n  \\t\\\"formatted_address\\\": \\\"3131 Western Ave #515, Seattle, WA 98121\\\", \\n  \\t\\\"user_privileges_attributes\\\": [\\n  \\t\\t{\\n  \\t\\t\\t\\\"owner_id\\\": 2, \\n  \\t\\t\\t\\\"internal_id\\\": \\\"0000000\\\",\\n  \\t\\t\\t\\\"position\\\": \\\"engineer\\\"\\n  \\t\\t}\\n  \\t\\t\\n  \\t]\\n  }\\n}\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"433989b4fcbe5d6bc14ac42f50776b17\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=YnhDSEhVOFVlTitDdXhDdEIvZzZSSEdFY21kbFozTWVoaTFBUU1pZElvVk5VakZldjlDU3ZncHhWWlVRNUZPaHJZS3cyaU8wUndFZ1FoWDFHQXlPTDNtd3ExcVZwaDVJUXNoS0VEbGpFZ0dXTmJJdGI5K2tWbUduc0huQ1hsZW5tcW41QXNZbWZqZnRDUHhCa0o3UFRBSnJOenpyTGk4N0JaeTE4WXloaXdtMW41bVlZT3pHWTd1Y2UxU1RpRXdJL1dhMUJISGcybk5KWlYvaTBTYTc4YUFWZEpWaWM4dzd1SS9BQUE2Y0t5QT0tLWU0YVlxbXZia2xLSTZNOEpSYmdVcUE9PQ%3D%3D--b4fe0e14140292dfa5ca36276fda0a9b6cd5186d; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "83f4b5d6-e490-4f1a-9435-8f8d85a538e6",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "3310.3107371606143",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin 1.5.1 codename Straight Razor",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": {\n    \"_parent_object_id\": null,\n    \"id\": 5250,\n    \"swift_code\": \"YEUTBT\",\n    \"location_name\": \"Shyft Tech.\",\n    \"unit_number\": null,\n    \"street_number\": null,\n    \"address\": null,\n    \"province\": null,\n    \"postal\": null,\n    \"country\": null,\n    \"lat\": null,\n    \"lng\": null,\n    \"latitude\": 90,\n    \"longitude\": 180,\n    \"phone_number\": null,\n    \"created_at\": \"2018-11-02T20:51:33.842Z\",\n    \"users_count\": 0,\n    \"formatted_address\": \"3131 Western Ave #515, Seattle, WA 98121\",\n    \"time_zone\": \"America/Los_Angeles\",\n    \"google_map_id\": \"xxxxxxx\",\n    \"allow_tipping\": true,\n    \"shift_require_approval\": false,\n    \"shyft_pro_active\": false,\n    \"shyft_pro_expiry_date\": \"2017-09-04T04:37:28.839Z\",\n    \"fence_radius\": null,\n    \"cfg_not_dm\": null,\n    \"cfg_geofence_log\": false,\n    \"cfg_timeout\": null,\n    \"tos_url\": null,\n    \"tos_version\": null,\n    \"ip_blocked\": false,\n    \"member_count\": 0,\n    \"location_address\": null,\n    \"location_city\": \",  \",\n    \"division_names\": [],\n    \"feed_channel_id\": 7396\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "826ec202-40e0-4279-8c3a-7295b67604f0",
+          "name": "[users] get my associated locations",
+          "request": {
+            "name": "[users] get my associated locations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "can_access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ad85039-6592-46b7-a81f-b0d1531b3c63",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "can_access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Platform",
+                  "value": "{{platform}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "{{version}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Build-Number",
+                  "value": "{{build_number}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Push-Id",
+                  "value": "{{push_id}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "{{session_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "{{session_uukey}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Uid",
+                  "value": "{{uid}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "{{auth_category}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "{{auth_target}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Token-Type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Client",
+                  "value": "{{client}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Access-Token",
+                  "value": "{{access_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Expiry",
+                  "value": "{{expiry}}",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"locations\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 2088,\n      \"swift_code\": \"K12YK5\",\n      \"location_name\": \"Green Lake Park Wading Pool\",\n      \"unit_number\": null,\n      \"street_number\": null,\n      \"address\": \"Green Lake Trail, Seattle\",\n      \"province\": null,\n      \"postal\": null,\n      \"country\": null,\n      \"lat\": \"47.68528\",\n      \"lng\": \"-122.3370426\",\n      \"latitude\": 47.6774723,\n      \"longitude\": -122.3325831,\n      \"phone_number\": \"+1 206-684-4075\",\n      \"created_at\": \"2017-05-15T19:13:19.362Z\",\n      \"users_count\": 10,\n      \"formatted_address\": \"Green Lake Trail, Seattle, WA 98115, USA\",\n      \"time_zone\": null,\n      \"google_map_id\": \"ChIJud-1yxYUkFQRLblABqXsQcA\",\n      \"allow_tipping\": true,\n      \"shift_require_approval\": false,\n      \"shyft_pro_active\": false,\n      \"shyft_pro_expiry_date\": \"2018-12-04T19:10:49.425Z\",\n      \"member_count\": 9,\n      \"location_address\": null,\n      \"location_city\": \",  \",\n      \"division_names\": [],\n      \"feed_channel_id\": 4053\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 2332,\n      \"swift_code\": \"064O1P\",\n      \"location_name\": \"Sixth Avenue Wine Seller\",\n      \"unit_number\": \"\",\n      \"street_number\": \"\",\n      \"address\": \"600 Pine Street\",\n      \"province\": \"Washington\",\n      \"postal\": \"98101\",\n      \"country\": \"United States\",\n      \"lat\": \"47.6124706\",\n      \"lng\": \"-122.3350867\",\n      \"latitude\": 47.6127702,\n      \"longitude\": -122.3356358,\n      \"phone_number\": \"+1 206-621-2669\",\n      \"created_at\": \"2017-10-31T18:53:01.595Z\",\n      \"users_count\": 6,\n      \"formatted_address\": \"600 Pine St, Seattle, WA 98101, USA\",\n      \"time_zone\": \"America/Adak\",\n      \"google_map_id\": \"ChIJLSDL0bRqkFQRxFmmvSccvhw\",\n      \"allow_tipping\": true,\n      \"shift_require_approval\": false,\n      \"shyft_pro_active\": false,\n      \"shyft_pro_expiry_date\": \"2018-12-04T19:10:00.000Z\",\n      \"member_count\": 8,\n      \"location_address\": null,\n      \"location_city\": \"Seattle, Washington, 98101\",\n      \"division_names\": [\n        \"Manhattan\"\n      ],\n      \"feed_channel_id\": 4382\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4be0eb70-7859-4fba-8b48-b37e3a51b945",
+          "name": "[users] get my managable locations",
+          "request": {
+            "name": "[users] get my managable locations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "can_admin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8acf02d-92b3-4523-8913-cfc80397042d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "can_admin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4c81066-f1f0-425a-b0a1-50c7cf1b1e7c",
+          "name": "get location analytics",
+          "request": {
+            "name": "get location analytics",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "QFW80C",
+                "analytics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "kpi_start_time",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "kpi_end_time",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf76aa18-ede4-49ff-b0dd-06333400b951",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "QFW80C",
+                    "analytics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "kpi_start_time",
+                      "value": "2018-02-01 09:00:00"
+                    },
+                    {
+                      "key": "kpi_end_time",
+                      "value": "2018-02-15 09:00:00"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78c63fc5-b747-4ef5-94bb-7ed48a8498c9",
+          "name": "get location tag groups",
+          "request": {
+            "name": "get location tag groups",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "2806",
+                "tag_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1086c9b7-ffe8-4840-815a-230a91f805af",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "2806",
+                    "tag_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Wed, 14 Jul 2021 07:14:56 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"850ee0dd46d302bf6a578580b3a8e2b0\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=Tm42dXd4UUxlQVpMMUhhSHoydGF6R3hqMXBnd1RCMzc0cFp4SFVULzBVWnVZUHhXQ0huS0dkaVRkeVhpZ0QyUHpUYVhpT1ZtM0lZdDRRSFNpdDJFTVE9PS0tZmFKdFRiNVI3d0NDdGpEbG9aQktIZz09--6c28b0353f5d89bc279e9a0f88666743cda2d19e; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "a1571114-6c52-4589-aee6-e60de04f452b",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "7430.003872448294",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tag_groups\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1,\n      \"group_name\": \"xpo_cost_work_centers\",\n      \"tags\": [\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 16,\n          \"tag_key\": \"cost_work_9\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST009-WORK009\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 16,\n              \"id\": 10,\n              \"amount\": \"1.0\",\n              \"tag_id\": 16,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 17,\n          \"tag_key\": \"cost_work_10\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST010-WORK010\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 17,\n              \"id\": 11,\n              \"amount\": \"94.0\",\n              \"tag_id\": 17,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 18,\n          \"tag_key\": \"cost_work_11\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST011-WORK011\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 18,\n              \"id\": 12,\n              \"amount\": \"15.0\",\n              \"tag_id\": 18,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 19,\n          \"tag_key\": \"cost_work_12\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST012-WORK012\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 19,\n              \"id\": 13,\n              \"amount\": \"68.0\",\n              \"tag_id\": 19,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 20,\n          \"tag_key\": \"cost_work_13\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST013-WORK013\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 20,\n              \"id\": 14,\n              \"amount\": \"43.0\",\n              \"tag_id\": 20,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 21,\n          \"tag_key\": \"cost_work_14\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST014-WORK014\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 21,\n              \"id\": 15,\n              \"amount\": \"55.0\",\n              \"tag_id\": 21,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 22,\n          \"tag_key\": \"cost_work_15\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST015-WORK015\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 22,\n              \"id\": 16,\n              \"amount\": \"5.0\",\n              \"tag_id\": 22,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 23,\n          \"tag_key\": \"cost_work_16\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST016-WORK016\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 23,\n              \"id\": 17,\n              \"amount\": \"5.0\",\n              \"tag_id\": 23,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 24,\n          \"tag_key\": \"cost_work_17\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST017-WORK017\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 24,\n              \"id\": 18,\n              \"amount\": \"93.0\",\n              \"tag_id\": 24,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 25,\n          \"tag_key\": \"cost_work_18\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST018-WORK018\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 25,\n              \"id\": 19,\n              \"amount\": \"77.0\",\n              \"tag_id\": 25,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 26,\n          \"tag_key\": \"cost_work_19\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST019-WORK019\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 26,\n              \"id\": 20,\n              \"amount\": \"55.0\",\n              \"tag_id\": 26,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 7,\n          \"tag_key\": \"cost_work_0\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST000-WORK000\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 7,\n              \"id\": 1,\n              \"amount\": \"84.0\",\n              \"tag_id\": 7,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 8,\n          \"tag_key\": \"cost_work_1\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST001-WORK001\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 8,\n              \"id\": 2,\n              \"amount\": \"60.0\",\n              \"tag_id\": 8,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 9,\n          \"tag_key\": \"cost_work_2\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST002-WORK002\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 9,\n              \"id\": 3,\n              \"amount\": \"19.0\",\n              \"tag_id\": 9,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 10,\n          \"tag_key\": \"cost_work_3\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST003-WORK003\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 10,\n              \"id\": 4,\n              \"amount\": \"16.0\",\n              \"tag_id\": 10,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 11,\n          \"tag_key\": \"cost_work_4\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST004-WORK004\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 11,\n              \"id\": 5,\n              \"amount\": \"74.0\",\n              \"tag_id\": 11,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 12,\n          \"tag_key\": \"cost_work_5\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST005-WORK005\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 12,\n              \"id\": 6,\n              \"amount\": \"17.0\",\n              \"tag_id\": 12,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 13,\n          \"tag_key\": \"cost_work_6\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST006-WORK006\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 13,\n              \"id\": 7,\n              \"amount\": \"26.0\",\n              \"tag_id\": 13,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 14,\n          \"tag_key\": \"cost_work_7\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST007-WORK007\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 14,\n              \"id\": 8,\n              \"amount\": \"87.0\",\n              \"tag_id\": 14,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        },\n        {\n          \"_parent_object_id\": 1,\n          \"id\": 15,\n          \"tag_key\": \"cost_work_8\",\n          \"tag_type\": \"incentive\",\n          \"tag_content\": \"COST008-WORK008\",\n          \"incentives\": [\n            {\n              \"_parent_object_id\": 15,\n              \"id\": 9,\n              \"amount\": \"35.0\",\n              \"tag_id\": 15,\n              \"start_time\": null,\n              \"end_time\": null\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 2,\n      \"group_name\": \"xpo_call_off_reasons\",\n      \"tags\": [\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 32,\n          \"tag_key\": \"call_off_reason_0\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 0\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 33,\n          \"tag_key\": \"call_off_reason_1\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 1\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 34,\n          \"tag_key\": \"call_off_reason_2\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 2\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 35,\n          \"tag_key\": \"call_off_reason_3\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 3\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 36,\n          \"tag_key\": \"call_off_reason_4\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 4\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 37,\n          \"tag_key\": \"call_off_reason_5\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 5\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 38,\n          \"tag_key\": \"call_off_reason_6\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 6\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 39,\n          \"tag_key\": \"call_off_reason_7\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 7\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 40,\n          \"tag_key\": \"call_off_reason_8\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 8\"\n        },\n        {\n          \"_parent_object_id\": 2,\n          \"id\": 41,\n          \"tag_key\": \"call_off_reason_9\",\n          \"tag_type\": \"call_off_reason\",\n          \"tag_content\": \"Call Off Reason 9\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2b83890-82f6-4a4c-993a-e85009d01fd3",
+          "name": "get location usable skills",
+          "request": {
+            "name": "get location usable skills",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "2806",
+                "usable_skills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "005086cd-1487-43a1-b637-6265537efcfd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "2806",
+                    "usable_skills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Mon, 16 May 2022 23:41:11 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"76a2a68e8d52f5d3ce31323ea771e856\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=K01qSy9ZTE5IWDZtbmhCWFd1d283OVVTdjIrck93U045MkZTMVRQQkErcTROc2pvblArdE5rWU5pTXZSS1FlVDQ4ZmpzWWZOOCtITUpkZGNlUlYzREE9PS0tY2J5RU05OTRVVkI5RURYOEpHSEFVUT09--feb63babdc8d38d186c0d97ab52c16e2aa702862; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "2ffa355d-f20a-44c4-8337-c20c0abaa071",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "4035.1042193393314",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"skills\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 5,\n      \"skill_content\": \"skill 5\",\n      \"user_ids\": [\n        10,\n        9,\n        8,\n        7,\n        6,\n        5,\n        4,\n        3,\n        2,\n        1,\n        15047,\n        13991,\n        15001,\n        14005,\n        14212,\n        13992,\n        10913,\n        15046,\n        14971,\n        12222,\n        14028,\n        14049,\n        14977,\n        14068,\n        14793,\n        12344,\n        14228,\n        14186,\n        14224,\n        14419\n      ],\n      \"current_location_user_ids\": [\n        15047,\n        13991,\n        15001,\n        14005,\n        14212,\n        13992,\n        10913,\n        15046,\n        14971,\n        12222,\n        14028,\n        14049,\n        14977,\n        14068,\n        14793,\n        12344,\n        14228,\n        14186,\n        14224,\n        14419\n      ]\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 4,\n      \"skill_content\": \"skill 4\",\n      \"user_ids\": [\n        14789,\n        14788,\n        14528,\n        12215,\n        14793,\n        14049,\n        12344,\n        14005,\n        9456,\n        7605,\n        7610,\n        14157,\n        7608,\n        14211,\n        14181\n      ],\n      \"current_location_user_ids\": [\n        14789,\n        14788,\n        14528,\n        14793,\n        14049,\n        12344,\n        14005,\n        9456,\n        7605,\n        7610,\n        14157,\n        7608,\n        14211,\n        14181\n      ]\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 3,\n      \"skill_content\": \"skill 3\",\n      \"user_ids\": [\n        12227,\n        11932,\n        14225,\n        14207,\n        14181,\n        14815,\n        14211,\n        14186,\n        14228,\n        14224\n      ],\n      \"current_location_user_ids\": [\n        12227,\n        14225,\n        14207,\n        14181,\n        14815,\n        14211,\n        14186,\n        14228,\n        14224\n      ]\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 2,\n      \"skill_content\": \"skill 2\",\n      \"user_ids\": [\n        7613,\n        13409,\n        14522,\n        10913,\n        12227,\n        12222\n      ],\n      \"current_location_user_ids\": [\n        7613,\n        13409,\n        14522,\n        10913,\n        12227,\n        12222\n      ]\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 1,\n      \"skill_content\": \"skill 1\",\n      \"user_ids\": [\n        7613,\n        14211,\n        14186,\n        14419,\n        14437,\n        14815,\n        14181,\n        13409,\n        12227,\n        14525,\n        12222,\n        8529,\n        14200,\n        14587\n      ],\n      \"current_location_user_ids\": [\n        7613,\n        14211,\n        14186,\n        14419,\n        14437,\n        14815,\n        14181,\n        13409,\n        12227,\n        14525,\n        12222,\n        8529,\n        14200,\n        14587\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c543d477-9aee-4f80-8b85-ca8462477b18",
+          "name": "get location linked tags",
+          "request": {
+            "name": "get location linked tags",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "2806",
+                "linked_tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3c7eba9-4ed1-48f4-bff4-55721ecb03cd",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "2806",
+                    "linked_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45fa2896-8cda-4695-a9f6-5603324935b7",
+          "name": "[location] get a user location settings",
+          "request": {
+            "name": "[location] get a user location settings",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a292bb69-2df3-4cf2-89f3-8b27a2dfaa52",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Tue, 10 Jan 2023 04:22:30 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"0addb825337898e7e98c8560996cfab3\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=Zy9ETkVsMitqcTBBbmlSQk4yWGNrcHZ5bnIweUpjcUdDcFhnTzJTUW5rNnEzM3o0YXBlaU1TMzdIanBBWkRFRllCWi9lWDZBVGhTL2ZYa2NyWTVNZmc9PS0tNk9DeFJVaDAzMGM4dEJMU0JEYk5ydz09--bd2125f9b05137d613cb2c3531a6878531045720; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "56a22ca3-2f24-4e60-a369-ef1a4a926079",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "1034.9874710296535",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": {\n    \"_parent_object_id\": null,\n    \"final_function_setting\": {\n      \"_parent_object_id\": null,\n      \"cfg__action_menu\": 1,\n      \"cfg__invite_team\": 1,\n      \"cfg__shyft_pro\": 1,\n      \"cfg__show_ewa\": 1,\n      \"cfg__availability\": 1,\n      \"cfg__skill\": 1,\n      \"cfg__departments\": 0,\n      \"cfg__hide_associates\": 0,\n      \"cfg__primary_job_and_department\": 1,\n      \"cfg__shift__show_conflict\": 1,\n      \"cfg__dm__disable_a2a_chat\": 1,\n      \"cfg__group_chat\": 1,\n      \"cfg__group_chat__private_group__create\": 1,\n      \"cfg__group_chat__post__create\": 1,\n      \"cfg__group_chat__comments\": 1,\n      \"cfg__group_chat__likes\": 1,\n      \"cfg__group_chat__user_joined_message\": 1,\n      \"cfg__free_post__shift_post_comments\": 0,\n      \"cfg__schedule_element__delete\": 1,\n      \"cfg__shift__post_new\": 1,\n      \"cfg__shift__post_open_shift\": 1,\n      \"cfg__photo_schedule__post\": 1,\n      \"cfg__shift_allow_deny_repost\": 1,\n      \"cfg__shift__post_pickup\": 1,\n      \"cfg__inventory_show\": 1,\n      \"cfg__inventory__create\": 1,\n      \"cfg__inventory__convert\": 1,\n      \"cfg__allow__cover_team_shift\": 1,\n      \"cfg__allow__cover_open_shift\": 1,\n      \"cfg__allow__cover_vto\": 1,\n      \"cfg__allow__call_off\": 1,\n      \"cfg__rto\": 1,\n      \"cfg__rto_balance\": 1,\n      \"cfg__badge_id\": 0\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a37f8a68-2233-4e44-9802-2923f91eff81",
+          "name": "find or create a location (option to join)",
+          "request": {
+            "name": "find or create a location (option to join)",
+            "description": {
+              "content": "Description\n- - - \n- Create a location object\n- `location_name` is always required. \n- Option1: supply address information, let backend figure out rest\n- Option2: supply the formatted address, and other required fields. \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\njoin | false/true | | | join the location created \n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - -\n\nOption 1\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name ||*| |\naddress | | * | |\ncity | | * | |\nprovince | | * | |\npostal | | * | |\ncountry | | * | |\n\n\nOption 2\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name | | * | |\nformatted_address | | * | |\nlatitude | | * | |\nlongitude | | * | |\ngoogle_map_id | | * | |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "find_or_create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "join",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "response[keep]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "cc6bf07f-91db-4155-ad23-52144efe9b80",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "find_or_create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "join",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "response[keep]",
+                      "value": "current_user_privilege"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"location\\\": {\\n  \\t\\\"location_name\\\": \\\"Shyft Tech.\\\",\\n  \\t\\\"latitude\\\": \\\"90.0\\\",\\n  \\t\\\"longitude\\\": \\\"180.0\\\",\\n  \\t\\\"google_map_id\\\": \\\"xxxxxxx\\\",\\n  \\t\\\"time_zone\\\": \\\"America/Los_Angeles\\\",\\n  \\t\\\"formatted_address\\\": \\\"3131 Western Ave #515, Seattle, WA 98121\\\"\\n  }\\n}\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"e958852dc49f8e8d69600fbf6746e433\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=eHpSY3M2SkgxeGpsbnh4dmphKzRzRE0wUkJnNzFHLzdiUnk0UlhZMWMyWVJ3c2FPdDZPOStsR21VTklRMXZqVFBURmQwcHA5cExXaCtPWGphMXZZS3c9PS0tNW9DdWw0WitDTlBweGlmY01DakZ0dz09--f451e9c276b4e60230797999b97ef3b24143befb; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "8adc32a8-5b6c-4fac-8ff1-c3b5eb6bfa07",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "6790.195478808953",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "Keep-Alive",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": {\n    \"_parent_object_id\": null,\n    \"id\": 5250,\n    \"swift_code\": \"YEUTBT\",\n    \"location_name\": \"Shyft Tech.\",\n    \"unit_number\": null,\n    \"street_number\": null,\n    \"address\": null,\n    \"province\": null,\n    \"postal\": null,\n    \"country\": null,\n    \"lat\": null,\n    \"lng\": null,\n    \"latitude\": 90,\n    \"longitude\": 180,\n    \"phone_number\": null,\n    \"created_at\": \"2018-11-02T20:51:33.842Z\",\n    \"users_count\": 1,\n    \"formatted_address\": \"3131 Western Ave #515, Seattle, WA 98121\",\n    \"time_zone\": \"America/Los_Angeles\",\n    \"google_map_id\": \"xxxxxxx\",\n    \"four_sq_id\": null,\n    \"allow_tipping\": true,\n    \"shift_require_approval\": false,\n    \"shyft_pro_active\": false,\n    \"shyft_pro_expiry_date\": \"2017-09-04T04:37:28.839Z\",\n    \"fence_radius\": null,\n    \"cfg_not_dm\": null,\n    \"cfg_geofence_log\": false,\n    \"cfg_timeout\": null,\n    \"tos_url\": null,\n    \"tos_version\": null,\n    \"ip_blocked\": false,\n    \"member_count\": 0,\n    \"location_address\": null,\n    \"location_city\": \",  \",\n    \"division_names\": [],\n    \"feed_channel_id\": 7396,\n    \"pending_users_count\": 0\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46fe1dad-c8fd-4b7a-8c97-e954df4bf9a7",
+          "name": "broadcast notifications",
+          "request": {
+            "name": "broadcast notifications",
+            "description": {
+              "content": "Description\n\n---\n\n- Send notifications to location users\n- `location_id` coulld be `ID` or `Swift Code`\n    \n\nParams\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| user_ids | integer array | optional | filter locations users list of supplied |\n| message | string/hash | required | predefined message key or message content |\n|  |  |  |  |\n|  |  |  |  |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id",
+                "broadcast_notification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "35c18531-f6bb-4005-ba84-31b9542f1f5b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id",
+                    "broadcast_notification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"user_ids\\\": [\\n        1,\\n        2\\n    ],\\n    \\\"n_event\\\": \\\"shift_covered\\\",\\n    \\\"p_action\\\": \\\"shift_detail\\\",\\n    \\\"message\\\": {\\n        \\\"key\\\": \\\"notify_schedule_updated\\\"\\n    }\\n}\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8b23c9e-56ad-4714-856e-d2cde3ac97e2",
+          "name": "copy week planned shifts Copy",
+          "request": {
+            "name": "copy week planned shifts Copy",
+            "description": {
+              "content": "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "9287",
+                "copy_week_planned_shifts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "has_open_shifts",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "994e718f-546e-4730-beac-afc788cee5ff",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "9287",
+                    "copy_week_planned_shifts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "has_open_shifts",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "23518f45-0770-46f0-b842-3b7484678f00",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n    \\\"dest_week_day\\\": \\\"2024-02-11\\\",\\n    \\\"src_week_day\\\": \\\"2024-02-18\\\",\\n    \\\"owner_ids\\\": [1, 2, 3]\\n}\\n\""
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.27.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Mon, 14 Apr 2025 17:20:54 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=UmJTdWJ1ZTcyU2VkSjdRb0pKS2hRdDMwTmxtN1ZZZkxjWnhwU25GTGFld1J6WUZKSEswVjdoV1RCQ09NZWlINE1OTGlURGVvQzVYZkpiQUxHcCtQcmc9PS0teHV0aDNlT2g2ZjFFNmM3Um9WdTVZZz09--e746253f6178bdc35da8cef42e2950ca2285a84c; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "8eb1090d-7a55-446b-b5dd-45daed7889d3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "9869.896437413943",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8bd7c1c-0f51-4587-8078-2737a9d4197c",
+          "name": "create  demo data",
+          "request": {
+            "name": "create  demo data",
+            "description": {
+              "content": "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "9287",
+                "delete_demo_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "df5acef7-3c0b-4f3c-a183-ce9627e19d65",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "9287",
+                    "delete_demo_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n   \\n}\\n\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2681b838-0a5f-48ea-896d-d17c53a906e9",
+          "name": "delete  demo data",
+          "request": {
+            "name": "delete  demo data",
+            "description": {
+              "content": "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                "9287",
+                "create_demo_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "12c0548c-cdf1-4872-b389-c71f2f1df62a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    "9287",
+                    "create_demo_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\n}\\n\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "badce22e-d80c-4c7f-a443-e81f15b6927e",
+    "name": "Shyft Customer Authentication > Email Customer > Locations > user_role API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

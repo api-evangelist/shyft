@@ -1,0 +1,571 @@
+{
+  "item": [
+    {
+      "id": "691766d7-555a-455b-932b-a3f7a758a6c2",
+      "name": "Customer > Action Jobs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e79a28de-3c79-40c0-8247-cc32cadf23d1",
+          "name": "get an action job",
+          "request": {
+            "name": "get an action job",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "action_jobs",
+                "251020"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "595ab882-2f8a-4ead-a5fa-1edb3926bb94",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "action_jobs",
+                    "251020"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Thu, 09 Mar 2023 21:52:56 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"0e5fe908c37fc68e1a66079eb08359fd\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=T3lLVmF5QUJadGNOY3pMMGNTZklnc3NEQXMxZm9ZQ3dLaTV2d1hWaktaWm56QUlvWWx4WENCWlJnbVlXM28yMWU2cTRJRElqL0hrTEZMalpaMm13L1E9PS0taGQ5WGludVd3dEJSeHdNMDJNaUdCQT09--bbe22b0d32012a79414ec0867f9d17562065d7c3; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "bb24515d-9925-4420-87aa-3cdc42c00fcd",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "6544.924785973747",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action_job\": {\n    \"_parent_object_id\": null,\n    \"uuid\": \"9019ae6e-8917-469f-bb75-e66eb6687afe\",\n    \"output\": [\n      {\n        \"_parent_object_id\": null,\n        \"id\": 3954308,\n        \"start_at\": \"2019-12-19 11:00:00 UTC\",\n        \"end_at\": \"2019-12-19 19:00:00 UTC\",\n        \"taker_id\": null,\n        \"shift_reference_id\": null,\n        \"employee_id\": \"gap_dc_0000001\",\n        \"site_reference_id\": null,\n        \"segments\": []\n      }\n    ],\n    \"location_id\": 8740,\n    \"total_count\": 1,\n    \"success_count\": 1,\n    \"failed_count\": 0,\n    \"schedule_id\": 169673\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79e476d5-afae-4482-a200-12fed726da0f",
+          "name": "delete an action job",
+          "request": {
+            "name": "delete an action job",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "action_jobs",
+                "251020"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "delete_schedule",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eae9939d-b47a-4e0c-9c1d-734ea091084a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "action_jobs",
+                    "251020"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delete_schedule",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2717b209-a194-45b3-9023-3c3ff1259030",
+          "name": "list action jobs",
+          "request": {
+            "name": "list action jobs",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "action_jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "10d08c31-2960-43b8-9281-86df43fd0447",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "action_jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Thu, 09 Mar 2023 21:52:39 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"11f817f4064ee6c063eb851ecd0124a8\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=TTlsUVU4aUw1UFpESkVUa3J2RVRKWHNWYVlFR0lrZXQ0eFEzajNZY0lsWWJ3YjkyeGF6ck5qUHljS05BWHByUDlPOXYrZG9BcmJQY0ptNnNiQmVLY1E9PS0tZksvQjB4WXZ2ZWV1UUZad2k4ckt0UT09--cf838ef5ae9b4bc96ec4975814073bdf6eab1899; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "f5f9f903-20b1-4a3b-a907-cb8211f5fa4c",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "2496.092221881171",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action_jobs\": [\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"ee87e238-e694-4e96-a826-90e9b132ba6c\",\n      \"output\": [],\n      \"location_id\": 8740,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"6a132c76-0bd4-4468-b205-c71a4e43a17c\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954304,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": 8740,\n      \"total_count\": 1,\n      \"success_count\": 1,\n      \"failed_count\": 0,\n      \"schedule_id\": 169671\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"7a301e23-4003-479b-a885-c4f82397c651\",\n      \"output\": [],\n      \"location_id\": 8740,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"a44618ac-cfc4-4b8e-bfb6-21800788496e\",\n      \"output\": [],\n      \"location_id\": 8740,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"919d3399-725c-4b30-85da-6230127eaeb6\",\n      \"output\": [\n        {\n          \"errors\": {\n            \"location\": [\n              \"not found\"\n            ]\n          },\n          \"input\": {\n            \"first_name\": \"Bin\",\n            \"last_name\": \"Li\",\n            \"start_at\": \"2019-12-19 11:00:00\",\n            \"end_at\": \"2019-12-19 19:00:00\",\n            \"location_swift_code\": \"WPJRJI\"\n          }\n        }\n      ],\n      \"location_id\": null,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 1,\n      \"schedule_id\": 169641\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"286be26f-4b04-4f31-ac31-717f1701e968\",\n      \"output\": [\n        {\n          \"errors\": {\n            \"location\": [\n              \"not found\"\n            ]\n          },\n          \"input\": {\n            \"first_name\": \"Bin\",\n            \"last_name\": \"Li\",\n            \"start_at\": \"2019-12-19 11:00:00\",\n            \"end_at\": \"2019-12-19 19:00:00\",\n            \"location_swift_code\": \"WPJRJI\"\n          }\n        }\n      ],\n      \"location_id\": null,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 1,\n      \"schedule_id\": 169643\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"f50867b6-294a-4d06-b0ce-912f60691c8d\",\n      \"output\": [],\n      \"location_id\": 8730,\n      \"total_count\": 0,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": 169664\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"903f8a78-4aa7-4ac2-bea6-feb324f10e0b\",\n      \"output\": [\n        {\n          \"errors\": {\n            \"shift_reference_id\": [\n              \"is required.\"\n            ]\n          },\n          \"input\": {\n            \"first_name\": \"Bin\",\n            \"last_name\": \"Li\",\n            \"start_at\": \"2019-12-19 11:00:00\",\n            \"end_at\": \"2019-12-19 19:00:00\",\n            \"location_swift_code\": \"WPJRJI\"\n          }\n        }\n      ],\n      \"location_id\": null,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 1,\n      \"schedule_id\": 169644\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"f57a3f3e-a7ae-4572-b571-6dd7036cc18a\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954171,\n          \"start_at\": \"2019-12-19 19:00:00 UTC\",\n          \"end_at\": \"2019-12-20 03:00:00 UTC\",\n          \"taker_id\": 14815,\n          \"shift_reference_id\": null,\n          \"employee_id\": null,\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": null,\n      \"total_count\": 1,\n      \"success_count\": 1,\n      \"failed_count\": 0,\n      \"schedule_id\": 169645\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"926eeabc-d403-4fa5-a8dd-8d7f968e49cd\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954209,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        },\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954211,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        },\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954212,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        },\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954213,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        },\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954214,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 5,\n      \"failed_count\": 0,\n      \"schedule_id\": 169670\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"77b685a0-70af-49cd-999c-a3e195ec7c51\",\n      \"output\": [],\n      \"location_id\": null,\n      \"total_count\": 0,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": 169647\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"7bac83eb-2768-4bb0-8f06-2591e397a01b\",\n      \"output\": [],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"6a45a610-9e3c-4829-a5de-871bba014e0e\",\n      \"output\": [],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"bcec3536-907b-4d23-b81e-8aa921bccb1f\",\n      \"output\": [],\n      \"location_id\": 8740,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"dcbabe7f-e72e-42b0-a5f3-5eb6c64c3e60\",\n      \"output\": [],\n      \"location_id\": null,\n      \"total_count\": 0,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": 169649\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"eb9f9cd6-c93f-47ae-a5fc-78c06a79bbff\",\n      \"output\": [],\n      \"location_id\": null,\n      \"total_count\": 0,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": 169650\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"9019ae6e-8917-469f-bb75-e66eb6687afe\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954308,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": 8740,\n      \"total_count\": 1,\n      \"success_count\": 1,\n      \"failed_count\": 0,\n      \"schedule_id\": 169673\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"7e8b6c06-7fa4-4065-8327-38cdaabe13a5\",\n      \"output\": [\n        {\n          \"errors\": {\n            \"location\": [\n              \"not found\"\n            ]\n          },\n          \"input\": {\n            \"first_name\": \"Bin\",\n            \" last_name\": \" Li\",\n            \" start_at\": \" 2019-12-19 11:00:00\",\n            \" end_at\": \" 2019-12-19 19:00:00\",\n            \" location_swift_code\": \" WPJRJI\"\n          }\n        }\n      ],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 1,\n      \"schedule_id\": 169662\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"c4d57a0c-d4e5-4f23-a755-0e21e26d6e3a\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954190,\n          \"start_at\": \"2019-12-19 19:00:00 UTC\",\n          \"end_at\": \"2019-12-20 03:00:00 UTC\",\n          \"taker_id\": 14815,\n          \"shift_reference_id\": null,\n          \"employee_id\": null,\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 1,\n      \"failed_count\": 0,\n      \"schedule_id\": 169663\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"8ec9c350-7b94-4f7c-a547-04930bdbd091\",\n      \"output\": [],\n      \"location_id\": 8730,\n      \"total_count\": 0,\n      \"success_count\": 0,\n      \"failed_count\": 0,\n      \"schedule_id\": 169665\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"5dad4967-3e93-4146-8a7a-d4dff3e5688d\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954205,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 1,\n      \"failed_count\": 0,\n      \"schedule_id\": 169666\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"77e7deda-afa1-4800-ad0b-c86a2acfd377\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954206,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 1,\n      \"failed_count\": 0,\n      \"schedule_id\": 169667\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"c4e2459f-5da8-44e4-9341-f8bd06adf778\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954207,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 1,\n      \"failed_count\": 0,\n      \"schedule_id\": 169668\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"113a928f-1052-49c4-86b7-daa59d3d808b\",\n      \"output\": [\n        {\n          \"_parent_object_id\": null,\n          \"id\": 3954208,\n          \"start_at\": \"2019-12-19 11:00:00 UTC\",\n          \"end_at\": \"2019-12-19 19:00:00 UTC\",\n          \"taker_id\": null,\n          \"shift_reference_id\": null,\n          \"employee_id\": \"gap_dc_0000001\",\n          \"site_reference_id\": null,\n          \"segments\": []\n        }\n      ],\n      \"location_id\": 8730,\n      \"total_count\": 1,\n      \"success_count\": 1,\n      \"failed_count\": 0,\n      \"schedule_id\": 169669\n    },\n    {\n      \"_parent_object_id\": null,\n      \"uuid\": \"0de7bae3-e40b-4580-a238-d9662784c903\",\n      \"output\": [\n        {\n          \"errors\": {\n            \"location\": [\n              \"not found\"\n            ]\n          },\n          \"input\": {\n            \"first_name\": \"Bin\",\n            \"last_name\": \"Li\",\n            \"start_at\": \"2019-12-19 11:00:00\",\n            \"end_at\": \"2019-12-19 19:00:00\",\n            \"location_swift_code\": \"WPJRJI\"\n          }\n        }\n      ],\n      \"location_id\": null,\n      \"total_count\": 1,\n      \"success_count\": 0,\n      \"failed_count\": 1,\n      \"schedule_id\": 169642\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"per_page\": 25\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "862977a8-c057-46e2-9ead-0fe9a93d8da4",
+    "name": "Shyft Customer Authentication > Email Customer > Action Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

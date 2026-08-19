@@ -1,0 +1,736 @@
+{
+  "item": [
+    {
+      "id": "f78eec93-beda-4919-83a3-7b41ecb1cf13",
+      "name": "Authentication > PhoneNumber",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a2557e5-9a98-4b3e-b1d8-7a49cc230acf",
+          "name": "PhoneNumber - Signup",
+          "request": {
+            "name": "PhoneNumber - Signup",
+            "description": {
+              "content": "Description\n- - - \n- Sign up with fields listed at input section\n- API will generate and send a Login Code to user\n- Follow up with `confirm` API.\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nreferral_code| | | |\nacceptor_branch_id| | | |\nprogram_code| | | |\nreferral_platform| | | |\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nfirst_name |  | * | |\nlast_name |   | | |\nunconfirmed_phone_number | | * ||",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "d12c517f-d11e-48bb-93f9-6118d6ae5e7e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"api_user\\\": {\\n    \\\"unconfirmed_phone_number\\\": \\\"18883839002\\\"\\n    }\\n}   \\t\\t \""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Tue, 20 Apr 2021 19:50:09 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Location",
+                  "value": "/",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"79be1d2c12138c5acfdc1836a3d92e97\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "547e3128-2de8-4663-9eb3-c2590fb90c47",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "3338.9758084686705",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"_parent_object_id\": null,\n    \"id\": 14294,\n    \"active_org\": 0,\n    \"first_name\": null,\n    \"last_name\": null,\n    \"email\": null,\n    \"phone_number\": null,\n    \"gender\": 0,\n    \"chat_handle\": \"e3a215ab27b5c6c958a3cd5a4f25dafb\",\n    \"user_group\": 0,\n    \"status\": \"\",\n    \"push_settings_list\": {\n      \"shift_push\": {\n        \"label\": \"Shift Notifications\",\n        \"type\": \"boolean\"\n      },\n      \"schedule_push\": {\n        \"label\": \"Schedule Notifications\",\n        \"type\": \"boolean\"\n      },\n      \"community_push\": {\n        \"label\": \"Community Notifications\",\n        \"type\": \"boolean\"\n      }\n    },\n    \"push_settings_list_array\": [\n      {\n        \"label\": \"Shift Notifications\",\n        \"type\": \"boolean\",\n        \"key\": \"shift_push\"\n      },\n      {\n        \"label\": \"Schedule Notifications\",\n        \"type\": \"boolean\",\n        \"key\": \"schedule_push\"\n      },\n      {\n        \"label\": \"Community Notifications\",\n        \"type\": \"boolean\",\n        \"key\": \"community_push\"\n      }\n    ],\n    \"thumb_url\": null,\n    \"gallery_url\": null,\n    \"full_url\": null,\n    \"current_position\": null,\n    \"current_user_privilege_id\": null,\n    \"current_is_approved\": null,\n    \"current_is_admin\": null,\n    \"all_push\": true,\n    \"shift_push\": true,\n    \"schedule_push\": true,\n    \"community_push\": true,\n    \"cfg_ewa_ok\": null,\n    \"locale\": null,\n    \"profile_image\": null,\n    \"recent_user_privilege\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69499253-38ce-478b-a630-f4fc2bf5e04d",
+          "name": "PhoneNumber - Sign in/Confirm",
+          "request": {
+            "name": "PhoneNumber - Sign in/Confirm",
+            "description": {
+              "content": "Description\n- - - \n- Sign in user with SMS code\n- Get `Session-Token` or `Session-Uukey` from response headers, and use for further API calls. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nphone_number |  | * | |\nsign_in_code |   |* | |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                "sign_in"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location_id",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "431b708d-c831-4b2c-8a0f-35b10958bebc",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "sign_in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"api_user\\\": {\\n    \\\"phone_number\\\": \\\"18883836001\\\",\\n    \\\"sign_in_code\\\": \\\"9999\\\"\\n  }\\n}   \""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Location",
+                  "value": "/",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "5802",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "0ced24c0-cc32-418e-900e-1dea26e3c1cc",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "access-token",
+                  "value": "dkEq2JQs5w0LXPPhGZUwhg",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "token-type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "bKC-6_hbF10ejlamKnDPkw",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "expiry",
+                  "value": "3673",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "uid",
+                  "value": "1500",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Phone-Number",
+                  "value": "1500",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "phone_number",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "1500",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"9a7a5b72b492fe1b4e13268da2aaf631\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=N1BRTEY2dlNuTGZoVzZnVHNuSS9BQVVvRytEeld1WUQxN2hOVnFpcHVsWUwveExNU0ozU2hhOFBrTmttei80T1gvMUt6aWtONzNJblIreFNSY0NCZ2c9PS0tT0dVQ2dOZy9IWmNQZEczNDBoQk1PUT09--6123dd08017535690c0617f94304699c55d26c28; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "3a9b263b-6772-474e-8a9d-bbc97b85798c",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "8386.30524361142",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin 1.5.1 codename Straight Razor",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"_parent_object_id\": null,\n    \"id\": 9625,\n    \"active_org\": 0,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": null,\n    \"phone_number\": \"18883836001\",\n    \"gender\": 0,\n    \"chat_handle\": \"911bf630a47c543b70303b3a42400f14\",\n    \"user_group\": 0,\n    \"status\": \"\",\n    \"profile_image\": null,\n    \"recent_user_privilege\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7919f10a-ad72-481a-aef0-dc2983c9cc45",
+          "name": "PhoneNumber - Get SMS Code",
+          "request": {
+            "name": "PhoneNumber - Get SMS Code",
+            "description": {
+              "content": "Description\n- - - \n- Resend confirmation code if user did not get previous one\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nconfirm| true | * | Must set it be true\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_phone_number |  | * | |\nsign_in_code |   |* | |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "code_auth",
+                "18885555555"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "confirm",
+                  "value": "<boolean>",
+                  "description": "when first time login, target on unconfirmed account\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8a89f7e-b987-45af-94f6-d296ddcbae68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "code_auth",
+                    "18885555555"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "confirm",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "578b6f22-0418-42e8-ad45-23dfbc607251",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "7729.4208301867375",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000;",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e4e4d3e-a819-4d40-81a9-7e451cbf34cb",
+          "name": "PhoneNumber - SuperLogin",
+          "request": {
+            "name": "PhoneNumber - SuperLogin",
+            "description": {
+              "content": "Description\n- - - \n- Login as a God build\n- Get `Session-Token` or `Session-Uukey` from response headers, and use for further API calls. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlogin |  | * | | phone_number or email\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\nGod-Key | | * | |\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                "super_login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "login",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "God-Key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c40e3bb8-4fe5-4fbf-9c30-c62c0fee3be9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    "super_login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "login",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "God-Key",
+                    "value": "{{god_key}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "153c9d83-adfe-4339-b812-02ab0bf17b65",
+    "name": "Shyft Customer Authentication > Email Authentication > PhoneNumber API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

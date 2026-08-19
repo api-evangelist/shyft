@@ -1,0 +1,239 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Tag API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Tag",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "assign a location tag's users",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/assign_skill_users/1",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Update a location\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nshift_require_approval| true/false| | |\nrequire_approval| true/false| | |\nallow_tipping| true/false| | |\nadmin_delete_content| true/false| | |"
+        },
+        {
+          "info": {
+            "name": "list location's managable tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/tags/managable",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "list location's managable tags"
+        },
+        {
+          "info": {
+            "name": "list location's tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/tags",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "list location's tags"
+        },
+        {
+          "info": {
+            "name": "create a new tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/tags",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "create a new tag"
+        },
+        {
+          "info": {
+            "name": "read a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/tags/:tag_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "read a tag"
+        },
+        {
+          "info": {
+            "name": "update a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/tags/:tag_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "update a tag"
+        },
+        {
+          "info": {
+            "name": "delete a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/tags/:tag_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "delete a tag"
+        },
+        {
+          "info": {
+            "name": "assign a location tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/assign_tags",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Update a location\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nshift_require_approval| true/false| | |\nrequire_approval| true/false| | |\nallow_tipping| true/false| | |\nadmin_delete_content| true/false| | |"
+        },
+        {
+          "info": {
+            "name": "assign a location user's tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/assign_user_tags/7613",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Update a location\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nshift_require_approval| true/false| | |\nrequire_approval| true/false| | |\nallow_tipping| true/false| | |\nadmin_delete_content| true/false| | |"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

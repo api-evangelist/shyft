@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email General API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- API Description here\n\n\nPath Params\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

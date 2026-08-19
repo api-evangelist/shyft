@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > SetupActions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > SetupActions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[users] get setup actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/setup_actions",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "{{sso_lbrand_location_id}}",
+                "type": "query"
+              },
+              {
+                "name": "local_auth",
+                "value": "false",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "All supported actions types: \n[\"action_cancel\", \"action_update_app\", \"action_logout\", \"action_switch_location\", \"action_update_cache\", \"action_goto_screen\", \"action_goto_page\", \"action_call_api\", \"action_prompt\", \"action_sso_logout\", \"action_restart_app\"]\n\nFor test purpose, you can supply `sample=true` parameter to get samples actions. Sample actions will not be erased upon visit.\n\nMany actions are user specific.\n\nMeta data only show when supplied the associated `location_id` parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

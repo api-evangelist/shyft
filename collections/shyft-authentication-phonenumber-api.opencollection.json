@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Authentication > PhoneNumber API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication > PhoneNumber",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PhoneNumber - Signup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/users",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Sign up with fields listed at input section\n- API will generate and send a Login Code to user\n- Follow up with `confirm` API.\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nreferral_code| | | |\nacceptor_branch_id| | | |\nprogram_code| | | |\nreferral_platform| | | |\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nfirst_name |  | * | |\nlast_name |   | | |\nunc"
+        },
+        {
+          "info": {
+            "name": "PhoneNumber - Sign in/Confirm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/users/sign_in",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "7",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Sign in user with SMS code\n- Get `Session-Token` or `Session-Uukey` from response headers, and use for further API calls. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nphone_number |  | * | |\nsign_in_code |   |* | |"
+        },
+        {
+          "info": {
+            "name": "PhoneNumber - Get SMS Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/code_auth/18885555555",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "confirm",
+                "value": "true",
+                "type": "query",
+                "description": "when first time login, target on unconfirmed account\n"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Resend confirmation code if user did not get previous one\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nconfirm| true | * | Must set it be true\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_phone_number |  | * | |\nsign_in_code |   |* | |"
+        },
+        {
+          "info": {
+            "name": "PhoneNumber - SuperLogin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/users/super_login",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "God-Key",
+                "value": "{{god_key}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "login",
+                "value": "18883836001",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Login as a God build\n- Get `Session-Token` or `Session-Uukey` from response headers, and use for further API calls. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlogin |  | * | | phone_number or email\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\nGod-Key | | * | |\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

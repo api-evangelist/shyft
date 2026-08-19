@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > SsoSessions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > SsoSessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[users] renew sso session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/sso_sessions/renew",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "sso_provider_name",
+                "value": "sso_gap",
+                "type": "query"
+              },
+              {
+                "name": "code",
+                "value": "QDVMClwBkPvlOZ-In4MtQzPWHrRQAmEZwjofhgAe",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "[users] renew sso session"
+        },
+        {
+          "info": {
+            "name": "[users] link sso_session to current_user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/sso_sessions/:sso_session_id/link",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "sso_session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[users] link sso_session to current_user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

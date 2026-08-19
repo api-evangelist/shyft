@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > EWA API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > EWA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[ewa_account] get or create my EWA account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/ewa/ewa_accounts/my_account",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- This is the first API call when user choose to use EWA by clicking the function button.\n- It will find the current user's existing EWA account and return its profile. \n- It will create a new basic EWA account for current user if not found one, and return its profile \n\nIf got `tos_yes=false`, front-end want to present these TOS pages again. \nIf got no `active_bank_account`, front-end want to present the bacnk account linking page\n\n\nParams\n- - -\nParam | Values | R |Description"
+        },
+        {
+          "info": {
+            "name": "[ewa_account] request email confirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/ewa/ewa_accounts/request_email_confirmation",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "unconfirmed_email",
+                "value": "bin%2Bewa@myshyft.com",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+        },
+        {
+          "info": {
+            "name": "[ewa_account] get the estimation of capability of borrowing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/ewa/ewa_accounts/borrow_estimate",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+        },
+        {
+          "info": {
+            "name": "[ewa_account] confirm EWA account's email with code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/ewa/ewa_accounts/confirm_email_with_code",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "confirmation_code",
+                "value": "9999",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+        },
+        {
+          "info": {
+            "name": "[ewa_account] confirm the TOS agreement",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/ewa/ewa_accounts/:ewa_account_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "ewa_account_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Once user went through all TOS pages, mark it. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\ntos_yes | boolean | * |\n\n\nOutput\n- - - \n[EWA Account Serializer]"
+        },
+        {
+          "info": {
+            "name": "[ewa_transaction] borrow money",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/ewa/ewa_transactions/borrow",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Call this API when customer want borrow money from Shyft\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer | * | in cents\ndue_at | date | | customer selected payback date\n\n\nOutput\n- - - \n\n[EWA Transaction Serializer]"
+        },
+        {
+          "info": {
+            "name": "[ewa_transaction] return money",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/ewa/ewa_transactions/payback",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Call this API when customer want return money from Shyft\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer | * | in cents\n\n\nOutput\n- - - \n[EWA Transaction Serializer]"
+        },
+        {
+          "info": {
+            "name": "[bank_account] create and active bank_account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/ewa/bank_accounts/add_account",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "public_token",
+                "value": "public-sandbox-5df51fa7-25e5-4c1f-ba0b-87705ccbfc1b",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Add a new bank account to current user's EWA account\n- Will deactive all other bank accounts if new one added\n- \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npublic_token | string | * | the token got from Plaid\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nbank_name | string | * | the bank name got from Plaid\n\n\nOutput\n- - - \n\n[Bank Account Serializer]"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

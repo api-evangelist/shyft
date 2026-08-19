@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Messions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Messions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get test push notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/messions/:mession_id/test_push",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "mession_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get test push notification"
+        },
+        {
+          "info": {
+            "name": "Update mession",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/messions/:mession_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "mession_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update mession"
+        },
+        {
+          "info": {
+            "name": "Logout mession - Deprecated",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/messions/:session_uukey",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "session_uukey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Logout mession - Deprecated"
+        },
+        {
+          "info": {
+            "name": "Logout mession - Option 2",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/messions/logout",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Logout mession - Option 2"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

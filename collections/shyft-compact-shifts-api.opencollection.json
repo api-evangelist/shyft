@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Compact > Shifts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compact > Shifts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[shifts] get shifts from associated location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/schedule_elements",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Description\n- - - \n- List the schedule elements for the requested location.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id | integer\nassociated_location_id | integer\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        },
+        {
+          "info": {
+            "name": "[shifts] get ALL schedule_elements only with coworker inventory for specific date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/schedule_elements/all",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "per_page",
+                "value": "100",
+                "type": "query"
+              },
+              {
+                "name": "start_after",
+                "value": "2018-01-01 00:00:00",
+                "type": "query"
+              },
+              {
+                "name": "start_before",
+                "value": "2018-10-01 00:00:00",
+                "type": "query"
+              },
+              {
+                "name": "only_coworker_inventory",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Description\n- - - \n- List the schedule elements for the requested location.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id | integer\nassociated_location_id | integer\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

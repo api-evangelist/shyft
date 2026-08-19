@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Callbacks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Callbacks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Stripe callback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/stripe_new_subscription",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Stripe-Signature",
+                "value": "t=1692922649,v1=df59c0d4ec83168eab44fd32a7d7c94383f513347773e67772c6ac20a0d61c86,v0=33c90eb139b42cf174fceef6e03585222b2da7e13a260bcf2b373583d52a012b"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stripe callback"
+        },
+        {
+          "info": {
+            "name": "{{host}}/gap_oauth Copy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/gap_oauth",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "{{host}}/gap_oauth Copy"
+        },
+        {
+          "info": {
+            "name": "{{host}}/lb_sso",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/lb_sso",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "{{host}}/lb_sso"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

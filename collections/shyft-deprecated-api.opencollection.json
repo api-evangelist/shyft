@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Deprecated API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deprecated",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PhoneNumber - Sign in (verify SMS)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/code_auth/18083836511",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "sign_in_code",
+                "value": "9999",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "For the first time, please have `confirm=true` to active this account. otherwise it is not considred as geneated account.\n\nOnce succeeded. Please extract these fields from `Headers` returned: \n\n`access-token, expiry, token-type, uid, client`\n\nAnd please include these headers in your future API calls for authentication purpose. \n\n`expiry` returns Unix epoch time in seocnds."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

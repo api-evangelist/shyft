@@ -1,0 +1,717 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Shifts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Shifts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[shifts] get associated shifts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[shifts] get associated shifts"
+        },
+        {
+          "info": {
+            "name": "[shifts] get items for mobile app calendar view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/calendar",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[shifts] get items for mobile app calendar view"
+        },
+        {
+          "info": {
+            "name": "[shifts] get managable shifts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/can_admin",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[shifts] get managable shifts"
+        },
+        {
+          "info": {
+            "name": "[shifts] count shifts group by date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/group_count",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[shifts] count shifts group by date"
+        },
+        {
+          "info": {
+            "name": "[shifts] get a shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/2699959",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "[shifts] get a shift"
+        },
+        {
+          "info": {
+            "name": "[shifts] get shift applicants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/3948024/get_current_applicants",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Pull all applicants on target posted shift\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nschedule_element_id | integer | * | path variable\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[Applicant Object]\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nstatus | string | | applied / picked / denied"
+        },
+        {
+          "info": {
+            "name": "[shifts] create shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/locations/2806/schedule_elements",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "Token token={{api_key_access_token}}"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values \n--- | --- \nname |[\"shift\", \"open_shift\", \"shift_pickup\", \"shift_inventory\"]"
+        },
+        {
+          "info": {
+            "name": "[shifts] create shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/one_point_five_create",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "Token token={{api_key_access_token}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values \n--- | ---"
+        },
+        {
+          "info": {
+            "name": "[shifts] draft create shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/schedule_elements/draft_create",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values \n--- | ---"
+        },
+        {
+          "info": {
+            "name": "[shifts] create bulk shifts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/bulk_create",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "86c78555-b722-42e0-a722-7ba2789a109c"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "Token token={{api_key_access_token}}"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values \n--- | --- \nname |[\"shift\", \"open_shift\", \"shift_pickup\", \"shift_inventory\"]"
+        },
+        {
+          "info": {
+            "name": "[shifts] bulk upsync shifts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/integration/shifts/bulk_upsync",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Description\n- - - \nSynchronize multiple shifts (create, update, delete)\n\n* This API can import existing users' shifts. \n* This API can update existing shifts' changes. \n* This API can remove existing shifts. \n* This API can update existing shift or create it if not created yet. \n\n* With `async_mode=false`, the server will process the data immediately and return the processed data. It should only be used for small amount of data. \n\n* With `async_mode=true`, the server will process the data in bac"
+        },
+        {
+          "info": {
+            "name": "[schedule] convert schedule to shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/:inventory_id/convert",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "inventory_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values | M\n--- | --- | ---\nshift_content | what ever you want post with this shift | \ntip_amount | ex: 3 | \nchannel_id | supply it if going to specific channel, otherwise goes to location deafult one |"
+        },
+        {
+          "info": {
+            "name": "[shifts] edit shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/943268",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values | M\n--- | --- | ---\nshift_content | what ever you want post with this shift | \ntip_amount | ex: 3 | \nchannel_id | supply it if going to specific channel, otherwise goes to location deafult one |"
+        },
+        {
+          "info": {
+            "name": "[shifts] draft update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/5672529/draft_update",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values | M\n--- | --- | ---\nshift_content | what ever you want post with this shift | \ntip_amount | ex: 3 | \nchannel_id | supply it if going to specific channel, otherwise goes to location deafult one |"
+        },
+        {
+          "info": {
+            "name": "[shifts] publish a shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/5758408/publish",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values | M\n--- | --- | ---\nshift_content | what ever you want post with this shift | \ntip_amount | ex: 3 | \nchannel_id | supply it if going to specific channel, otherwise goes to location deafult one |"
+        },
+        {
+          "info": {
+            "name": "[shifts] unpublish a shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/4749081/unpublish",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values | M\n--- | --- | ---\nshift_content | what ever you want post with this shift | \ntip_amount | ex: 3 | \nchannel_id | supply it if going to specific channel, otherwise goes to location deafult one |"
+        },
+        {
+          "info": {
+            "name": "[shifts] bulk publish shifts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/bulk_publish",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values | M\n--- | --- | ---\nshift_content | what ever you want post with this shift | \ntip_amount | ex: 3 | \nchannel_id | supply it if going to specific channel, otherwise goes to location deafult one |"
+        },
+        {
+          "info": {
+            "name": "[shifts] cover shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/2564007/cover",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[shifts] cover shift"
+        },
+        {
+          "info": {
+            "name": "[shifts] approve shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/22027/approve",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[shifts] approve shift"
+        },
+        {
+          "info": {
+            "name": "[shifts] reject shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/22035/reject",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[shifts] reject shift"
+        },
+        {
+          "info": {
+            "name": "[shifts] pick an applicant",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/2564007/pick_applicant",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Description\n- - - \n- API to pick up a candiate from all applicants for a target shift. \n- Shift should be at `posted` status\n- `applicant_id` should be one of IDs of existing applicants\n- current user must be qualify for picking up a candiate based on `cover mode`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\napplicant_id | integer | * | applicant record ID\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Descr"
+        },
+        {
+          "info": {
+            "name": "[shifts] deny an applicant",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/2564007/deny_applicant",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "applicant_id",
+                "value": "6",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Description\n- - - \n- API to deny an existing applicant\n- Shift should be at `posted` status\n- `applicant_id` should be one of valid IDs of existing applicants\n- current user must be qualify for picking up a candiate based on `cover mode`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\napplicant_id | integer | * | applicant record ID\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | --"
+        },
+        {
+          "info": {
+            "name": "[shifts] call off",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/2568755/call_off",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values | M\n--- | --- | ---\nshift_content | what ever you want post with this shift | \ntip_amount | ex: 3 | \nchannel_id | supply it if going to specific channel, otherwise goes to location deafult one |"
+        },
+        {
+          "info": {
+            "name": "[shifts] revoke",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/schedule_elements/000/revoke",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Input\n- - - \n\nAttribute | Values | M\n--- | --- | ---\nshift_content | what ever you want post with this shift | \ntip_amount | ex: 3 | \nchannel_id | supply it if going to specific channel, otherwise goes to location deafult one |"
+        },
+        {
+          "info": {
+            "name": "[shifts] destroy shift",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/schedule_elements/:shift_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "shift_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "[shifts] destroy shift"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

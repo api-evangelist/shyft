@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Compact > Posts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compact > Posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get a post's free_posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/posts/:post_id/free_posts",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "1f01adc9-16a9-49e4-8329-2e8cd8245dad"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "get a post's free_posts"
+        },
+        {
+          "info": {
+            "name": "get a post's applicants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/posts/:post_id/get_current_applicants",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "NOTE: Only applicable for `shift post` , otherwise raise `403`"
+        },
+        {
+          "info": {
+            "name": "get a applicant's free_posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/applicants/:applicant_id/free_posts",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "applicant_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "get a applicant's free_posts"
+        },
+        {
+          "info": {
+            "name": "get a post's like user ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/posts/:post_id/like_owner_ids",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "get a post's like user ids"
+        },
+        {
+          "info": {
+            "name": "get a post's read user ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/posts/:post_id/receipt_user_ids",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "get a post's read user ids"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

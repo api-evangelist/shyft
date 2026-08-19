@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Uploader API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Uploader",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "upload a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/uploader/file",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Description\n- - - \n- upload a file: PDF\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\n* Please use `form-data` \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nfile |  | * | file type blob"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

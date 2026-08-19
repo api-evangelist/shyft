@@ -1,0 +1,1677 @@
+{
+  "item": [
+    {
+      "id": "4218260c-c582-46aa-9498-d1a7e535203f",
+      "name": "Customer > Users > user_role",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6f9f7e6-f1f7-4318-8c76-267bf6802f46",
+          "name": "[users] get coworkers  of specific location",
+          "request": {
+            "name": "[users] get coworkers  of specific location",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[keep]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77afdd8b-a58f-40a4-9e03-91cd5524c16e",
+              "name": "OK ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[keep]",
+                      "value": "skill_ids"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Platform",
+                  "value": "{{platform}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "{{version}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Build-Number",
+                  "value": "{{build_number}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Push-Id",
+                  "value": "{{push_id}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "{{session_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "{{session_uukey}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Uid",
+                  "value": "{{uid}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "{{auth_category}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "{{auth_target}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Token-Type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Client",
+                  "value": "{{client}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Access-Token",
+                  "value": "{{access_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Expiry",
+                  "value": "{{expiry}}",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"id\": 4257,\n      \"active_org\": 1,\n      \"first_name\": \"Maria\",\n      \"last_name\": \"Jacinto\",\n      \"email\": \"15599941826@coffeemobile.com\",\n      \"gender\": 0,\n      \"chat_handle\": \"78000cb25f74aa4496a734c57274d7ef\",\n      \"user_group\": 0,\n      \"status\": \"\",\n      \"current_open_availability_request_submit_status\": \"not_submitted\",\n      \"profile_image\": null,\n      \"current_open_availability_request\": {\n        \"id\": 15,\n        \"user_id\": 9046,\n        \"location_id\": 2159,\n        \"notes\": \"please submit your new availability\"\n      },\n      \"current_submitted_availability_for_current_open_request\": null,\n      \"current_user_privilege\": {\n        \"id\": 4588,\n        \"email\": \"15599941826@coffeemobile.com\",\n        \"wage\": 15,\n        \"position\": \"F&F\",\n        \"is_approved\": true,\n        \"owner_id\": 4257,\n        \"location_id\": 2159,\n        \"org_id\": 1,\n        \"is_admin\": false,\n        \"read_only\": false,\n        \"first_name\": \"Maria\",\n        \"last_name\": \"Jacinto\",\n        \"phone_number\": \"15599941826\",\n        \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\",\n        \"current_availability\": null\n      },\n      \"current_availability\": null\n    },\n    {\n      \"id\": 8193,\n      \"active_org\": 1,\n      \"first_name\": \"Deepak7210\",\n      \"last_name\": \"Yyhh\",\n      \"email\": \"18888887210@coffeemobile.com\",\n      \"gender\": 0,\n      \"chat_handle\": \"dc503f6993ed30223bb2b622c2ad3086\",\n      \"user_group\": 0,\n      \"status\": \"\",\n      \"current_open_availability_request_submit_status\": \"not_submitted\",\n      \"profile_image\": null,\n      \"current_open_availability_request\": {\n        \"id\": 15,\n        \"user_id\": 9046,\n        \"location_id\": 2159,\n        \"notes\": \"please submit your new availability\"\n      },\n      \"current_submitted_availability_for_current_open_request\": null,\n      \"current_user_privilege\": {\n        \"id\": 10465,\n        \"email\": \"18888887210@coffeemobile.com\",\n        \"wage\": 15,\n        \"position\": null,\n        \"is_approved\": true,\n        \"owner_id\": 8193,\n        \"location_id\": 2159,\n        \"org_id\": 1,\n        \"is_admin\": false,\n        \"read_only\": false,\n        \"first_name\": \"Deepak7210\",\n        \"last_name\": \"Yyhh\",\n        \"phone_number\": \"18888887210\",\n        \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\",\n        \"current_availability\": null\n      },\n      \"current_availability\": null\n    },\n    {\n      \"id\": 8195,\n      \"active_org\": 0,\n      \"first_name\": \"Deepak7211\",\n      \"last_name\": \"Ghh\",\n      \"email\": \"18888887212@coffeemobile.com\",\n      \"gender\": 0,\n      \"chat_handle\": \"f92ee5f1f3a51a6d3ce2e9f5962b5405\",\n      \"user_group\": 0,\n      \"status\": \"\",\n      \"current_open_availability_request_submit_status\": \"not_submitted\",\n      \"profile_image\": null,\n      \"current_open_availability_request\": {\n        \"id\": 15,\n        \"user_id\": 9046,\n        \"location_id\": 2159,\n        \"notes\": \"please submit your new availability\"\n      },\n      \"current_submitted_availability_for_current_open_request\": null,\n      \"current_user_privilege\": {\n        \"id\": 10466,\n        \"email\": \"18888887212@coffeemobile.com\",\n        \"wage\": 15,\n        \"position\": null,\n        \"is_approved\": true,\n        \"owner_id\": 8195,\n        \"location_id\": 2159,\n        \"org_id\": 1,\n        \"is_admin\": false,\n        \"read_only\": false,\n        \"first_name\": \"Deepak7211\",\n        \"last_name\": \"Ghh\",\n        \"phone_number\": \"18888887212\",\n        \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\",\n        \"current_availability\": null\n      },\n      \"current_availability\": null\n    },\n    {\n      \"id\": 8645,\n      \"active_org\": 0,\n      \"first_name\": \"Deepak0003\",\n      \"last_name\": \"Haha\",\n      \"email\": \"deepak@myshyft.com\",\n      \"gender\": 0,\n      \"chat_handle\": \"8ce1efceaa0226ab3656ba2f32cebc83\",\n      \"user_group\": 0,\n      \"status\": \"\",\n      \"current_open_availability_request_submit_status\": \"not_submitted\",\n      \"profile_image\": null,\n      \"current_open_availability_request\": {\n        \"id\": 15,\n        \"user_id\": 9046,\n        \"location_id\": 2159,\n        \"notes\": \"please submit your new availability\"\n      },\n      \"current_submitted_availability_for_current_open_request\": null,\n      \"current_user_privilege\": {\n        \"id\": 10148,\n        \"email\": \"deepak@myshyft.com\",\n        \"wage\": 15,\n        \"position\": null,\n        \"is_approved\": true,\n        \"owner_id\": 8645,\n        \"location_id\": 2159,\n        \"org_id\": 1,\n        \"is_admin\": true,\n        \"read_only\": false,\n        \"first_name\": \"Deepak0003\",\n        \"last_name\": \"Haha\",\n        \"phone_number\": \"18882790003\",\n        \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\",\n        \"current_availability\": null\n      },\n      \"current_availability\": null\n    },\n    {\n      \"id\": 9046,\n      \"active_org\": 1,\n      \"first_name\": \"BIN\",\n      \"last_name\": null,\n      \"email\": \"libin0120@gmail.com\",\n      \"gender\": 0,\n      \"chat_handle\": \"3704ed17fd20978c115c87aa554d2565\",\n      \"user_group\": 0,\n      \"status\": \"\",\n      \"current_open_availability_request_submit_status\": \"not_submitted\",\n      \"profile_image\": null,\n      \"current_open_availability_request\": {\n        \"id\": 15,\n        \"user_id\": 9046,\n        \"location_id\": 2159,\n        \"notes\": \"please submit your new availability\"\n      },\n      \"current_submitted_availability_for_current_open_request\": null,\n      \"current_user_privilege\": {\n        \"id\": 10547,\n        \"email\": \"libin0120@gmail.com\",\n        \"wage\": 100,\n        \"position\": \"engineer\",\n        \"is_approved\": true,\n        \"owner_id\": 9046,\n        \"location_id\": 2159,\n        \"org_id\": 1,\n        \"is_admin\": true,\n        \"read_only\": false,\n        \"first_name\": \"BIN\",\n        \"last_name\": null,\n        \"phone_number\": null,\n        \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\",\n        \"current_availability\": {\n          \"id\": 77,\n          \"status\": \"pending\",\n          \"notes\": null,\n          \"user_id\": 9046,\n          \"location_id\": 2159,\n          \"availability_request_id\": 12,\n          \"sunday\": {\n            \"_associations_removed\": true,\n            \"start_at\": \"00:00\",\n            \"end_at\": null\n          },\n          \"monday\": {\n            \"_associations_removed\": true,\n            \"start_at\": \"10:00\",\n            \"end_at\": \"12:00\"\n          },\n          \"tuesday\": {\n            \"_associations_removed\": true,\n            \"start_at\": null,\n            \"end_at\": \"12:00\"\n          },\n          \"wednesday\": {\n            \"_associations_removed\": true,\n            \"start_at\": null,\n            \"end_at\": null\n          },\n          \"thursday\": {\n            \"_associations_removed\": true,\n            \"start_at\": null,\n            \"end_at\": null\n          },\n          \"friday\": {\n            \"_associations_removed\": true,\n            \"start_at\": null,\n            \"end_at\": null\n          },\n          \"saturday\": {\n            \"_associations_removed\": true,\n            \"start_at\": null,\n            \"end_at\": null\n          },\n          \"user\": {\n            \"_associations_removed\": true,\n            \"id\": 9046,\n            \"active_org\": 1,\n            \"first_name\": \"BIN\",\n            \"last_name\": null,\n            \"email\": \"libin0120@gmail.com\",\n            \"gender\": 0,\n            \"chat_handle\": \"3704ed17fd20978c115c87aa554d2565\",\n            \"user_group\": 0,\n            \"status\": \"\",\n            \"current_open_availability_request_submit_status\": \"not_submitted\"\n          }\n        }\n      },\n      \"current_availability\": {\n        \"id\": 77,\n        \"status\": \"pending\",\n        \"notes\": null,\n        \"user_id\": 9046,\n        \"location_id\": 2159,\n        \"availability_request_id\": 12,\n        \"sunday\": {\n          \"start_at\": \"00:00\",\n          \"end_at\": null\n        },\n        \"monday\": {\n          \"start_at\": \"10:00\",\n          \"end_at\": \"12:00\"\n        },\n        \"tuesday\": {\n          \"start_at\": null,\n          \"end_at\": \"12:00\"\n        },\n        \"wednesday\": {\n          \"start_at\": null,\n          \"end_at\": null\n        },\n        \"thursday\": {\n          \"start_at\": null,\n          \"end_at\": null\n        },\n        \"friday\": {\n          \"start_at\": null,\n          \"end_at\": null\n        },\n        \"saturday\": {\n          \"start_at\": null,\n          \"end_at\": null\n        },\n        \"user\": {\n          \"id\": 9046,\n          \"active_org\": 1,\n          \"first_name\": \"BIN\",\n          \"last_name\": null,\n          \"email\": \"libin0120@gmail.com\",\n          \"gender\": 0,\n          \"chat_handle\": \"3704ed17fd20978c115c87aa554d2565\",\n          \"user_group\": 0,\n          \"status\": \"\",\n          \"current_open_availability_request_submit_status\": \"not_submitted\",\n          \"profile_image\": null,\n          \"current_open_availability_request\": {\n            \"_associations_removed\": true,\n            \"id\": 15,\n            \"user_id\": 9046,\n            \"location_id\": 2159,\n            \"notes\": \"please submit your new availability\"\n          },\n          \"current_submitted_availability_for_current_open_request\": null,\n          \"current_user_privilege\": {\n            \"_associations_removed\": true,\n            \"id\": 10547,\n            \"email\": \"libin0120@gmail.com\",\n            \"wage\": 100,\n            \"position\": \"engineer\",\n            \"is_approved\": true,\n            \"owner_id\": 9046,\n            \"location_id\": 2159,\n            \"org_id\": 1,\n            \"is_admin\": true,\n            \"read_only\": false,\n            \"first_name\": \"BIN\",\n            \"last_name\": null,\n            \"phone_number\": null,\n            \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n          },\n          \"current_availability\": {\n            \"_associations_removed\": true,\n            \"id\": 77,\n            \"status\": \"pending\",\n            \"notes\": null,\n            \"user_id\": 9046,\n            \"location_id\": 2159,\n            \"availability_request_id\": 12\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09247b15-33d4-494f-a8ef-3cc9e590f3a6",
+          "name": "[users]  get current user's content counters",
+          "request": {
+            "name": "[users]  get current user's content counters",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "users",
+                ":user_id",
+                "get_counters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd6ef3f2-61ea-4fc9-b381-7195d2149470",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "users",
+                    ":user_id",
+                    "get_counters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location_id",
+                      "value": "{{location_id}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8537c57-daba-49f6-8dec-55c9f156d1ec",
+          "name": "[users] Get user profile",
+          "request": {
+            "name": "[users] Get user profile",
+            "description": {
+              "content": "Input \n- - -\n\nAttribute | Values | M\n--- | --- | ---\n\nOutput \n- - -\n\n\npush settings list: \n- label is translated\n- type indicate the value server can accept\n- `key` is the attribute name\n\n```\n        \"push_settings_list\": {\n            \"all_push\": {\n                \"label\": \"All Push Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"shift_push\": {\n                \"label\": \"Shift Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"schedule_push\": {\n                \"label\": \"Schedule Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"community_push\": {\n                \"label\": \"Community Notifications\",\n                \"type\": \"boolean\"\n            }\n        }\n```       \n        \n\nAttribute | Values |\n--- | ---",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87d84e91-0060-4dfe-a229-900dd5ffd8b9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"198f7c4ba166e58eb479de89e97e66c0\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=LytwaXpFbEltZTJaK3I1R244VlVqU0RncDY2MFFVaFBqRVhmNFRNVFBUK0R1MnFZWm9qYjh0YkJwYUVwM2lES01WbjZWSVRLNFJTaG9KZjBkRGVNSmc9PS0tZ05ZSlplanFqa1FFRml4ZFRiY3N2UT09--195aa1deba336f32cda2235459019930f204a655; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "581d3d63-c359-43c9-9b60-e511f4f7cc9f",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "4617.005140125078",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin 1.5.1 codename Straight Razor",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"_parent_object_id\": null,\n    \"id\": 11284,\n    \"active_org\": 1,\n    \"first_name\": \"Admin\",\n    \"last_name\": \"1000241\",\n    \"email\": \"bin@myshyft.com\",\n    \"gender\": 0,\n    \"user_group\": 0,\n    \"push_settings_list\": {\n      \"all_push\": {\n        \"label\": \"All Push Notifications\",\n        \"type\": \"boolean\"\n      },\n      \"shift_push\": {\n        \"label\": \"Shift Notifications\",\n        \"type\": \"boolean\"\n      },\n      \"schedule_push\": {\n        \"label\": \"Schedule Notifications\",\n        \"type\": \"boolean\"\n      },\n      \"community_push\": {\n        \"label\": \"Community Notifications\",\n        \"type\": \"boolean\"\n      }\n    },\n    \"current_position\": null,\n    \"current_user_privilege_id\": null,\n    \"current_is_approved\": null,\n    \"all_push\": true,\n    \"shift_push\": true,\n    \"schedule_push\": true,\n    \"community_push\": true,\n    \"locale\": \"en\",\n    \"profile_image\": null,\n    \"recent_user_privilege\": {\n      \"id\": 13742,\n      \"wage\": 15,\n      \"first_name\": \"Admin\",\n      \"last_name\": \"1000241\",\n      \"location_id\": 2635,\n      \"is_admin\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14cd4f3c-a183-4418-9c7f-795de9ccc101",
+          "name": "[users] update user profile",
+          "request": {
+            "name": "[users] update user profile",
+            "description": {
+              "content": "Description\n- - - \n- Update a user profile\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocale| en/fr/es | | |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[put_return_resource]",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "0df45525-8686-4c6d-8277-763c997fcec4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[put_return_resource]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\t\\\"user\\\" : {\\n\\t\\t\\\"locale\\\": \\\"fr\\\"\\n\\t}\\n}\\n\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Location",
+                  "value": "http://system-api.myshyft.devel:4001/users/11284",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"dc1a453e289c46bb36a41915d88d687c\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=QmNvT3lBTHNHTU9naXJnV1prVHRFWlFUeFc3QWV2TzhXOHZYemNZMnlmcUUvQjVMV0RSNEVKbll1dUVqdlhsejZscDIza1BwSVkxclFscUUzWWViVXc9PS0tMkZNdXlVQ1l1U0xGcE85MUdNWTdPUT09--d4f4cd640da81ea7c9839142791e6b3320ef8d01; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "11bfab36-3431-417d-8478-58e4f1cf6bd8",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "299.15504937421457",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"_parent_object_id\": null,\n    \"id\": 11284,\n    \"active_org\": 1,\n    \"first_name\": \"Admin\",\n    \"last_name\": \"1000241\",\n    \"email\": \"bin@myshyft.com\",\n    \"phone_number\": \"18083836511\",\n    \"gender\": 0,\n    \"chat_handle\": \"6db93a877e2b70b40d3b2e98e958b979\",\n    \"user_group\": 0,\n    \"status\": \"\",\n    \"current_position\": null,\n    \"current_user_privilege_id\": null,\n    \"current_is_approved\": null,\n    \"all_push\": true,\n    \"shift_push\": true,\n    \"schedule_push\": true,\n    \"community_push\": true,\n    \"profile_image\": null,\n    \"recent_user_privilege\": {\n      \"_parent_object_id\": 11284,\n      \"id\": 13742,\n      \"email\": \"bin@myshyft.com\",\n      \"wage\": 15,\n      \"position\": \"engineer\",\n      \"is_approved\": true,\n      \"owner_id\": 11284,\n      \"location_id\": 2635,\n      \"org_id\": 1,\n      \"is_admin\": false,\n      \"read_only\": false,\n      \"first_name\": \"Admin\",\n      \"last_name\": \"1000241\",\n      \"phone_number\": \"18083836511\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\",\n      \"admin_claim_pending\": true,\n      \"status\": \"active\",\n      \"current_availability\": null,\n      \"location\": {\n        \"_parent_object_id\": 13742,\n        \"id\": 2635,\n        \"swift_code\": \"ZVXWC8\",\n        \"location_name\": \"Gap - 7770\",\n        \"unit_number\": null,\n        \"street_number\": null,\n        \"address\": \"20-A KINGSWORTH TURNPIKE\",\n        \"province\": \"CT\",\n        \"postal\": \"6413\",\n        \"country\": \"United States\",\n        \"lat\": null,\n        \"lng\": null,\n        \"latitude\": 41.2893665,\n        \"longitude\": -72.5319364,\n        \"phone_number\": null,\n        \"created_at\": \"2018-01-18T06:33:14.594Z\",\n        \"users_count\": 1,\n        \"formatted_address\": \"20-A Killingworth Turnpike, Clinton, CT 06413, USA\",\n        \"time_zone\": \"America/New_York\",\n        \"google_map_id\": \"ChIJPz67E1Av5okRCWqMA_o8PHE\",\n        \"four_sq_id\": null,\n        \"allow_tipping\": true,\n        \"shift_require_approval\": true,\n        \"shyft_pro_active\": true,\n        \"shyft_pro_expiry_date\": \"2019-01-18T06:33:14.041Z\",\n        \"fence_radius\": null,\n        \"cfg_not_dm\": null,\n        \"cfg_geofence_log\": null,\n        \"cfg_timeout\": null,\n        \"tos_url\": null,\n        \"tos_version\": null,\n        \"require_approval\": false,\n        \"shyft_pro_subscription_status\": 0,\n        \"admin_delete_content\": true,\n        \"ip_blocked\": false,\n        \"member_count\": 1,\n        \"location_address\": null,\n        \"location_city\": \"CLINTON, CT, 6413\",\n        \"division_names\": [\n          \"Boston\"\n        ],\n        \"feed_channel_id\": 4756,\n        \"pending_users_count\": 0\n      },\n      \"user\": {\n        \"_parent_object_id\": 13742,\n        \"id\": 11284,\n        \"active_org\": 1,\n        \"first_name\": \"Admin\",\n        \"last_name\": \"1000241\",\n        \"email\": \"bin@myshyft.com\",\n        \"phone_number\": \"18083836511\",\n        \"gender\": 0,\n        \"chat_handle\": \"6db93a877e2b70b40d3b2e98e958b979\",\n        \"user_group\": 0,\n        \"status\": \"\",\n        \"current_position\": null,\n        \"current_user_privilege_id\": null,\n        \"current_is_approved\": null,\n        \"all_push\": true,\n        \"shift_push\": true,\n        \"schedule_push\": true,\n        \"community_push\": true,\n        \"profile_image\": null,\n        \"recent_user_privilege\": {\n          \"_associations_removed\": true,\n          \"_parent_object_id\": 11284,\n          \"id\": 13742,\n          \"email\": \"bin@myshyft.com\",\n          \"wage\": 15,\n          \"position\": \"engineer\",\n          \"is_approved\": true,\n          \"owner_id\": 11284,\n          \"location_id\": 2635,\n          \"org_id\": 1,\n          \"is_admin\": false,\n          \"read_only\": false,\n          \"first_name\": \"Admin\",\n          \"last_name\": \"1000241\",\n          \"phone_number\": \"18083836511\",\n          \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\",\n          \"admin_claim_pending\": true,\n          \"status\": \"active\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd82ea83-85e5-4e83-a5ce-8dd06e048746",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[put_return_resource]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\t\\\"user\\\" : {\\n\\t\\t\\\"locale\\\": \\\"fr\\\"\\n\\t}\\n}\\n\""
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=dUtYY05wenpxcXVjbUh0N0VQTkxmbnlNaVd1S3NRS1dUNWFvRjJ6MEV2R3ltUlBYOFMzVjBrVEQ4eWN2U1VIdkFLNWNRbHlGMFp0eGVoTWVBSnZpOG5JNXhtdTg3NVlrQXVhT3dIZ2prQVgraC83SnBWOFVSVFpJa0ZtODRiRW5yckVDYWpIUHAzQ2d4UlZFM1RvSTRHYUd6UHl1SXFZbStTVkYwUXFKd0JDY2lLclpEN3ErTEFOb3FzZldRdjkvNUdoWHhhRW5BWlJ2VHo3WjFCV3lJRDViWTg1Um9HWlFlcWlpSkt6UkJmOD0tLUlCWmJuTldTdWpNREFuMjFEb1orZGc9PQ%3D%3D--a8260c18865a69c9207ba1b0d7ce47d40cd99023; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "ff664e97-e2b4-45d7-8305-f4f3a14b7b8d",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "3286.164385357072",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin 1.5.1 codename Straight Razor",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d51c0586-2e38-4cbe-9c08-5cff6750347f",
+          "name": "[users] find users by given criterias",
+          "request": {
+            "name": "[users] find users by given criterias",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "users",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "first_name_like",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name_like",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e70861d-cbcf-4402-9d82-184028f449f9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "users",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "first_name_like",
+                      "value": "Bin"
+                    },
+                    {
+                      "key": "last_name_like",
+                      "value": "Li"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Platform",
+                  "value": "{{platform}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "{{version}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Build-Number",
+                  "value": "{{build_number}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Push-Id",
+                  "value": "{{push_id}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "{{session_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "{{session_uukey}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Uid",
+                  "value": "{{uid}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "{{auth_category}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "{{auth_target}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Token-Type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Client",
+                  "value": "{{client}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Access-Token",
+                  "value": "{{access_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Expiry",
+                  "value": "{{expiry}}",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9559,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin6007@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"NC:180838360067\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9558,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin6006@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"NC:18083836006\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9554,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin6002@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"NC:18083836002\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9553,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin6001@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"18083836001\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9064,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"18083836511\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9565,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin6072@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"NC:18083836072\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9566,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin9999@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": null\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9555,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin6003@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"NC:18083836003\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9564,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin6071@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"NC:18083836071\"\n    },\n    {\n      \"_parent_object_id\": null,\n      \"id\": 9568,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin6080@myshyft.com\",\n      \"gender\": 0,\n      \"phone_number\": \"18083836080\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"previous_page\": null,\n      \"current_page\": 1,\n      \"next_page\": 2,\n      \"per_page\": 10,\n      \"total_pages\": 4,\n      \"total_count\": 38\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b39b352c-5d0c-4e32-8497-ed2492c39c68",
+          "name": "[users] get speficic members  of specific location by given ID",
+          "request": {
+            "name": "[users] get speficic members  of specific location by given ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "locations",
+                ":location_id",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7f100bd-f5be-47bc-b1b5-3018d5057c6c",
+              "name": "OK ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "locations",
+                    ":location_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Platform",
+                  "value": "{{platform}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "{{version}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Build-Number",
+                  "value": "{{build_number}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Push-Id",
+                  "value": "{{push_id}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "{{session_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "{{session_uukey}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Uid",
+                  "value": "{{uid}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "{{auth_category}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "{{auth_target}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Token-Type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Client",
+                  "value": "{{client}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Access-Token",
+                  "value": "{{access_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Expiry",
+                  "value": "{{expiry}}",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": 9046,\n    \"active_org\": 1,\n    \"first_name\": \"BIN\",\n    \"last_name\": null,\n    \"email\": \"libin0120@gmail.com\",\n    \"gender\": 0,\n    \"chat_handle\": \"3704ed17fd20978c115c87aa554d2565\",\n    \"user_group\": 0,\n    \"status\": \"\",\n    \"current_open_availability_request_submit_status\": \"not_submitted\",\n    \"profile_image\": null,\n    \"current_open_availability_request\": {\n      \"id\": 15,\n      \"user_id\": 9046,\n      \"location_id\": 2159,\n      \"notes\": \"please submit your new availability\"\n    },\n    \"current_submitted_availability_for_current_open_request\": null,\n    \"current_user_privilege\": {\n      \"id\": 10547,\n      \"email\": \"libin0120@gmail.com\",\n      \"wage\": 100,\n      \"position\": \"engineer\",\n      \"is_approved\": true,\n      \"owner_id\": 9046,\n      \"location_id\": 2159,\n      \"org_id\": 1,\n      \"is_admin\": true,\n      \"read_only\": false,\n      \"first_name\": \"BIN\",\n      \"last_name\": null,\n      \"phone_number\": null,\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\",\n      \"current_availability\": {\n        \"id\": 77,\n        \"status\": \"pending\",\n        \"notes\": null,\n        \"user_id\": 9046,\n        \"location_id\": 2159,\n        \"availability_request_id\": 12,\n        \"sunday\": {\n          \"_associations_removed\": true,\n          \"start_at\": \"00:00\",\n          \"end_at\": null\n        },\n        \"monday\": {\n          \"_associations_removed\": true,\n          \"start_at\": \"10:00\",\n          \"end_at\": \"12:00\"\n        },\n        \"tuesday\": {\n          \"_associations_removed\": true,\n          \"start_at\": null,\n          \"end_at\": \"12:00\"\n        },\n        \"wednesday\": {\n          \"_associations_removed\": true,\n          \"start_at\": null,\n          \"end_at\": null\n        },\n        \"thursday\": {\n          \"_associations_removed\": true,\n          \"start_at\": null,\n          \"end_at\": null\n        },\n        \"friday\": {\n          \"_associations_removed\": true,\n          \"start_at\": null,\n          \"end_at\": null\n        },\n        \"saturday\": {\n          \"_associations_removed\": true,\n          \"start_at\": null,\n          \"end_at\": null\n        },\n        \"user\": {\n          \"_associations_removed\": true,\n          \"id\": 9046,\n          \"active_org\": 1,\n          \"first_name\": \"BIN\",\n          \"last_name\": null,\n          \"email\": \"libin0120@gmail.com\",\n          \"gender\": 0,\n          \"chat_handle\": \"3704ed17fd20978c115c87aa554d2565\",\n          \"user_group\": 0,\n          \"status\": \"\",\n          \"current_open_availability_request_submit_status\": \"not_submitted\"\n        }\n      }\n    },\n    \"current_availability\": {\n      \"id\": 77,\n      \"status\": \"pending\",\n      \"notes\": null,\n      \"user_id\": 9046,\n      \"location_id\": 2159,\n      \"availability_request_id\": 12,\n      \"sunday\": {\n        \"start_at\": \"00:00\",\n        \"end_at\": null\n      },\n      \"monday\": {\n        \"start_at\": \"10:00\",\n        \"end_at\": \"12:00\"\n      },\n      \"tuesday\": {\n        \"start_at\": null,\n        \"end_at\": \"12:00\"\n      },\n      \"wednesday\": {\n        \"start_at\": null,\n        \"end_at\": null\n      },\n      \"thursday\": {\n        \"start_at\": null,\n        \"end_at\": null\n      },\n      \"friday\": {\n        \"start_at\": null,\n        \"end_at\": null\n      },\n      \"saturday\": {\n        \"start_at\": null,\n        \"end_at\": null\n      },\n      \"user\": {\n        \"id\": 9046,\n        \"active_org\": 1,\n        \"first_name\": \"BIN\",\n        \"last_name\": null,\n        \"email\": \"libin0120@gmail.com\",\n        \"gender\": 0,\n        \"chat_handle\": \"3704ed17fd20978c115c87aa554d2565\",\n        \"user_group\": 0,\n        \"status\": \"\",\n        \"current_open_availability_request_submit_status\": \"not_submitted\",\n        \"profile_image\": null,\n        \"current_open_availability_request\": {\n          \"_associations_removed\": true,\n          \"id\": 15,\n          \"user_id\": 9046,\n          \"location_id\": 2159,\n          \"notes\": \"please submit your new availability\"\n        },\n        \"current_submitted_availability_for_current_open_request\": null,\n        \"current_user_privilege\": {\n          \"_associations_removed\": true,\n          \"id\": 10547,\n          \"email\": \"libin0120@gmail.com\",\n          \"wage\": 100,\n          \"position\": \"engineer\",\n          \"is_approved\": true,\n          \"owner_id\": 9046,\n          \"location_id\": 2159,\n          \"org_id\": 1,\n          \"is_admin\": true,\n          \"read_only\": false,\n          \"first_name\": \"BIN\",\n          \"last_name\": null,\n          \"phone_number\": null,\n          \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n        },\n        \"current_availability\": {\n          \"_associations_removed\": true,\n          \"id\": 77,\n          \"status\": \"pending\",\n          \"notes\": null,\n          \"user_id\": 9046,\n          \"location_id\": 2159,\n          \"availability_request_id\": 12\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0783783e-e053-4c2d-9a7d-46ea225c2f64",
+          "name": "[users] change user's current location",
+          "request": {
+            "name": "[users] change user's current location",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "users",
+                ":user_id",
+                "change_location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "87a8e048-f000-426a-b51f-e07b143a4493",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "users",
+                    ":user_id",
+                    "change_location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n\\t\\\"user\\\" : {\\n\\t\\t\\\"location\\\": 2\\n\\t}\\n}\\n\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4242eab6-dbb3-4c47-9b32-4ae2400d9397",
+          "name": "[users] remove my account",
+          "request": {
+            "name": "[users] remove my account",
+            "description": {
+              "content": "Input \n- - -\n\nAttribute | Values | M\n--- | --- | ---\n\nOutput \n- - -\n\n\npush settings list: \n- label is translated\n- type indicate the value server can accept\n- `key` is the attribute name\n\n```\n        \"push_settings_list\": {\n            \"all_push\": {\n                \"label\": \"All Push Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"shift_push\": {\n                \"label\": \"Shift Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"schedule_push\": {\n                \"label\": \"Schedule Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"community_push\": {\n                \"label\": \"Community Notifications\",\n                \"type\": \"boolean\"\n            }\n        }\n```       \n        \n\nAttribute | Values |\n--- | ---",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "users",
+                "remove_me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a84a1664-9845-4e44-b5c9-839abac2c415",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "users",
+                    "remove_me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "2bc812fe-ce5d-43f0-96da-961256e9915f",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=R0hRbVp4dDZYWjZyQndBN0dmWXdZeWN5SEdoZWgzNDMxa1JEYXpYSjdVZTlYZ2VwMEpzYmRvNWJxM2tEQWUyYlpXak1GWDMyMk0va3BnVE5sQmJML1E9PS0tczZaUGxEczdyY2ZQWUV6cW1nWFlyQT09--c5e54f1253915f256281520e60d4f200aefa5300; path=/; secure; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "11df9f32-c097-41f4-b29b-b6d5edbca59c",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "547.338657324331",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000;",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "03577437-9a7b-464a-bce6-e2210ba1933a",
+    "name": "Shyft Customer Authentication > Email Customer > Users > user_role API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

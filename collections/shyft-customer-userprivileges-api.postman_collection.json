@@ -1,0 +1,1559 @@
+{
+  "item": [
+    {
+      "id": "d27b0288-6b34-4b21-8eed-7e4bddbc1cb3",
+      "name": "Customer > UserPrivileges",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "41b0e631-6ddc-4d57-b587-872f41558379",
+          "name": "[user_privilege] get viewable user privileges",
+          "request": {
+            "name": "[user_privilege] get viewable user privileges",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                "can_view"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "93cf120d-7322-4b2e-865b-466ce64a8eed",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    "can_view"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "cbe20296-eba0-4f2e-92a7-5fca6bcad651",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad1062cf-6d78-4228-bad6-c874ed18c87f",
+          "name": "[user_privilege] get my user privileges",
+          "request": {
+            "name": "[user_privilege] get my user privileges",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sso_is",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "333ce592-1cf2-4849-af2e-5ad27bc644e6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sso_is",
+                      "value": "sso_gap"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de43395f-352f-4e2e-bc51-af7563244538",
+          "name": "[user_privilege] join a location",
+          "request": {
+            "name": "[user_privilege] join a location",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "d6767010-2aef-4531-9127-2e1280df12aa",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"user_privilege\\\": {\\n  \\t\\\"location_id\\\": 11, \\n  \\t\\\"position\\\": \\\"engineer\\\", \\n  \\t\\\"internal_id\\\": \\\"00000000\\\"\\n  }\\n}\""
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "nginx/1.19.3",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Date",
+                  "value": "Thu, 13 May 2021 00:06:44 GMT",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=R0IyZW9SWWxjZ2hJUDJWeFJZbG1SWDdUNEpJNlVKSWJOTG1OUEJHcmZCSjIyRXdLWDJhb3RTMU4rTjZpWHBIVThXeWlUSkFMQTQ1VEVhcG1aeS9ZT0E9PS0tRkh6VmZ4bHFVT3JWTVcxTkdhV0JyZz09--5f5606aa176904b5b0e75f8087d8d6946bfc9682; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "BinLocalServer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "f4a27326-6b31-46f2-a45c-595ca1930194",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "9008.752522524159",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"user\": [\n      {\n        \"code\": \"ERR_UP_0001\",\n        \"message\": \"You are already a team member at this location\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f188e6b-519d-4b9e-9f67-945e4e8d3e43",
+          "name": "[user_privilege] get manageable user privileges",
+          "request": {
+            "name": "[user_privilege] get manageable user privileges",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                "can_admin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "approved",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pending",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "removed",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b9718358-a719-4dce-adc7-9048b47d7875",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    "can_admin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "approved",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "removed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c07417d-f528-4506-a7ee-50ab88419977",
+          "name": "[user_privilege] get a user privilege settings",
+          "request": {
+            "name": "[user_privilege] get a user privilege settings",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                ":user_privilege_id",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_privilege_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a2151f30-abff-4a23-a49c-b13e310930c4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    ":user_privilege_id",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_privilege_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea8b1d79-1754-4664-b725-15b0105ba8e5",
+          "name": "[user_privilege]  approve user privilege",
+          "request": {
+            "name": "[user_privilege]  approve user privilege",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                "11334",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "aa51ba06-0d36-44f3-bec0-7557524cb8ba",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    "11334",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"user_privilege\\\": {\\n    \\\"wage\\\": 200,\\n    \\\"position\\\": \\\"engineer2\\\"\\n  }\\n}\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af8e9fe2-f6d2-47fc-ab39-cee79ff32d6b",
+          "name": "[user_privilege]  update user privilege",
+          "request": {
+            "name": "[user_privilege]  update user privilege",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                "21561"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[put_return_resource]",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "6594b856-83d3-40e8-ae9b-282d82a05a6e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    "21561"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[put_return_resource]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"user_privilege\\\": {\\n    \\\"wage\\\": 200,\\n    \\\"position\\\": \\\"engineer2\\\",\\n    \\\"badge_id\\\": \\\"A0000002\\\"\\n  }\\n}\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"73f56d64d55de28ef096f6acfe76f263\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=bFE4aFZzcjBtc3dhMTVCeGw4MTlRcUoycE9IbTJBcXlhblJlbmMxWDRqUE1HUGI2MWsyQ3Z5YkNNR01ibldxVUFrYnFONFk0OHlRRHI3dWFmMmlPOEE9PS0tNytVUFRGQWxVeVJNN1pZZmdHMzN1QT09--deee68a1cd92c3f6d55db66fdedea38cbf302936; path=/; secure; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "6e9e1430-a271-429d-9897-ab3ee8b1d678",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "9497.55272617208",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000;",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_privilege\": {\n    \"_parent_object_id\": null,\n    \"id\": 21568,\n    \"email\": \"bin@myshyft.com\",\n    \"wage\": 200,\n    \"position\": \"engineer2\",\n    \"badge_id\": \"00000001\",\n    \"is_approved\": true,\n    \"owner_id\": 14815,\n    \"location_id\": 5459,\n    \"org_id\": 1,\n    \"is_admin\": false,\n    \"read_only\": false,\n    \"first_name\": \"Bin\",\n    \"last_name\": \"Li\",\n    \"phone_number\": \"18083836511\",\n    \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398\",\n    \"chat_handle\": \"8c1e4b01e6585ab51ecee9c9c6ca8306\",\n    \"admin_claim_pending\": false,\n    \"status\": \"active\",\n    \"allow_toggle_approve\": null,\n    \"allow_toggle_shift_approval\": null,\n    \"allow_toggle_dashboard\": null,\n    \"allow_toggle_delete_content\": null,\n    \"allow_toggle_tipping\": null,\n    \"allow_approve\": null,\n    \"allow_shift_approve\": null,\n    \"allow_delete_user\": null,\n    \"allow_delete_post\": null,\n    \"allow_delete_schedule\": null,\n    \"allow_tipping\": null,\n    \"allow_delete_shift_inventory\": null,\n    \"allow_delete_shift_posted\": null,\n    \"allow_delete_shift_covered\": null,\n    \"allow_delete_shift_pending\": null,\n    \"allow_delete_shift_approved\": null,\n    \"allow_delete_shift_rejected\": null,\n    \"department_ids\": [],\n    \"location\": {\n      \"_parent_object_id\": 21568,\n      \"id\": 5459,\n      \"swift_code\": \"CMSDEMO\",\n      \"location_name\": \"CMS Demo\",\n      \"unit_number\": \"3131\",\n      \"street_number\": \"\",\n      \"address\": \"3131 Western Ave STE 515\",\n      \"province\": \"WA\",\n      \"postal\": \"98121\",\n      \"country\": \"USA\",\n      \"lat\": null,\n      \"lng\": null,\n      \"latitude\": 47.6181458,\n      \"longitude\": -122.3574266,\n      \"phone_number\": \"\",\n      \"created_at\": \"2018-11-30T07:39:06.912Z\",\n      \"users_count\": 138,\n      \"formatted_address\": \"3131 Western Ave STE 515 #3131, Seattle, WA 98121, USA\",\n      \"time_zone\": \"America/Los_Angeles\",\n      \"google_map_id\": \"ChIJE2hfuLRqkFQRxQj8zSjtks8\",\n      \"four_sq_id\": null,\n      \"allow_tipping\": true,\n      \"shift_require_approval\": true,\n      \"shyft_pro_active\": true,\n      \"shyft_pro_expiry_date\": \"2026-12-31T04:37:00.000Z\",\n      \"fence_radius\": null,\n      \"cfg_not_dm\": false,\n      \"cfg_geofence_log\": false,\n      \"cfg_timeout\": null,\n      \"cfg_vto\": true,\n      \"cfg_call_off\": null,\n      \"tos_url\": \"\",\n      \"tos_version\": null,\n      \"require_approval\": true,\n      \"documents\": [\n        {\n          \"title\": \"Shyft Terms of Service\",\n          \"url\": \"https://myshyft.com/terms.en.html\"\n        }\n      ],\n      \"shyft_pro_subscription_status\": 0,\n      \"admin_delete_content\": true,\n      \"ip_blocked\": false,\n      \"member_count\": 17,\n      \"location_address\": null,\n      \"location_city\": \"Seattle, WA, 98121\",\n      \"feed_channel_id\": 7780,\n      \"pending_users_count\": 1,\n      \"shyft_pro_trial_flag\": false,\n      \"is_sso_required\": false,\n      \"cfg_exclude_coworker_schedules\": false,\n      \"cfg_exclude_coworker_schedules_from_admins\": false,\n      \"cfg_user_signup_show_email\": false,\n      \"available_cover_modes\": [\n        \"multi_applicants_picked_by_manager\",\n        \"default\"\n      ],\n      \"default_cover_mode\": \"multi_applicants_picked_by_manager\",\n      \"configuration\": null,\n      \"avatar_blob\": {\n        \"_parent_object_id\": 5459,\n        \"id\": 1558,\n        \"content_type\": \"image/png\",\n        \"service_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/ESqAnhE3jTNaaUH6964arcDt?sp=r&sv=2016-05-31&se=2023-01-09T23%3A09%3A10Z&rscd=inline%3B+filename%3D%22shyft.png%22%3B+filename*%3DUTF-8%27%27shyft.png&rsct=image%2Fpng&sr=b&sig=FfxUPRvhOg7%2FVFIPSYHMnsKK8QEOSUj0uZKv0vLp0ws%3D\",\n        \"filename\": \"shyft.png\",\n        \"byte_size\": 15423,\n        \"blob_url\": \"https://test-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlHIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42b195047758699474376584dc2e1179889b1be7/shyft.png\",\n        \"preview_blob_url\": null\n      }\n    },\n    \"user\": {\n      \"_parent_object_id\": 21568,\n      \"id\": 14815,\n      \"active_org\": 0,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin@myshyft.com\",\n      \"phone_number\": \"18083836511\",\n      \"gender\": 0,\n      \"chat_handle\": \"8c1e4b01e6585ab51ecee9c9c6ca8306\",\n      \"user_group\": 0,\n      \"status\": \"\",\n      \"push_settings_list\": {\n        \"shift_push\": {\n          \"label\": \"Shift Notifications\",\n          \"type\": \"boolean\"\n        },\n        \"schedule_push\": {\n          \"label\": \"Schedule Notifications\",\n          \"type\": \"boolean\"\n        },\n        \"community_push\": {\n          \"label\": \"Community Notifications\",\n          \"type\": \"boolean\"\n        }\n      },\n      \"push_settings_list_array\": [\n        {\n          \"label\": \"Shift Notifications\",\n          \"type\": \"boolean\",\n          \"key\": \"shift_push\"\n        },\n        {\n          \"label\": \"Schedule Notifications\",\n          \"type\": \"boolean\",\n          \"key\": \"schedule_push\"\n        },\n        {\n          \"label\": \"Community Notifications\",\n          \"type\": \"boolean\",\n          \"key\": \"community_push\"\n        }\n      ],\n      \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398\",\n      \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398\",\n      \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398\",\n      \"current_position\": \"Cashier1\",\n      \"current_user_privilege_id\": 21574,\n      \"current_is_approved\": true,\n      \"current_is_admin\": true,\n      \"all_push\": true,\n      \"shift_push\": true,\n      \"schedule_push\": true,\n      \"community_push\": true,\n      \"cfg_ewa_ok\": null,\n      \"cfg_lock_profile\": null,\n      \"skill_ids\": [\n        3\n      ],\n      \"locale\": \"en\",\n      \"profile_image\": {\n        \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398\",\n        \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398\",\n        \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398\"\n      },\n      \"recent_user_privilege\": {\n        \"_parent_object_id\": 14815,\n        \"id\": 21574,\n        \"email\": \"bin@myshyft.com\",\n        \"wage\": null,\n        \"position\": \"Cashier1\",\n        \"badge_id\": null,\n        \"is_approved\": true,\n        \"owner_id\": 14815,\n        \"location_id\": 2806,\n        \"org_id\": 1,\n        \"is_admin\": true,\n        \"read_only\": false,\n        \"first_name\": \"Bin\",\n        \"last_name\": \"Li\",\n        \"phone_number\": \"18083836511\",\n        \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398\",\n        \"chat_handle\": \"8c1e4b01e6585ab51ecee9c9c6ca8306\",\n        \"admin_claim_pending\": false,\n        \"status\": \"active\",\n        \"allow_toggle_approve\": null,\n        \"allow_toggle_shift_approval\": true,\n        \"allow_toggle_dashboard\": null,\n        \"allow_toggle_delete_content\": null,\n        \"allow_toggle_tipping\": null,\n        \"allow_approve\": null,\n        \"allow_shift_approve\": null,\n        \"allow_delete_user\": null,\n        \"allow_delete_post\": null,\n        \"allow_delete_schedule\": null,\n        \"allow_tipping\": null,\n        \"allow_delete_shift_inventory\": null,\n        \"allow_delete_shift_posted\": null,\n        \"allow_delete_shift_covered\": null,\n        \"allow_delete_shift_pending\": null,\n        \"allow_delete_shift_approved\": null,\n        \"allow_delete_shift_rejected\": null,\n        \"department_ids\": [],\n        \"location\": {\n          \"_associations_removed\": true,\n          \"_parent_object_id\": 21574,\n          \"id\": 2806,\n          \"swift_code\": \"RSZPNM\",\n          \"location_name\": \"Mysterious Red X\",\n          \"unit_number\": \"\",\n          \"street_number\": \"\",\n          \"address\": \"1111 18th Avenue\",\n          \"province\": \"Washington\",\n          \"postal\": \"98122\",\n          \"country\": \"United States\",\n          \"lat\": \"47.612037\",\n          \"lng\": \"-122.309243\",\n          \"latitude\": 47.6120608,\n          \"longitude\": -122.3092501,\n          \"phone_number\": \"+1 206-300-2056\",\n          \"created_at\": \"2018-01-24T21:25:21.654Z\",\n          \"users_count\": 288,\n          \"formatted_address\": \"1111 18th Ave, Seattle, WA 98122, USA\",\n          \"time_zone\": \"America/Los_Angeles\",\n          \"google_map_id\": \"ChIJf5JaJNBqkFQRkwKIHwjwbDA\",\n          \"four_sq_id\": null,\n          \"allow_tipping\": true,\n          \"shift_require_approval\": true,\n          \"shyft_pro_active\": true,\n          \"shyft_pro_expiry_date\": \"2017-09-04T04:37:00.000Z\",\n          \"fence_radius\": null,\n          \"cfg_not_dm\": false,\n          \"cfg_geofence_log\": false,\n          \"cfg_timeout\": null,\n          \"cfg_vto\": true,\n          \"cfg_call_off\": true,\n          \"tos_url\": \"\",\n          \"tos_version\": null,\n          \"require_approval\": true,\n          \"documents\": [\n            {\n              \"title\": \"Shyft Terms of Service\",\n              \"url\": \"https://myshyft.com/terms.en.html\"\n            }\n          ],\n          \"shyft_pro_subscription_status\": 0,\n          \"admin_delete_content\": true,\n          \"ip_blocked\": false,\n          \"member_count\": 139,\n          \"location_address\": null,\n          \"location_city\": \"Seattle, Washington, 98122\",\n          \"feed_channel_id\": 4927,\n          \"pending_users_count\": 0,\n          \"shyft_pro_trial_flag\": false,\n          \"is_sso_required\": false,\n          \"cfg_exclude_coworker_schedules\": false,\n          \"cfg_exclude_coworker_schedules_from_admins\": false,\n          \"cfg_user_signup_show_email\": true,\n          \"available_cover_modes\": [\n            \"multi_applicants_picked_by_manager\",\n            \"default\"\n          ],\n          \"default_cover_mode\": \"multi_applicants_picked_by_manager\"\n        },\n        \"user\": {\n          \"_associations_removed\": true,\n          \"_parent_object_id\": 21574,\n          \"id\": 14815,\n          \"active_org\": 0,\n          \"first_name\": \"Bin\",\n          \"last_name\": \"Li\",\n          \"email\": \"bin@myshyft.com\",\n          \"phone_number\": \"18083836511\",\n          \"gender\": 0,\n          \"chat_handle\": \"8c1e4b01e6585ab51ecee9c9c6ca8306\",\n          \"user_group\": 0,\n          \"status\": \"\",\n          \"push_settings_list\": {\n            \"shift_push\": {\n              \"label\": \"Shift Notifications\",\n              \"type\": \"boolean\"\n            },\n            \"schedule_push\": {\n              \"label\": \"Schedule Notifications\",\n              \"type\": \"boolean\"\n            },\n            \"community_push\": {\n              \"label\": \"Community Notifications\",\n              \"type\": \"boolean\"\n            }\n          },\n          \"push_settings_list_array\": [\n            {\n              \"label\": \"Shift Notifications\",\n              \"type\": \"boolean\",\n              \"key\": \"shift_push\"\n            },\n            {\n              \"label\": \"Schedule Notifications\",\n              \"type\": \"boolean\",\n              \"key\": \"schedule_push\"\n            },\n            {\n              \"label\": \"Community Notifications\",\n              \"type\": \"boolean\",\n              \"key\": \"community_push\"\n            }\n          ],\n          \"thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/18489_file.png?1634334398\",\n          \"gallery_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/gallery/18489_file.png?1634334398\",\n          \"full_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/full/18489_file.png?1634334398\",\n          \"current_position\": \"Cashier1\",\n          \"current_user_privilege_id\": 21574,\n          \"current_is_approved\": true,\n          \"current_is_admin\": true,\n          \"all_push\": true,\n          \"shift_push\": true,\n          \"schedule_push\": true,\n          \"community_push\": true,\n          \"cfg_ewa_ok\": null,\n          \"cfg_lock_profile\": null,\n          \"skill_ids\": [\n            3\n          ],\n          \"locale\": \"en\"\n        },\n        \"pending_legals\": []\n      }\n    },\n    \"pending_legals\": []\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f866de1-28e3-470e-acba-f59923223fa0",
+          "name": "[user_privilege]  leave a loaction",
+          "request": {
+            "name": "[user_privilege]  leave a loaction",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                "11333"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "97492fdf-17b0-4f06-8145-11973beab0d4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    "11333"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "add6b9d2-9434-49b6-a4f1-748348ac86d7",
+          "name": "[user_privilege] remove from a location",
+          "request": {
+            "name": "[user_privilege] remove from a location",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                "11359",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da1b40f0-86b0-4bbd-8795-ef88e8ad497c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    "11359",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c065ef22-c8ea-489e-96ed-2a9dc4b7a128",
+          "name": "[user_privilege]  withdraw a location",
+          "request": {
+            "name": "[user_privilege]  withdraw a location",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                "11355",
+                "withdraw"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "750e35ea-cd02-4306-9fa4-54a94c4b2cd6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    "11355",
+                    "withdraw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03804c50-08d1-49ee-aa18-475eef5a7af4",
+          "name": "[user_privilege]  decline join a location",
+          "request": {
+            "name": "[user_privilege]  decline join a location",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "user_privileges",
+                "11355",
+                "decline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fdaa7ca2-a6bd-41eb-b27f-2564f4e38443",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "user_privileges",
+                    "11355",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cfdf00e0-70b9-468a-a9fc-954da521d511",
+    "name": "Shyft Customer Authentication > Email Customer > UserPrivileges API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

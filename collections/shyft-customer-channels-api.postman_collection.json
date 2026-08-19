@@ -1,0 +1,1370 @@
+{
+  "item": [
+    {
+      "id": "2bde8fd8-8217-4fea-870e-459edb2fb03a",
+      "name": "Customer > Channels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad289610-7179-41cd-82f4-eb8d682afddb",
+          "name": "get channels",
+          "request": {
+            "name": "get channels",
+            "description": {
+              "content": "Get all my channels. \nDefault: return `custom_feed` and `location_feed` if not specified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "434e912e-5a1f-4d25-b95e-34d97b7f0bf4",
+              "name": "OK ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Platform",
+                  "value": "{{platform}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "{{version}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Build-Number",
+                  "value": "{{build_number}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Push-Id",
+                  "value": "{{push_id}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Token",
+                  "value": "{{session_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Session-Uukey",
+                  "value": "{{session_uukey}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Uid",
+                  "value": "{{uid}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Category",
+                  "value": "{{auth_category}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Auth-Target",
+                  "value": "{{auth_target}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Token-Type",
+                  "value": "Bearer",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Client",
+                  "value": "{{client}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Access-Token",
+                  "value": "{{access_token}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Expiry",
+                  "value": "{{expiry}}",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"channels\": [\n    {\n      \"_parent_object_id\": null,\n      \"id\": 4755,\n      \"channel_name\": \"Gap - 7734\",\n      \"member_count\": 3,\n      \"description\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5d7d93b-0738-46e8-be62-bad5e3e31f5f",
+          "name": "create channel",
+          "request": {
+            "name": "create channel",
+            "description": {
+              "content": "Description\n- - - \n- Create customer channel targetted to specific location\n- Options to add channel members while creating channel. \n- User needs to have proper privilege to target location\n- Member of channel need to have proper privilege to target location\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nchannel_name |  | * | | \nchannel_frequency |   |* | target location ID|\nsubscriptions_attributes | |  | set of members to add in |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "e2216e91-d641-42fe-876a-736fe5cf3d81",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"channel\\\": {\\n    \\\"channel_name\\\": \\\"channelName\\\",\\n    \\\"channel_frequency\\\": 5459,\\n    \\\"avatar_blob_id\\\": 1316\\n  }\\n}\\t\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"7c2483088f27dfed8e89bea20619e6f1\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=VjBZcERTQzFId0pRMVdrVml0SVBTcjJDdWpBaWdGbTQ4aDViN0oxSnNPWUttMi9Wa0p6aStEMVRLVjYyZ09hYk5PQUtuamlpaDYzZU1sNWdFRHhzZXc9PS0tVDNVRVQwRHRoaWx5V1crWU1yZ3dFUT09--26204287ce0df50c51cb9aa887de2ee73a0a45c1; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "f7573b10-03dc-4903-8327-9b7698336344",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "4924.862553140016",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"channel\": {\n    \"_parent_object_id\": null,\n    \"id\": 7786,\n    \"channel_name\": \"channelName\",\n    \"member_count\": 3,\n    \"channel_type\": \"custom_feed\",\n    \"description\": null,\n    \"is_admin\": true,\n    \"channel_latest_content\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d20b3f6c-076f-4079-952e-3739ba8669b0",
+          "name": "get manageable channels",
+          "request": {
+            "name": "get manageable channels",
+            "description": {
+              "content": "Get all my channels. \nDefault: return `custom_feed` and `location_feed` if not specified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels",
+                "can_admin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eaaf5dbd-1687-4817-bad4-93c1ee0884f5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels",
+                    "can_admin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6e624a6-041e-4125-b529-e306ac8083f5",
+          "name": "get a channel",
+          "request": {
+            "name": "get a channel",
+            "description": {
+              "content": "Get all my channels. \nDefault: return `custom_feed` and `location_feed` if not specified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels",
+                "12558"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2135cd9f-884e-4c36-a330-0b826baab04d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels",
+                    "12558"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"d1bd06b0c870f7c12b5e6b54d61714f6\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=bkplQ0pscjk3OUcraEFHSzk4cWZveVFVR29EWEVpbmNBZmpGNFRLbG8waG9JejNGeUp0NUhsQS81Q3dNU1Z5V3dkUEJKUmpMeCs3WFpjTDRCam40enc9PS0tNDh0dm1uNVhSd2lFSDd6OWgyeWlKZz09--075e02852bb7ccef37e41c212bdf417ee324c6c5; path=/; secure; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "5e0b60b2-9841-4dfa-83f9-9a86f619c156",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "5603.551163978542",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000;",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"channel\": {\n    \"_parent_object_id\": null,\n    \"id\": 12884,\n    \"channel_name\": \"XPO Test Region\",\n    \"updated_at\": \"2021-06-30T06:50:35.946Z\",\n    \"member_count\": 3,\n    \"channel_type\": \"region_feed\",\n    \"description\": null,\n    \"is_admin\": true,\n    \"channel_latest_content\": null,\n    \"associated_location_id\": null,\n    \"avatar_blob\": {\n      \"_parent_object_id\": 12884,\n      \"id\": 1433,\n      \"content_type\": \"image/png\",\n      \"service_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/eTnNRfkuw4ZdKweGFTkNpDM7?sp=r&sv=2016-05-31&se=2021-06-30T06%3A57%3A29Z&rscd=inline%3B+filename%3D%22gxo-logo-png.png%22%3B+filename*%3DUTF-8%27%27gxo-logo-png.png&rsct=image%2Fpng&sr=b&sig=BnHuZTq4f5U5ITJwCooiZHqb3wJOoELPpdCstrsuOSE%3D\",\n      \"filename\": \"gxo-logo-png.png\",\n      \"byte_size\": 8973,\n      \"blob_url\": \"https://test-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02dfa32ff1c011dd76b61976c6e05334a5b3b8f2/gxo-logo-png.png\",\n      \"preview_blob_url\": null\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6f32ad4-46ab-469f-a8b8-7ecfd7641649",
+          "name": "get a channel's active members(users)",
+          "request": {
+            "name": "get a channel's active members(users)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels",
+                "3344",
+                "member_users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9296b0b3-2ab5-4c2d-addf-4ff5944c0eae",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels",
+                    "3344",
+                    "member_users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Referrer-Policy",
+                  "value": "strict-origin-when-cross-origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "none",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"7398a893df9dff112285c9464da8dc6d\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=YzZQM1Z3VktidDAvWUR6akMrS1ZuSHZNeGcyeFFKMzB0NmdycW0vMVMwZjkwY2xqK2ZDWlp2NC9USTJFZ09tN1BsS0wvazlJemh1b0ZkNzB2VWdwU1E9PS0tZ2t4SUhQbkllekplK0F6S0hkazc5Zz09--61c2e4db0f08f9c71a1032801f744a88cabb890f; path=/; secure; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "9c8a780a-49f5-4488-9391-c5440532caa4",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "8229.157341723441",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000;",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"first_name\": \"Samar\",\n      \"last_name\": \"Saab\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Brittany\",\n      \"last_name\": \"Rumeo\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Stephanie \",\n      \"last_name\": \"Valle \",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Donna\",\n      \"last_name\": \"Militar\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Mike\",\n      \"last_name\": \"Forrest\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/6372_2573-20151127_161026_062.jpg?1448658691\"\n    },\n    {\n      \"first_name\": \"Andy\",\n      \"last_name\": \"Chou\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Shantelle\",\n      \"last_name\": \"Holder\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Shawn\",\n      \"last_name\": \"Marche\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Joel\",\n      \"last_name\": \"Ducharme\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Olivia\",\n      \"last_name\": \"Storic\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/6388_2538-20151127_170104_618.jpg?1448661664\"\n    },\n    {\n      \"first_name\": \"Benel\",\n      \"last_name\": \"Kamal\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Andrei\",\n      \"last_name\": \"Romanytchev\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Isaac\",\n      \"last_name\": \"Shaba\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Laura\",\n      \"last_name\": \"Chae Kua\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/6614_cropped2016-03-29T203926.872Z.jpg?1459283971\"\n    },\n    {\n      \"first_name\": \"Kiana\",\n      \"last_name\": \"Torshizi\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Lauren\",\n      \"last_name\": \"Iaccino\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Lateasha\",\n      \"last_name\": \"Thompson\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/6609_croppedTue_Mar_29_13_38_18_PDT_2016.jpg?1459283898\"\n    },\n    {\n      \"first_name\": \"Rana\",\n      \"last_name\": \"I Clothiers\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Marina\",\n      \"last_name\": \"Marksdin\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Ashorena\",\n      \"last_name\": \"Slewa\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8414_cropped2018-01-17T185954.346Z.jpg?1516215778\"\n    },\n    {\n      \"first_name\": \"Nohara\",\n      \"last_name\": \"Odisho\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Mohammad Hossein\",\n      \"last_name\": \"Zarifi\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Ashurina\",\n      \"last_name\": \"Toma\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Christian\",\n      \"last_name\": \"Calaunan\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Marvin\",\n      \"last_name\": \"Thomas\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Catherine\",\n      \"last_name\": \"Xia\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Ciearra\",\n      \"last_name\": \"Powell\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Brianna\",\n      \"last_name\": \"Hansma\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Heather\",\n      \"last_name\": \"Nelson\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Brett\",\n      \"last_name\": \"Patrontasch\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/7797_cropped2017-04-21T004943.806Z.jpg?1492735786\"\n    },\n    {\n      \"first_name\": \"Danielle\",\n      \"last_name\": \"Furlotte\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Chris\",\n      \"last_name\": \"Pitchford\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/8479_9609-20180413_143853_533.jpg?1523644741\"\n    },\n    {\n      \"first_name\": \"Tyler\",\n      \"last_name\": \"Kinley\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/4030_Img_20150626_155658.jpg?1435348636\"\n    },\n    {\n      \"first_name\": \"Bhavesha\",\n      \"last_name\": \"Mistry\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Chris \",\n      \"last_name\": \"Pirchford\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/7652_7841-20170403_225618_853.jpg?1491285379\"\n    },\n    {\n      \"first_name\": \"Kyle549\",\n      \"last_name\": \"Liu\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Chris\",\n      \"last_name\": \"Manager\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/7968_8589-20170627_115637_795.jpg?1498579001\"\n    },\n    {\n      \"first_name\": \"Cody\",\n      \"last_name\": \"A\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Katelynn\",\n      \"last_name\": \"Elliott\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10070_9746-20190621_155935_437.jpg?1561157975\"\n    },\n    {\n      \"first_name\": \"Nicholas \",\n      \"last_name\": \"Miller\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Summer\",\n      \"last_name\": \"Schnell\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Jennifer \",\n      \"last_name\": \"Keys\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Erin\",\n      \"last_name\": \"Overman\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Lea\",\n      \"last_name\": \"Henderson\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Tiffany\",\n      \"last_name\": \"Smith\",\n      \"profile_image_thumb_url\": \"https://s3.amazonaws.com/shyftassets/avatar1.png\"\n    },\n    {\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"profile_image_thumb_url\": \"https://miniobackingstore.blob.core.windows.net/coffeemobile/images/thumb/10803_file.png?1574022681\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "044572cb-690f-4570-b523-23ec542ed3f2",
+          "name": "update channel",
+          "request": {
+            "name": "update channel",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels",
+                ":channel_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channel_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "a0e710af-18ba-4e65-9fca-5534c6598fa1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels",
+                    ":channel_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channel_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"{\\n  \\\"channel\\\": {\\n    \\\"avatar_blob_id\\\": 1433\\n  }\\n}\\t\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44af2ce7-923f-4344-b047-7a147170b1dc",
+          "name": "delete channel",
+          "request": {
+            "name": "delete channel",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels",
+                ":channel_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channel_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4516ca86-be08-4473-b9b3-ee885cdf80ad",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels",
+                    ":channel_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channel_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "68a5db7e-0a1c-48ba-b0c5-c0ae4fe0a7a7",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59c41cac-f664-45c1-a4b4-d508ecce487e",
+          "name": "remove a user",
+          "request": {
+            "name": "remove a user",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels",
+                "3344",
+                "remove_user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "42f68178-1afd-433c-9a51-c70ed142795e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels",
+                    "3344",
+                    "remove_user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd553020-5e6a-4eca-b823-e101bd0fc87f",
+          "name": "leave a channel",
+          "request": {
+            "name": "leave a channel",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "channels",
+                ":channel_id",
+                "leave"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channel_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "d58192ca-2360-4c9b-86a2-567dd36b4cb0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "channels",
+                    ":channel_id",
+                    "leave"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channel_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"\""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fc713106-81c8-4123-b47f-b37c8b2d057c",
+    "name": "Shyft Customer Authentication > Email Customer > Channels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

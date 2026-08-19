@@ -1,0 +1,533 @@
+{
+  "item": [
+    {
+      "id": "911b7153-cb63-4bc5-8dd4-fb54d5dcad20",
+      "name": "Customer > Comments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8f23768-b597-4b0f-a458-d9f13c020324",
+          "name": "get comments",
+          "request": {
+            "name": "get comments",
+            "description": {
+              "content": "please supply `post_id` for getting commeents for particular post",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "response[nested]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "response[keep]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "post_id",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f146db2f-6ac5-42fa-85d4-b60f6435571d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "response[nested]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "response[keep]",
+                      "value": "like_owners"
+                    },
+                    {
+                      "key": "post_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dddff5ad-3b23-4150-8468-a34028e43941",
+          "name": "create comment",
+          "request": {
+            "name": "create comment",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "2114972b-3a05-4ba2-be91-019bae90aea9",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "\" {\\n    \\\"comment\\\": {  \\n\\t    \\\"source_id\\\": \\\"22120\\\",\\n\\t    \\\"content\\\": \\\"Here is my comment!\\\"\\n\\t}\\n}\""
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-License",
+                  "value": "All Rights Reserved Â© Coffee Enterprise",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-LS-Application",
+                  "value": "Coffee Mobile",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Method",
+                  "value": "{{x_method}}",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "ETag",
+                  "value": "W/\"1925589f0f845d77954b1c01320a724c\"",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Set-Cookie",
+                  "value": "_shyft_api_server_session=QVFUV1d5RW5TMHQycWh3eGdUL1pjQnRrSElUTHZtU0IwcmxrNGVpNEw2ODV0RUpDcVU2QnJrY3JEd2NvVlA1bFB1ZjJYSTM1OGFudkFMTE9BcnEvNkNSR3ZDMEc3TGUrZnJKbTlOdjRXOVhKS0M4aWUxb2lNVE1Zdmg3ODRDUytJNmczaXVUV3pHWHhkQ0h4ZGFxeVhBQ0htZ1BjejZjZzUwcTZVdURxdldPdGtUVHR4YlNYTjBzb3luVHNkQUdZdWVvRXhINmtyQWZ1MkFnNmRmSkFhbDlXTitiZjZ5MFRqVGFVQTY1aGNOcz0tLUlQZ0pkUXBJV29QQkxIN2RPMHdKb0E9PQ%3D%3D--236d143e2721d800baa7c371b62c123ce7feaed6; path=/; HttpOnly",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Rack-Dev-Mark-Env",
+                  "value": "Bin%27s+Local+Server",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Request-Id",
+                  "value": "d3b144b1-f5c4-4572-ad10-ef8af0f4b74a",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "X-Runtime",
+                  "value": "5280.287909230791",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Vary",
+                  "value": "Origin",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Connection",
+                  "value": "close",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Server",
+                  "value": "thin 1.5.1 codename Straight Razor",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comment\": {\n    \"_parent_object_id\": null,\n    \"id\": 6247,\n    \"content\": \"Here is my comment!\",\n    \"source_id\": 22120,\n    \"likes_count\": 0,\n    \"created_at\": \"2018-10-16T04:15:42.800Z\",\n    \"liked\": false,\n    \"flagged\": false,\n    \"allow_delete\": true,\n    \"owner\": {\n      \"_parent_object_id\": 6247,\n      \"id\": 9064,\n      \"active_org\": 0,\n      \"first_name\": \"Bin\",\n      \"last_name\": \"Li\",\n      \"email\": \"bin+104@myshyft.com\",\n      \"gender\": 0,\n      \"chat_handle\": \"ab4693b99883e10dd5e7d17d0cf71200\",\n      \"user_group\": 0,\n      \"status\": \"\",\n      \"profile_image\": {\n        \"thumb_url\": \"https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950\",\n        \"gallery_url\": \"https://coffeemobile.s3.amazonaws.com/images/gallery/8352_data.?1512600950\",\n        \"full_url\": \"https://coffeemobile.s3.amazonaws.com/images/full/8352_data.?1512600950\"\n      },\n      \"recent_user_privilege\": {\n        \"_parent_object_id\": 9064,\n        \"id\": 11336,\n        \"email\": \"bin+104@myshyft.com\",\n        \"wage\": 15,\n        \"position\": null,\n        \"is_approved\": true,\n        \"owner_id\": 9064,\n        \"location_id\": 2324,\n        \"org_id\": 1,\n        \"is_admin\": true,\n        \"read_only\": false,\n        \"first_name\": \"Bin\",\n        \"last_name\": \"Li\",\n        \"phone_number\": \"18880006511\",\n        \"profile_image_thumb_url\": \"https://coffeemobile.s3.amazonaws.com/images/thumb/8352_data.?1512600950\",\n        \"admin_claim_pending\": false,\n        \"current_availability\": null,\n        \"location\": {\n          \"_associations_removed\": true,\n          \"_parent_object_id\": 11336,\n          \"id\": 2324,\n          \"swift_code\": \"QO9021\",\n          \"location_name\": \"Comfort Inn & Suites Bothell - Seattle North\",\n          \"unit_number\": null,\n          \"street_number\": null,\n          \"address\": \"1414 228th Street Southeast\",\n          \"province\": \"Washington\",\n          \"postal\": \"98021\",\n          \"country\": \"United States\",\n          \"lat\": \"47.790475\",\n          \"lng\": \"-122.213519\",\n          \"latitude\": 47.7904654,\n          \"longitude\": -122.2135587,\n          \"phone_number\": \"+1 425-402-0900\",\n          \"created_at\": \"2017-10-16T07:10:35.423Z\",\n          \"users_count\": 3,\n          \"formatted_address\": \"1414 228th St SE, Bothell, WA 98021, USA\",\n          \"time_zone\": null,\n          \"google_map_id\": \"ChIJA0sL1qkPkFQR43qJWFmWqvo\",\n          \"allow_tipping\": true,\n          \"shift_require_approval\": false,\n          \"shyft_pro_active\": false,\n          \"shyft_pro_expiry_date\": \"2018-12-04T19:10:49.425Z\",\n          \"fence_radius\": null,\n          \"cfg_not_dm\": false,\n          \"cfg_geofence_log\": null,\n          \"cfg_timeout\": null,\n          \"tos_url\": null,\n          \"tos_version\": null,\n          \"ip_blocked\": false,\n          \"member_count\": 3,\n          \"location_address\": null,\n          \"location_city\": \"Bothell, Washington, 98021\",\n          \"division_names\": [],\n          \"feed_channel_id\": 4359\n        },\n        \"user\": {\n          \"_associations_removed\": true,\n          \"_parent_object_id\": 11336,\n          \"id\": 9064,\n          \"active_org\": 0,\n          \"first_name\": \"Bin\",\n          \"last_name\": \"Li\",\n          \"email\": \"bin+104@myshyft.com\",\n          \"gender\": 0,\n          \"chat_handle\": \"ab4693b99883e10dd5e7d17d0cf71200\",\n          \"user_group\": 0,\n          \"status\": \"\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50561dd2-50ac-4687-aef9-521b000563fd",
+          "name": "get a single comment",
+          "request": {
+            "name": "get a single comment",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "comments",
+                "7093"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b361b498-ad39-448c-8b44-c8942207a25f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "comments",
+                    "7093"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "126e90f8-6a5e-429e-809d-c05274ad0cb0",
+          "name": "delete comment",
+          "request": {
+            "name": "delete comment",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "customer",
+                "user_role",
+                "comments",
+                "6649"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Session-Uukey",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0019a36d-307f-4ef2-a7bd-34f9d48a5d8a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer",
+                    "user_role",
+                    "comments",
+                    "6649"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Session-Uukey",
+                    "value": "{{session_uukey}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://{{host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1251addd-1e06-468f-9b77-418f10a4a98b",
+    "name": "Shyft Customer Authentication > Email Customer > Comments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

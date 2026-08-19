@@ -1,0 +1,270 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Users > user_role API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Users > user_role",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[users] get coworkers  of specific location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/users",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[keep]",
+                "value": "skill_ids",
+                "type": "query"
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[users] get coworkers  of specific location"
+        },
+        {
+          "info": {
+            "name": "[users]  get current user's content counters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/users/:user_id/get_counters",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "{{location_id}}",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[users]  get current user's content counters"
+        },
+        {
+          "info": {
+            "name": "[users] Get user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/users/:user_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Input \n- - -\n\nAttribute | Values | M\n--- | --- | ---\n\nOutput \n- - -\n\n\npush settings list: \n- label is translated\n- type indicate the value server can accept\n- `key` is the attribute name\n\n```\n        \"push_settings_list\": {\n            \"all_push\": {\n                \"label\": \"All Push Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"shift_push\": {\n                \"label\": \"Shift Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"schedule_pus"
+        },
+        {
+          "info": {
+            "name": "[users] update user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/users/:user_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- Update a user profile\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocale| en/fr/es | | |"
+        },
+        {
+          "info": {
+            "name": "[users] find users by given criterias",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/users/search",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "first_name_like",
+                "value": "Bin",
+                "type": "query"
+              },
+              {
+                "name": "last_name_like",
+                "value": "Li",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "[users] find users by given criterias"
+        },
+        {
+          "info": {
+            "name": "[users] get speficic members  of specific location by given ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/user_role/locations/:location_id/users/:user_id",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[users] get speficic members  of specific location by given ID"
+        },
+        {
+          "info": {
+            "name": "[users] change user's current location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/customer/user_role/users/:user_id/change_location",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "[users] change user's current location"
+        },
+        {
+          "info": {
+            "name": "[users] remove my account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{{host}}/api/customer/user_role/users/remove_me",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "2bc812fe-ce5d-43f0-96da-961256e9915f"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Input \n- - -\n\nAttribute | Values | M\n--- | --- | ---\n\nOutput \n- - -\n\n\npush settings list: \n- label is translated\n- type indicate the value server can accept\n- `key` is the attribute name\n\n```\n        \"push_settings_list\": {\n            \"all_push\": {\n                \"label\": \"All Push Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"shift_push\": {\n                \"label\": \"Shift Notifications\",\n                \"type\": \"boolean\"\n            },\n            \"schedule_pus"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

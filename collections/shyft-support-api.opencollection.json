@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Support API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Support",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Unfurl URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/",
+            "params": [
+              {
+                "name": "url",
+                "value": "https://google.com",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Unfurl URL"
+        },
+        {
+          "info": {
+            "name": "Stripe session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/stripe/create-portal-session",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Input \n- - -\n\nAttribute | Values | M\n--- | --- | ---\nemail | your email using for admin claim | Y  \nref_id | target location ID | Y\nemail_host | the host of the hyberlink inside the email | \n\nOutput \n- - -\n\nAttribute | Values |\n--- | --- \nid | recrod ID   \nsent_to | sent_to_shyft&#124;sent_to_user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

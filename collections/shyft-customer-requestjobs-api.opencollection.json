@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > RequestJobs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > RequestJobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get request jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/customer/request_jobs",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "86c78555-b722-42e0-a722-7ba2789a109c"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "Token token={{api_key_access_token}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid_is",
+                "value": "ccc12dbc-181b-4c52-ab11-080f4b8a3d1c,f95e8398-f902-46c4-bd4b-bd73ddedc0f4",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get request jobs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

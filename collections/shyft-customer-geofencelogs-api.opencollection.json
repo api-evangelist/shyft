@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > GeofenceLogs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > GeofenceLogs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "create geofence_log",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/geofence_logs",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Input \n- - -\n\nAttribute | Values \n--- | --- \naction |[\"approve_user\", \"reject_user\", \"delete_user\", \"rapprove_shift\", \"reject_shift\", \"open_shift\", \"team_availability\"] \npassed | true \\ false\nreason | [\"granted\", \"location_denied\", \"location_undetermined\", \"location_not_recent\", \"outside_region\"]"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

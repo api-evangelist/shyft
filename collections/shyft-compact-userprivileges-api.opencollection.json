@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Compact > UserPrivileges API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compact > UserPrivileges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UI API: Dash User Managements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/compact/user_privileges/ui_dash_user_management",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "6832e665-4721-47f2-a65d-af7be9a16565"
+              }
+            ],
+            "params": [
+              {
+                "name": "response[put_return_resource]",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "response[nested]",
+                "value": "2",
+                "type": "query"
+              },
+              {
+                "name": "response[only]",
+                "value": "owner_id,id,is_admin,first_name,last_name,position,status,profile_image_thumb_url,deleted_at,department_ids,badge_id,email,phone_number,user[skill_ids,],",
+                "type": "query"
+              },
+              {
+                "name": "total",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "2",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "1000",
+                "type": "query"
+              },
+              {
+                "name": "location_id",
+                "value": "2806",
+                "type": "query"
+              },
+              {
+                "name": "with_deleted",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \nGet the job status by giving a `request_job` ID.\n\nIt will return the result of Job processed at background. For example, the API result for a `bulk_create` API called with `async_mode=true`\n\nParams\n- - -\nParam | Values | R | Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nrequest_job_id | | * | The `request_job` ID got from other API procesed under "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

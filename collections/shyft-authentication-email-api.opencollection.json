@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication > Email",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Email - Confirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{{host}}/api/users/confirmation",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "confirmation_token",
+                "value": "Q9-ZCwF5krHdxcih6xuR",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Email - Confirmation"
+        },
+        {
+          "info": {
+            "name": "Email - Confirmation \bResend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/users/confirmation",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Email - Confirmation \bResend"
+        },
+        {
+          "info": {
+            "name": "Email - Reset Password (request)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/users/password",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Email - Reset Password (request)"
+        },
+        {
+          "info": {
+            "name": "Email - Reset Password (update)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://{{host}}/api/users/password",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "Email - Reset Password (update)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

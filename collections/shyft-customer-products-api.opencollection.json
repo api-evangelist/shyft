@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shyft Customer Authentication > Email Customer > Products API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer > Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "fetch products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{{host}}/api/customer/user_role/users/:user_id/fetch_products",
+            "headers": [
+              {
+                "name": "Session-Uukey",
+                "value": "{{session_uukey}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "platform",
+                "value": "android",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description\n- - - \n- A API for get productions list \n- It follows the v5 schema\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nplatform | string |*| ios/android\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
