@@ -197,7 +197,8 @@ apis:
     > availabilities > admin_role > request.
   humanURL: https://customer-api-doc.myshyft.com/
   baseURL: https://app.myshyft.com
-  tags:
+  tags: []
+  tags_raw:
   - Customer > Availabilities > admin_role > request
   properties:
   - type: OpenAPI
@@ -219,7 +220,8 @@ apis:
     > availabilities > user_role > deprecated.
   humanURL: https://customer-api-doc.myshyft.com/
   baseURL: https://app.myshyft.com
-  tags:
+  tags: []
+  tags_raw:
   - Customer > Availabilities > user_role > Deprecated
   properties:
   - type: OpenAPI
@@ -231,7 +233,8 @@ apis:
     customer > availabilities > user_role > deprecated > request.
   humanURL: https://customer-api-doc.myshyft.com/
   baseURL: https://app.myshyft.com
-  tags:
+  tags: []
+  tags_raw:
   - Customer > Availabilities > user_role > Deprecated > request
   properties:
   - type: OpenAPI
@@ -637,7 +640,8 @@ apis:
   description: The General API from Shyft — 1 operation(s) for general.
   humanURL: https://customer-api-doc.myshyft.com/
   baseURL: https://app.myshyft.com
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
