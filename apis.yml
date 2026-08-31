@@ -445,6 +445,8 @@ apis:
   humanURL: https://customer-api-doc.myshyft.com/
   baseURL: https://app.myshyft.com
   tags:
+  - Customer Products
+  tags_raw:
   - Customer > Products
   properties:
   - type: OpenAPI
