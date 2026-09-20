@@ -1,0 +1,94 @@
+slug: shyft
+provider: Shyft
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 8
+edges:
+- tag: Customer > RequstTimeOff
+  spec_file: shyft-customer-requsttimeoff-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.8
+  evidence: POST /api/customer/user_role/request_time_offs 'create request time off'; PUT '.../approve
+    request time off'; GET '.../rto_balances get user's request time off balances'
+  reason: Leave/absence request submission, approval, denial and balance lookup is employee absence administration,
+    an HR operations function within Human Capital Management.
+- tag: Customer > Shifts
+  spec_file: shyft-customer-shifts-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.8
+  evidence: '''[shifts] create shift'', ''[shifts] get managable shifts'', ''[shifts] get shift applicants'',
+    ''[shifts] create bulk shifts'''
+  reason: Creation, assignment and administration of employee shifts is workforce shift scheduling, an
+    HCM capability; no candidate L2 specifically names shift scheduling.
+- tag: Customer > Availabilities > admin_role > request
+  spec_file: shyft-customer-availabilities-admin-role-request-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.75
+  evidence: '[availability request] create request; [availability request] update request or close it'
+  reason: Managers open, update and close availability requests to collect staff availability for scheduling
+    — workforce/employee lifecycle administration under HCM. Sub-capability ambiguous between workforce
+    planning and HR operations, so L2 omitted.
+- tag: Customer > Availabilities > user_role
+  spec_file: shyft-customer-availabilities-user-role-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.75
+  evidence: '[availabilities] update your availability; [availabilities] get all availabilities from a
+    location'
+  reason: Employees record and retrieve their shift availability for a location, a workforce scheduling/HCM
+    function. Specific L2 not clearly named by the operations.
+- tag: Customer > Applicants
+  spec_file: shyft-customer-applicants-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.7
+  evidence: '[shifts] get a sginle shift applicant; [shifts] cancel you application; get a location''s
+    applicants'
+  reason: Despite the recruiting-sounding tag, the operations are about employees applying for open shifts
+    at a location — shift/schedule staffing, part of the employee workforce lifecycle (HCM). Not talent
+    acquisition, so no L2 asserted.
+- tag: Customer > Availabilities > user_role > Deprecated
+  spec_file: shyft-customer-availabilities-user-role-deprecated-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.7
+  evidence: '[availabilities] get members'' current availabilites; [availabilities] get your current availability'
+  reason: Deprecated read endpoints for employee/member shift availability — same workforce availability
+    capability under HCM; L2 left open.
+- tag: Customer > Schedules
+  spec_file: shyft-customer-schedules-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.7
+  evidence: POST /api/customer/user_role/schedules 'create a schedule'; PUT '.../publish a schedule'
+  reason: Building and publishing employee work schedules is workforce/shift scheduling, part of Human
+    Capital Management; no listed L2 cleanly covers shift scheduling so L1 only.
+- tag: Customer > UserPrivileges
+  spec_file: shyft-customer-userprivileges-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: '[user_privilege] approve user privilege ... join a location ... remove from a location'
+  reason: Operations manage user role/privilege assignments to locations including approve, update, remove,
+    withdraw and decline — access rights administration for app users, i.e. identity & access management
+    rather than a workforce scheduling capability.
