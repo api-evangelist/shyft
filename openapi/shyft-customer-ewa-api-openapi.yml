@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Shyft Customer Authentication > Email Customer > EWA API
-  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  title: Shyft Customer Customer > EWA API
+  description: Welcome to the Shyft Customer App API.
   version: 1.0.0
 servers:
 - url: http://{{host}}
@@ -14,14 +14,75 @@ servers:
 - url: https://test-unfurl.myshyft.com
 tags:
 - name: Customer > EWA
-  description: "Ojbect Serializer: \n\n\n[EWA Account Serializer]\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\nid | | | \ntos_yes | | | Indciate if user has accepted the TOS by going through all pages. \nis_active |\newa_score | | | The score Shyft give by anazlyzing the bank account data\newa_maximal | | | The maximal user can borrow in total\newa_status| string | |one of values: ewa_not_applicable_user / ewa_not_setup / ewa_has_balance / ewa_out_of_fund / ewa_normal\nnext_payback_date | datetime | | The date customer need to payback\nemail | datetime | | The confirmed email address\nis_confirmation_requested | boolean | | Is there a pending email confirmation?\nis_confirmed |  boolean | |  Has customer been confirmed via email?\n\n\n\n[Bank Account Serializer]\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\naccount_owner_name | | | Bank account holder full naem\nbank_name | | | Bank name\nbank_code | | | Bank code\ndescription] | | | \nis_active | | |\n\n\n\n[EWA Transaction Serializer]\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer |  | in cents\namount_currency| string |  | \newa_balance| string |  | how much money customer borrowed so far\ntransaction_type| string |  | `borrow/payback`\n\n\n\n\n"
+  description: 'Ojbect Serializer:
+
+
+    [EWA Account Serializer]
+
+
+    Attribute | Values | R | Description
+
+    --- | --- | --- | ---
+
+    id | | |
+
+    tos_yes | | | Indciate if user has accepted the TOS by going through all pages.'
 paths:
   /api/customer/user_role/ewa/ewa_accounts/my_account:
     get:
       tags:
       - Customer > EWA
       summary: '[ewa_account] get or create my EWA account'
-      description: "Description\n- - - \n- This is the first API call when user choose to use EWA by clicking the function button.\n- It will find the current user's existing EWA account and return its profile. \n- It will create a new basic EWA account for current user if not found one, and return its profile \n\nIf got `tos_yes=false`, front-end want to present these TOS pages again. \nIf got no `active_bank_account`, front-end want to present the bacnk account linking page\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+      description: 'Description
+
+        - - -
+
+        - This is the first API call when user choose to use EWA by clicking the function button.
+
+        - It will find the current user''s existing EWA account and return its profile.
+
+        - It will create a new basic EWA account for current user if not found one, and return its profile
+
+
+        If got `tos_yes=false`, front-end want to present these TOS pages again.
+
+        If got no `active_bank_account`, front-end want to present the bacnk account linking page
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Output
+
+        - - -
+
+
+        [EWA Account Serializer]'
       parameters:
       - name: Session-Uukey
         in: header
@@ -130,12 +191,56 @@ paths:
                     bank_code: null
                     description: Plaid Gold Standard 0% Interest Checking
                     is_active: true
+      operationId: getApiCustomerUserRoleEwaEwaAccountsMyAccount
+      x-operation-id-source: derived
   /api/customer/user_role/ewa/ewa_accounts/request_email_confirmation:
     get:
       tags:
       - Customer > EWA
       summary: '[ewa_account] request email confirmation'
-      description: "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+      description: 'Description
+
+        - - -
+
+        - Apply to use EWA function by requesting a confirmation by email
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        unconfirmed_email | string | * | The email to receive confirmation code
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Output
+
+        - - -
+
+
+        [EWA Account Serializer]'
       parameters:
       - name: Session-Uukey
         in: header
@@ -256,12 +361,56 @@ paths:
                     ewa_maximal_cents: null
                     next_payback_date: null
                     maximal_payback_date: null
+      operationId: getApiCustomerUserRoleEwaEwaAccountsRequestEmailConfirmation
+      x-operation-id-source: derived
   /api/customer/user_role/ewa/ewa_accounts/borrow_estimate:
     get:
       tags:
       - Customer > EWA
       summary: '[ewa_account] get the estimation of capability of borrowing'
-      description: "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+      description: 'Description
+
+        - - -
+
+        - Apply to use EWA function by requesting a confirmation by email
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        unconfirmed_email | string | * | The email to receive confirmation code
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Output
+
+        - - -
+
+
+        [EWA Account Serializer]'
       parameters:
       - name: Session-Uukey
         in: header
@@ -278,12 +427,56 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getApiCustomerUserRoleEwaEwaAccountsBorrowEstimate
+      x-operation-id-source: derived
   /api/customer/user_role/ewa/ewa_accounts/confirm_email_with_code:
     get:
       tags:
       - Customer > EWA
       summary: '[ewa_account] confirm EWA account''s email with code'
-      description: "Description\n- - - \n- Apply to use EWA function by requesting a confirmation by email\n\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nunconfirmed_email | string | * | The email to receive confirmation code\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[EWA Account Serializer]"
+      description: 'Description
+
+        - - -
+
+        - Apply to use EWA function by requesting a confirmation by email
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        unconfirmed_email | string | * | The email to receive confirmation code
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Output
+
+        - - -
+
+
+        [EWA Account Serializer]'
       parameters:
       - name: Session-Uukey
         in: header
@@ -483,12 +676,55 @@ paths:
                 errors:
                   confirmation_code:
                   - invalid code.
+      operationId: getApiCustomerUserRoleEwaEwaAccountsConfirmEmailWithCode
+      x-operation-id-source: derived
   /api/customer/user_role/ewa/ewa_accounts/{ewa_account_id}:
     put:
       tags:
       - Customer > EWA
       summary: '[ewa_account] confirm the TOS agreement'
-      description: "Description\n- - - \n- Once user went through all TOS pages, mark it. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\ntos_yes | boolean | * |\n\n\nOutput\n- - - \n[EWA Account Serializer]"
+      description: 'Description
+
+        - - -
+
+        - Once user went through all TOS pages, mark it.
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        tos_yes | boolean | * |
+
+
+        Output
+
+        - - -
+
+        [EWA Account Serializer]'
       requestBody:
         content:
           '*/*':
@@ -612,12 +848,58 @@ paths:
                     bank_code: FAKE_BANK_CODE
                     description: null
                     is_active: true
+      operationId: putApiCustomerUserRoleEwaEwaAccountsByEwaAccountId
+      x-operation-id-source: derived
   /api/customer/user_role/ewa/ewa_transactions/borrow:
     post:
       tags:
       - Customer > EWA
       summary: '[ewa_transaction] borrow money'
-      description: "Description\n- - - \n- Call this API when customer want borrow money from Shyft\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer | * | in cents\ndue_at | date | | customer selected payback date\n\n\nOutput\n- - - \n\n[EWA Transaction Serializer]"
+      description: 'Description
+
+        - - -
+
+        - Call this API when customer want borrow money from Shyft
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        amount_cents| integer | * | in cents
+
+        due_at | date | | customer selected payback date
+
+
+        Output
+
+        - - -
+
+
+        [EWA Transaction Serializer]'
       requestBody:
         content:
           '*/*':
@@ -723,12 +1005,55 @@ paths:
                   source_ewa_balance: 600
                   transaction_type: borrow
                   due_at: '2020-03-01'
+      operationId: postApiCustomerUserRoleEwaEwaTransactionsBorrow
+      x-operation-id-source: derived
   /api/customer/user_role/ewa/ewa_transactions/payback:
     post:
       tags:
       - Customer > EWA
       summary: '[ewa_transaction] return money'
-      description: "Description\n- - - \n- Call this API when customer want return money from Shyft\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\namount_cents| integer | * | in cents\n\n\nOutput\n- - - \n[EWA Transaction Serializer]"
+      description: 'Description
+
+        - - -
+
+        - Call this API when customer want return money from Shyft
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        amount_cents| integer | * | in cents
+
+
+        Output
+
+        - - -
+
+        [EWA Transaction Serializer]'
       requestBody:
         content:
           '*/*':
@@ -833,12 +1158,62 @@ paths:
                   amount_currency: USD
                   ewa_balance: '-300.0'
                   transaction_type: payback
+      operationId: postApiCustomerUserRoleEwaEwaTransactionsPayback
+      x-operation-id-source: derived
   /api/customer/user_role/ewa/bank_accounts/add_account:
     post:
       tags:
       - Customer > EWA
       summary: '[bank_account] create and active bank_account'
-      description: "Description\n- - - \n- Add a new bank account to current user's EWA account\n- Will deactive all other bank accounts if new one added\n- \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npublic_token | string | * | the token got from Plaid\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nbank_name | string | * | the bank name got from Plaid\n\n\nOutput\n- - - \n\n[Bank Account Serializer]"
+      description: 'Description
+
+        - - -
+
+        - Add a new bank account to current user''s EWA account
+
+        - Will deactive all other bank accounts if new one added
+
+        -
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        public_token | string | * | the token got from Plaid
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        bank_name | string | * | the bank name got from Plaid
+
+
+        Output
+
+        - - -
+
+
+        [Bank Account Serializer]'
       requestBody:
         content:
           '*/*':
@@ -952,6 +1327,8 @@ paths:
                   ewa_maximal_cents: 100
                   next_payback_date: '2020-03-06T01:35:21.740Z'
                   maximal_payback_date: '2020-03-20T01:35:21.740Z'
+      operationId: postApiCustomerUserRoleEwaBankAccountsAddAccount
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

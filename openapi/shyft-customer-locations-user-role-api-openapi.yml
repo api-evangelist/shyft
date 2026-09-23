@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Shyft Customer Authentication > Email Customer > Locations > user_role API
-  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  title: Shyft Customer Customer > Locations > user_role API
+  description: Welcome to the Shyft Customer App API.
   version: 1.0.0
 servers:
 - url: http://{{host}}
@@ -20,7 +20,40 @@ paths:
       tags:
       - Customer > Locations > user_role
       summary: '[2.0] get a location'
-      description: "Description\n- - - \n- Get a location object\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      description: 'Description
+
+        - - -
+
+        - Get a location object
+
+        - `location_id` coulld be `ID` or `Swift Code`
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---'
       parameters:
       - name: Session-Uukey
         in: header
@@ -147,11 +180,54 @@ paths:
                   location_city: Bothell, Washington, 98021
                   division_names: []
                   feed_channel_id: 4359
+      operationId: getApiCustomerUserRoleLocationsByLocationId
+      x-operation-id-source: derived
     put:
       tags:
       - Customer > Locations > user_role
       summary: update a location
-      description: "Description\n- - - \n- Update a location\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nshift_require_approval| true/false| | |\nrequire_approval| true/false| | |\nallow_tipping| true/false| | |\nadmin_delete_content| true/false| | |"
+      description: 'Description
+
+        - - -
+
+        - Update a location
+
+        - `location_id` coulld be `ID` or `Swift Code`
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        shift_require_approval| true/false| | |
+
+        require_approval| true/false| | |
+
+        allow_tipping| true/false| | |
+
+        admin_delete_content| true/false| | |'
       requestBody:
         content:
           '*/*':
@@ -623,12 +699,47 @@ paths:
                 errors:
                   not_found:
                   - Couldn't find Location with 'id'=99999
+      operationId: putApiCustomerUserRoleLocationsByLocationId
+      x-operation-id-source: derived
   /api/customer/user_role/locations/{swift_code}/look_up:
     get:
       tags:
       - Customer > Locations > user_role
       summary: '[2.0] get a location by swift_code only'
-      description: "Description\n- - - \n- Get a location object\n- `location_id` coulld be `ID` or `Swift Code`\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      description: 'Description
+
+        - - -
+
+        - Get a location object
+
+        - `location_id` coulld be `ID` or `Swift Code`
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---'
       parameters:
       - name: Session-Uukey
         in: header
@@ -802,6 +913,8 @@ paths:
                     byte_size: 8973
                     blob_url: http://local-service.myshyft.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtGIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02dfa32ff1c011dd76b61976c6e05334a5b3b8f2/gxo-logo-png.png
                     preview_blob_url: null
+      operationId: getApiCustomerUserRoleLocationsBySwiftCodeLookUp
+      x-operation-id-source: derived
   /api/customer/user_role/locations:
     get:
       tags:
@@ -1014,11 +1127,98 @@ paths:
                   member_count: 0
                   location_address: null
                   location_city: ORLANDO, FL, 32821
+      operationId: getApiCustomerUserRoleLocations
+      x-operation-id-source: derived
     post:
       tags:
       - Customer > Locations > user_role
       summary: create a location (option to join)
-      description: "Description\n- - - \n- Create a location object\n- `location_name` is always required. \n- Option1: supply address information, let backend figure out rest\n- Option2: supply the formatted address, and other required fields. \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - -\n\nOption 1\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name ||*| |\naddress | | * | |\ncity | | * | |\nprovince | | * | |\npostal | | * | |\ncountry | | * | |\n\n\nOption 2\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name | | * | |\nformatted_address | | * | |\nlatitude | | * | |\nlongitude | | * | |\ngoogle_map_id | | * | |\n\nWith join location\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name[user_privileges_attributes][owner_id] ||| |\nlocation_name[user_privileges_attributes][internal_id] ||| |\nlocation_name[user_privileges_attributes][position] ||| |"
+      description: 'Description
+
+        - - -
+
+        - Create a location object
+
+        - `location_name` is always required.
+
+        - Option1: supply address information, let backend figure out rest
+
+        - Option2: supply the formatted address, and other required fields.
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Option 1
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        location_name ||*| |
+
+        address | | * | |
+
+        city | | * | |
+
+        province | | * | |
+
+        postal | | * | |
+
+        country | | * | |
+
+
+        Option 2
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        location_name | | * | |
+
+        formatted_address | | * | |
+
+        latitude | | * | |
+
+        longitude | | * | |
+
+        google_map_id | | * | |
+
+
+        With join location
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        location_name[user_privileges_attributes][owner_id] ||| |
+
+        location_name[user_privileges_attributes][internal_id] ||| |
+
+        location_name[user_privileges_attributes][position] ||| |'
       requestBody:
         content:
           '*/*':
@@ -1232,6 +1432,8 @@ paths:
                       location_city: Seattle, WA, 98121
                       division_names: []
                       feed_channel_id: 7395
+      operationId: postApiCustomerUserRoleLocations
+      x-operation-id-source: derived
   /api/customer/user_role/locations/can_access:
     get:
       tags:
@@ -1377,6 +1579,8 @@ paths:
                   division_names:
                   - Manhattan
                   feed_channel_id: 4382
+      operationId: getApiCustomerUserRoleLocationsCanAccess
+      x-operation-id-source: derived
   /api/customer/user_role/locations/can_admin:
     get:
       tags:
@@ -1398,6 +1602,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getApiCustomerUserRoleLocationsCanAdmin
+      x-operation-id-source: derived
   /api/customer/user_role/locations/QFW80C/analytics:
     get:
       tags:
@@ -1429,6 +1635,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getApiCustomerUserRoleLocationsQFW80CAnalytics
+      x-operation-id-source: derived
   /api/customer/user_role/locations/2806/tag_groups:
     get:
       tags:
@@ -1874,6 +2082,8 @@ paths:
                         tag_content: Paid Time Off
                         tag_meta:
                           hour_step: 1
+      operationId: getApiCustomerUserRoleLocations2806TagGroups
+      x-operation-id-source: derived
   /api/customer/user_role/locations/2806/usable_skills:
     get:
       tags:
@@ -2147,6 +2357,8 @@ paths:
                   - 8529
                   - 14200
                   - 14587
+      operationId: getApiCustomerUserRoleLocations2806UsableSkills
+      x-operation-id-source: derived
   /api/customer/user_role/locations/2806/linked_tags:
     get:
       tags:
@@ -2168,6 +2380,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getApiCustomerUserRoleLocations2806LinkedTags
+      x-operation-id-source: derived
   /api/customer/user_role/locations/{location_id}/settings:
     get:
       tags:
@@ -2322,12 +2536,87 @@ paths:
                     cfg__rto: 1
                     cfg__rto_balance: 1
                     cfg__badge_id: 0
+      operationId: getApiCustomerUserRoleLocationsByLocationIdSettings
+      x-operation-id-source: derived
   /api/customer/user_role/locations/find_or_create:
     post:
       tags:
       - Customer > Locations > user_role
       summary: find or create a location (option to join)
-      description: "Description\n- - - \n- Create a location object\n- `location_name` is always required. \n- Option1: supply address information, let backend figure out rest\n- Option2: supply the formatted address, and other required fields. \n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\njoin | false/true | | | join the location created \n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - -\n\nOption 1\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name ||*| |\naddress | | * | |\ncity | | * | |\nprovince | | * | |\npostal | | * | |\ncountry | | * | |\n\n\nOption 2\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nlocation_name | | * | |\nformatted_address | | * | |\nlatitude | | * | |\nlongitude | | * | |\ngoogle_map_id | | * | |"
+      description: 'Description
+
+        - - -
+
+        - Create a location object
+
+        - `location_name` is always required.
+
+        - Option1: supply address information, let backend figure out rest
+
+        - Option2: supply the formatted address, and other required fields.
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        join | false/true | | | join the location created
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Option 1
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        location_name ||*| |
+
+        address | | * | |
+
+        city | | * | |
+
+        province | | * | |
+
+        postal | | * | |
+
+        country | | * | |
+
+
+        Option 2
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        location_name | | * | |
+
+        formatted_address | | * | |
+
+        latitude | | * | |
+
+        longitude | | * | |
+
+        google_map_id | | * | |'
       requestBody:
         content:
           '*/*':
@@ -2463,12 +2752,63 @@ paths:
                   division_names: []
                   feed_channel_id: 7396
                   pending_users_count: 0
+      operationId: postApiCustomerUserRoleLocationsFindOrCreate
+      x-operation-id-source: derived
   /api/customer/user_role/locations/{location_id}/broadcast_notification:
     put:
       tags:
       - Customer > Locations > user_role
       summary: broadcast notifications
-      description: "Description\n\n---\n\n- Send notifications to location users\n- `location_id` coulld be `ID` or `Swift Code`\n    \n\nParams\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| user_ids | integer array | optional | filter locations users list of supplied |\n| message | string/hash | required | predefined message key or message content |\n|  |  |  |  |\n|  |  |  |  |"
+      description: 'Description
+
+
+        ---
+
+
+        - Send notifications to location users
+
+        - `location_id` coulld be `ID` or `Swift Code`
+
+
+        Params
+
+
+        ---
+
+
+        | Param | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+
+        Headers
+
+
+        ---
+
+
+        | Header | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+
+        Input
+
+
+        ---
+
+
+        | Attribute | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+        | user_ids | integer array | optional | filter locations users list of supplied |
+
+        | message | string/hash | required | predefined message key or message content |
+
+        | | | | |
+
+        | | | | |'
       requestBody:
         content:
           '*/*':
@@ -2496,12 +2836,63 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRoleLocationsByLocationIdBroadcastNotification
+      x-operation-id-source: derived
   /api/customer/user_role/locations/9287/copy_week_planned_shifts:
     put:
       tags:
       - Customer > Locations > user_role
       summary: copy week planned shifts Copy
-      description: "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |"
+      description: 'Description
+
+
+        ---
+
+
+        - copy location shedule weekly.
+
+
+        URL Params
+
+
+        ---
+
+
+        | Param | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+        | location_id | integer | R | target location ID |
+
+
+        Headers
+
+
+        ---
+
+
+        | Header | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+
+        Input
+
+
+        ---
+
+
+        | Attribute | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+        | dest_week_day | datetime | R | any day in dest week |
+
+        | src_week_day | dateime | R | any day in src week |
+
+        | owner_ids | array | O | filter by user IDs |
+
+        | | | | |'
       requestBody:
         content:
           '*/*':
@@ -2605,12 +2996,63 @@ paths:
               schema:
                 type: string
               example: null
+      operationId: putApiCustomerUserRoleLocations9287CopyWeekPlannedShifts
+      x-operation-id-source: derived
   /api/customer/user_role/locations/9287/delete_demo_data:
     put:
       tags:
       - Customer > Locations > user_role
-      summary: create  demo data
-      description: "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |"
+      summary: create demo data
+      description: 'Description
+
+
+        ---
+
+
+        - copy location shedule weekly.
+
+
+        URL Params
+
+
+        ---
+
+
+        | Param | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+        | location_id | integer | R | target location ID |
+
+
+        Headers
+
+
+        ---
+
+
+        | Header | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+
+        Input
+
+
+        ---
+
+
+        | Attribute | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+        | dest_week_day | datetime | R | any day in dest week |
+
+        | src_week_day | dateime | R | any day in src week |
+
+        | owner_ids | array | O | filter by user IDs |
+
+        | | | | |'
       requestBody:
         content:
           '*/*':
@@ -2633,12 +3075,63 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRoleLocations9287DeleteDemoData
+      x-operation-id-source: derived
   /api/customer/user_role/locations/9287/create_demo_data:
     put:
       tags:
       - Customer > Locations > user_role
-      summary: delete  demo data
-      description: "Description\n\n---\n\n- copy location shedule weekly.\n    \n\nURL Params\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n| location_id | integer | R | target location ID |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |\n| dest_week_day | datetime | R | any day in dest week |\n| src_week_day | dateime | R | any day in src week |\n| owner_ids | array | O | filter by user IDs |\n|  |  |  |  |"
+      summary: delete demo data
+      description: 'Description
+
+
+        ---
+
+
+        - copy location shedule weekly.
+
+
+        URL Params
+
+
+        ---
+
+
+        | Param | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+        | location_id | integer | R | target location ID |
+
+
+        Headers
+
+
+        ---
+
+
+        | Header | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+
+        Input
+
+
+        ---
+
+
+        | Attribute | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+        | dest_week_day | datetime | R | any day in dest week |
+
+        | src_week_day | dateime | R | any day in src week |
+
+        | owner_ids | array | O | filter by user IDs |
+
+        | | | | |'
       requestBody:
         content:
           '*/*':
@@ -2661,6 +3154,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRoleLocations9287CreateDemoData
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

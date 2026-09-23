@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Shyft Customer Authentication > Email Customer > Schedules API
-  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  title: Shyft Customer Customer > Schedules API
+  description: Welcome to the Shyft Customer App API.
   version: 1.0.0
 servers:
 - url: http://{{host}}
@@ -20,7 +20,38 @@ paths:
       tags:
       - Customer > Schedules
       summary: get schedules
-      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\nlocation_id |   | * | associaged location |\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      description: 'Description
+
+        - - -
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        location_id | | * | associaged location |
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---'
       parameters:
       - name: Session-Uukey
         in: header
@@ -38,11 +69,86 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: getApiCustomerUserRoleSchedules
+      x-operation-id-source: derived
     post:
       tags:
       - Customer > Schedules
       summary: create a schedule
-      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |"
+      description: 'Description
+
+        - - -
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        name | string | | schedule name|
+
+        start_date | | | schedule start date |
+
+        end_date | | | schedule end date |
+
+        location_id | | * | associaged location |
+
+
+        Option 1: Upload an image from remote server using hyperlink
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name] | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avatar_remote_url] | | | The link to the image file |
+
+
+        Option 2: Upload a image by using form-data
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avator] | Form file of image | | |
+
+
+        Option 3: Upload a image(base64 encoded) by attaching to JSON
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name] | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avator_base64] | Base64 file data | | |'
       requestBody:
         content:
           '*/*':
@@ -287,12 +393,87 @@ paths:
                         shift_push: true
                         schedule_push: true
                         community_push: true
+      operationId: postApiCustomerUserRoleSchedules
+      x-operation-id-source: derived
   /api/customer/user_role/schedules/981:
     get:
       tags:
       - Customer > Schedules
       summary: get a schedule
-      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |"
+      description: 'Description
+
+        - - -
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        name | string | | schedule name|
+
+        start_date | | | schedule start date |
+
+        end_date | | | schedule end date |
+
+        location_id | | * | associaged location |
+
+
+        Option 1: Upload an image from remote server using hyperlink
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name] | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avatar_remote_url] | | | The link to the image file |
+
+
+        Option 2: Upload a image by using form-data
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avator] | Form file of image | | |
+
+
+        Option 3: Upload a image(base64 encoded) by attaching to JSON
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name] | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avator_base64] | Base64 file data | | |'
       parameters:
       - name: Session-Uukey
         in: header
@@ -428,11 +609,60 @@ paths:
                     feed_channel_id: 3979
                     pending_users_count: 0
                   owner: null
+      operationId: getApiCustomerUserRoleSchedules981
+      x-operation-id-source: derived
     delete:
       tags:
       - Customer > Schedules
       summary: delete a schedule
-      description: "Description\n\n- delete a schedule will remove its shift inventories as well\n- schedule owner can delete it\n- location admin can delete it\n- integration generated schedule can not be deleted\n- schedule having shifts status changed can not be deleted\n    \n\n---\n\nParams\n\n---\n\n| Param | Values | R | Description |\n| --- | --- | --- | --- |\n\nHeaders\n\n---\n\n| Header | Values | R | Description |\n| --- | --- | --- | --- |\n\nInput\n\n---\n\n| Attribute | Values | R | Description |\n| --- | --- | --- | --- |"
+      description: 'Description
+
+
+        - delete a schedule will remove its shift inventories as well
+
+        - schedule owner can delete it
+
+        - location admin can delete it
+
+        - integration generated schedule can not be deleted
+
+        - schedule having shifts status changed can not be deleted
+
+
+        ---
+
+
+        Params
+
+
+        ---
+
+
+        | Param | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+
+        Headers
+
+
+        ---
+
+
+        | Header | Values | R | Description |
+
+        | --- | --- | --- | --- |
+
+
+        Input
+
+
+        ---
+
+
+        | Attribute | Values | R | Description |
+
+        | --- | --- | --- | --- |'
       parameters:
       - name: Session-Uukey
         in: header
@@ -450,12 +680,87 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: deleteApiCustomerUserRoleSchedules981
+      x-operation-id-source: derived
   /api/customer/user_role/schedules/171263/publish:
     put:
       tags:
       - Customer > Schedules
       summary: publish a schedule
-      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |"
+      description: 'Description
+
+        - - -
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        name | string | | schedule name|
+
+        start_date | | | schedule start date |
+
+        end_date | | | schedule end date |
+
+        location_id | | * | associaged location |
+
+
+        Option 1: Upload an image from remote server using hyperlink
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name] | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avatar_remote_url] | | | The link to the image file |
+
+
+        Option 2: Upload a image by using form-data
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avator] | Form file of image | | |
+
+
+        Option 3: Upload a image(base64 encoded) by attaching to JSON
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name] | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avator_base64] | Base64 file data | | |'
       requestBody:
         content: {}
       parameters:
@@ -475,12 +780,87 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRoleSchedules171263Publish
+      x-operation-id-source: derived
   /api/customer/user_role/schedules/171263/unpublish:
     put:
       tags:
       - Customer > Schedules
       summary: unpublish a schedule
-      description: "Description\n- - - \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \nAttribute | Values | R |Description\n--- | --- | --- | ---\nname | string |  | schedule name|\nstart_date |   | | schedule start date |\nend_date |   | | schedule end date |\nlocation_id |   | * | associaged location |\n\n\n\n\nOption 1: Upload an image from remote server using hyperlink\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avatar_remote_url] |   | | The link to the image file |\n\nOption 2: Upload a image by using form-data\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator] | Form file of image  | |  |\n\n\nOption 3: Upload a image(base64 encoded) by attaching to JSON \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nsnapshot_attributes[image_name] | schedule_snapshot |  | type of image|\nsnapshot_attributes[avator_base64] | Base64 file data  | |  |"
+      description: 'Description
+
+        - - -
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        name | string | | schedule name|
+
+        start_date | | | schedule start date |
+
+        end_date | | | schedule end date |
+
+        location_id | | * | associaged location |
+
+
+        Option 1: Upload an image from remote server using hyperlink
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name] | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avatar_remote_url] | | | The link to the image file |
+
+
+        Option 2: Upload a image by using form-data
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avator] | Form file of image | | |
+
+
+        Option 3: Upload a image(base64 encoded) by attaching to JSON
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        snapshot_attributes[image_name] | schedule_snapshot | | type of image|
+
+        snapshot_attributes[avator_base64] | Base64 file data | | |'
       requestBody:
         content: {}
       parameters:
@@ -500,6 +880,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRoleSchedules171263Unpublish
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

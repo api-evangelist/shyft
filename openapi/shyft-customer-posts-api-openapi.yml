@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Shyft Customer Authentication > Email Customer > Posts API
-  description: "Welcome to the Shyft Customer App API.\n\nShyft customer App API is designed to support the function of Shyft Mobile App(iOS, Android), Web App and Manager Dashboard.\n\nNOTES:\n\n- In parameters section, the letter `R` stands for `Required`.\n    \n- All API examples show only essential data set.\n    \n\n## Authentication\n\n---\n\nInclude as headers for API calls after authentication token.\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Session-Uukey |  | \\* | The value got from authentication API call (SignIn/Confirm) |\n\n## Global Information\n\n---\n\n#### Query Parameters\n\n###### For All API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| api_version | String |  | Ex. 6_0_0 |\n| response\\[nested\\] | Integer |  | Ex. 1 |\n| response\\[keep\\] | String |  | Ex. location\\[current_user_privilege\\],name,id |\n| response\\[only\\] | String |  | Ex. id,location\\[id,location_name,current_user_privilege\\] |\n| response\\[except\\] | String |  | Ex. name,location\\[id,location_name,swift_code\\],owner\\[id\\] |\n\n- The query parameter `response[only]` is needed to help API performance by limiting the size of returned data.\n    \n- On test server, `response[only]` support wildcard, you can supply `response[only]=\\*` to get everything.\n    \n- Production server does not support wildcard, you need to figure out and supply your `response[only]` for each API call.\n    \n\n###### For Index API:\n\n- Pagination Option 1)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| page | Integer |  | Ex. 1 |\n| per_page | Integer |  | Ex. 5 |\n| total | boolean |  | true/false |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n\n- Pagination Option 2)\n    \n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| limit | Integer |  | Ex. 10 |\n| offset | Integer |  | Ex. 5 |\n| order | String |  | Ex. start_at_desc, start_at_asc |\n| last_id | Integer |  | Ex. 101 |\n\n###### For Update API:\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| response\\[put_return_resource\\] | String |  | Ex. true |\n\n#### Headers\n\n| Name | Values | R | Description |\n| --- | --- | --- | --- |\n| Platform | ios|android|web | \\* |  |\n| Api-Version | 6_0_0 | \\* | Ex: 6_0_0 |\n| Build-Number |  | \\* |  |\n| Push-Id |  |  |  |\n| X-Method |  |  | Deprecated |\n| Content-Type | application/json | \\* |  |\n\n#### Success Codes\n\n| SUCCESS Code | Meaning |\n| --- | --- |\n| 200 | Created -- Objet created. |\n| 201 | Unauthorized -- Your API key is wrong. |\n| 204 | No Content -- Success without returning resource. |\n\n#### Error Codes\n\n| Error Code | Meaning |\n| --- | --- |\n| 400 | Bad Request -- Your request is invalid. |\n| 401 | Unauthorized -- Your API key is wrong. |\n| 403 | Forbidden -- The records requested is hidden for administrators only. |\n| 404 | Not Found -- The specified record could not be found. |\n| 405 | Method Not Allowed -- You tried to access a record with an invalid method. |\n| 406 | Not Acceptable -- You requested a format that isn't json. |\n| 410 | Gone -- The record requested has been removed from our servers. |\n| 422 | Unprocessable Entity -- Invalid input data. |\n| 429 | Too Many Requests -- You're requesting too many requests! Slow down! |\n| 500 | Internal Server Error -- We had a problem with our server. Try again later. |\n| 502 | Bad Gateway -- |\n| 504 | Gateway Timeout -- |\n| 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later. |\n\n#### Error Response Formats\n\n422\n\n``` json\n{\n    \"errors\": {\n        \"base\": [\n            \"a private session for same two users already exists: 3034\"\n        ]\n    }\n}\n\n ```\n\n422\n\n```\n{\n    \"errors\": {\n        \"google_map_id\": [\n            \"can't be blank\"\n        ],\n        \"time_zone\": [\n            \"can't be blank\"\n        ],\n        \"longitude\": [\n            \"can't be blank\"\n        ]\n    }\n}\n{\n    \"errors\": {\n        \"record_invalid\": [\n            \"Validation failed: User has already been taken\"\n        ]\n    }\n}\n\n ```\n\n404\n\n``` json\n{\n    \"errors\": {\n        \"not_found\": [\n            \"Couldn't find Post\"\n        ]\n    }\n}\n\n ```\n\n500\n\n``` json\n{\n    \"errors\": {\n        \"internal_server_error\": [\n            \"Invalid nil value\"\n        ]\n    }\n}\n\n ```"
+  title: Shyft Customer Customer > Posts API
+  description: Welcome to the Shyft Customer App API.
   version: 1.0.0
 servers:
 - url: http://{{host}}
@@ -14,14 +14,85 @@ servers:
 - url: https://test-unfurl.myshyft.com
 tags:
 - name: Customer > Posts
-  description: "Ojbect Serializer: \n\n\n[Receipt Serializer]\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\nuser_id | integer | * | User's ID who owns this receipt\ncreated_at | datetime | * | Time receipt generated\nfirst_name | string | * | User's first name\nlast_name | string | * | User's last name\nprofile_image_thumb_url | string | * | User's profile image\n\n\nAttribute | Values | R | Description\n--- | --- | --- | ---\nid| integer |  | \norg_id|  integer|  | \nchannel_id| integer |  | \ntitle| string |  | \ncontent| string |  | \ncomments_count|  integer|  | \nlikes_count| integer |  | \nviews_count| integer |  | \nread_count| integer |  | \ncreated_at| datetime |  | \nattachment|  |  | \nuser_group|  integer |  | \nlocation|  integer |  | \npost_type| integer |  | \npinned| boolean |  | \npinned_by_id| integer |  | \nfinal_allow_delete| boolean |  | \nfinal_allow_comment| integer |  | \nfinal_allow_like| integer |  | \nfinal_allow_read| integer |  | \nowner_id| integer |  | \nowner| object |  | \nread| boolean |  | \nliked| boolean |  | \ncommented| boolean |  | \nschedule_element|  object |  | "
+  description: 'Ojbect Serializer:
+
+
+    [Receipt Serializer]
+
+
+    Attribute | Values | R | Description
+
+    --- | --- | --- | ---
+
+    user_id | integer | * | User''s ID who owns this receipt
+
+    created_at | datetime | * | Time receipt generated
+
+    first_name | string | * | User''s first name
+
+    last_name | string | * | User''s last name
+
+    profile_image_thumb_url | string | * | User''s profile image
+
+
+    Attribute | Values | R | Description
+
+    --- | --- | --- | ---
+
+    id| integer | |
+
+    org_id| integer| |
+
+    channel_id| integer | |
+
+    title| string | |
+
+    content|…'
 paths:
   /api/customer/user_role/posts:
     get:
       tags:
       - Customer > Posts
       summary: get posts
-      description: "Description\n- - - \n- Get posts accessialbe by current user\n- use `pinned=true` to only get `pinned` posts\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npinned | boolean | | get only `pinned` posts, or get only `unpinned` posts\nchannel_id | integer | | get posts from target channel\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      description: 'Description
+
+        - - -
+
+        - Get posts accessialbe by current user
+
+        - use `pinned=true` to only get `pinned` posts
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        pinned | boolean | | get only `pinned` posts, or get only `unpinned` posts
+
+        channel_id | integer | | get posts from target channel
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---'
       parameters:
       - name: Session-Uukey
         in: header
@@ -2023,11 +2094,77 @@ paths:
                       pagination:
                         current_page: 1
                         per_page: 25
+      operationId: getApiCustomerUserRolePosts
+      x-operation-id-source: derived
     post:
       tags:
       - Customer > Posts
       summary: create a post
-      description: "Description\n- - - \n- Create a regular channel post\n- Create a free post\n- Create a announcement post by admin\n- Attach a picture along with post\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\n\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nchannel_id | integer | * | target channel's ID\ntitle | string | * | post title\ncontent | string | * | post content\nattached_files_blob_ids | array of integer |  | attached file IDs\npost_type | integer | * | for announcement, the value is `1`, only avaialble for admin users\n\nInput Sub attachment_attributes[object_instances]\n- - -\n\nAttribute | Values | R |Description\n--- | --- | --- | ---\nimage_name | string | * | value is `post_image`\nclass_name | string | * | value is `class_name`\nid | integer | * | the image ID generated from previous image uploading API"
+      description: 'Description
+
+        - - -
+
+        - Create a regular channel post
+
+        - Create a free post
+
+        - Create a announcement post by admin
+
+        - Attach a picture along with post
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        channel_id | integer | * | target channel''s ID
+
+        title | string | * | post title
+
+        content | string | * | post content
+
+        attached_files_blob_ids | array of integer | | attached file IDs
+
+        post_type | integer | * | for announcement, the value is `1`, only avaialble for admin users
+
+
+        Input Sub attachment_attributes[object_instances]
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+        image_name | string | * | value is `post_image`
+
+        class_name | string | * | value is `class_name`
+
+        id | integer | * | the image ID generated from previous image uploading API'
       requestBody:
         content:
           '*/*':
@@ -2762,6 +2899,8 @@ paths:
               schema:
                 type: string
               example: ''
+      operationId: postApiCustomerUserRolePosts
+      x-operation-id-source: derived
   /api/customer/user_role/posts/74300:
     get:
       tags:
@@ -2942,12 +3081,56 @@ paths:
                   liked: false
                   commented: false
                   schedule_element: null
+      operationId: getApiCustomerUserRolePosts74300
+      x-operation-id-source: derived
   /api/customer/user_role/posts/74282/receipts:
     get:
       tags:
       - Customer > Posts
       summary: get post receipts
-      description: "Description\n- - - \n- Get a list of receipts associated with target post.\n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to read\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---\n\n\nOutput\n- - - \n\n[Receipt Serializer]"
+      description: 'Description
+
+        - - -
+
+        - Get a list of receipts associated with target post.
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        post_id | | * | The target post to read
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Output
+
+        - - -
+
+
+        [Receipt Serializer]'
       parameters:
       - name: Session-Uukey
         in: header
@@ -3050,6 +3233,8 @@ paths:
                   pagination:
                     current_page: 1
                     per_page: 25
+      operationId: getApiCustomerUserRolePosts74282Receipts
+      x-operation-id-source: derived
   /api/customer/user_role/posts/80344:
     put:
       tags:
@@ -3260,6 +3445,8 @@ paths:
                   liked: false
                   commented: false
                   schedule_element: null
+      operationId: putApiCustomerUserRolePosts80344
+      x-operation-id-source: derived
   /api/customer/user_role/posts/{post_id}/like:
     put:
       tags:
@@ -3292,6 +3479,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRolePostsByPostIdLike
+      x-operation-id-source: derived
   /api/customer/user_role/posts/{post_id}/unlike:
     put:
       tags:
@@ -3324,12 +3513,50 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRolePostsByPostIdUnlike
+      x-operation-id-source: derived
   /api/customer/user_role/posts/74282/read:
     put:
       tags:
       - Customer > Posts
       summary: read a post
-      description: "Description\n- - - \n- API to confirm receving and reading the target post for current user. \n- User can only confirm once for same post, repeating confirming will cause failure. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to read\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      description: 'Description
+
+        - - -
+
+        - API to confirm receving and reading the target post for current user.
+
+        - User can only confirm once for same post, repeating confirming will cause failure.
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        post_id | | * | The target post to read
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---'
       requestBody:
         content:
           '*/*':
@@ -3424,12 +3651,50 @@ paths:
               schema:
                 type: object
               example: {}
+      operationId: putApiCustomerUserRolePosts74282Read
+      x-operation-id-source: derived
   /api/customer/user_role/posts/74286/pin:
     put:
       tags:
       - Customer > Posts
       summary: pin a post
-      description: "Description\n- - - \n- API to pin a post to associated channel\n- The current user calling the API will be saved \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to pin\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      description: 'Description
+
+        - - -
+
+        - API to pin a post to associated channel
+
+        - The current user calling the API will be saved
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        post_id | | * | The target post to pin
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---'
       requestBody:
         content:
           '*/*':
@@ -3452,12 +3717,50 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRolePosts74286Pin
+      x-operation-id-source: derived
   /api/customer/user_role/posts/{post_id}/unpin:
     put:
       tags:
       - Customer > Posts
       summary: unpin a post
-      description: "Description\n- - - \n- API to unpin a post from associated channel\n- The original user ID who pinned the will be removed. \n\n\nParams\n- - -\nParam | Values | R |Description\n--- | --- | --- | ---\npost_id | | * | The target post to pin\n\nHeaders\n- - -\nHeader | Values | R |Description\n--- | --- | --- | ---\n\n\n\nInput\n- - - \n\nAttribute | Values | R |Description\n--- | --- | --- | ---"
+      description: 'Description
+
+        - - -
+
+        - API to unpin a post from associated channel
+
+        - The original user ID who pinned the will be removed.
+
+
+        Params
+
+        - - -
+
+        Param | Values | R |Description
+
+        --- | --- | --- | ---
+
+        post_id | | * | The target post to pin
+
+
+        Headers
+
+        - - -
+
+        Header | Values | R |Description
+
+        --- | --- | --- | ---
+
+
+        Input
+
+        - - -
+
+
+        Attribute | Values | R |Description
+
+        --- | --- | --- | ---'
       requestBody:
         content:
           '*/*':
@@ -3485,6 +3788,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: putApiCustomerUserRolePostsByPostIdUnpin
+      x-operation-id-source: derived
   /api/customer/user_role/posts/{post_id}:
     delete:
       tags:
@@ -3511,6 +3816,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
+      operationId: deleteApiCustomerUserRolePostsByPostId
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:
