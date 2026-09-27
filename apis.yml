@@ -57,6 +57,7 @@ tags:
 - Earned Wage Access
 - Human Resources
 - REST API
+- Scheduling
 tags_raw:
 - Company
 - Workforce Management
@@ -67,6 +68,7 @@ tags_raw:
 - Earned Wage Access
 - HR Tech
 - REST API
+- Scheduling
 apis:
 - aid: shyft:shyft-authentication-email-api
   name: Shyft Authentication > Email API
